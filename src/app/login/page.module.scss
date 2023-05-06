@@ -8,11 +8,11 @@
 .blur {
   position: fixed;
   top: 10vh;
-  left: 10%;
+  left: 25%;
   height: 70vh;
-  width: 80%;
+  width: 50%;
   background-color: $clr-active-3;
-  filter: blur(100px);
+  filter: blur(150px);
 }
 
 .title {
