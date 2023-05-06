@@ -1,10 +1,13 @@
-import { useState } from 'react';
+'use client';
+
+import { FormEventHandler, useState } from 'react';
 
 export const RegisterForm = (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleRegister = (): void => {
+  const handleRegister: FormEventHandler<HTMLFormElement> = (event): void => {
+    event.preventDefault();
     // Register new user
   };
 
