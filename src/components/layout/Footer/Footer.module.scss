@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  height: $footer-height;
+  align-items: center;
+  gap: 20px;
+  color: $clr-second-3;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

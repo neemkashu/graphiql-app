@@ -1,5 +1,8 @@
-import './globals.scss';
+import '@/styles/globals.scss';
 import { Inter } from 'next/font/google';
+import { Header, Footer } from '@/components';
+import classNames from 'classnames';
+import styles from './layout.module.scss';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -11,7 +14,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={classNames(inter.className, styles.body)}>
+        <Header></Header>
+        <main className={styles.main}>{children}</main>
+        <Footer></Footer>
+      </body>
     </html>
   );
 }
