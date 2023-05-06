@@ -1,9 +1,9 @@
 import styles from './page.module.scss';
 
-export default function WelcomePage(): JSX.Element {
+export default function LoginPage(): JSX.Element {
   return (
     <section className={styles.page}>
-      <h1 className={styles.title}>Welcome page</h1>
+      <h1>Login page</h1>
     </section>
   );
 }

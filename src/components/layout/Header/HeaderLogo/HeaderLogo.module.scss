@@ -1,0 +1,8 @@
+.mainText,
+.secondText {
+  @include title
+}
+
+.secondText {
+  color: $clr-second-3;
+}
