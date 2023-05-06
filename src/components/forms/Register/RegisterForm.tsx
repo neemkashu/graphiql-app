@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEventHandler, useState } from 'react';
+import styles from './RegisterForm.module.scss';
 
 export const RegisterForm = (): JSX.Element => {
   const [email, setEmail] = useState('');
@@ -12,10 +13,22 @@ export const RegisterForm = (): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleRegister}>
-      <input type="email" value={email} onChange={(e): void => setEmail(e.target.value)} />
-      <input type="password" value={password} onChange={(e): void => setPassword(e.target.value)} />
-      <button type="submit">Register</button>
+    <form className={styles.form} onSubmit={handleRegister}>
+      <label htmlFor="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        value={email}
+        onChange={(e): void => setEmail(e.target.value)}
+      />
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        value={password}
+        onChange={(e): void => setPassword(e.target.value)}
+      />
+      <button type="submit">Create account</button>
     </form>
   );
 };
