@@ -21,7 +21,6 @@
       "error",
       { "allowTypedFunctionExpressions": false }
     ],
-    "react/no-unescaped-entities": "off",
     "prettier/prettier": ["error", { "endOfLine": "auto" }]
   }
 }
