@@ -1,0 +1,37 @@
+.member {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  text-align: center;
+
+  .blur {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    filter: blur(60px);
+  }
+
+  .img {
+    position: relative;
+    z-index: 1;
+    border-radius: 6px;
+  }
+
+  .name {
+    @include title;
+    text-transform: uppercase;
+  }
+
+  .role {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: $clr-active;
+  }
+
+  .descr {
+    width: 280px;
+  }
+}
