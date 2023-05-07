@@ -1,0 +1,11 @@
+@mixin title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: $clr-second;
+}
+
+@mixin subtitle {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: $clr-second-1;
+}
