@@ -1,4 +1,4 @@
-import { MainButtonProps } from '@/common';
+import { MainButtonProps } from '@/components';
 import classNames from 'classnames';
 import styles from './MainButton.module.scss';
 

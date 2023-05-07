@@ -1,7 +1,7 @@
 'use client';
 
-import { ButtonStyle, PageList } from '@/common';
-import { MainButton } from '@/components';
+import { PageList } from '@/common';
+import { ButtonStyle, MainButton } from '@/components';
 import Link from 'next/link';
 
 const logOut = (): void => {
