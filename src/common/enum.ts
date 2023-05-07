@@ -1,8 +1,3 @@
-export const enum ButtonStyle {
-  normal = 'normal',
-  active = 'active',
-}
-
 export const enum PageList {
   welcome = '/',
   playground = '/playground',

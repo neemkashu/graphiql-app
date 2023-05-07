@@ -2,7 +2,7 @@ import { LoginNavButtons } from './LoginNavButtons/LoginNavButtons';
 import styles from './Nav.module.scss';
 import { PlaygroundNavButtons } from './PlaygroundNavButtons/PlaygroundNavButtons';
 
-const isUserLoggedIn = false;
+const isUserLoggedIn = true;
 
 export const Nav = (): JSX.Element => (
   <nav className={styles.nav}>
