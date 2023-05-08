@@ -2,11 +2,11 @@
 
 import { PageList } from '@/common';
 import { ButtonStyle, MainButton } from '@/components';
+import { logout } from '@/firebase';
 import Link from 'next/link';
 
 const logOut = (): void => {
-  // eslint-disable-next-line no-console
-  console.log('log out'); // make log out fn
+  logout();
 };
 
 export const PlaygroundNavButtons = (): JSX.Element => (

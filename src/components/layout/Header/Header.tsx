@@ -8,9 +8,9 @@ import { Nav } from './Nav/Nav';
 export const Header = (): JSX.Element => (
   <header className={styles.header}>
     <Link href={PageList.welcome} className={styles.logo}>
-      <HeaderLogo></HeaderLogo>
+      <HeaderLogo />
     </Link>
-    <Nav></Nav>
-    <LangButton></LangButton>
+    <Nav />
+    <LangButton />
   </header>
 );

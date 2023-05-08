@@ -1,16 +1,6 @@
 .page {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  @include centering-container;
 }
 .blur {
-  position: fixed;
-  top: 10vh;
-  left: 25%;
-  height: 70vh;
-  width: 50%;
-  background-color: $clr-active-3;
-  filter: blur(150px);
+  @include blur-element;
 }

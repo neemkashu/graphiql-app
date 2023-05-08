@@ -5,9 +5,7 @@ export default function SignUp(): JSX.Element {
   return (
     <div className={styles.page}>
       <div className={styles.blur} />
-      <section>
-        <AuthContainer />
-      </section>
+      <AuthContainer hasAccount={false} />
     </div>
   );
 }
