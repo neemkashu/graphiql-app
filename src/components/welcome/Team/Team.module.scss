@@ -1,0 +1,26 @@
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 100px;
+
+  .title {
+    font-size: $font-size-2-y;
+    text-transform: uppercase;
+  }
+
+  .members {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 80px 120px;
+  }
+}
+
+@media (min-width: 992px) {
+  .team {
+    margin-bottom: 200px;
+  }
+}

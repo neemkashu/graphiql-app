@@ -1,0 +1,41 @@
+.member {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  text-align: center;
+
+  .blur {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    filter: blur(60px);
+    z-index: -1;
+  }
+
+  .img {
+    border-radius: $border-radius-tiny;
+  }
+
+  .name {
+    @include title;
+    text-transform: uppercase;
+    transition: $transition-color;
+
+    &:hover {
+      color: $clr-hover;
+    }
+  }
+
+  .role {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $clr-active;
+  }
+
+  .descr {
+    width: 280px;
+  }
+}
