@@ -14,7 +14,7 @@ export const Member = ({
   <div className={styles.member}>
     <div className={styles.blur} style={{ backgroundColor: `${color}` }}></div>
     <Image src={img} alt="developer" width={100} height={100} className={`${styles.img}`} />
-    <Link href={github} className={styles.name}>
+    <Link href={github} target="blank" className={styles.name}>
       {name}
     </Link>
     <div className={styles.role}>{role}</div>

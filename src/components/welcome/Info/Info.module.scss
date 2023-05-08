@@ -1,0 +1,124 @@
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 50px 0 80px;
+  width: 100%;
+
+  .infoWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .title {
+    font-size: $size-1;
+    text-align: center;
+  }
+
+  .api {
+    margin-bottom: 30px;
+    font-size: $size-2;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    color: $clr-active;
+    transition: color 0.5s;
+
+    &:hover {
+      color: $clr-hover;
+    }
+  }
+
+  .descr {
+    font-size: $size-3-y;
+    max-width: 600px;
+
+    &:last-child {
+      display: none;
+    }
+  }
+
+  .imgWrapper {
+    position: relative;
+    width: 100%;
+    padding: 0 0 70% 0;
+  }
+
+  .img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+  }
+
+  .blur {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    filter: blur(60px);
+    background-color: $clr-blur;
+
+    &:first-child {
+      bottom: 0;
+      right: 50%;
+      width: 80px;
+      height: 80px;
+      background-color: $clr-blur;
+    }
+
+    &:nth-child(2) {
+      top: 10%;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background-color: $clr-blur-2;
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .info .descr:last-child {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  .info {
+    margin: 100px 0 150px;
+
+    .infoWrapper {
+      width: 45%;
+    }
+
+    .imgWrapper {
+      width: 55%;
+      padding: 0 0 35% 0;
+    }
+  }
+}
+
+@media (min-width: 642px) {
+  .info {
+    .blur {
+      width: 300px;
+      height: 300px;
+
+      &:first-child {
+        width: 150px;
+        height: 150px;
+      }
+
+      &:nth-child(2) {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+}
