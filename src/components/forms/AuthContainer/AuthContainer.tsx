@@ -1,27 +1,29 @@
-'use client';
-
-import { useState } from 'react';
-import { DEFAULT_AUTH_STATUS } from './constants';
-import { LoginForm } from '../Login/LoginForm';
-import { RegisterForm } from '../Register/RegisterForm';
+import { LoginForm, RegisterForm } from '@/components/forms';
 import styles from './AuthContainer.module.scss';
+import Link from 'next/link';
+import { PageList } from '@/common';
 
-export const AuthContainer = (): JSX.Element => {
-  const [hasAccount, setHasAccount] = useState(DEFAULT_AUTH_STATUS);
-
-  const handleChangeAuth = (): void => {
-    setHasAccount((prevoius): boolean => !prevoius);
-  };
-
-  return (
+export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Element => {
+  return hasAccount ? (
     <div className={styles.container}>
-      <h2>{hasAccount ? 'Sign in' : 'Register'}</h2>
-      {hasAccount ? <LoginForm /> : <RegisterForm />}
-      <p>
-        <span>{hasAccount ? "Don't have an account?" : 'Already have an account?'}</span>{' '}
-        <a href="#" onClick={handleChangeAuth}>
-          {hasAccount ? 'Sign up' : 'Sign in'}
-        </a>
+      <h2>{'Sign in'}</h2>
+      {<LoginForm />}
+      <p className={styles.question}>
+        <span>{"Don't have an account?"}</span>
+        <Link href={PageList.signUp} className={styles.link}>
+          {'Sign up'}
+        </Link>
+      </p>
+    </div>
+  ) : (
+    <div className={styles.container}>
+      <h2>{'Register'}</h2>
+      {<RegisterForm />}
+      <p className={styles.question}>
+        <span>{'Already have an account?'}</span>
+        <Link href={PageList.signIn} className={styles.link}>
+          {'Sign in'}
+        </Link>
       </p>
     </div>
   );
