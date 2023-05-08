@@ -1,5 +1,5 @@
 import { PageList } from '@/common';
-import { LangButton } from '@/components/buttons';
+import { FakeTranslator } from '@/components/FakeTranslator/FakeTranslator';
 import Link from 'next/link';
 import styles from './Header.module.scss';
 import { HeaderLogo } from './HeaderLogo/HeaderLogo';
@@ -8,9 +8,9 @@ import { Nav } from './Nav/Nav';
 export const Header = (): JSX.Element => (
   <header className={styles.header}>
     <Link href={PageList.welcome} className={styles.logo}>
-      <HeaderLogo></HeaderLogo>
+      <HeaderLogo />
     </Link>
-    <Nav></Nav>
-    <LangButton></LangButton>
+    <Nav />
+    <FakeTranslator />
   </header>
 );
