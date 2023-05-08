@@ -3,5 +3,6 @@
     "Ekaterina",
     "Mentsel",
     "Radchenko"
-  ]
+  ],
+  "typescript.preferences.importModuleSpecifier": "non-relative"
 }
