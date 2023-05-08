@@ -4,7 +4,7 @@ import { Header, Footer } from '@/components';
 import classNames from 'classnames';
 import styles from './layout.module.scss';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], weight: '400' });
 
 export const metadata = {
   title: 'Graph QL App',

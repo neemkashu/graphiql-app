@@ -1,6 +1,6 @@
 .header {
   height: $header-height;
+  gap: $gap-medium-a;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
