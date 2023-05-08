@@ -9,3 +9,20 @@
   font-weight: 400;
   color: $clr-second-1;
 }
+
+@mixin blur-element {
+  position: fixed;
+  top: 10vh;
+  left: 25%;
+  height: 70vh;
+  width: 50%;
+  background-color: $clr-active-3;
+  filter: blur(150px);
+}
+@mixin centering-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
