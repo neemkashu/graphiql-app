@@ -1,15 +1,29 @@
 'use client';
 
-import { FormEventHandler, useState } from 'react';
+import { FormEventHandler, useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import styles from './LoginForm.module.scss';
+import { firebaseAuth, logInWithEmailAndPassword } from '@/firebase';
+import { useRouter } from 'next/navigation';
+import { PageList } from '@/common';
 
 export const LoginForm = (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [user, loading, error] = useAuthState(firebaseAuth);
+  const router = useRouter();
 
-  const handleLogin: FormEventHandler<HTMLFormElement> = (event): void => {
+  useEffect((): void => {
+    if (loading) {
+      console.log('loading user auth');
+      return;
+    }
+    if (user) router.push(PageList.playground);
+  }, [user, loading, router]);
+
+  const handleLogin: FormEventHandler<HTMLFormElement> = async (event): Promise<void> => {
     event.preventDefault();
-    // Register new user
+    await logInWithEmailAndPassword(email, password);
   };
 
   return (
