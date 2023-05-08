@@ -1,6 +1,6 @@
 import { Member } from '../Member';
 import { TEAM } from '@/common';
-import { TeamMember } from '@/common';
+import { TeamMember } from './Team.interface';
 import styles from './Team.module.scss';
 
 export const Team = (): JSX.Element => (
