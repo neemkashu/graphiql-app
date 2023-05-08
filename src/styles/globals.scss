@@ -12,17 +12,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
-input {
-  height: $size-1;
-  border-radius: $border-radius-tiny;
-  font-size: $font-size-base;
-  line-height: 140%;
-  color: $clr-content;
-
-  background-color: $clr-base-5;
-
-  &:hover {
-    outline: solid 2px $clr-second;
-  }
-}

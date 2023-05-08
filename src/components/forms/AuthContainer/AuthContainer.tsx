@@ -8,9 +8,9 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
     <div className={styles.container}>
       <h2>{'Sign in'}</h2>
       {<LoginForm />}
-      <p>
-        <span>{"Don't have an account?"}</span>{' '}
-        <Link href={PageList.signUp} className={styles.logo}>
+      <p className={styles.question}>
+        <span>{"Don't have an account?"}</span>
+        <Link href={PageList.signUp} className={styles.link}>
           {'Sign up'}
         </Link>
       </p>
@@ -19,9 +19,9 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
     <div className={styles.container}>
       <h2>{'Register'}</h2>
       {<RegisterForm />}
-      <p>
-        <span>{'Already have an account?'}</span>{' '}
-        <Link href={PageList.signIn} className={styles.logo}>
+      <p className={styles.question}>
+        <span>{'Already have an account?'}</span>
+        <Link href={PageList.signIn} className={styles.link}>
           {'Sign in'}
         </Link>
       </p>

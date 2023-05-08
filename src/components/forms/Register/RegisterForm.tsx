@@ -28,19 +28,25 @@ export const RegisterForm = (): JSX.Element => {
     <form className={styles.form} onSubmit={handleRegister}>
       <label htmlFor="email">Email</label>
       <input
+        className={styles.input}
         type="email"
         name="email"
         value={email}
         onChange={(e): void => setEmail(e.target.value)}
+        placeholder="Enter email"
       />
       <label htmlFor="password">Password</label>
       <input
+        className={styles.input}
         type="password"
         name="password"
         value={password}
         onChange={(e): void => setPassword(e.target.value)}
+        placeholder="Enter password"
       />
-      <button type="submit">Create account</button>
+      <button className={styles.button} type="submit">
+        Create account
+      </button>
     </form>
   );
 };

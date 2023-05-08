@@ -5,13 +5,13 @@
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  gap: $size-2;
+  gap: $gap-medium-k;
 
   width: 100%;
   max-width: $width-form;
   min-height: 30vh;
 
-  padding: $padding-small-k;
+  padding: $padding-medium $padding-small-k;
 
   @media screen and (min-width: $width-form){
     padding: $padding-medium;
@@ -19,4 +19,14 @@
 
   border-radius: $border-radius-small;
   background-color: $clr-base;
+}
+.question {
+  display: flex;
+  justify-content: center;
+  gap: $gap-small;
+}
+.link {
+  color: $clr-active;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
