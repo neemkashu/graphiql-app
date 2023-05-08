@@ -27,7 +27,7 @@
     text-transform: uppercase;
     text-align: center;
     color: $clr-active;
-    transition: color 0.5s;
+    transition: $transition-color;
 
     &:hover {
       color: $clr-hover;

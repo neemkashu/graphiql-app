@@ -7,7 +7,6 @@ $clr-base-3: rgb(19, 21, 27);
 $clr-base-4: rgb(45, 47, 48);
 $clr-base-5: rgb(23, 24, 33);
 
-
 $clr-second: rgb(255, 255, 255);
 $clr-second-2: #9293a0;
 $clr-second-3: rgb(95, 96, 109);
@@ -17,7 +16,7 @@ $clr-content: rgb(181, 183, 194);
 
 $clr-active: rgb(78, 169, 252);
 $clr-active-2: rgb(36, 149, 252);
-$clr-active-3: rgba(37,149,253,.5);
+$clr-active-3: rgba(37, 149, 253, 0.5);
 
 $clr-blur: rgba(36, 149, 252, 0.3);
 $clr-blur-2: rgba(254, 185, 88, 0.3);
@@ -38,8 +37,12 @@ $padding-medium: 3.2rem;
 $width-form: 438px;
 
 $gap-small: 1rem;
+$gap-medium-a: 1.5rem;
 
 $font-size-base: 1.4rem;
 $font-size-1-y: 4rem;
 $font-size-2-y: 2rem;
 $font-size-3-y: 1.8rem;
+
+$transition-basic: 0.2s;
+$transition-color: color 0.5s;

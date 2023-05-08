@@ -1,5 +1,6 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: $gap-medium-a;
+  margin-left: auto;
 }

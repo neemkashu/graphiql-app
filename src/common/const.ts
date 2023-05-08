@@ -27,7 +27,7 @@ const TEAM: TeamMember[] = [
     name: 'Ekaterina Radchenko',
     role: 'Developer',
     description:
-      'LLorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore',
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore',
     github: 'https://github.com/neemkashu',
     color: 'rgba(38, 195, 98, 0.3)',
   },
