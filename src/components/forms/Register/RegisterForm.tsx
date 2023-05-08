@@ -10,8 +10,8 @@ import { PageList } from '@/common';
 export const RegisterForm = (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('kT');
-  const [user, loading, error] = useAuthState(firebaseAuth);
+  const [name] = useState('kT');
+  const [user, loading] = useAuthState(firebaseAuth);
   const router = useRouter();
 
   const handleRegister: FormEventHandler<HTMLFormElement> = (event): void => {

@@ -10,7 +10,7 @@ import { PageList } from '@/common';
 export const LoginForm = (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [user, loading, error] = useAuthState(firebaseAuth);
+  const [user, loading] = useAuthState(firebaseAuth);
   const router = useRouter();
 
   useEffect((): void => {
