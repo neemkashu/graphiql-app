@@ -15,7 +15,7 @@ export const LoginForm = (): JSX.Element => {
 
   useEffect((): void => {
     if (loading) {
-      console.log('loading user auth');
+      // here some spinner logic can be
       return;
     }
     if (user) router.push(PageList.playground);
