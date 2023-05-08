@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { TeamMember } from '../Team';
+import { TeamMember } from '@/common';
 import styles from './Member.module.scss';
 
 export const Member = ({

@@ -1,4 +1,6 @@
-const TEAM = [
+import { TeamMember } from './interface';
+
+const TEAM: TeamMember[] = [
   {
     id: 1,
     img: '/img/team/aliaksei_rudak.jpg',
@@ -7,7 +9,7 @@ const TEAM = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore',
     github: 'https://github.com/lexarudak',
-    color: 'rgba(36, 149, 252, 0.3);fc',
+    color: 'rgba(36, 149, 252, 0.3)',
   },
   {
     id: 2,
