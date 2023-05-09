@@ -1,7 +1,8 @@
-import { LoginForm, RegisterForm } from '@/components/forms';
 import styles from './AuthContainer.module.scss';
 import Link from 'next/link';
 import { PageList } from '@/common';
+import { LoginForm } from '@/components/forms/Login/LoginForm';
+import { RegisterForm } from '@/components/forms/Register/RegisterForm';
 
 export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Element => {
   return hasAccount ? (

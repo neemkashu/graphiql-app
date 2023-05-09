@@ -1,4 +1,4 @@
-import { AuthContainer } from '@/components/forms';
+import { AuthContainer } from '@/components/forms/AuthContainer/AuthContainer';
 import styles from './page.module.scss';
 
 export default function SignUp(): JSX.Element {
