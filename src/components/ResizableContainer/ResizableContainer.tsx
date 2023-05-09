@@ -17,6 +17,7 @@ import {
 import classNames from 'classnames';
 
 export default function ResizableContainer(): JSX.Element {
+  // solve
   const [sizes, setSizes] = useState<(string | number)[]>(DEFAULT_PG_SIZE);
   const currentSizeRef = useRef(sizes);
   const [leftPaneSize] = sizes;
