@@ -21,9 +21,9 @@ export const Info = (): JSX.Element => (
       </p>
     </div>
     <div className={styles.imgWrapper}>
-      <div className={styles.blur}></div>
-      <div className={styles.blur}></div>
-      <div className={styles.blur}></div>
+      <div className={styles.blur} />
+      <div className={styles.blur} />
+      <div className={styles.blur} />
       <Image
         src={'/img/welcome.webp'}
         alt="rick and morty"

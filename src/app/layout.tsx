@@ -1,5 +1,6 @@
 import '@/styles/globals.scss';
 import { Inter } from 'next/font/google';
+import { Providers } from '@/redux/provider';
 import { Header, Footer } from '@/components';
 import classNames from 'classnames';
 import styles from './layout.module.scss';
@@ -15,9 +16,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
   return (
     <html lang="en">
       <body className={classNames(inter.className, styles.body)}>
-        <Header />
-        <main className={styles.main}>{children}</main>
-        <Footer />
+        <Providers>
+          <Header />
+          <main className={styles.main}>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

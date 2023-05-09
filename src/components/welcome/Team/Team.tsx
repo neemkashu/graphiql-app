@@ -4,7 +4,8 @@ import { TeamMember } from '@/common';
 import styles from './Team.module.scss';
 
 export const Team = (): JSX.Element => {
-  const members = () => TEAM.map((member: TeamMember) => <Member key={member.id} {...member} />);
+  const members = (): JSX.Element[] =>
+    TEAM.map((member: TeamMember): JSX.Element => <Member key={member.id} {...member} />);
 
   return (
     <section className={styles.team}>
