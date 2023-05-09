@@ -9,3 +9,49 @@
   font-weight: 400;
   color: $clr-second-1;
 }
+
+@mixin blur-element {
+  position: fixed;
+  top: 10vh;
+  left: 25%;
+  height: 70vh;
+  width: 50%;
+  background-color: $clr-active-3;
+  filter: blur(150px);
+}
+@mixin centering-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+@mixin form-input {
+  padding: 0 $padding-small-k;
+  height: $height-input;
+  border-radius: $border-radius-tiny;
+  border-width: 0;
+  font-size: $font-size-base;
+  line-height: 140%;
+  color: $clr-content;
+  outline: none;
+
+  background-color: $clr-base-5;
+
+  &:hover {
+    outline: solid 2px $clr-second;
+  }
+  ::placeholder {
+    color: $clr-second-3;
+  }
+}
+@mixin form-button {
+  transition: $transition-basic;
+  padding: 1rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  background-color: $clr-active-2;
+}

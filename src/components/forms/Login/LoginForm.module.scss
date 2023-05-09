@@ -1,5 +1,11 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap:  $size-2;
+  gap:  $gap-medium-k;
+}
+.input {
+  @include form-input;
+}
+.button {
+  @include form-button;
 }

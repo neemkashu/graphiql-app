@@ -1,5 +1,4 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 'use client';
 import styles from './ResizableContainer.module.scss';
 import React, { useEffect, useRef, useState } from 'react';
