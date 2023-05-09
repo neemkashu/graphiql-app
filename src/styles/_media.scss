@@ -1,0 +1,30 @@
+$breakpoints: (
+  "xs":438px,
+  "s":642px,
+  "m":800px,
+  "l":992px,
+  "xl":1280px
+);
+
+@mixin media($minmax, $media) {
+
+  @each $size,
+  $res in $breakpoints {
+    @if $media == $size {
+      @media only screen and (#{$minmax}-width: $res) {
+        @content;
+      }
+    }
+  }
+}
+
+
+// example
+
+// .block {
+//   width: 400px;
+
+//   @include media("max", "s") {
+//     width: 300px;
+//   }
+// }
