@@ -10,7 +10,6 @@ import {
   HIDE_LEFT_PANE_SIZE,
   LS_PG_SIZE,
   MIN_PANE_SIZE,
-  SHOW_LEFT_PANE_ARR,
   Split,
   HIDE_BTN_ICON,
   SHOW_BTN_ICON,
@@ -18,8 +17,7 @@ import {
 import classNames from 'classnames';
 
 export default function ResizableContainer(): JSX.Element {
-  const lsState = localStorage.getItem(LS_PG_SIZE);
-  const [sizes, setSizes] = useState(lsState ? JSON.parse(lsState) : DEFAULT_PG_SIZE);
+  const [sizes, setSizes] = useState<(string | number)[]>(DEFAULT_PG_SIZE);
   const currentSizeRef = useRef(sizes);
   const [leftPaneSize] = sizes;
 
@@ -32,6 +30,8 @@ export default function ResizableContainer(): JSX.Element {
   }, [sizes]);
 
   useEffect((): (() => void) => {
+    const lsState = localStorage.getItem(LS_PG_SIZE);
+    if (lsState) setSizes(JSON.parse(lsState));
     window.addEventListener('beforeunload', setLs);
     return (): void => {
       window.removeEventListener('beforeunload', setLs);
@@ -40,7 +40,7 @@ export default function ResizableContainer(): JSX.Element {
   }, []);
 
   const toggleLeftPane = (): void => {
-    setSizes(leftPaneSize > HIDE_LEFT_PANE_SIZE ? HIDE_LEFT_PANE_ARR : SHOW_LEFT_PANE_ARR);
+    setSizes(leftPaneSize > HIDE_LEFT_PANE_SIZE ? HIDE_LEFT_PANE_ARR : DEFAULT_PG_SIZE);
   };
 
   return (
