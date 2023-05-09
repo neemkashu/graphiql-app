@@ -1,17 +1,20 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 'use client';
 import styles from './ResizableContainer.module.scss';
 import React, { useEffect, useRef, useState } from 'react';
 import SplitPane, { Pane } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
-import { RoundButton } from '../buttons';
 import {
+  RoundButton,
   DEFAULT_PG_SIZE,
+  HIDE_LEFT_PANE_ARR,
   HIDE_LEFT_PANE_SIZE,
   LS_PG_SIZE,
   MIN_PANE_SIZE,
-} from './ResizableContainer.const';
-import { Split } from './ResizableContainer.enum';
+  SHOW_LEFT_PANE_ARR,
+  Split,
+  HIDE_BTN_ICON,
+  SHOW_BTN_ICON,
+} from '@/components';
 import classNames from 'classnames';
 
 export default function ResizableContainer(): JSX.Element {
@@ -37,7 +40,7 @@ export default function ResizableContainer(): JSX.Element {
   }, []);
 
   const toggleLeftPane = (): void => {
-    setSizes([HIDE_LEFT_PANE_SIZE]);
+    setSizes(leftPaneSize > HIDE_LEFT_PANE_SIZE ? HIDE_LEFT_PANE_ARR : SHOW_LEFT_PANE_ARR);
   };
 
   return (
@@ -46,7 +49,7 @@ export default function ResizableContainer(): JSX.Element {
         <div className={classNames(styles.pane, styles.paneLeft)}>
           <div className={styles.hideButton}>
             <RoundButton action={toggleLeftPane}>
-              {leftPaneSize > HIDE_LEFT_PANE_SIZE ? '<' : '>'}
+              {leftPaneSize > HIDE_LEFT_PANE_SIZE ? HIDE_BTN_ICON : SHOW_BTN_ICON}
             </RoundButton>
           </div>
           <div>Documentation</div>
