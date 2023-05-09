@@ -1,0 +1,20 @@
+.pane {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: $padding-medium;
+}
+
+.paneCenter {
+  background-color: $clr-base;
+  border-radius: $border-radius-small;
+}
+
+.paneLeft {
+  flex-direction: row-reverse;
+  padding-right: 5px;
+}
+
+.hideButton {
+  margin-top: calc(0rem - $padding-medium);
+}

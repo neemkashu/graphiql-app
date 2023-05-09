@@ -10,11 +10,11 @@
 
 .normal {
   border: 1px;
-  background-color: $clr-base;
+  background-color: $clr-base-2;
   color: $clr-second;
 
   &:hover {
-      background-color: $clr-base-4;
+      background-color: $clr-base;
     }
 }
 
