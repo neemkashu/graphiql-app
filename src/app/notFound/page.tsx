@@ -2,7 +2,7 @@ import styles from './page.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Custom404Page(): JSX.Element {
+export default function CustomNotFoundPage(): JSX.Element {
   return (
     <section className={styles.page}>
       <div className={styles.imgWrapper}>
