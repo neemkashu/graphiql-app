@@ -1,56 +1,40 @@
 'use client';
-import styles from './ResizableContainer.module.scss';
-import React, { useEffect, useRef, useState } from 'react';
-import SplitPane, { Pane } from 'split-pane-react';
-import 'split-pane-react/esm/themes/default.css';
 import {
-  RoundButton,
-  DEFAULT_PG_SIZE,
-  HIDE_LEFT_PANE_ARR,
-  HIDE_LEFT_PANE_SIZE,
-  LS_PG_SIZE,
-  MIN_PANE_SIZE,
-  Split,
+  DEFAULT_PLAYGROUND_SIZE,
   HIDE_BTN_ICON,
+  HIDE_PANE_PLAYGROUND_SIZE,
+  HIDE_PANE_SIZE,
+  MIN_PANE_SIZE,
+  RoundButton,
   SHOW_BTN_ICON,
+  Split,
+  usePLayGroundSize,
 } from '@/components';
 import classNames from 'classnames';
+import React, { ReactNode } from 'react';
+import SplitPane, { Pane, SashContent } from 'split-pane-react';
+import 'split-pane-react/esm/themes/default.css';
+import styles from './ResizableContainer.module.scss';
 
-export default function ResizableContainer(): JSX.Element {
-  // solve
-  const [sizes, setSizes] = useState<(string | number)[]>(DEFAULT_PG_SIZE);
-  const currentSizeRef = useRef(sizes);
+const sashRender = (_: number, active: boolean): ReactNode => (
+  <SashContent active={active} type="vscode" />
+);
+
+export const ResizableContainer = (): JSX.Element => {
+  const [sizes, setSizes] = usePLayGroundSize();
   const [leftPaneSize] = sizes;
 
-  const setLs = (): void => {
-    localStorage.setItem(LS_PG_SIZE, JSON.stringify(currentSizeRef.current));
-  };
-
-  useEffect((): void => {
-    currentSizeRef.current = sizes;
-  }, [sizes]);
-
-  useEffect((): (() => void) => {
-    const lsState = localStorage.getItem(LS_PG_SIZE);
-    if (lsState) setSizes(JSON.parse(lsState));
-    window.addEventListener('beforeunload', setLs);
-    return (): void => {
-      window.removeEventListener('beforeunload', setLs);
-      setLs();
-    };
-  }, []);
-
   const toggleLeftPane = (): void => {
-    setSizes(leftPaneSize > HIDE_LEFT_PANE_SIZE ? HIDE_LEFT_PANE_ARR : DEFAULT_PG_SIZE);
+    setSizes(leftPaneSize > HIDE_PANE_SIZE ? HIDE_PANE_PLAYGROUND_SIZE : DEFAULT_PLAYGROUND_SIZE);
   };
 
   return (
-    <SplitPane split={Split.vertical} sizes={sizes} onChange={setSizes}>
+    <SplitPane split={Split.vertical} sizes={sizes} onChange={setSizes} sashRender={sashRender}>
       <Pane minSize={MIN_PANE_SIZE}>
         <div className={classNames(styles.pane, styles.paneLeft)}>
           <div className={styles.hideButton}>
             <RoundButton action={toggleLeftPane}>
-              {leftPaneSize > HIDE_LEFT_PANE_SIZE ? HIDE_BTN_ICON : SHOW_BTN_ICON}
+              {leftPaneSize > HIDE_PANE_SIZE ? HIDE_BTN_ICON : SHOW_BTN_ICON}
             </RoundButton>
           </div>
           <div>Documentation</div>
@@ -64,4 +48,4 @@ export default function ResizableContainer(): JSX.Element {
       </Pane>
     </SplitPane>
   );
-}
+};
