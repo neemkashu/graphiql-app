@@ -9,15 +9,8 @@ import { PageList } from '@/common';
 import { useForm } from 'react-hook-form';
 import { RegisterData } from '@/components/auth/forms/forms.type';
 import { AuthInputNames } from '@/components/auth/forms/forms.enum';
-import {
-  MAX_EMAIL_LENGTH,
-  EMAIL_REGEX,
-  ONE_LETTER,
-  ONE_DIGIT,
-  MIN_PASSWORD_LENGTH,
-  ONE_SPECIAL_CHAR,
-  DEFAULT_REGISTER_STATE,
-} from '@/components/auth/forms/forms.const';
+import { DEFAULT_REGISTER_STATE } from '@/components/auth/forms/forms.const';
+import { RegisterValidationConfig } from '@/components/auth/forms/forms.helper';
 
 export const RegisterForm = (): JSX.Element => {
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -40,7 +33,7 @@ export const RegisterForm = (): JSX.Element => {
   }, [user, loading, router]);
 
   const handleRegister = async ({ email, password }: RegisterData): Promise<void> => {
-    const user = await createUserWithEmailAndPassword(email, password);
+    await createUserWithEmailAndPassword(email, password);
   };
 
   return (
@@ -55,17 +48,7 @@ export const RegisterForm = (): JSX.Element => {
           className={styles.input}
           type="email"
           placeholder="Enter email"
-          {...register(AuthInputNames.EMAIL, {
-            required: 'Please enter email',
-            maxLength: {
-              value: MAX_EMAIL_LENGTH,
-              message: `Email exceeded ${MAX_EMAIL_LENGTH} symbols`,
-            },
-            pattern: {
-              value: EMAIL_REGEX,
-              message: 'Invalid email',
-            },
-          })}
+          {...register(AuthInputNames.EMAIL, RegisterValidationConfig[AuthInputNames.EMAIL])}
         />
         <div>
           <label htmlFor={AuthInputNames.PASSWORD}>Password</label>
@@ -75,20 +58,7 @@ export const RegisterForm = (): JSX.Element => {
           className={styles.input}
           type="password"
           placeholder="Enter password"
-          {...register(AuthInputNames.PASSWORD, {
-            required: 'Please enter password',
-            minLength: {
-              value: MIN_PASSWORD_LENGTH,
-              message: 'At least 8 characters in length',
-            },
-            validate: {
-              oneLetter: (value): boolean | string =>
-                ONE_LETTER.test(value) || 'At least one letter',
-              oneDigit: (value): boolean | string => ONE_DIGIT.test(value) || 'At least one digit',
-              oneSpecialChar: (value): boolean | string =>
-                ONE_SPECIAL_CHAR.test(value) || 'At least one special character',
-            },
-          })}
+          {...register(AuthInputNames.PASSWORD, RegisterValidationConfig[AuthInputNames.PASSWORD])}
         />
         <div>
           <label htmlFor={AuthInputNames.REPEAT_PASSWORD}>Confirm</label>
@@ -100,13 +70,10 @@ export const RegisterForm = (): JSX.Element => {
           className={styles.input}
           type="password"
           placeholder="Repeat password"
-          {...register(AuthInputNames.REPEAT_PASSWORD, {
-            required: 'Please confirm your password',
-            validate: {
-              equalPassword: (value): boolean | string =>
-                value === watch(AuthInputNames.PASSWORD) || 'Passwords do not match',
-            },
-          })}
+          {...register(
+            AuthInputNames.REPEAT_PASSWORD,
+            RegisterValidationConfig[AuthInputNames.REPEAT_PASSWORD](watch)
+          )}
         />
         <button className={styles.button} type="submit">
           Create account

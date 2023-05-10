@@ -30,7 +30,7 @@ export const LoginForm = (): JSX.Element => {
   }, [user, loading, router]);
 
   const handleLogin = async ({ email, password }: LoginData): Promise<void> => {
-    const user = await signInWithEmailAndPassword(email, password);
+    await signInWithEmailAndPassword(email, password);
   };
 
   return (
