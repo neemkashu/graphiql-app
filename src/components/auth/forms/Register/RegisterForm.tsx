@@ -16,6 +16,7 @@ import {
   ONE_DIGIT,
   MIN_PASSWORD_LENGTH,
   ONE_SPECIAL_CHAR,
+  DEFAULT_REGISTER_STATE,
 } from '@/components/auth/forms/forms.const';
 
 export const RegisterForm = (): JSX.Element => {
@@ -25,8 +26,13 @@ export const RegisterForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm<RegisterData>({ mode: 'onSubmit', reValidateMode: 'onBlur' });
+  } = useForm<RegisterData>({
+    mode: 'onSubmit',
+    reValidateMode: 'onBlur',
+    defaultValues: DEFAULT_REGISTER_STATE,
+  });
 
   useEffect((): void => {
     if (loading) return;
@@ -98,7 +104,7 @@ export const RegisterForm = (): JSX.Element => {
             required: 'Please confirm your password',
             validate: {
               equalPassword: (value): boolean | string =>
-                true || 'Password must contain at least one letter',
+                value === watch(AuthInputNames.PASSWORD) || 'Passwords do not match',
             },
           })}
         />
