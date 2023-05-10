@@ -4,5 +4,10 @@
     "Mentsel",
     "Radchenko"
   ],
-  "typescript.preferences.importModuleSpecifier": "non-relative"
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "search.useIgnoreFiles": false,
+  "search.exclude": {
+    "": true,
+    "**/node_modules": false
+  }
 }
