@@ -3,6 +3,9 @@
   flex-direction: column;
   gap:  $gap-medium-k;
 }
+.formError {
+  @include form-error;
+}
 .input {
   @include form-input;
 }

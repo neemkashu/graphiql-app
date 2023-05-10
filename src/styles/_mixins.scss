@@ -54,3 +54,8 @@
   color: inherit;
   background-color: $clr-active-2;
 }
+@mixin form-error {
+  color: $clr-danger;
+  padding-left: 3rem;
+  font-size: 1.4rem;
+}
