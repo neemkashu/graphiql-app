@@ -12,7 +12,7 @@ export const Member = ({
   color,
 }: TeamMember): JSX.Element => (
   <div className={styles.member}>
-    <div className={styles.blur} style={{ backgroundColor: `${color}` }}></div>
+    <div className={styles.blur} style={{ backgroundColor: `${color}` }} />
     <Image src={img} alt="developer" width={100} height={100} className={`${styles.img}`} />
     <Link href={github} target="blank" className={styles.name}>
       {name}
