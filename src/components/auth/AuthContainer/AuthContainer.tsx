@@ -18,7 +18,7 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
     </div>
   ) : (
     <div className={styles.container}>
-      <h2>{'Register'}</h2>
+      <h2>{'Sign up'}</h2>
       {<RegisterForm />}
       <p className={styles.question}>
         <span>{'Already have an account?'}</span>
