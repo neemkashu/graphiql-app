@@ -12,4 +12,8 @@
   display: flex;
   flex-grow: 1;
   min-height: calc(100vh - $footer-height - $header-height);
+
+  @include media("max", "s") {
+    min-height: calc(100vh - $footer-height * 2 - $header-height);
+  }
 }

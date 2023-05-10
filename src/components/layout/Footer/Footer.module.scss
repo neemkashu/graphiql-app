@@ -2,8 +2,25 @@
   display: flex;
   height: $footer-height;
   align-items: center;
-  gap: $gap-medium-a;
   color: $clr-second-3;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  gap: $gap-small;
+
+  @include media("max", "s") {
+    height: $footer-height * 2;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: .3rem;
+  }
+}
+
+.year, 
+.icon {
+  @include media("max", "s") {
+    align-self: flex-end;
+  }
 }
 
 .icon {
