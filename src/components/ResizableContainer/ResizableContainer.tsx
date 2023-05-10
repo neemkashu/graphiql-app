@@ -8,13 +8,13 @@ import {
   RoundButton,
   SHOW_BTN_ICON,
   Split,
-  usePLayGroundSize,
 } from '@/components';
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './ResizableContainer.module.scss';
+import { usePLayGroundSize } from './ResizableContainer.hook';
 
 const sashRender = (_: number, active: boolean): ReactNode => (
   <SashContent active={active} type="vscode" />

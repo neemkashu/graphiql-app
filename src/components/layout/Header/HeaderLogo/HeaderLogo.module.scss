@@ -1,8 +1,23 @@
 .mainText,
 .secondText {
-  @include title
+  @include media("max", "s") {
+    display: none;
+  }
+}
+
+.mainText {
+  @include title;
 }
 
 .secondText {
   color: $clr-second-3;
+  font-size: $font-size-base;
+}
+
+.logo {
+  display: none;
+
+  @include media("max", "s") {
+      display: block;
+    }
 }

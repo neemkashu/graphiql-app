@@ -1,11 +1,13 @@
 .body {
-  padding: 0 20px;
+  padding: 0 $padding-body-a;
   font-size: $font-size-base;
   background-color: $clr-base-2;
   color: $clr-second;
+  position: relative;
 }
 
 .main {
+  margin-top: $header-height;
   position: relative;
   display: flex;
   flex-grow: 1;
