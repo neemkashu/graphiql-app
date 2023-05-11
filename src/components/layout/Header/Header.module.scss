@@ -10,11 +10,11 @@
   align-items: center;
   z-index: 100;
   transition: $transition-basic;
+  border-radius: 0 0 $border-radius-small $border-radius-small;
   min-width: 320px;
 }
 
 .filling {
-  border-radius: 0 0 $border-radius-small $border-radius-small;
   transition: $transition-basic;
   background-color: $clr-base-2;
   height: calc($header-height - 2rem);

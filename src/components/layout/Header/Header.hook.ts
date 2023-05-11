@@ -10,6 +10,7 @@ export const useScrollState = (): boolean => {
     const setHeaderFilling = (): void => {
       setIsScroll(isPageTop());
     };
+    setHeaderFilling();
     window.addEventListener('scroll', setHeaderFilling);
     return (): void => {
       window.removeEventListener('scroll', setHeaderFilling);
