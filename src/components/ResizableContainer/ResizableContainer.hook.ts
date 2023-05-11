@@ -22,6 +22,7 @@ export const usePLayGroundSize = (): [PlaygroundSize, Dispatch<SetStateAction<Pl
     if (lsState) setSizes(JSON.parse(lsState));
     window.addEventListener('beforeunload', savePageSizes);
     return (): void => {
+      savePageSizes();
       window.removeEventListener('beforeunload', savePageSizes);
     };
   }, []);
