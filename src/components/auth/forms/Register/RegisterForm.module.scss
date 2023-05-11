@@ -1,7 +1,8 @@
 .form {
-  display: flex;
-  flex-direction: column;
-  gap:  $gap-medium-k;
+  @include form;
+}
+.labelContainer {
+  @include form-label;
 }
 .formError {
   @include form-error;

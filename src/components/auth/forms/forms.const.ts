@@ -5,6 +5,6 @@ export const MAX_EMAIL_LENGTH = 320;
 export const MIN_PASSWORD_LENGTH = 8;
 export const ONE_LETTER = /.*[a-zA-Z].*/;
 export const ONE_DIGIT = /.*\d.*/;
-export const ONE_SPECIAL_CHAR = /.*[!@#$%^&*().,?":{}|<>`/ ].*/;
+export const ONE_SPECIAL_CHAR = /.*[!@#$%^&*().,?":{}|<>`/ -'\\+].*/;
 
 export const DEFAULT_REGISTER_STATE: RegisterData = { email: '', password: '', repeatPassword: '' };

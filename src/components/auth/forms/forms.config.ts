@@ -12,7 +12,7 @@ import { UseFormWatch, RegisterOptions } from 'react-hook-form';
 
 export const RegisterValidationConfig = {
   [AuthInputNames.EMAIL]: {
-    required: 'Please enter email',
+    required: 'Enter email address',
     maxLength: {
       value: MAX_EMAIL_LENGTH,
       message: `Email exceeded ${MAX_EMAIL_LENGTH} symbols`,
@@ -23,7 +23,7 @@ export const RegisterValidationConfig = {
     },
   },
   [AuthInputNames.PASSWORD]: {
-    required: 'Please enter password',
+    required: 'Enter password',
     minLength: {
       value: MIN_PASSWORD_LENGTH,
       message: `At least ${MIN_PASSWORD_LENGTH} characters in length`,
@@ -40,7 +40,7 @@ export const RegisterValidationConfig = {
     watch: UseFormWatch<RegisterData>
   ): RegisterOptions<RegisterData, AuthInputNames.EMAIL> => {
     return {
-      required: 'Please confirm your password',
+      required: 'Confirm your password',
       validate: {
         equalPassword: (value: string): boolean | string =>
           value === watch(AuthInputNames.PASSWORD) || 'Passwords do not match',
