@@ -1,6 +1,22 @@
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 $padding-body-a;
+  margin-left: -$padding-body-a;
   height: $header-height;
   gap: $gap-medium-a;
   display: flex;
   align-items: center;
+  z-index: 100;
+  transition: $transition-basic;
+  border-radius: 0 0 $border-radius-small $border-radius-small;
+  min-width: 320px;
+}
+
+.filling {
+  transition: $transition-basic;
+  background-color: $clr-base-2;
+  height: calc($header-height - 2rem);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
