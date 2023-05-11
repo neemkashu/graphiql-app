@@ -1,7 +1,6 @@
 @mixin buttonBase {
   transition: $transition-basic;
   padding: 1rem;
-  text-transform: capitalize;
   border: none;
   cursor: pointer;
   font-family: inherit;
@@ -38,6 +37,7 @@
 
 @mixin buttonRoundNormal {
   @include buttonBase;
+  text-transform: capitalize;
   border-radius: 100%;
   background-color: $clr-base;
   color: $clr-second;

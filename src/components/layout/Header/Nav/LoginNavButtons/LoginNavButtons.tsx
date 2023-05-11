@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 'use client';
 import { PageList } from '@/common';
 import Link from 'next/link';
@@ -8,7 +7,7 @@ import styles from './LoginNavButtons.module.scss';
 export const LoginNavButtons = (): JSX.Element => {
   const pathName = usePathname();
   const isSignUpPage = (): boolean => pathName === PageList.signUp;
-  console.log(pathName);
+
   return (
     <>
       <Link
