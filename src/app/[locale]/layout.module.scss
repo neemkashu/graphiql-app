@@ -1,13 +1,19 @@
 .body {
-  padding: 0 20px;
+  padding: 0 $padding-body-a;
   font-size: $font-size-base;
   background-color: $clr-base-2;
   color: $clr-second;
+  position: relative;
 }
 
 .main {
+  margin-top: $header-height;
   position: relative;
   display: flex;
   flex-grow: 1;
   min-height: calc(100vh - $footer-height - $header-height);
+
+  @include media("max", "s") {
+    min-height: calc(100vh - $footer-height * 2 - $header-height);
+  }
 }

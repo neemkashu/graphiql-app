@@ -83,13 +83,13 @@
   }
 }
 
-@media (min-width: 1280px) {
+@include media("min", "xl") {
   .info .descr:last-child {
     display: block;
   }
 }
 
-@media (min-width: 992px) {
+@include media("min", "l") {
   .info {
     margin: 100px 0 150px;
 
@@ -104,7 +104,7 @@
   }
 }
 
-@media (min-width: 642px) {
+@include media("min", "s") {
   .info {
     .blur {
       width: 300px;

@@ -1,25 +1,30 @@
 'use client';
+import styles from './PlaygroundNavButtons.module.scss';
 
 import { PageList } from '@/common';
-import { ButtonStyle, MainButton } from '@/components';
 import { logout } from '@/firebase';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const logOut = (): void => {
   logout();
 };
 
-export const PlaygroundNavButtons = (): JSX.Element => (
-  <>
-    <Link href={PageList.welcome}>
-      <MainButton style={ButtonStyle.normal} disabled={false} action={logOut}>
+export const PlaygroundNavButtons = (): JSX.Element => {
+  const router = useRouter();
+
+  const onClickHandler = (): void => {
+    logOut();
+    router.push(PageList.welcome);
+  };
+  return (
+    <>
+      <button className={styles.normalButton} onClick={onClickHandler}>
         Log out
-      </MainButton>
-    </Link>
-    <Link href={PageList.playground}>
-      <MainButton style={ButtonStyle.active} disabled={false}>
-        To playground
-      </MainButton>
-    </Link>
-  </>
-);
+      </button>
+      <Link href={PageList.playground} className={styles.activeButton}>
+        Playground
+      </Link>
+    </>
+  );
+};

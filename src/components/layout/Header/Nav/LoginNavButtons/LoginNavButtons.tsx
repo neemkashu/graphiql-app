@@ -1,18 +1,27 @@
+'use client';
 import { PageList } from '@/common';
-import { ButtonStyle, MainButton } from '@/components';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import styles from './LoginNavButtons.module.scss';
 
-export const LoginNavButtons = (): JSX.Element => (
-  <>
-    <Link href={PageList.signIn}>
-      <MainButton style={ButtonStyle.normal} disabled={false}>
-        Sign in
-      </MainButton>
-    </Link>
-    <Link href={PageList.signUp}>
-      <MainButton style={ButtonStyle.active} disabled={false}>
+export const LoginNavButtons = (): JSX.Element => {
+  const pathName = usePathname();
+  const isSignUpPage = (): boolean => pathName === PageList.signUp;
+
+  return (
+    <>
+      <Link
+        href={PageList.signUp}
+        className={isSignUpPage() ? styles.activeButton : styles.normalButton}
+      >
         Sign up
-      </MainButton>
-    </Link>
-  </>
-);
+      </Link>
+      <Link
+        href={PageList.signIn}
+        className={isSignUpPage() ? styles.normalButton : styles.activeButton}
+      >
+        Sign in
+      </Link>
+    </>
+  );
+};

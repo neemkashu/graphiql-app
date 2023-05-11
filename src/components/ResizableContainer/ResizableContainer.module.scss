@@ -16,6 +16,7 @@
 }
 
 .hideButton {
+  @include buttonRoundNormal;
   margin-left: 5px;
   margin-top: calc(0rem - $padding-medium);
 }

@@ -15,7 +15,7 @@ export const Footer = (): JSX.Element => {
   return (
     <footer className={styles.footer}>
       {fillLinks(FOOTER_LINKS)}
-      <span>&copy; 2023</span>
+      <span className={styles.year}>&copy; 2023</span>
       <a className={styles.icon} href={RS_LINK}>
         <Image src={RS_PATH} alt={RS_ALT} width={30} height={25} />
       </a>
