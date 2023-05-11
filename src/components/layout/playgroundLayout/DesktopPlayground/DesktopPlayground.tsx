@@ -47,7 +47,7 @@ export const DesktopPlayground = ({
         <div className={classNames(styles.pane, styles.paneCenter)}>
           <div className={styles.centerHeader}>
             <h4 className={styles.sectionTitle}>Operation</h4>
-            <button className={styles.runButton}>Run</button>
+            <button className={styles.runButton}>&#9658; Run</button>
           </div>
           {operation}
         </div>

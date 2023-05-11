@@ -2,7 +2,7 @@
 'use client';
 import { useWidthState } from '@/app/playground/page.hook';
 import { TestSection } from '@/components/playgroundSections/testSection/testSection';
-import { DesktopPlayground } from '@/components/resizableContainers/DesktopPlayground/DesktopPlayground';
+import { DesktopPlayground } from '@/components/layout/playgroundLayout/DesktopPlayground/DesktopPlayground';
 import styles from './page.module.scss';
 
 export default function PlaygroundPage(): JSX.Element {

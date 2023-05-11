@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/resizableContainers/DesktopPlayground/DesktopPlayground.tsxsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/playgroundLayout/DesktopPlayground/DesktopPlayground.tsxsx"],
   "exclude": ["node_modules"]
 }
