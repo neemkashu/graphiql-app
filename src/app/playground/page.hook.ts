@@ -1,5 +1,6 @@
 'use client';
-import { MOBILE_BREAKPOINT } from './page.const';
+
+import { MOBILE_BREAKPOINT } from '@/common/const';
 import { useEffect, useState } from 'react';
 
 export const useWidthState = (): boolean => {

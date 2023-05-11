@@ -1,6 +1,6 @@
 import { TeamMember } from './interface';
 
-const TEAM: TeamMember[] = [
+export const TEAM: TeamMember[] = [
   {
     id: 1,
     img: '/img/team/aliaksei_rudak.jpg',
@@ -33,4 +33,4 @@ const TEAM: TeamMember[] = [
   },
 ];
 
-export { TEAM };
+export const MOBILE_BREAKPOINT = 800;
