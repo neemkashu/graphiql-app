@@ -1,12 +1,8 @@
 import '@/styles/globals.scss';
-import { Inter } from 'next/font/google';
 import { Providers } from '@/redux/provider';
 import { Footer } from '@/components';
-import classNames from 'classnames';
 import styles from './layout.module.scss';
 import { Header } from '@/components/layout/Header/Header';
-
-const inter = Inter({ subsets: ['latin'], weight: '400' });
 
 export const metadata = {
   title: 'Graph QL App',
@@ -16,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <html lang="en">
-      <body className={classNames(inter.className, styles.body)}>
+      <body className={styles.body}>
         <Providers>
           <Header />
           <main className={styles.main}>{children}</main>

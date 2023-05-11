@@ -1,6 +1,7 @@
 @mixin buttonBase {
   transition: $transition-basic;
   padding: 1rem;
+  font-size: 1.4rem;
   border: none;
   cursor: pointer;
   font-family: inherit;
