@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+const nextTranslate = require('next-translate-plugin');
+
+module.exports = nextTranslate({
+  experimental: { appDir: true },
   eslint: {
     ignoreDuringBuilds: true,
   },
   sassOptions: {
     additionalData: `@import "src/styles/index.scss";`,
   },
-};
-
-module.exports = nextConfig;
+});
