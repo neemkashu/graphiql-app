@@ -5,9 +5,9 @@
     "Radchenko"
   ],
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "search.useIgnoreFiles": false,
+  "search.useIgnoreFiles": true,
   "search.exclude": {
-    "": true,
-    "**/node_modules": false
+    "**/node_modules": false,
+    "**/node_moduls": true
   }
 }

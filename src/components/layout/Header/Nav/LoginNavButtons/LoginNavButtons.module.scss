@@ -1,0 +1,7 @@
+.activeButton {
+  @include buttonMainActive;
+}
+
+.normalButton {
+  @include buttonMainNormal;
+}

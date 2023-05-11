@@ -13,7 +13,7 @@
 
   padding: $padding-medium $padding-small-k;
 
-  @media screen and (min-width: $width-form){
+  @include media("min", "xs") {
     padding: $padding-medium;
   }
 

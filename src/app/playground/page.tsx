@@ -1,4 +1,4 @@
-import { ResizableContainer } from '@/components';
+import { ResizableContainer } from '@/components/ResizableContainer/ResizableContainer';
 import styles from './page.module.scss';
 
 export default function PlaygroundPage(): JSX.Element {

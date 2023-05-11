@@ -18,9 +18,10 @@
     gap: 80px 120px;
   }
 }
-
-@media (min-width: 992px) {
+  
+@include media("min", "l") {
   .team {
     margin-bottom: 200px;
   }
 }
+
