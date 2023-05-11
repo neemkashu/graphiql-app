@@ -11,6 +11,7 @@ import { RegisterData } from '@/components/auth/forms/forms.type';
 import { AuthInputNames } from '@/components/auth/forms/forms.enum';
 import { DEFAULT_REGISTER_STATE } from '@/components/auth/forms/forms.const';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
+import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
 
 export const RegisterForm = (): JSX.Element => {
   const [createUserWithEmailAndPassword, user, loading, firebaseError] =
@@ -38,15 +39,14 @@ export const RegisterForm = (): JSX.Element => {
 
   return (
     <>
-      {firebaseError && <p>{firebaseError?.message}</p>}
+      {firebaseError && <FirebaseErrorMessage error={firebaseError} />}
       <form className={styles.form} onSubmit={handleSubmit(handleRegister)}>
         <div>
           <div className={styles.labelContainer}>
             <label className={styles.label} htmlFor={AuthInputNames.EMAIL}>
               Email
             </label>
-            {/* errors.email && <span className={styles.formError}>{errors.email.message}</span> */}
-            {<span className={styles.formError}>{'Some big ereally-really full of details'}</span>}
+            {errors.email && <span className={styles.formError}>{errors.email.message}</span>}
           </div>
           <input
             className={styles.input}

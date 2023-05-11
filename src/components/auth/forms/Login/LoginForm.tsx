@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import { AuthInputNames } from '@/components/auth/forms/forms.enum';
 import { LoginData } from '@/components/auth/forms/forms.type';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
+import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
 
 export const LoginForm = (): JSX.Element => {
   const [signInWithEmailAndPassword, user, loading, firebaseError] =
@@ -35,7 +36,7 @@ export const LoginForm = (): JSX.Element => {
 
   return (
     <>
-      {firebaseError && <p>{firebaseError?.message}</p>}
+      {firebaseError && <FirebaseErrorMessage error={firebaseError} />}
       <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
         <div>
           <div className={styles.labelContainer}>
@@ -63,7 +64,7 @@ export const LoginForm = (): JSX.Element => {
             type="password"
             placeholder="Enter password"
             {...register(AuthInputNames.PASSWORD, {
-              required: 'Please enter password',
+              required: 'Enter your password',
             })}
           />
         </div>
