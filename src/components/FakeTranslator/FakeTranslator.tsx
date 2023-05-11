@@ -1,7 +1,7 @@
 'use client';
 
-import { RoundButton } from '@/components';
 import { useState } from 'react';
+import styles from './FakeTranslator.module.scss';
 
 export const FakeTranslator = (): JSX.Element => {
   const [language, setLang] = useState('en');
@@ -9,5 +9,9 @@ export const FakeTranslator = (): JSX.Element => {
     setLang(language === 'en' ? 'ru' : 'en');
   }; // change to i18next
 
-  return <RoundButton action={changeLang}>{language}</RoundButton>;
+  return (
+    <button onClick={changeLang} className={styles.button}>
+      {language}
+    </button>
+  );
 };

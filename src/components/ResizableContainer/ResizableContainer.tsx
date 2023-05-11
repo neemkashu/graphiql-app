@@ -5,7 +5,6 @@ import {
   HIDE_PANE_PLAYGROUND_SIZE,
   HIDE_PANE_SIZE,
   MIN_PANE_SIZE,
-  RoundButton,
   SHOW_BTN_ICON,
   Split,
 } from '@/components';
@@ -32,11 +31,9 @@ export const ResizableContainer = (): JSX.Element => {
     <SplitPane split={Split.vertical} sizes={sizes} onChange={setSizes} sashRender={sashRender}>
       <Pane minSize={MIN_PANE_SIZE}>
         <div className={classNames(styles.pane, styles.paneLeft)}>
-          <div className={styles.hideButton}>
-            <RoundButton action={toggleLeftPane}>
-              {leftPaneSize > HIDE_PANE_SIZE ? HIDE_BTN_ICON : SHOW_BTN_ICON}
-            </RoundButton>
-          </div>
+          <button onClick={toggleLeftPane} className={styles.hideButton}>
+            {leftPaneSize > HIDE_PANE_SIZE ? HIDE_BTN_ICON : SHOW_BTN_ICON}
+          </button>
           <div>Documentation</div>
         </div>
       </Pane>
