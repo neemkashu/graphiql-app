@@ -29,6 +29,7 @@
 @mixin form-input {
   padding: 0 $padding-small-k;
   height: $height-input;
+  width: 100%;
   border-radius: $border-radius-tiny;
   border-width: 0;
   font-size: $font-size-base;
@@ -54,4 +55,19 @@
   font-family: inherit;
   color: inherit;
   background-color: $clr-active-2;
+}
+@mixin form-error {
+  color: $clr-danger;
+  font-size: $font-size-min;
+}
+@mixin form-label {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: $gap-medium-k;
+  min-height: calc(2.5 * $font-size-min);
+}
+@mixin form {
+  display: flex;
+  flex-direction: column;
+  gap:  $gap-medium-k;
 }
