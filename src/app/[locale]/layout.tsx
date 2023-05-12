@@ -1,14 +1,10 @@
 import '@/styles/globals.scss';
-import { Inter } from 'next/font/google';
 import { Providers } from '@/redux/provider';
 import { Footer } from '@/components';
-import classNames from 'classnames';
 import styles from './layout.module.scss';
 import { Header } from '@/components/layout/Header/Header';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
-
-const inter = Inter({ subsets: ['latin'], weight: '400' });
 
 export function generateStaticParams(): {
   locale: string;
@@ -37,7 +33,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={classNames(inter.className, styles.body)}>
+      <body className={styles.body}>
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Header />
