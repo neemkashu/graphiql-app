@@ -10,20 +10,12 @@ export const Info = (): JSX.Element => {
   return (
     <section className={styles.info}>
       <div className={styles.infoWrapper}>
-        <h1 className={styles.title}>GraphQL Playground</h1>
+        <h1 className={styles.title}>{t('info-title')}</h1>
         <Link href={'https://rickandmortyapi.com/'} target="blank" className={styles.api}>
           {t('info-api')}
         </Link>
-        <p className={styles.descr}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat
-          sequi accusantium tempore? Laborum, recusandae officiis quis sapiente quos laudantium
-          porro sit exercitationem odit ad nisi consequatur facilis dolore!
-        </p>
-        <p className={styles.descr}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat
-          sequi accusantium tempore? Laborum, recusandae officiis quis sapiente quos laudantium
-          porro sit exercitationem odit ad nisi consequatur facilis dolore!
-        </p>
+        <p className={styles.descr}>{t('info-subtitle')}</p>
+        <p className={styles.descr}>{t('info-subtitle')}</p>
       </div>
       <div className={styles.imgWrapper}>
         <div className={styles.blur} />

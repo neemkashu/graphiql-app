@@ -10,8 +10,10 @@ import { notFound } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'], weight: '400' });
 
-export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'de' }];
+export function generateStaticParams(): {
+  locale: string;
+}[] {
+  return [{ locale: 'en' }, { locale: 'ru' }];
 }
 
 export const metadata = {
@@ -25,10 +27,10 @@ export default async function LocaleLayout({
 }: {
   children: React.ReactNode;
   params: { locale: string };
-}) {
+}): Promise<JSX.Element> {
   let messages;
   try {
-    messages = (await import(`../../../messages/${locale}/common.json`)).default;
+    messages = (await import(`@/../messages/${locale}/common.json`)).default;
   } catch (error) {
     notFound();
   }

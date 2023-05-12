@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
 
-export default async function NotFound() {
+export default async function NotFound(): Promise<void> {
   redirect('/notFound');
 }
