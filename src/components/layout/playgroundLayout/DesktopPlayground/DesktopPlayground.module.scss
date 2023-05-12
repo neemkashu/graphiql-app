@@ -5,6 +5,10 @@
   padding: $padding-medium;
   flex-direction: column;
   position: relative;
+
+  @include media('max', 'xl') {
+    padding: $padding-small-k;
+  }
 }
 
 .paneCenter {
@@ -38,7 +42,11 @@
 .hideButton {
   @include buttonRoundNormal;
   margin-left: 5px;
-  margin-top: calc(0rem - $padding-medium);
+  margin-top:  -$padding-medium;
+
+  @include media('max', 'xl') {
+    margin-top: -$padding-small-k;
+  }
 }
 
 .runButton {

@@ -1,7 +1,8 @@
-import { LoginForm, RegisterForm } from '@/components/forms';
 import styles from './AuthContainer.module.scss';
 import Link from 'next/link';
 import { PageList } from '@/common';
+import { LoginForm } from '@/components/auth/forms/Login/LoginForm';
+import { RegisterForm } from '@/components/auth/forms/Register/RegisterForm';
 
 export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Element => {
   return hasAccount ? (
@@ -17,7 +18,7 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
     </div>
   ) : (
     <div className={styles.container}>
-      <h2>{'Register'}</h2>
+      <h2>{'Sign up'}</h2>
       {<RegisterForm />}
       <p className={styles.question}>
         <span>{'Already have an account?'}</span>
