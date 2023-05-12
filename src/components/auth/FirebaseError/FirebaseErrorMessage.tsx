@@ -13,5 +13,5 @@ const notify = (error: AuthError): void => {
 export const FirebaseErrorMessage = ({ error }: { error: AuthError }): JSX.Element => {
   if (error) notify(error);
 
-  return createPortal(<ToastContainer />, document.body);
+  return createPortal(<ToastContainer theme="dark" />, document.body);
 };
