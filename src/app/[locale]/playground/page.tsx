@@ -5,8 +5,13 @@ import { TestSection } from '@/components/playgroundSections/testSection/testSec
 import { DesktopPlayground } from '@/components/layout/playgroundLayout/DesktopPlayground/DesktopPlayground';
 import styles from './page.module.scss';
 
-export default function PlaygroundPage(): JSX.Element {
+export default function PlaygroundPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): JSX.Element {
   const isMobileView = useWidthState();
+  console.log(locale);
 
   return (
     <div className={styles.playground}>
