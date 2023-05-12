@@ -16,7 +16,9 @@ export default function CustomNotFoundPage(): JSX.Element {
         />
       </div>
       <h1 className={styles.title}>Page Not Found</h1>
-      <div className={styles.subtitle}>The page you're looking for does not seem to exist </div>
+      <div className={styles.subtitle}>
+        The page you&apos;re looking for does not seem to exist{' '}
+      </div>
       <Link href="/" className={styles.link}>
         Go back to the main page
       </Link>
