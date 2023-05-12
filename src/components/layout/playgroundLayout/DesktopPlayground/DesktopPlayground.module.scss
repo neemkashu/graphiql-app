@@ -3,6 +3,8 @@
   display: flex;
   justify-content: space-between;
   padding: $padding-medium;
+  flex-direction: column;
+  position: relative;
 }
 
 .paneCenter {
@@ -15,8 +17,31 @@
   padding-right: 5px;
 }
 
+.docsSection {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.centerHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sectionTitle {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px
+}
+
 .hideButton {
   @include buttonRoundNormal;
   margin-left: 5px;
   margin-top: calc(0rem - $padding-medium);
+}
+
+.runButton {
+  @include buttonMainActive;
+  height: 37px;
 }

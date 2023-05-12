@@ -1,4 +1,4 @@
 export * from './layout';
-export * from './ResizableContainer';
 export * from './auth';
+export * from './layout/playgroundLayout';
 export * from './welcome';
