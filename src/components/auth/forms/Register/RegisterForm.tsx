@@ -45,8 +45,7 @@ export const RegisterForm = (): JSX.Element => {
             <label className={styles.label} htmlFor={AuthInputNames.EMAIL}>
               Email
             </label>
-            {/* errors.email && <span className={styles.formError}>{errors.email.message}</span> */}
-            {<span className={styles.formError}>{'Some big ereally-really full of details'}</span>}
+            {errors.email && <span className={styles.formError}>{errors.email.message}</span>}
           </div>
           <input
             className={styles.input}
