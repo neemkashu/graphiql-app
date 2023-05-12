@@ -10,5 +10,26 @@
   "Header": {
     "sign-in": "Sign in",
     "sign-up": "Sign up"
+  },
+  "NotFound": {
+    "not-found-title": "Page Not Found",
+    "not-found-subtitle": "The page you're looking for does not seem to exist",
+    "not-found-link": "Go back to the main page"
+  },
+  "Form": {
+    "form-sign-in": "Sign in",
+    "form-sign-up": "Sign up",
+    "form-email": "Email",
+    "form-password": "Password",
+    "form-confirm": "Confirm",
+    "form-email-placeholder": "Enter email",
+    "form-password-placeholder": "Enter password",
+    "form-confirm-placeholder": "Repeat password",
+    "form-button": "Create account",
+    "form-no-account": "Don't have an account?",
+    "form-account": "Already have an account?",
+    "form-email-message": "Enter email address",
+    "form-password-message": "Please enter password",
+    "form-confirm-message": "Confirm your password"
   }
 }

@@ -11,6 +11,7 @@ import { RegisterData } from '@/components/auth/forms/forms.type';
 import { AuthInputNames } from '@/components/auth/forms/forms.enum';
 import { DEFAULT_REGISTER_STATE } from '@/components/auth/forms/forms.const';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
+import { useTranslations } from 'next-intl';
 
 export const RegisterForm = (): JSX.Element => {
   const [createUserWithEmailAndPassword, user, loading, firebaseError] =
@@ -26,6 +27,7 @@ export const RegisterForm = (): JSX.Element => {
     reValidateMode: 'onBlur',
     defaultValues: DEFAULT_REGISTER_STATE,
   });
+  const t = useTranslations('Form');
 
   useEffect((): void => {
     if (loading) return;
@@ -43,26 +45,26 @@ export const RegisterForm = (): JSX.Element => {
         <div>
           <div className={styles.labelContainer}>
             <label className={styles.label} htmlFor={AuthInputNames.EMAIL}>
-              Email
+              {t('form-email')}
             </label>
             {errors.email && <span className={styles.formError}>{errors.email.message}</span>}
           </div>
           <input
             className={styles.input}
             type="email"
-            placeholder="Enter email"
+            placeholder={t('form-email-placeholder')}
             {...register(AuthInputNames.EMAIL, RegisterValidationConfig[AuthInputNames.EMAIL])}
           />
         </div>
         <div>
           <div className={styles.labelContainer}>
-            <label htmlFor={AuthInputNames.PASSWORD}>Password</label>
+            <label htmlFor={AuthInputNames.PASSWORD}>{t('form-password')}</label>
             {errors.password && <span className={styles.formError}>{errors.password.message}</span>}
           </div>
           <input
             className={styles.input}
             type="password"
-            placeholder="Enter password"
+            placeholder={t('form-password-placeholder')}
             {...register(
               AuthInputNames.PASSWORD,
               RegisterValidationConfig[AuthInputNames.PASSWORD]
@@ -71,7 +73,7 @@ export const RegisterForm = (): JSX.Element => {
         </div>
         <div>
           <div className={styles.labelContainer}>
-            <label htmlFor={AuthInputNames.REPEAT_PASSWORD}>Confirm</label>
+            <label htmlFor={AuthInputNames.REPEAT_PASSWORD}>{t('form-confirm')}</label>
             {errors.repeatPassword && (
               <span className={styles.formError}>{errors.repeatPassword.message}</span>
             )}
@@ -79,7 +81,7 @@ export const RegisterForm = (): JSX.Element => {
           <input
             className={styles.input}
             type="password"
-            placeholder="Repeat password"
+            placeholder={t('form-confirm-placeholder')}
             {...register(
               AuthInputNames.REPEAT_PASSWORD,
               RegisterValidationConfig[AuthInputNames.REPEAT_PASSWORD](watch)
@@ -87,7 +89,7 @@ export const RegisterForm = (): JSX.Element => {
           />
         </div>
         <button className={styles.button} type="submit">
-          Create account
+          {t('form-button')}
         </button>
       </form>
     </>

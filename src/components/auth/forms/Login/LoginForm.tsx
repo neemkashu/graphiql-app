@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import { AuthInputNames } from '@/components/auth/forms/forms.enum';
 import { LoginData } from '@/components/auth/forms/forms.type';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
+import { useTranslations } from 'next-intl';
 
 export const LoginForm = (): JSX.Element => {
   const [signInWithEmailAndPassword, user, loading, firebaseError] =
@@ -20,6 +21,7 @@ export const LoginForm = (): JSX.Element => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginData>({ mode: 'onSubmit', reValidateMode: 'onBlur' });
+  const t = useTranslations('Form');
 
   useEffect((): void => {
     if (loading) {
@@ -40,35 +42,35 @@ export const LoginForm = (): JSX.Element => {
         <div>
           <div className={styles.labelContainer}>
             <label className={styles.label} htmlFor={AuthInputNames.EMAIL}>
-              Email
+              {t('form-email')}
             </label>
             {errors.email && <span className={styles.formError}>{errors.email.message}</span>}
           </div>
           <input
             className={styles.input}
             type="email"
-            placeholder="Enter email"
+            placeholder={t('form-email-placeholder')}
             {...register(AuthInputNames.EMAIL, RegisterValidationConfig[AuthInputNames.EMAIL])}
           />
         </div>
         <div>
           <div className={styles.labelContainer}>
             <label className={styles.label} htmlFor={AuthInputNames.PASSWORD}>
-              Password
+              {t('form-password')}
             </label>
             {errors.password && <span className={styles.formError}>{errors.password.message}</span>}
           </div>
           <input
             className={styles.input}
             type="password"
-            placeholder="Enter password"
+            placeholder={t('form-password-placeholder')}
             {...register(AuthInputNames.PASSWORD, {
-              required: 'Please enter password',
+              required: t('form-password-message'),
             })}
           />
         </div>
         <button className={styles.button} type="submit">
-          Sign In
+          {t('form-sign-in')}
         </button>
       </form>
     </>
