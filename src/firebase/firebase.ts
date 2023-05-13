@@ -6,6 +6,7 @@ import {
   signOut,
 } from 'firebase/auth';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import nookies from 'nookies';
 
 // TODO: Replace the following with your app's Firebase project configuration
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -55,4 +56,5 @@ export const registerWithEmailAndPassword = async (
 
 export const logout = (): void => {
   signOut(firebaseAuth);
+  nookies.set(undefined, 'token', '', { path: '/' });
 };

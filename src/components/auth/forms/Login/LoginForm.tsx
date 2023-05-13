@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import styles from './LoginForm.module.scss';
 import { firebaseAuth } from '@/firebase';
 import { useRouter } from 'next/navigation';
-import { PageList } from '@/common';
 import { useForm } from 'react-hook-form';
 import { AuthInputNames } from '@/components/auth/forms/forms.enum';
 import { LoginData } from '@/components/auth/forms/forms.type';
@@ -22,7 +21,7 @@ export const LoginForm = (): JSX.Element => {
     formState: { errors },
   } = useForm<LoginData>({ mode: 'onSubmit', reValidateMode: 'onBlur' });
 
-  const [user, setUser] = useState<User | null>(null);
+  const [, setUser] = useState<User | null>(null);
   const [firebaseError, setFirebaseError] = useState<AuthError | null>(null);
 
   useEffect((): Unsubscribe => {
@@ -43,6 +42,7 @@ export const LoginForm = (): JSX.Element => {
     try {
       setFirebaseError(null);
       await signInWithEmailAndPassword(firebaseAuth, email, password);
+      router.push('/playground');
     } catch (error) {
       setFirebaseError(error as AuthError);
     }

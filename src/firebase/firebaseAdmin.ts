@@ -1,6 +1,7 @@
 import * as admin from 'firebase-admin';
 import { credential } from 'firebase-admin';
 import { ServiceAccount, initializeApp } from 'firebase-admin/app';
+import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 
 const service: ServiceAccount = {
   projectId: 'lyk-graphiql',
@@ -16,3 +17,20 @@ if (!admin.apps.length) {
 }
 
 export const adminSDK = admin;
+
+export const checkAuthenticated = async (cookieStore: ReadonlyRequestCookies): Promise<boolean> => {
+  const token = cookieStore.get('token')?.value;
+  let isLoggedIn = false;
+
+  if (!token) return isLoggedIn;
+
+  try {
+    await adminSDK.auth().verifyIdToken(token);
+    isLoggedIn = true;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    if (error instanceof Error) console.error('Admin cannot parse: ', error?.message);
+    isLoggedIn = false;
+  }
+  return isLoggedIn;
+};
