@@ -31,5 +31,10 @@
     "form-email-message": "Enter email address",
     "form-password-message": "Please enter password",
     "form-confirm-message": "Confirm your password"
+  },
+  "Playground": {
+    "playground-title": "Page Not Found",
+    "playground-subtitle": "The page you're looking for does not seem to exist",
+    "playground-link": "Go back to the main page"
   }
 }

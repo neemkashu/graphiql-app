@@ -1,8 +1,13 @@
+'use client';
+
 import styles from './page.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export default function CustomNotFoundPage(): JSX.Element {
+  const t = useTranslations('NotFound');
+
   return (
     <section className={styles.page}>
       <div className={styles.imgWrapper}>
@@ -15,12 +20,10 @@ export default function CustomNotFoundPage(): JSX.Element {
           className={`${styles.img}`}
         />
       </div>
-      <h1 className={styles.title}>Page Not Found</h1>
-      <div className={styles.subtitle}>
-        The page you&apos;re looking for does not seem to exist{' '}
-      </div>
+      <h1 className={styles.title}>{t('not-found-title')}</h1>
+      <div className={styles.subtitle}>{t('not-found-subtitle')}</div>
       <Link href="/" className={styles.link}>
-        Go back to the main page
+        {t('not-found-link')}
       </Link>
     </section>
   );

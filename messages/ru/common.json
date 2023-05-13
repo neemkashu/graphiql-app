@@ -13,7 +13,7 @@
   },
   "NotFound": {
     "not-found-title": "Страница не найдена",
-    "not-found-subtitle": "Страница, которую вы ищете, кажется, не существует",
+    "not-found-subtitle": "Страница, которую вы ищете, не существует",
     "not-found-link": "Вернуться на главную страницу"
   },
   "Form": {
@@ -24,7 +24,7 @@
     "form-confirm": "Подтверждение пароля",
     "form-email-placeholder": "Введите адрес электронной почты",
     "form-password-placeholder": "Введите пароль",
-    "form-confirm-placeholder": "Повторите пароль",
+    "form-confirm-placeholder": "Повторите проль",
     "form-button": "Создать аккаунт",
     "form-no-account": "У вас нет аккаунта?",
     "form-account": "Уже есть аккаунт?",
