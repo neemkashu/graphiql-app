@@ -3,7 +3,7 @@ import { FieldSplit } from '@/common';
 import { useFieldSize } from '@/common/hook';
 import {
   HIDE_BTN_ICON_VERTICAL,
-  HIDE_PANE_SIZE,
+  HIDE_VERTICAL_PANE_SIZE,
   MIN_VERTICAL_PANE_SIZE,
   SHOW_BTN_ICON_VERTICAL,
   VerticalContainerProps,
@@ -38,6 +38,10 @@ export const VerticalResizeContainer = ({
     );
   };
 
+  const bottomBlockClickHandler = (): void => {
+    if (bottomPane < MIN_VERTICAL_PANE_SIZE) setSizes(DEFAULT_VERTICAL_CONTAINER_SIZE);
+  };
+
   return (
     <SplitPane
       split={FieldSplit.horizontal}
@@ -46,11 +50,14 @@ export const VerticalResizeContainer = ({
       sashRender={sashRender}
     >
       <Pane minSize={MIN_VERTICAL_PANE_SIZE}>{topBlock}</Pane>
+
       <Pane minSize={MIN_VERTICAL_PANE_SIZE}>
-        <button onClick={toggleBottomPane} className={styles.hideButton}>
-          {bottomPane > HIDE_PANE_SIZE ? HIDE_BTN_ICON_VERTICAL : SHOW_BTN_ICON_VERTICAL}
-        </button>
-        {bottomBlock}
+        <div className={styles.bottomBlockWrapper} onClick={bottomBlockClickHandler}>
+          <button onClick={toggleBottomPane} className={styles.hideButton}>
+            {bottomPane > HIDE_VERTICAL_PANE_SIZE ? HIDE_BTN_ICON_VERTICAL : SHOW_BTN_ICON_VERTICAL}
+          </button>
+          {bottomBlock}
+        </div>
       </Pane>
     </SplitPane>
   );

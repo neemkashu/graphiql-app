@@ -22,7 +22,6 @@ export const MobilePlayground = ({
           {documentation}
         </div>
         <div className={classNames(styles.page, styles.secondPage, !isPageFirs() && styles.active)}>
-          <h4 className={styles.title}>Operation</h4>
           {resizeMobileBlock}
         </div>
       </div>

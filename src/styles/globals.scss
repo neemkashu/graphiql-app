@@ -18,6 +18,24 @@ a {
   text-decoration: none;
 }
 
-.Resizer {
-  background-color: aqua;
+.split-sash-content.split-sash-content-vscode {
+  transition: .2s;
+  border-radius: 5px;
+}
+
+.react-split__sash--horizontal:hover {
+  &::before {
+    background: transparent;
+  }
+}
+
+.react-split__sash--horizontal:before {
+  position: absolute;
+  transition: 1s;
+  top: 1.5px;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: $clr-second-3;
 }

@@ -9,6 +9,8 @@ import { VerticalResizeContainer } from '@/components/layout/playgroundLayout/Ve
 import { LS_KEYS } from '@/common';
 import { OperationSection } from '@/components/playgroundSections/OperationSection/OperationSection';
 import { ResponseSection } from '@/components/playgroundSections/ResponseSection/ResponseSection';
+import { VarsAndHeaderBlock } from '@/components';
+import { VarsSection } from '@/components/playgroundSections/VarsSection/VarsSection';
 
 export default function PlaygroundPage({
   params: { locale },
@@ -16,7 +18,6 @@ export default function PlaygroundPage({
   params: { locale: string };
 }): JSX.Element {
   const isMobileView = useWidthState();
-  console.log(locale);
 
   return (
     <div className={styles.playground}>
@@ -24,7 +25,14 @@ export default function PlaygroundPage({
         <MobilePlayground>
           {{
             documentation: <TestSection>Docs</TestSection>,
-            resizeMobileBlock: <TestSection>Resize</TestSection>,
+            resizeMobileBlock: (
+              <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE}>
+                {{
+                  topBlock: <OperationSection />,
+                  bottomBlock: <ResponseSection />,
+                }}
+              </VerticalResizeContainer>
+            ),
           }}
         </MobilePlayground>
       ) : (
@@ -35,7 +43,14 @@ export default function PlaygroundPage({
               <VerticalResizeContainer lsKey={LS_KEYS.DESKTOP_VERTICAL_BLOCK_SIZE}>
                 {{
                   topBlock: <OperationSection />,
-                  bottomBlock: <TestSection>Vars and Headers</TestSection>,
+                  bottomBlock: (
+                    <VarsAndHeaderBlock>
+                      {{
+                        vars: <VarsSection />,
+                        headers: <TestSection> </TestSection>,
+                      }}
+                    </VarsAndHeaderBlock>
+                  ),
                 }}
               </VerticalResizeContainer>
             ),
