@@ -59,7 +59,19 @@
     "account": "Уже есть аккаунт?",
     "emailMessage": "Введите адрес электронной почты",
     "passwordMessage": "Пожалуйста, введите пароль",
-    "confirmMessage": "Подтвердите введенный пароль"
+    "confirmMessage": "Подтвердите введенный пароль",
+    "validation": {
+      "requireEmail": "Введите адрес электронной почты",
+      "maxEmailLength": "Адрес не больше {MAX_EMAIL_LENGTH} символов",
+      "validEmail": "Неверный адрес электронной почты",
+      "requirePassword": "Введите пароль",
+      "minLength": "Пароль не менее {MIN_PASSWORD_LENGTH} символов",
+      "requireLetter": "Не менее одной буквы",
+      "requireDigit": "Хотя бы одна цифра",
+      "requireChar": "Хотя бы один специальный символ",
+      "confirmPassword": "Подтвердите пароль",
+      "equalPasswords": "Пароли не совпадают"
+    }
   },
   "Playground": {
     "documentation": "Документация",

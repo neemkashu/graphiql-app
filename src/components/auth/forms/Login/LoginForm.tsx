@@ -11,8 +11,10 @@ import { AuthInputNames } from '@/components/auth/forms/forms.enum';
 import { LoginData } from '@/components/auth/forms/forms.type';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
 import { useTranslations } from 'next-intl';
+import { usePathWithLocale } from '@/common/hook';
 
 export const LoginForm = (): JSX.Element => {
+  const [playgroundPage] = usePathWithLocale([PageList.playground]);
   const [signInWithEmailAndPassword, user, loading, firebaseError] =
     useSignInWithEmailAndPassword(firebaseAuth);
   const router = useRouter();
@@ -28,8 +30,8 @@ export const LoginForm = (): JSX.Element => {
       // here some spinner logic can be
       return;
     }
-    if (user) router.push(PageList.playground);
-  }, [user, loading, router]);
+    if (user) router.push(playgroundPage);
+  }, [user, loading, router, playgroundPage]);
 
   const handleLogin = async ({ email, password }: LoginData): Promise<void> => {
     await signInWithEmailAndPassword(email, password);
@@ -50,7 +52,7 @@ export const LoginForm = (): JSX.Element => {
             className={styles.input}
             type="email"
             placeholder={t('emailPlaceholder')}
-            {...register(AuthInputNames.EMAIL, RegisterValidationConfig[AuthInputNames.EMAIL])}
+            {...register(AuthInputNames.EMAIL, RegisterValidationConfig[AuthInputNames.EMAIL](t))}
           />
         </div>
         <div>

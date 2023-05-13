@@ -59,7 +59,19 @@
     "account": "Already have an account?",
     "emailMessage": "Enter email address",
     "passwordMessage": "Please enter password",
-    "confirmMessage": "Confirm your password"
+    "confirmMessage": "Confirm your password",
+    "validation": {
+      "requireEmail": "Enter email address",
+      "maxEmailLength": "Email exceeded {MAX_EMAIL_LENGTH} symbols",
+      "validEmail": "Invalid email",
+      "requirePassword": "Enter password",
+      "minLength": "At least {MIN_PASSWORD_LENGTH} characters in length",
+      "requireLetter": "At least one letter",
+      "requireDigit": "At least one digit",
+      "requireChar": "At least one special character",
+      "confirmPassword": "Confirm your password",
+      "equalPasswords": "Passwords do not match"
+    }
   },
   "Playground": {
     "documentation": "Documentation",

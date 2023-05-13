@@ -12,8 +12,10 @@ import { AuthInputNames } from '@/components/auth/forms/forms.enum';
 import { DEFAULT_REGISTER_STATE } from '@/components/auth/forms/forms.const';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
 import { useTranslations } from 'next-intl';
+import { usePathWithLocale } from '@/common/hook';
 
 export const RegisterForm = (): JSX.Element => {
+  const [playgroundPage] = usePathWithLocale([PageList.playground]);
   const [createUserWithEmailAndPassword, user, loading, firebaseError] =
     useCreateUserWithEmailAndPassword(firebaseAuth);
   const router = useRouter();
@@ -31,8 +33,8 @@ export const RegisterForm = (): JSX.Element => {
 
   useEffect((): void => {
     if (loading) return;
-    if (user) router.push(PageList.playground);
-  }, [user, loading, router]);
+    if (user) router.push(playgroundPage);
+  }, [user, loading, router, playgroundPage]);
 
   const handleRegister = async ({ email, password }: RegisterData): Promise<void> => {
     await createUserWithEmailAndPassword(email, password);
@@ -53,7 +55,7 @@ export const RegisterForm = (): JSX.Element => {
             className={styles.input}
             type="email"
             placeholder={t('emailPlaceholder')}
-            {...register(AuthInputNames.EMAIL, RegisterValidationConfig[AuthInputNames.EMAIL])}
+            {...register(AuthInputNames.EMAIL, RegisterValidationConfig[AuthInputNames.EMAIL](t))}
           />
         </div>
         <div>
@@ -67,7 +69,7 @@ export const RegisterForm = (): JSX.Element => {
             placeholder={t('passwordPlaceholder')}
             {...register(
               AuthInputNames.PASSWORD,
-              RegisterValidationConfig[AuthInputNames.PASSWORD]
+              RegisterValidationConfig[AuthInputNames.PASSWORD](t)
             )}
           />
         </div>
@@ -84,7 +86,7 @@ export const RegisterForm = (): JSX.Element => {
             placeholder={t('confirmPlaceholder')}
             {...register(
               AuthInputNames.REPEAT_PASSWORD,
-              RegisterValidationConfig[AuthInputNames.REPEAT_PASSWORD](watch)
+              RegisterValidationConfig[AuthInputNames.REPEAT_PASSWORD](watch, t)
             )}
           />
         </div>
