@@ -1,4 +1,5 @@
 'use client';
+import { FieldSplit, LS_KEYS } from '@/common';
 import { useFieldSize } from '@/common/hook';
 import {
   DEFAULT_PLAYGROUND_SIZE,
@@ -7,11 +8,9 @@ import {
   HIDE_PANE_PLAYGROUND_SIZE,
   HIDE_PANE_SIZE,
   MIN_PANE_SIZE,
+  PlaygroundSize,
   SHOW_BTN_ICON,
-  Split,
 } from '@/components';
-import { LS_PLAYGROUND_SIZE_KEY } from '@/components/layout/playgroundLayout/DesktopPlayground/DesktopPlayground.const';
-import { PlaygroundSize } from '@/components/layout/playgroundLayout/DesktopPlayground/DesktopPlayground.type';
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
@@ -27,7 +26,7 @@ export const DesktopPlayground = ({
 }: DesktopPlaygroundProps): JSX.Element => {
   const [sizes, setSizes] = useFieldSize<PlaygroundSize>(
     DEFAULT_PLAYGROUND_SIZE,
-    LS_PLAYGROUND_SIZE_KEY
+    LS_KEYS.DESKTOP_PLAYGROUND_SIZE
   );
   const [leftPaneSize] = sizes;
 
@@ -36,7 +35,12 @@ export const DesktopPlayground = ({
   };
 
   return (
-    <SplitPane split={Split.vertical} sizes={sizes} onChange={setSizes} sashRender={sashRender}>
+    <SplitPane
+      split={FieldSplit.vertical}
+      sizes={sizes}
+      onChange={setSizes}
+      sashRender={sashRender}
+    >
       <Pane minSize={MIN_PANE_SIZE}>
         <div className={classNames(styles.pane, styles.paneLeft)}>
           <button onClick={toggleLeftPane} className={styles.hideButton}>

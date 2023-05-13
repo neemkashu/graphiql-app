@@ -38,3 +38,8 @@ export const MOBILE_BREAKPOINT = 800;
 export const ALL_LANGUAGES = ['en', 'ru'];
 
 export const BASIC_LANGUAGE = 'en';
+
+export const LS_KEYS = {
+  DESKTOP_PLAYGROUND_SIZE: 'playgroundSize',
+  DESKTOP_VERTICAL_BLOCK_SIZE: 'desktopVerticalBlockSize',
+};

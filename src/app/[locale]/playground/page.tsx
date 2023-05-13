@@ -5,6 +5,10 @@ import { TestSection } from '@/components/playgroundSections/testSection/testSec
 import { DesktopPlayground } from '@/components/layout/playgroundLayout/DesktopPlayground/DesktopPlayground';
 import styles from './page.module.scss';
 import { MobilePlayground } from '@/components/layout/playgroundLayout/MobilePlayground/MobilePlayground';
+import { VerticalResizeContainer } from '@/components/layout/playgroundLayout/VerticalResizeContainer/VerticalResizeContainer';
+import { LS_KEYS } from '@/common';
+import { OperationSection } from '@/components/playgroundSections/OperationSection/OperationSection';
+import { ResponseSection } from '@/components/playgroundSections/ResponseSection/ResponseSection';
 
 export default function PlaygroundPage({
   params: { locale },
@@ -27,8 +31,15 @@ export default function PlaygroundPage({
         <DesktopPlayground>
           {{
             documentation: <TestSection>Docs</TestSection>,
-            operation: <TestSection>Op</TestSection>,
-            response: <TestSection>Resp</TestSection>,
+            operation: (
+              <VerticalResizeContainer lsKey={LS_KEYS.DESKTOP_VERTICAL_BLOCK_SIZE}>
+                {{
+                  topBlock: <OperationSection />,
+                  bottomBlock: <TestSection>Vars and Headers</TestSection>,
+                }}
+              </VerticalResizeContainer>
+            ),
+            response: <ResponseSection />,
           }}
         </DesktopPlayground>
       )}

@@ -5,3 +5,8 @@ export const enum PageList {
   signUp = '/signUp',
   notFound = '/404',
 }
+
+export const enum FieldSplit {
+  vertical = 'vertical',
+  horizontal = 'horizontal',
+}

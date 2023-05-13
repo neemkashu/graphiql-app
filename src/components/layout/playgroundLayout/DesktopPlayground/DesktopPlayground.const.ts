@@ -1,5 +1,3 @@
-export const LS_PLAYGROUND_SIZE_KEY = 'playgroundSize';
-
 export const DEFAULT_PLAYGROUND_SIZE = [9999, 9999, 9999];
 
 export const MIN_PANE_SIZE = 250;
