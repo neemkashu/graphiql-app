@@ -36,7 +36,9 @@
   },
   "Header": {
     "signIn": "Sign in",
-    "signUp": "Sign up"
+    "signUp": "Sign up",
+    "playground": "Playground",
+    "logOut": "Log out"
   },
   "NotFound": {
     "title": "Page Not Found",

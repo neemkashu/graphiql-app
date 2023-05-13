@@ -36,7 +36,9 @@
   },
   "Header": {
     "signIn": "Войти",
-    "signUp": "Регистрация"
+    "signUp": "Регистрация",
+    "playground": "Песочница",
+    "logOut": "Выйти"
   },
   "NotFound": {
     "title": "Страница не найдена",

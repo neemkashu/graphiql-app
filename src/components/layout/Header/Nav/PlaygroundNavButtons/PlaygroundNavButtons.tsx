@@ -5,6 +5,7 @@ import { logout } from '@/firebase';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { usePathWithLocale } from '@/common/hook';
+import { useTranslations } from 'next-intl';
 
 export const PlaygroundNavButtons = (): JSX.Element => {
   const router = useRouter();
@@ -14,14 +15,15 @@ export const PlaygroundNavButtons = (): JSX.Element => {
     logout();
     router.push(welcomePage);
   };
+  const t = useTranslations('Header');
 
   return (
     <>
       <button className={styles.normalButton} onClick={onClickHandler}>
-        Log out
+        {t('logOut')}
       </button>
       <Link href={playgroundPage} className={styles.activeButton}>
-        Playground
+        {t('playground')}
       </Link>
     </>
   );
