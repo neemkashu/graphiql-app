@@ -6,9 +6,11 @@ import { PageList } from '@/common';
 import { LoginForm } from '@/components/auth/forms/Login/LoginForm';
 import { RegisterForm } from '@/components/auth/forms/Register/RegisterForm';
 import { useTranslations } from 'next-intl';
+import { usePathWithLocale } from '@/common/hook';
 
 export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Element => {
   const t = useTranslations('Form');
+  const [signUpPage, signInPage] = usePathWithLocale([PageList.signUp, PageList.signIn]);
 
   return hasAccount ? (
     <div className={styles.container}>
@@ -16,7 +18,7 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
       {<LoginForm />}
       <p className={styles.question}>
         <span>{t('noAccount')}</span>
-        <Link href={PageList.signUp} className={styles.link}>
+        <Link href={signUpPage} className={styles.link}>
           {t('signUp')}
         </Link>
       </p>
@@ -27,7 +29,7 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
       {<RegisterForm />}
       <p className={styles.question}>
         <span>{t('account')}</span>
-        <Link href={PageList.signIn} className={styles.link}>
+        <Link href={signInPage} className={styles.link}>
           {t('signIn')}
         </Link>
       </p>
