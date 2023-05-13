@@ -1,23 +1,29 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { TeamMember } from '@/common';
+import { useTranslations } from 'next-intl';
+
 import styles from './Member.module.scss';
 
-export const Member = ({
-  img,
-  name,
-  role,
-  description,
-  github,
-  color,
-}: TeamMember): JSX.Element => (
-  <div className={styles.member}>
-    <div className={styles.blur} style={{ backgroundColor: `${color}` }} />
-    <Image src={img} alt="developer" width={100} height={100} className={`${styles.img}`} />
-    <Link href={github} target="blank" className={styles.name}>
-      {name}
-    </Link>
-    <div className={styles.role}>{role}</div>
-    <div className={styles.descr}>{description}</div>
-  </div>
-);
+export const Member = ({ member }: { member: string }): JSX.Element => {
+  const t = useTranslations('Team');
+
+  return (
+    <div className={styles.member}>
+      <div className={styles.blur} style={{ backgroundColor: `${t(member + '.color')}` }} />
+      <Image
+        src={t(member + '.img')}
+        alt="developer"
+        width={100}
+        height={100}
+        className={`${styles.img}`}
+      />
+      <Link href={t(member + '.github')} target="blank" className={styles.name}>
+        {t(member + '.name')}
+      </Link>
+      <div className={styles.role}>{t(member + '.role')}</div>
+      <div className={styles.descr}>{t(member + '.description')}</div>
+    </div>
+  );
+};

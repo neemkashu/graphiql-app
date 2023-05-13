@@ -5,7 +5,34 @@
     "subtitle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore? Laborum, recusandae officiis quis sapiente quos laudantium porro sit exercitationem odit ad nisi consequatur facilis dolore!"
   },
   "Team": {
-    "title": "Our Team"
+    "title": "Our Team",
+    "Aliaksei": {
+      "id": 1,
+      "img": "/img/team/aliaksei_rudak.jpg",
+      "name": "Aliaksei Rudak",
+      "role": "Team Lead",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "github": "https://github.com/lexarudak",
+      "color": "rgba(36, 149, 252, 0.3)"
+    },
+    "Yuliya": {
+      "id": 2,
+      "img": "/img/team/yuliya_mentsel.jpg",
+      "name": "Yuliya Mentsel",
+      "role": "Developer",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "github": "https://github.com/YuMentsel",
+      "color": "rgba(254, 185, 88, 0.3)"
+    },
+    "Ekaterina": {
+      "id": 3,
+      "img": "/img/team/ekaterina_radchenko.jpg",
+      "name": "Ekaterina Radchenko",
+      "role": "Developer",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "github": "https://github.com/neemkashu",
+      "color": "rgba(38, 195, 98, 0.3)"
+    }
   },
   "Header": {
     "signIn": "Sign in",

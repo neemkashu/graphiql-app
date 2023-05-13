@@ -5,7 +5,34 @@
     "subtitle": "Съешь еще этих мягких французских булок, да выпей чаю. Съешь еще этих мягких французских булок, да выпей чаююСъешь еще этих мягких французских булок, да выпей чаю. Съешь еще этих мягких французских булок, да выпей чаю."
   },
   "Team": {
-    "title": "Наша команда"
+    "title": "Наша команда",
+    "Aliaksei": {
+      "id": 1,
+      "img": "/img/team/aliaksei_rudak.jpg",
+      "name": "Алексей Рудак",
+      "role": "Тимлид",
+      "description": "Перевод ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "github": "https://github.com/lexarudak",
+      "color": "rgba(36, 149, 252, 0.3)"
+    },
+    "Yuliya": {
+      "id": 2,
+      "img": "/img/team/yuliya_mentsel.jpg",
+      "name": "Юлия Менцель",
+      "role": "Разработчик",
+      "description": "Перевод ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "github": "https://github.com/YuMentsel",
+      "color": "rgba(254, 185, 88, 0.3)"
+    },
+    "Ekaterina": {
+      "id": 3,
+      "img": "/img/team/ekaterina_radchenko.jpg",
+      "name": "Екатерина Радченко",
+      "role": "Разработчик",
+      "description": "Перевод ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "github": "https://github.com/neemkashu",
+      "color": "rgba(38, 195, 98, 0.3)"
+    }
   },
   "Header": {
     "signIn": "Войти",

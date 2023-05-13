@@ -2,14 +2,14 @@
 
 import { useTranslations } from 'next-intl';
 import { Member } from '../Member';
-import { TEAM } from '@/common';
-import { TeamMember } from '@/common';
 import styles from './Team.module.scss';
 
 export const Team = (): JSX.Element => {
   const t = useTranslations('Team');
   const members = (): JSX.Element[] =>
-    TEAM.map((member: TeamMember): JSX.Element => <Member key={member.id} {...member} />);
+    ['Aliaksei', 'Yuliya', 'Ekaterina'].map(
+      (member): JSX.Element => <Member key={member} member={member} />
+    );
 
   return (
     <section className={styles.team}>
