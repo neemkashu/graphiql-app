@@ -20,10 +20,10 @@ export default function CustomNotFoundPage(): JSX.Element {
           className={`${styles.img}`}
         />
       </div>
-      <h1 className={styles.title}>{t('not-found-title')}</h1>
-      <div className={styles.subtitle}>{t('not-found-subtitle')}</div>
+      <h1 className={styles.title}>{t('title')}</h1>
+      <div className={styles.subtitle}>{t('subtitle')}</div>
       <Link href="/" className={styles.link}>
-        {t('not-found-link')}
+        {t('link')}
       </Link>
     </section>
   );

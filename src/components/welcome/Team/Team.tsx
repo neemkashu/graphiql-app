@@ -13,7 +13,7 @@ export const Team = (): JSX.Element => {
 
   return (
     <section className={styles.team}>
-      <h3 className={styles.title}>{t('team-title')}</h3>
+      <h3 className={styles.title}>{t('title')}</h3>
       <div className={styles.members}>{members()}</div>
     </section>
   );

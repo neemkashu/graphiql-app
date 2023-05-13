@@ -12,23 +12,23 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
 
   return hasAccount ? (
     <div className={styles.container}>
-      <h2>{t('form-sign-in')}</h2>
+      <h2>{t('signIn')}</h2>
       {<LoginForm />}
       <p className={styles.question}>
-        <span>{t('form-no-account')}</span>
+        <span>{t('noAccount')}</span>
         <Link href={PageList.signUp} className={styles.link}>
-          {t('form-sign-up')}
+          {t('signUp')}
         </Link>
       </p>
     </div>
   ) : (
     <div className={styles.container}>
-      <h2>{t('form-sign-up')}</h2>
+      <h2>{t('signUp')}</h2>
       {<RegisterForm />}
       <p className={styles.question}>
-        <span>{t('form-account')}</span>
+        <span>{t('account')}</span>
         <Link href={PageList.signIn} className={styles.link}>
-          {t('form-sign-in')}
+          {t('signIn')}
         </Link>
       </p>
     </div>

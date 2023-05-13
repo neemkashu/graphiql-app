@@ -42,35 +42,35 @@ export const LoginForm = (): JSX.Element => {
         <div>
           <div className={styles.labelContainer}>
             <label className={styles.label} htmlFor={AuthInputNames.EMAIL}>
-              {t('form-email')}
+              {t('email')}
             </label>
             {errors.email && <span className={styles.formError}>{errors.email.message}</span>}
           </div>
           <input
             className={styles.input}
             type="email"
-            placeholder={t('form-email-placeholder')}
+            placeholder={t('emailPlaceholder')}
             {...register(AuthInputNames.EMAIL, RegisterValidationConfig[AuthInputNames.EMAIL])}
           />
         </div>
         <div>
           <div className={styles.labelContainer}>
             <label className={styles.label} htmlFor={AuthInputNames.PASSWORD}>
-              {t('form-password')}
+              {t('password')}
             </label>
             {errors.password && <span className={styles.formError}>{errors.password.message}</span>}
           </div>
           <input
             className={styles.input}
             type="password"
-            placeholder={t('form-password-placeholder')}
+            placeholder={t('passwordPlaceholder')}
             {...register(AuthInputNames.PASSWORD, {
-              required: t('form-password-message'),
+              required: t('passwordMessage'),
             })}
           />
         </div>
         <button className={styles.button} type="submit">
-          {t('form-sign-in')}
+          {t('signIn')}
         </button>
       </form>
     </>

@@ -45,26 +45,26 @@ export const RegisterForm = (): JSX.Element => {
         <div>
           <div className={styles.labelContainer}>
             <label className={styles.label} htmlFor={AuthInputNames.EMAIL}>
-              {t('form-email')}
+              {t('email')}
             </label>
             {errors.email && <span className={styles.formError}>{errors.email.message}</span>}
           </div>
           <input
             className={styles.input}
             type="email"
-            placeholder={t('form-email-placeholder')}
+            placeholder={t('emailPlaceholder')}
             {...register(AuthInputNames.EMAIL, RegisterValidationConfig[AuthInputNames.EMAIL])}
           />
         </div>
         <div>
           <div className={styles.labelContainer}>
-            <label htmlFor={AuthInputNames.PASSWORD}>{t('form-password')}</label>
+            <label htmlFor={AuthInputNames.PASSWORD}>{t('password')}</label>
             {errors.password && <span className={styles.formError}>{errors.password.message}</span>}
           </div>
           <input
             className={styles.input}
             type="password"
-            placeholder={t('form-password-placeholder')}
+            placeholder={t('passwordPlaceholder')}
             {...register(
               AuthInputNames.PASSWORD,
               RegisterValidationConfig[AuthInputNames.PASSWORD]
@@ -73,7 +73,7 @@ export const RegisterForm = (): JSX.Element => {
         </div>
         <div>
           <div className={styles.labelContainer}>
-            <label htmlFor={AuthInputNames.REPEAT_PASSWORD}>{t('form-confirm')}</label>
+            <label htmlFor={AuthInputNames.REPEAT_PASSWORD}>{t('confirm')}</label>
             {errors.repeatPassword && (
               <span className={styles.formError}>{errors.repeatPassword.message}</span>
             )}
@@ -81,7 +81,7 @@ export const RegisterForm = (): JSX.Element => {
           <input
             className={styles.input}
             type="password"
-            placeholder={t('form-confirm-placeholder')}
+            placeholder={t('confirmPlaceholder')}
             {...register(
               AuthInputNames.REPEAT_PASSWORD,
               RegisterValidationConfig[AuthInputNames.REPEAT_PASSWORD](watch)
@@ -89,7 +89,7 @@ export const RegisterForm = (): JSX.Element => {
           />
         </div>
         <button className={styles.button} type="submit">
-          {t('form-button')}
+          {t('button')}
         </button>
       </form>
     </>
