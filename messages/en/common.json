@@ -1,0 +1,14 @@
+{
+  "Info": {
+    "info-title": "GraphQL Playground",
+    "info-api": "For The Rick and Morty API",
+    "info-subtitle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore? Laborum, recusandae officiis quis sapiente quos laudantium porro sit exercitationem odit ad nisi consequatur facilis dolore!"
+  },
+  "Team": {
+    "team-title": "Our Team"
+  },
+  "Header": {
+    "sign-in": "Sign in",
+    "sign-up": "Sign up"
+  }
+}

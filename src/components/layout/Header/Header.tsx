@@ -1,6 +1,7 @@
 'use client';
 import { PageList } from '@/common';
-import { FakeTranslator } from '@/components/FakeTranslator/FakeTranslator';
+import { usePathWithLocale } from '@/common/hook';
+import { FakeTranslator } from '@/components/LangSwitcher/LangSwitcher';
 import { useScrollState } from '@/components/layout/Header/Header.hook';
 import classNames from 'classnames';
 import Link from 'next/link';
@@ -10,10 +11,11 @@ import { Nav } from './Nav/Nav';
 
 export const Header = (): JSX.Element => {
   const isScroll = useScrollState();
+  const [welcomePage] = usePathWithLocale([PageList.welcome]);
 
   return (
     <header className={classNames(styles.header, isScroll && styles.filling)}>
-      <Link href={PageList.welcome} className={styles.logo}>
+      <Link href={welcomePage} className={styles.logo}>
         <HeaderLogo />
       </Link>
       <Nav />

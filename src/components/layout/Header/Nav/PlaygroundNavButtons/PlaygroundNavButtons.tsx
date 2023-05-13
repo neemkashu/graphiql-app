@@ -1,28 +1,26 @@
 'use client';
 import styles from './PlaygroundNavButtons.module.scss';
-
 import { PageList } from '@/common';
 import { logout } from '@/firebase';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-
-const logOut = (): void => {
-  logout();
-};
+import { usePathWithLocale } from '@/common/hook';
 
 export const PlaygroundNavButtons = (): JSX.Element => {
   const router = useRouter();
+  const [welcomePage, playgroundPage] = usePathWithLocale([PageList.welcome, PageList.playground]);
 
   const onClickHandler = (): void => {
-    logOut();
-    router.push(PageList.welcome);
+    logout();
+    router.push(welcomePage);
   };
+
   return (
     <>
       <button className={styles.normalButton} onClick={onClickHandler}>
         Log out
       </button>
-      <Link href={PageList.playground} className={styles.activeButton}>
+      <Link href={playgroundPage} className={styles.activeButton}>
         Playground
       </Link>
     </>
