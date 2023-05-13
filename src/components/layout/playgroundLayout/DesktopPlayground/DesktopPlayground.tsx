@@ -1,4 +1,5 @@
 'use client';
+import { useFieldSize } from '@/common/hook';
 import {
   DEFAULT_PLAYGROUND_SIZE,
   DesktopPlaygroundProps,
@@ -9,12 +10,13 @@ import {
   SHOW_BTN_ICON,
   Split,
 } from '@/components';
+import { LS_PLAYGROUND_SIZE_KEY } from '@/components/layout/playgroundLayout/DesktopPlayground/DesktopPlayground.const';
+import { PlaygroundSize } from '@/components/layout/playgroundLayout/DesktopPlayground/DesktopPlayground.type';
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './DesktopPlayground.module.scss';
-import { usePLayGroundSize } from './DesktopPlayground.hook';
 
 const sashRender = (_: number, active: boolean): ReactNode => (
   <SashContent active={active} type="vscode" />
@@ -23,7 +25,10 @@ const sashRender = (_: number, active: boolean): ReactNode => (
 export const DesktopPlayground = ({
   children: { documentation, operation, response },
 }: DesktopPlaygroundProps): JSX.Element => {
-  const [sizes, setSizes] = usePLayGroundSize();
+  const [sizes, setSizes] = useFieldSize<PlaygroundSize>(
+    DEFAULT_PLAYGROUND_SIZE,
+    LS_PLAYGROUND_SIZE_KEY
+  );
   const [leftPaneSize] = sizes;
 
   const toggleLeftPane = (): void => {
