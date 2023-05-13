@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useEffect, useState } from 'react';
 import styles from './LoginForm.module.scss';
 import { firebaseAuth } from '@/firebase';
 import { useRouter } from 'next/navigation';
@@ -11,10 +10,11 @@ import { AuthInputNames } from '@/components/auth/forms/forms.enum';
 import { LoginData } from '@/components/auth/forms/forms.type';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
 import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
+import { Unsubscribe, onIdTokenChanged, signInWithEmailAndPassword } from '@firebase/auth';
+import { AuthError, User } from 'firebase/auth';
+import nookies from 'nookies';
 
 export const LoginForm = (): JSX.Element => {
-  const [signInWithEmailAndPassword, user, loading, firebaseError] =
-    useSignInWithEmailAndPassword(firebaseAuth);
   const router = useRouter();
   const {
     register,
@@ -22,16 +22,30 @@ export const LoginForm = (): JSX.Element => {
     formState: { errors },
   } = useForm<LoginData>({ mode: 'onSubmit', reValidateMode: 'onBlur' });
 
-  useEffect((): void => {
-    if (loading) {
-      // here some spinner logic can be
-      return;
-    }
-    if (user) router.push(PageList.playground);
-  }, [user, loading, router]);
+  const [user, setUser] = useState<User | null>(null);
+  const [firebaseError, setFirebaseError] = useState<AuthError | null>(null);
+
+  useEffect((): Unsubscribe => {
+    const unsubscribe = onIdTokenChanged(firebaseAuth, async (user): Promise<void> => {
+      if (user) {
+        setUser(user);
+        const token = await user.getIdToken();
+        nookies.set(undefined, 'token', token, { path: '/' });
+      } else {
+        setUser(null);
+        nookies.set(undefined, 'token', '', { path: '/' });
+      }
+    });
+    return unsubscribe;
+  }, []);
 
   const handleLogin = async ({ email, password }: LoginData): Promise<void> => {
-    await signInWithEmailAndPassword(email, password);
+    try {
+      setFirebaseError(null);
+      await signInWithEmailAndPassword(firebaseAuth, email, password);
+    } catch (error) {
+      setFirebaseError(error as AuthError);
+    }
   };
 
   return (
