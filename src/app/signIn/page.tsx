@@ -9,15 +9,9 @@ export const revalidate = 10; // revalidate every hour
 export default async function SignIn(): Promise<JSX.Element> {
   const cookieStore = cookies();
   let isLoggedIn = false;
-
-  console.log('SIGN IN PAGE CODE');
-
   try {
     isLoggedIn = await checkAuthenticated(cookieStore);
-
-    console.log('TRY isLoggedIn', isLoggedIn);
   } catch (error) {
-    console.log('CATCH isLoggedIn', isLoggedIn);
     // eslint-disable-next-line no-console
     if (error instanceof Error) console.log('Admin cannot parse: ', error?.message);
     isLoggedIn = false;

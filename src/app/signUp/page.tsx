@@ -7,13 +7,13 @@ import { redirect } from 'next/navigation';
 export default async function SignUp(): Promise<JSX.Element> {
   const cookieStore = cookies();
   let isLoggedIn = false;
-
   try {
     isLoggedIn = await checkAuthenticated(cookieStore);
-    redirect('/');
   } catch (error) {
     // eslint-disable-next-line no-console
     if (error instanceof Error) console.log('Admin cannot parse: ', error?.message);
+    isLoggedIn = false;
+  } finally {
     if (isLoggedIn) redirect('/');
   }
   return (

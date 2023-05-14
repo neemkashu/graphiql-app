@@ -11,7 +11,7 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
       {<LoginForm />}
       <p className={styles.question}>
         <span>{"Don't have an account?"}</span>
-        <Link href={PageList.signUp} className={styles.link}>
+        <Link href={PageList.signUp} className={styles.link} prefetch={false}>
           {'Sign up'}
         </Link>
       </p>
@@ -22,7 +22,7 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
       {<RegisterForm />}
       <p className={styles.question}>
         <span>{'Already have an account?'}</span>
-        <Link href={PageList.signIn} className={styles.link}>
+        <Link href={PageList.signIn} className={styles.link} prefetch={false}>
           {'Sign in'}
         </Link>
       </p>
