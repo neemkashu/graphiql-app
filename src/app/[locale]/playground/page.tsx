@@ -8,8 +8,8 @@ import { VerticalResizeContainer } from '@/components/layout/playgroundLayout/Ve
 import { LS_KEYS } from '@/common';
 import { OperationSection } from '@/components/playgroundSections/OperationSection/OperationSection';
 import { ResponseSection } from '@/components/playgroundSections/ResponseSection/ResponseSection';
-import { TabsBlock } from '@/components';
 import { VarsSection } from '@/components/playgroundSections/VarsSection/VarsSection';
+import { TabsBlock } from '@/components/layout/playgroundLayout/TabsBlock/TabsBlock';
 
 export default function PlaygroundPage(): JSX.Element {
   const isMobileView = useWidthState();

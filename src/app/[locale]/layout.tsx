@@ -1,10 +1,10 @@
-import '@/styles/globals.scss';
-import { Providers } from '@/redux/provider';
 import { Footer } from '@/components';
-import styles from './layout.module.scss';
 import { Header } from '@/components/layout/Header/Header';
+import { Providers } from '@/redux/provider';
+import '@/styles/globals.scss';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
+import styles from './layout.module.scss';
 
 export function generateStaticParams(): {
   locale: string;
@@ -33,7 +33,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={styles.body}>
+      <body className={styles.body} suppressHydrationWarning={true}>
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Header />
