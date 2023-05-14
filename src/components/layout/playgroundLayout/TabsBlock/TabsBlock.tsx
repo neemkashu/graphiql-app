@@ -3,6 +3,7 @@ import { TabsList, TabsBlockProps } from '@/components';
 import classNames from 'classnames';
 import { useState } from 'react';
 import styles from './TabsBlock.module.scss';
+import { useTranslations } from 'next-intl';
 
 export const TabsBlock = ({
   children: { operation, vars, headers },
@@ -11,6 +12,7 @@ export const TabsBlock = ({
   const onClickHandler = (block: TabsList): void => {
     setActiveBlock(block);
   };
+  const t = useTranslations('Playground');
 
   return (
     <div className={styles.container}>
@@ -23,14 +25,14 @@ export const TabsBlock = ({
             )}
             onClick={(): void => onClickHandler(TabsList.operation)}
           >
-            Operation
+            {t('operation')}
           </button>
         )}
         <button
           className={classNames(styles.navButton, activeBlock === TabsList.vars && styles.active)}
           onClick={(): void => onClickHandler(TabsList.vars)}
         >
-          Variables
+          {t('variables')}
         </button>
         <button
           className={classNames(
@@ -39,7 +41,7 @@ export const TabsBlock = ({
           )}
           onClick={(): void => onClickHandler(TabsList.headers)}
         >
-          Headers
+          {t('headers')}
         </button>
       </nav>
       <div className={styles.blockContainer}>

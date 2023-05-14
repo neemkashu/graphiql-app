@@ -1,6 +1,6 @@
 export const TEAM = ['Aliaksei', 'Yuliya', 'Ekaterina'];
 
-export const MOBILE_BREAKPOINT = 800;
+export const MOBILE_BREAKPOINT = 900;
 
 export const ALL_LANGUAGES = ['en', 'ru'];
 

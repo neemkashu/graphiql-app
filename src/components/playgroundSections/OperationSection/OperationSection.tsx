@@ -1,6 +1,10 @@
+'use client';
+import { useTranslations } from 'next-intl';
 import styles from './OperationSection.module.scss';
 
 export const OperationSection = (): JSX.Element => {
+  const t = useTranslations('Playground');
+
   return (
     <section className={styles.section}>
       <textarea
@@ -8,7 +12,7 @@ export const OperationSection = (): JSX.Element => {
         autoFocus
         autoCorrect="off"
         spellCheck={false}
-        placeholder="enter code"
+        placeholder={t('operationPlaceholder')}
       />
     </section>
   );

@@ -58,7 +58,7 @@ export const DesktopPlayground = ({
         <div className={classNames(styles.pane, styles.paneCenter)}>
           <div className={styles.centerHeader}>
             <h4 className={styles.sectionTitle}>{t('operation')}</h4>
-            <button className={styles.runButton}>&#9658; {t('run')}</button>
+            <button className={styles.runButton}>{t('run')}</button>
           </div>
           {operation}
         </div>

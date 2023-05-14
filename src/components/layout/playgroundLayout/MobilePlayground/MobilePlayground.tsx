@@ -42,7 +42,7 @@ export const MobilePlayground = ({
           className={classNames(styles.navButton, !isPageFirs() && styles.run)}
           onClick={secondButtonOnClickHandler}
         >
-          {isPageFirs() ? 'Operation' : '► Run'}
+          {isPageFirs() ? t('operation') : t('run')}
         </button>
       </nav>
     </section>

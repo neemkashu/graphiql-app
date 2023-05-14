@@ -1,6 +1,10 @@
+'use client';
 import styles from './VarsSection.module.scss';
+import { useTranslations } from 'next-intl';
 
 export const VarsSection = (): JSX.Element => {
+  const t = useTranslations('Playground');
+
   return (
     <section className={styles.section}>
       <textarea
@@ -8,7 +12,7 @@ export const VarsSection = (): JSX.Element => {
         autoFocus
         autoCorrect="off"
         spellCheck={false}
-        placeholder="variables ( JSON )"
+        placeholder={t('variablesPlaceholder')}
       />
     </section>
   );

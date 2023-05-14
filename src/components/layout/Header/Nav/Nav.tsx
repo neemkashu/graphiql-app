@@ -9,5 +9,5 @@ import { firebaseAuth } from '@/firebase';
 export const Nav = (): JSX.Element => {
   const [user] = useAuthState(firebaseAuth);
 
-  return <nav className={styles.nav}>{true ? <PlaygroundNavButtons /> : <LoginNavButtons />}</nav>;
+  return <nav className={styles.nav}>{user ? <PlaygroundNavButtons /> : <LoginNavButtons />}</nav>;
 };
