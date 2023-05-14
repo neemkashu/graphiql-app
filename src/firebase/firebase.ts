@@ -1,3 +1,4 @@
+import { USER_TOKEN_KEY } from '@/common';
 import { initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
@@ -56,5 +57,5 @@ export const registerWithEmailAndPassword = async (
 
 export const logout = (): void => {
   signOut(firebaseAuth);
-  nookies.set(undefined, 'token', '', { path: '/' });
+  nookies.set(undefined, USER_TOKEN_KEY, '', { path: '/' });
 };

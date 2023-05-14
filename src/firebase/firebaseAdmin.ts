@@ -1,3 +1,4 @@
+import { USER_TOKEN_KEY } from '@/common';
 import * as admin from 'firebase-admin';
 import { credential } from 'firebase-admin';
 import { ServiceAccount, initializeApp } from 'firebase-admin/app';
@@ -19,7 +20,7 @@ if (!admin.apps.length) {
 export const adminSDK = admin;
 
 export const checkAuthenticated = async (cookieStore: ReadonlyRequestCookies): Promise<boolean> => {
-  const token = cookieStore.get('token')?.value;
+  const token = cookieStore.get(USER_TOKEN_KEY)?.value;
   let isLoggedIn = false;
 
   if (!token) return isLoggedIn;

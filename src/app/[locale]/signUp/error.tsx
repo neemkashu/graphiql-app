@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import styles from './page.module.scss';
 
-export default function Error({ error, reset }: { error: Error; reset: () => void }): JSX.Element {
+export default function Error({ error }: { error: Error; reset: () => void }): JSX.Element {
   const router = useRouter();
   const [user] = useAuthState(firebaseAuth);
   const [playgroundPage] = usePathWithLocale([PageList.playground]);
@@ -19,9 +19,8 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
   // router.refresh();
   if (user) {
     router.push(playgroundPage);
-  } else {
-    // reset();
   }
+
   return (
     <>
       <p>Error occured</p>

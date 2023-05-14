@@ -5,7 +5,7 @@ import styles from './LoginForm.module.scss';
 import { firebaseAuth } from '@/firebase';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import { PageList } from '@/common';
+import { PageList, USER_TOKEN_KEY } from '@/common';
 import { AuthInputNames } from '@/components/auth/forms/forms.enum';
 import { LoginData } from '@/components/auth/forms/forms.type';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
@@ -34,10 +34,10 @@ export const LoginForm = (): JSX.Element => {
       if (user) {
         setUser(user);
         const token = await user.getIdToken();
-        nookies.set(undefined, 'token', token, { path: '/' });
+        nookies.set(undefined, USER_TOKEN_KEY, token, { path: '/' });
       } else {
         setUser(null);
-        nookies.set(undefined, 'token', '', { path: '/' });
+        nookies.set(undefined, USER_TOKEN_KEY, '', { path: '/' });
       }
     });
     return unsubscribe;
