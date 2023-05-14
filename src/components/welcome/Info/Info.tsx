@@ -10,12 +10,12 @@ export const Info = (): JSX.Element => {
   return (
     <section className={styles.info}>
       <div className={styles.infoWrapper}>
-        <h1 className={styles.title}>{t('info-title')}</h1>
+        <h1 className={styles.title}>{t('title')}</h1>
         <Link href={'https://rickandmortyapi.com/'} target="blank" className={styles.api}>
-          {t('info-api')}
+          {t('api')}
         </Link>
-        <p className={styles.descr}>{t('info-subtitle')}</p>
-        <p className={styles.descr}>{t('info-subtitle')}</p>
+        <p className={styles.descr}>{t('subtitle')}</p>
+        <p className={styles.descr}>{t('subtitle')}</p>
       </div>
       <div className={styles.imgWrapper}>
         <div className={styles.blur} />

@@ -19,13 +19,13 @@ export const LoginNavButtons = (): JSX.Element => {
         href={signUpPage}
         className={isSignUpPage() ? styles.activeButton : styles.normalButton}
       >
-        {t('sign-up')}
+        {t('signUp')}
       </Link>
       <Link
         href={signInPage}
         className={isSignUpPage() ? styles.normalButton : styles.activeButton}
       >
-        {t('sign-in')}
+        {t('signIn')}
       </Link>
     </>
   );
