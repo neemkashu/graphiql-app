@@ -12,8 +12,6 @@
 .pageContainer {
   flex-grow: 1;
   position: relative;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
 }
 
@@ -24,7 +22,6 @@
   height: 100%;
   width: 100%;
   padding: 5px 10px;
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   transition: $transition-basic;
@@ -65,5 +62,9 @@
   &.active {
     color: $clr-second;
     background-color: $clr-base;
+  }
+
+  &.run {
+    @include buttonMainActive;
   }
 }

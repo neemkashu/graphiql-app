@@ -8,10 +8,14 @@ import styles from './MobilePlayground.module.scss';
 export const MobilePlayground = ({
   children: { documentation, resizeMobileBlock },
 }: MobilePlaygroundProps): JSX.Element => {
-  const [page, setPage] = useState(MobilePage.first);
+  const [page, setPage] = useState(MobilePage.second);
   const isPageFirs = (): boolean => page === MobilePage.first;
-  const onClickHandler = (page: MobilePage): void => {
-    setPage(page);
+  const firstButtonOnClickHandler = (): void => {
+    setPage(MobilePage.first);
+  };
+  const secondButtonOnClickHandler = (): void => {
+    // eslint-disable-next-line no-console
+    isPageFirs() ? setPage(MobilePage.second) : console.log('run');
   };
 
   return (
@@ -28,15 +32,15 @@ export const MobilePlayground = ({
       <nav className={styles.nav}>
         <button
           className={classNames(styles.navButton, isPageFirs() && styles.active)}
-          onClick={(): void => onClickHandler(MobilePage.first)}
+          onClick={firstButtonOnClickHandler}
         >
           Documentation
         </button>
         <button
-          className={classNames(styles.navButton, !isPageFirs() && styles.active)}
-          onClick={(): void => onClickHandler(MobilePage.second)}
+          className={classNames(styles.navButton, !isPageFirs() && styles.run)}
+          onClick={secondButtonOnClickHandler}
         >
-          Operation
+          {isPageFirs() ? 'Operation' : '► Run'}
         </button>
       </nav>
     </section>

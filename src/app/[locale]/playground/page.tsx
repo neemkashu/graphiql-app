@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 'use client';
 import { useWidthState } from './page.hook';
 import { TestSection } from '@/components/playgroundSections/testSection/testSection';
@@ -9,14 +8,10 @@ import { VerticalResizeContainer } from '@/components/layout/playgroundLayout/Ve
 import { LS_KEYS } from '@/common';
 import { OperationSection } from '@/components/playgroundSections/OperationSection/OperationSection';
 import { ResponseSection } from '@/components/playgroundSections/ResponseSection/ResponseSection';
-import { VarsAndHeaderBlock } from '@/components';
+import { TabsBlock } from '@/components';
 import { VarsSection } from '@/components/playgroundSections/VarsSection/VarsSection';
 
-export default function PlaygroundPage({
-  params: { locale },
-}: {
-  params: { locale: string };
-}): JSX.Element {
+export default function PlaygroundPage(): JSX.Element {
   const isMobileView = useWidthState();
 
   return (
@@ -28,8 +23,16 @@ export default function PlaygroundPage({
             resizeMobileBlock: (
               <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE}>
                 {{
-                  topBlock: <OperationSection />,
-                  bottomBlock: <ResponseSection />,
+                  topBlock: (
+                    <TabsBlock>
+                      {{
+                        operation: <OperationSection />,
+                        vars: <VarsSection />,
+                        headers: <TestSection> </TestSection>,
+                      }}
+                    </TabsBlock>
+                  ),
+                  bottomBlock: <ResponseSection isMobile={true} />,
                 }}
               </VerticalResizeContainer>
             ),
@@ -44,12 +47,12 @@ export default function PlaygroundPage({
                 {{
                   topBlock: <OperationSection />,
                   bottomBlock: (
-                    <VarsAndHeaderBlock>
+                    <TabsBlock>
                       {{
                         vars: <VarsSection />,
                         headers: <TestSection> </TestSection>,
                       }}
-                    </VarsAndHeaderBlock>
+                    </TabsBlock>
                   ),
                 }}
               </VerticalResizeContainer>
