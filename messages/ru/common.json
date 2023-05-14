@@ -1,0 +1,84 @@
+{
+  "Info": {
+    "title": "GraphQL Песочница",
+    "api": "Для Pик и Морти API",
+    "subtitle": "Съешь еще этих мягких французских булок, да выпей чаю. Съешь еще этих мягких французских булок, да выпей чаююСъешь еще этих мягких французских булок, да выпей чаю. Съешь еще этих мягких французских булок, да выпей чаю."
+  },
+  "Team": {
+    "title": "Наша команда",
+    "Aliaksei": {
+      "id": 1,
+      "img": "/img/team/aliaksei_rudak.jpg",
+      "name": "Алексей Рудак",
+      "role": "Тимлид",
+      "description": "Перевод ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "github": "https://github.com/lexarudak",
+      "color": "rgba(36, 149, 252, 0.3)"
+    },
+    "Yuliya": {
+      "id": 2,
+      "img": "/img/team/yuliya_mentsel.jpg",
+      "name": "Юлия Менцель",
+      "role": "Разработчик",
+      "description": "Перевод ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "github": "https://github.com/YuMentsel",
+      "color": "rgba(254, 185, 88, 0.3)"
+    },
+    "Ekaterina": {
+      "id": 3,
+      "img": "/img/team/ekaterina_radchenko.jpg",
+      "name": "Екатерина Радченко",
+      "role": "Разработчик",
+      "description": "Перевод ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "github": "https://github.com/neemkashu",
+      "color": "rgba(38, 195, 98, 0.3)"
+    }
+  },
+  "Header": {
+    "signIn": "Войти",
+    "signUp": "Регистрация",
+    "playground": "Песочница",
+    "logOut": "Выйти"
+  },
+  "NotFound": {
+    "title": "Страница не найдена",
+    "subtitle": "Страница, которую вы ищете, не существует",
+    "link": "Вернуться на главную страницу"
+  },
+  "Form": {
+    "signIn": "Войти",
+    "signUp": "Регистрация",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "confirm": "Подтверждение пароля",
+    "emailPlaceholder": "Введите адрес электронной почты",
+    "passwordPlaceholder": "Введите пароль",
+    "confirmPlaceholder": "Повторите проль",
+    "button": "Создать аккаунт",
+    "noAccount": "У вас нет аккаунта?",
+    "account": "Уже есть аккаунт?",
+    "emailMessage": "Введите адрес электронной почты",
+    "passwordMessage": "Пожалуйста, введите пароль",
+    "confirmMessage": "Подтвердите введенный пароль",
+    "validation": {
+      "requireEmail": "Введите адрес электронной почты",
+      "maxEmailLength": "Адрес не больше {MAX_EMAIL_LENGTH} символов",
+      "validEmail": "Неверный адрес электронной почты",
+      "requirePassword": "Введите пароль",
+      "minLength": "Пароль не менее {MIN_PASSWORD_LENGTH} символов",
+      "requireLetter": "Не менее одной буквы",
+      "requireDigit": "Хотя бы одна цифра",
+      "requireChar": "Хотя бы один специальный символ",
+      "confirmPassword": "Подтвердите пароль",
+      "equalPasswords": "Пароли не совпадают"
+    }
+  },
+  "Playground": {
+    "documentation": "Документация",
+    "operation": "Операция",
+    "response": "Ответ",
+    "variables": "Переменные",
+    "headers": "Заголовки",
+    "run": "Старт"
+  }
+}

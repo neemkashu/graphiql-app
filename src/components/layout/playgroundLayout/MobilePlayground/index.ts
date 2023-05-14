@@ -1,2 +1,2 @@
-export * from './MobilePlayground';
+export * from './MobilePlayground.enum';
 export * from './MobilePlayground.type';

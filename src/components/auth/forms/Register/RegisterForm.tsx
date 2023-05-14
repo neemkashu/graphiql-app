@@ -11,9 +11,12 @@ import { RegisterData } from '@/components/auth/forms/forms.type';
 import { AuthInputNames } from '@/components/auth/forms/forms.enum';
 import { DEFAULT_REGISTER_STATE } from '@/components/auth/forms/forms.const';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
+import { useTranslations } from 'next-intl';
+import { usePathWithLocale } from '@/common/hook';
 import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
 
 export const RegisterForm = (): JSX.Element => {
+  const [playgroundPage] = usePathWithLocale([PageList.playground]);
   const [createUserWithEmailAndPassword, user, loading, firebaseError] =
     useCreateUserWithEmailAndPassword(firebaseAuth);
   const router = useRouter();
@@ -27,11 +30,12 @@ export const RegisterForm = (): JSX.Element => {
     reValidateMode: 'onBlur',
     defaultValues: DEFAULT_REGISTER_STATE,
   });
+  const t = useTranslations('Form');
 
   useEffect((): void => {
     if (loading) return;
-    if (user) router.push(PageList.playground);
-  }, [user, loading, router]);
+    if (user) router.push(playgroundPage);
+  }, [user, loading, router, playgroundPage]);
 
   const handleRegister = async ({ email, password }: RegisterData): Promise<void> => {
     await createUserWithEmailAndPassword(email, password);
@@ -44,35 +48,35 @@ export const RegisterForm = (): JSX.Element => {
         <div>
           <div className={styles.labelContainer}>
             <label className={styles.label} htmlFor={AuthInputNames.EMAIL}>
-              Email
+              {t('email')}
             </label>
             {errors.email && <span className={styles.formError}>{errors.email.message}</span>}
           </div>
           <input
             className={styles.input}
             type="email"
-            placeholder="Enter email"
-            {...register(AuthInputNames.EMAIL, RegisterValidationConfig[AuthInputNames.EMAIL])}
+            placeholder={t('emailPlaceholder')}
+            {...register(AuthInputNames.EMAIL, RegisterValidationConfig[AuthInputNames.EMAIL](t))}
           />
         </div>
         <div>
           <div className={styles.labelContainer}>
-            <label htmlFor={AuthInputNames.PASSWORD}>Password</label>
+            <label htmlFor={AuthInputNames.PASSWORD}>{t('password')}</label>
             {errors.password && <span className={styles.formError}>{errors.password.message}</span>}
           </div>
           <input
             className={styles.input}
             type="password"
-            placeholder="Enter password"
+            placeholder={t('passwordPlaceholder')}
             {...register(
               AuthInputNames.PASSWORD,
-              RegisterValidationConfig[AuthInputNames.PASSWORD]
+              RegisterValidationConfig[AuthInputNames.PASSWORD](t)
             )}
           />
         </div>
         <div>
           <div className={styles.labelContainer}>
-            <label htmlFor={AuthInputNames.REPEAT_PASSWORD}>Confirm</label>
+            <label htmlFor={AuthInputNames.REPEAT_PASSWORD}>{t('confirm')}</label>
             {errors.repeatPassword && (
               <span className={styles.formError}>{errors.repeatPassword.message}</span>
             )}
@@ -80,15 +84,15 @@ export const RegisterForm = (): JSX.Element => {
           <input
             className={styles.input}
             type="password"
-            placeholder="Repeat password"
+            placeholder={t('confirmPlaceholder')}
             {...register(
               AuthInputNames.REPEAT_PASSWORD,
-              RegisterValidationConfig[AuthInputNames.REPEAT_PASSWORD](watch)
+              RegisterValidationConfig[AuthInputNames.REPEAT_PASSWORD](watch, t)
             )}
           />
         </div>
         <button className={styles.button} type="submit">
-          Create account
+          {t('button')}
         </button>
       </form>
     </>

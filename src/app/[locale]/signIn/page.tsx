@@ -4,8 +4,6 @@ import { cookies } from 'next/headers';
 import { checkAuthenticated } from '@/firebase/firebaseAdmin';
 import { redirect } from 'next/navigation';
 
-export const revalidate = 10; // revalidate every hour
-
 export default async function SignIn(): Promise<JSX.Element> {
   const cookieStore = cookies();
   let isLoggedIn = false;

@@ -1,7 +1,66 @@
+.title {
+  margin-bottom: 10px;
+}
+
 .container {
   height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .pageContainer {
-  
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 10px 0px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  transition: $transition-basic;
+
+  &.active {
+    transform: translateX(0%);
+  }
+}
+
+.firstPage {
+  transform: translateX(-100%);
+}
+
+.secondPage {
+  transform: translateX(100%);
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navButton {
+  @include buttonBase;
+  width: 49%;
+  background: none;
+  color: $clr-second-2;
+  border-radius: $border-radius-tiny;
+
+  &:hover {
+    background-color: $clr-base;
+  }
+
+  &.active {
+    color: $clr-second;
+    background-color: $clr-base;
+  }
 }
