@@ -13,6 +13,22 @@ import { TabsBlock } from '@/components/layout/playgroundLayout/TabsBlock/TabsBl
 
 export default function PlaygroundPage(): JSX.Element {
   const isMobileView = useWidthState();
+  const data = {
+    data: {
+      characters: {
+        results: [
+          {
+            name: 'Rick Sanchez',
+            status: 'Alive',
+          },
+          {
+            name: 'Morty Smith',
+            status: 'Alive',
+          },
+        ],
+      },
+    },
+  };
 
   return (
     <div className={styles.playground}>
@@ -32,7 +48,9 @@ export default function PlaygroundPage(): JSX.Element {
                       }}
                     </TabsBlock>
                   ),
-                  bottomBlock: <ResponseSection isMobile={true} />,
+                  bottomBlock: (
+                    <ResponseSection isMobile={true} value={JSON.stringify(data, null, 2)} />
+                  ),
                 }}
               </VerticalResizeContainer>
             ),
@@ -57,7 +75,7 @@ export default function PlaygroundPage(): JSX.Element {
                 }}
               </VerticalResizeContainer>
             ),
-            response: <ResponseSection />,
+            response: <ResponseSection value={JSON.stringify(data, null, 2)} />,
           }}
         </DesktopPlayground>
       )}

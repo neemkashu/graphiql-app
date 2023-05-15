@@ -1,0 +1,11 @@
+.cm-gutters,
+.cm-activeLine,
+.cm-activeLineGutter,
+.cm-gutterElement,
+.cm-gutter {
+  border-radius: $border-radius-tiny;
+
+  @include media('min', 'm') {
+    background-color: $clr-base !important;
+  }
+}
