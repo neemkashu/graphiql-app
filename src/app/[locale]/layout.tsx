@@ -2,6 +2,7 @@ import { Footer } from '@/components';
 import { Header } from '@/components/layout/Header/Header';
 import { Providers } from '@/redux/provider';
 import '@/styles/globals.scss';
+import '@/styles/codemirror.scss';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import styles from './layout.module.scss';
