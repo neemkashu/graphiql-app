@@ -1,5 +1,5 @@
-import { Spinner } from '@/components/Spinner/Spinner';
+import { PageSpinner } from '@/components';
 
-export default async function Loading(): Promise<JSX.Element> {
-  return <Spinner />;
+export default function Loading(): JSX.Element {
+  return <PageSpinner />;
 }

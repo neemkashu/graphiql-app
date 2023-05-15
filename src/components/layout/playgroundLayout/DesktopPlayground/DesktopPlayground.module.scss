@@ -2,7 +2,7 @@
   height: 100%;
   display: flex;
   justify-content: space-between;
-  padding: $padding-medium;
+  padding: 20px;
   flex-direction: column;
   position: relative;
 
@@ -42,7 +42,7 @@
 .hideButton {
   @include buttonRoundNormal;
   margin-left: 5px;
-  margin-top:  -$padding-medium;
+  margin-top:  -20px;
 
   @include media('max', 'xl') {
     margin-top: -$padding-small-k;
