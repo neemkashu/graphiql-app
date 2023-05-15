@@ -10,39 +10,41 @@ export const MobilePlayground = ({
   children: { documentation, resizeMobileBlock },
 }: MobilePlaygroundProps): JSX.Element => {
   const [page, setPage] = useState(MobilePage.second);
-  const isPageFirs = (): boolean => page === MobilePage.first;
+  const isPageFirst = (): boolean => page === MobilePage.first;
   const firstButtonOnClickHandler = (): void => {
     setPage(MobilePage.first);
   };
   const secondButtonOnClickHandler = (): void => {
     // eslint-disable-next-line no-console
-    isPageFirs() ? setPage(MobilePage.second) : console.log('run');
+    isPageFirst() ? setPage(MobilePage.second) : console.log('run');
   };
   const t = useTranslations('Playground');
 
   return (
     <section className={styles.container}>
       <div className={styles.pageContainer}>
-        <div className={classNames(styles.page, styles.firstPage, isPageFirs() && styles.active)}>
+        <div className={classNames(styles.page, styles.firstPage, isPageFirst() && styles.active)}>
           <h4 className={styles.title}>{t('documentation')}</h4>
           {documentation}
         </div>
-        <div className={classNames(styles.page, styles.secondPage, !isPageFirs() && styles.active)}>
+        <div
+          className={classNames(styles.page, styles.secondPage, !isPageFirst() && styles.active)}
+        >
           {resizeMobileBlock}
         </div>
       </div>
       <nav className={styles.nav}>
         <button
-          className={classNames(styles.navButton, isPageFirs() && styles.active)}
+          className={classNames(styles.navButton, isPageFirst() && styles.active)}
           onClick={firstButtonOnClickHandler}
         >
           {t('documentation')}
         </button>
         <button
-          className={classNames(styles.navButton, !isPageFirs() && styles.run)}
+          className={classNames(styles.navButton, !isPageFirst() && styles.run)}
           onClick={secondButtonOnClickHandler}
         >
-          {isPageFirs() ? t('operation') : t('run')}
+          {isPageFirst() ? t('operation') : t('run')}
         </button>
       </nav>
     </section>
