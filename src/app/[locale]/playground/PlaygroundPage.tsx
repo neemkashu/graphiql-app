@@ -17,6 +17,10 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function PlaygroundPage({ isLoggedIn }: { isLoggedIn: boolean }): JSX.Element {
   const isMobileView = useWidthState();
+  const [welcomePage] = usePathWithLocale([PageList.welcome]);
+  const [user, loading] = useAuthState(firebaseAuth);
+
+  if (!loading && (!isLoggedIn || !user)) redirect(welcomePage);
 
   return (
     <div className={styles.playground}>
