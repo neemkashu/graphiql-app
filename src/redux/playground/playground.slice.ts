@@ -11,12 +11,12 @@ export const playgroundSlice = createSlice({
     setResponse(state, action: PayloadAction<string>): void {
       state.response = action.payload;
     },
-    setHeaders(state, action: PayloadAction<string>): void {
-      state.headers = action.payload;
+    setVars(state, action: PayloadAction<string>): void {
+      state.vars = action.payload;
     },
   },
 });
 
-export const { setOperation, setHeaders, setResponse } = playgroundSlice.actions;
+export const { setOperation, setVars, setResponse } = playgroundSlice.actions;
 
 export default playgroundSlice.reducer;
