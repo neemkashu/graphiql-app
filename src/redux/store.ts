@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { LS_KEYS } from '@/common';
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from '@reduxjs/toolkit';
 import {
@@ -16,8 +17,9 @@ import authSlice from './auth/auth.slice';
 import playgroundSlice from './playground/playground.slice';
 
 const persistConfig = {
-  key: 'root',
+  key: LS_KEYS.REDUX,
   storage,
+  blacklist: ['authSlice'],
 };
 
 const rootReducer = combineReducers({
