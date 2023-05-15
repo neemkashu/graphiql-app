@@ -16,8 +16,10 @@
 ## Video
 
 - [Next js (RED Group)](https://www.youtube.com/watch?v=g1mPqu7u39o)
+- [GraphQl (Непомнящий)](https://www.youtube.com/watch?v=BVEm3IjrgGI&t=514s)
 - [i18next](https://www.youtube.com/watch?v=fMp0t8_alMs)
 
 ## Docs
 
 - [Next js](https://nextjs.org/docs)
+- [Rick and Morty](https://rickandmortyapi.com/documentation)
