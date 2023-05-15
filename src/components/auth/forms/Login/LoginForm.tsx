@@ -1,22 +1,23 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useEffect, useState } from 'react';
 import styles from './LoginForm.module.scss';
 import { firebaseAuth } from '@/firebase';
 import { useRouter } from 'next/navigation';
-import { PageList } from '@/common';
 import { useForm } from 'react-hook-form';
+import { PageList, USER_TOKEN_KEY } from '@/common';
 import { AuthInputNames } from '@/components/auth/forms/forms.enum';
 import { LoginData } from '@/components/auth/forms/forms.type';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
 import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
+import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
+import { Unsubscribe, onIdTokenChanged, signInWithEmailAndPassword } from '@firebase/auth';
+import { AuthError, User } from 'firebase/auth';
+import nookies from 'nookies';
 
 export const LoginForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);
-  const [signInWithEmailAndPassword, user, loading, firebaseError] =
-    useSignInWithEmailAndPassword(firebaseAuth);
   const router = useRouter();
   const {
     register,
@@ -25,21 +26,36 @@ export const LoginForm = (): JSX.Element => {
   } = useForm<LoginData>({ mode: 'onSubmit', reValidateMode: 'onBlur' });
   const t = useTranslations('Form');
 
-  useEffect((): void => {
-    if (loading) {
-      // here some spinner logic can be
-      return;
-    }
-    if (user) router.push(playgroundPage);
-  }, [user, loading, router, playgroundPage]);
+  const [, setUser] = useState<User | null>(null);
+  const [firebaseError, setFirebaseError] = useState<AuthError | null>(null);
+
+  useEffect((): Unsubscribe => {
+    const unsubscribe = onIdTokenChanged(firebaseAuth, async (user): Promise<void> => {
+      if (user) {
+        setUser(user);
+        const token = await user.getIdToken();
+        nookies.set(undefined, USER_TOKEN_KEY, token, { path: '/' });
+      } else {
+        setUser(null);
+        nookies.set(undefined, USER_TOKEN_KEY, '', { path: '/' });
+      }
+    });
+    return unsubscribe;
+  }, []);
 
   const handleLogin = async ({ email, password }: LoginData): Promise<void> => {
-    await signInWithEmailAndPassword(email, password);
+    try {
+      setFirebaseError(null);
+      await signInWithEmailAndPassword(firebaseAuth, email, password);
+      router.push(playgroundPage);
+    } catch (error) {
+      setFirebaseError(error as AuthError);
+    }
   };
 
   return (
     <>
-      {firebaseError && <p>{firebaseError?.message}</p>}
+      {firebaseError && <FirebaseErrorMessage error={firebaseError} />}
       <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
         <div>
           <div className={styles.labelContainer}>

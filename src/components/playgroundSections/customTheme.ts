@@ -1,5 +1,5 @@
 import { tags as t } from '@lezer/highlight';
-import { createTheme, CreateThemeOptions } from '@uiw/codemirror-themes';
+import { createTheme } from '@uiw/codemirror-themes';
 
 export const customTheme = createTheme({
   theme: 'dark',
