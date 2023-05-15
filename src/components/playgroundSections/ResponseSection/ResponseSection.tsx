@@ -1,23 +1,29 @@
 'use client';
-import { responseSelector } from '@/redux';
+import { json } from '@codemirror/lang-json';
+import CodeMirror from '@uiw/react-codemirror';
 import { useTranslations } from 'next-intl';
-import { useSelector } from 'react-redux';
+import { customTheme } from '../customTheme';
 import styles from './ResponseSection.module.scss';
 
-export const ResponseSection = ({ isMobile }: { isMobile?: boolean }): JSX.Element => {
+export const ResponseSection = ({
+  isMobile,
+  value,
+}: {
+  isMobile?: boolean;
+  value: string;
+}): JSX.Element => {
   const t = useTranslations('Playground');
-
-  const state = useSelector(responseSelector);
 
   return (
     <section className={styles.section}>
       {isMobile && <button className={styles.button}>{t('response')}</button>}
-      <textarea
-        className={styles.textarea}
-        autoCorrect="off"
-        spellCheck={false}
-        disabled
-        value={state}
+      <CodeMirror
+        value={value}
+        theme={customTheme}
+        className={styles.codemirror}
+        height="100%"
+        readOnly
+        extensions={[json()]}
       />
     </section>
   );

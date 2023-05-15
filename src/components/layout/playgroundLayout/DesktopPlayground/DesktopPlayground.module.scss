@@ -5,13 +5,16 @@
   padding: 20px;
   flex-direction: column;
   position: relative;
+  padding-bottom: 0;
 
   @include media('max', 'xl') {
     padding: $padding-small-k;
+    padding-bottom: 0;
   }
 }
 
 .paneCenter {
+  padding-bottom: $padding-small-k;
   background-color: $clr-base;
   border-radius: $border-radius-small;
 }
@@ -36,13 +39,13 @@
   height: 40px;
   display: flex;
   align-items: center;
-  margin-bottom: 20px
+  margin-bottom: 20px;
 }
 
 .hideButton {
   @include buttonRoundNormal;
   margin-left: 5px;
-  margin-top:  -20px;
+  margin-top: -20px;
 
   @include media('max', 'xl') {
     margin-top: -$padding-small-k;
