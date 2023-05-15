@@ -12,8 +12,6 @@
 .pageContainer {
   flex-grow: 1;
   position: relative;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
 }
 
@@ -23,8 +21,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  padding: 10px 0px;
-  flex-grow: 1;
+  padding: 5px 10px;
   display: flex;
   flex-direction: column;
   transition: $transition-basic;
@@ -40,12 +37,15 @@
 
 .secondPage {
   transform: translateX(100%);
+  background: $clr-base;
+  border-radius: $border-radius-small;
 }
 
 .nav {
   position: relative;
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 .navButton {
@@ -62,5 +62,9 @@
   &.active {
     color: $clr-second;
     background-color: $clr-base;
+  }
+
+  &.run {
+    @include buttonMainActive;
   }
 }

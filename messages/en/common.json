@@ -76,9 +76,11 @@
   "Playground": {
     "documentation": "Documentation",
     "operation": "Operation",
+    "operationPlaceholder": "enter code",
     "response": "Response",
     "variables": "Variables",
+    "variablesPlaceholder": "variables ( JSON )",
     "headers": "Headers",
-    "run": "Run"
+    "run": "► Run"
   }
 }

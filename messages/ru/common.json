@@ -75,10 +75,12 @@
   },
   "Playground": {
     "documentation": "Документация",
-    "operation": "Операция",
+    "operation": "Запрос",
+    "operationPlaceholder": "ваш код",
     "response": "Ответ",
     "variables": "Переменные",
+    "variablesPlaceholder": "переменные ( JSON )",
     "headers": "Заголовки",
-    "run": "Старт"
+    "run": "► Отправить"
   }
 }

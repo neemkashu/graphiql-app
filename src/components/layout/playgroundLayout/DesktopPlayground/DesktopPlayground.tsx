@@ -1,4 +1,6 @@
 'use client';
+import { FieldSplit, LS_KEYS } from '@/common';
+import { useFieldSize } from '@/common/hook';
 import {
   DEFAULT_PLAYGROUND_SIZE,
   DesktopPlaygroundProps,
@@ -6,15 +8,14 @@ import {
   HIDE_PANE_PLAYGROUND_SIZE,
   HIDE_PANE_SIZE,
   MIN_PANE_SIZE,
+  PlaygroundSize,
   SHOW_BTN_ICON,
-  Split,
 } from '@/components';
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './DesktopPlayground.module.scss';
-import { usePLayGroundSize } from './DesktopPlayground.hook';
 import { useTranslations } from 'next-intl';
 
 const sashRender = (_: number, active: boolean): ReactNode => (
@@ -24,7 +25,10 @@ const sashRender = (_: number, active: boolean): ReactNode => (
 export const DesktopPlayground = ({
   children: { documentation, operation, response },
 }: DesktopPlaygroundProps): JSX.Element => {
-  const [sizes, setSizes] = usePLayGroundSize();
+  const [sizes, setSizes] = useFieldSize<PlaygroundSize>(
+    DEFAULT_PLAYGROUND_SIZE,
+    LS_KEYS.DESKTOP_PLAYGROUND_SIZE
+  );
   const [leftPaneSize] = sizes;
 
   const toggleLeftPane = (): void => {
@@ -33,7 +37,12 @@ export const DesktopPlayground = ({
   const t = useTranslations('Playground');
 
   return (
-    <SplitPane split={Split.vertical} sizes={sizes} onChange={setSizes} sashRender={sashRender}>
+    <SplitPane
+      split={FieldSplit.vertical}
+      sizes={sizes}
+      onChange={setSizes}
+      sashRender={sashRender}
+    >
       <Pane minSize={MIN_PANE_SIZE}>
         <div className={classNames(styles.pane, styles.paneLeft)}>
           <button onClick={toggleLeftPane} className={styles.hideButton}>
@@ -49,7 +58,7 @@ export const DesktopPlayground = ({
         <div className={classNames(styles.pane, styles.paneCenter)}>
           <div className={styles.centerHeader}>
             <h4 className={styles.sectionTitle}>{t('operation')}</h4>
-            <button className={styles.runButton}>&#9658; {t('run')}</button>
+            <button className={styles.runButton}>{t('run')}</button>
           </div>
           {operation}
         </div>

@@ -1,0 +1,13 @@
+.section {
+  @include playgroundSection;
+}
+
+.textarea {
+  @include textarea;
+}
+
+.button {
+  @include buttonMainNormal;
+  margin-top: 13px;
+  margin-bottom: 25px;
+}
