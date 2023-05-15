@@ -7,10 +7,23 @@ import { LoginForm } from '@/components/auth/forms/Login/LoginForm';
 import { RegisterForm } from '@/components/auth/forms/Register/RegisterForm';
 import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
+import { redirect } from 'next/navigation';
 
-export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Element => {
+export const AuthContainer = ({
+  hasAccount,
+  isLoggedIn,
+}: {
+  hasAccount: boolean;
+  isLoggedIn: boolean;
+}): JSX.Element => {
   const t = useTranslations('Form');
-  const [signUpPage, signInPage] = usePathWithLocale([PageList.signUp, PageList.signIn]);
+  const [signUpPage, signInPage, playgroundPage] = usePathWithLocale([
+    PageList.signUp,
+    PageList.signIn,
+    PageList.playground,
+  ]);
+
+  if (isLoggedIn) redirect(playgroundPage);
 
   return hasAccount ? (
     <div className={styles.container}>
@@ -18,7 +31,7 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
       {<LoginForm />}
       <p className={styles.question}>
         <span>{t('noAccount')}</span>
-        <Link href={signUpPage} className={styles.link}>
+        <Link href={signUpPage} className={styles.link} prefetch={false}>
           {t('signUp')}
         </Link>
       </p>
@@ -29,7 +42,7 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
       {<RegisterForm />}
       <p className={styles.question}>
         <span>{t('account')}</span>
-        <Link href={signInPage} className={styles.link}>
+        <Link href={signInPage} className={styles.link} prefetch={false}>
           {t('signIn')}
         </Link>
       </p>

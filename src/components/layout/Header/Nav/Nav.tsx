@@ -5,9 +5,14 @@ import { LoginNavButtons } from './LoginNavButtons/LoginNavButtons';
 import styles from './Nav.module.scss';
 import { PlaygroundNavButtons } from './PlaygroundNavButtons/PlaygroundNavButtons';
 import { firebaseAuth } from '@/firebase';
+import { Spinner } from '@/components/loading';
 
 export const Nav = (): JSX.Element => {
-  const [user] = useAuthState(firebaseAuth);
+  const [user, loading] = useAuthState(firebaseAuth);
 
-  return <nav className={styles.nav}>{user ? <PlaygroundNavButtons /> : <LoginNavButtons />}</nav>;
+  return (
+    <nav className={styles.nav}>
+      {loading ? <Spinner isSmall /> : user ? <PlaygroundNavButtons /> : <LoginNavButtons />}
+    </nav>
+  );
 };
