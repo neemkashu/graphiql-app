@@ -10,7 +10,7 @@ export default async function SignUp(): Promise<JSX.Element> {
     isLoggedIn = await checkAuthenticated(cookieStore);
   } catch (error) {
     // eslint-disable-next-line no-console
-    if (error instanceof Error) console.log('Admin cannot parse: ', error?.message);
+    if (error instanceof Error) console.log('Catch in sign up: ', error?.message);
     isLoggedIn = false;
   }
 

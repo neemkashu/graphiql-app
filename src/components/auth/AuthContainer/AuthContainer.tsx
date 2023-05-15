@@ -17,13 +17,13 @@ export const AuthContainer = ({
   isLoggedIn: boolean;
 }): JSX.Element => {
   const t = useTranslations('Form');
-  const [signUpPage, signInPage, welcomePage] = usePathWithLocale([
+  const [signUpPage, signInPage, playgroundPage] = usePathWithLocale([
     PageList.signUp,
     PageList.signIn,
-    PageList.welcome,
+    PageList.playground,
   ]);
 
-  if (isLoggedIn) redirect(welcomePage);
+  if (isLoggedIn) redirect(playgroundPage);
 
   return hasAccount ? (
     <div className={styles.container}>

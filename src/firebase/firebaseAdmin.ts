@@ -26,7 +26,9 @@ export const checkAuthenticated = async (cookieStore: ReadonlyRequestCookies): P
   if (!token) return isLoggedIn;
 
   try {
-    await adminSDK.auth().verifyIdToken(token);
+    const user = await adminSDK.auth().verifyIdToken(token);
+    // eslint-disable-next-line no-console
+    console.log('===Admin: token is ok?', user.uid);
     isLoggedIn = true;
   } catch (error) {
     // eslint-disable-next-line no-console

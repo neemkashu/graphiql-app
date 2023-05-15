@@ -5,7 +5,7 @@ import { LoginNavButtons } from './LoginNavButtons/LoginNavButtons';
 import styles from './Nav.module.scss';
 import { PlaygroundNavButtons } from './PlaygroundNavButtons/PlaygroundNavButtons';
 import { firebaseAuth } from '@/firebase';
-import { Spinner } from '@/components/Spinner/Spinner';
+import { Spinner } from '@/components/loading';
 
 export const Nav = (): JSX.Element => {
   const [user, loading] = useAuthState(firebaseAuth);
