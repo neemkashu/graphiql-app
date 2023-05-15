@@ -1,3 +1,5 @@
+export const ORIGIN = 'https://rickandmortyapi.com/graphql';
+
 export const TEAM = ['Aliaksei', 'Yuliya', 'Ekaterina'];
 
 export const MOBILE_BREAKPOINT = 900;

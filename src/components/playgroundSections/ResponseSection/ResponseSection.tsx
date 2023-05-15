@@ -10,23 +10,6 @@ export const ResponseSection = ({ isMobile }: { isMobile?: boolean }): JSX.Eleme
   const t = useTranslations('Playground');
 
   const state = useSelector(responseSelector);
-  // const data = {
-  //   data: {
-  //     characters: {
-  //       results: [
-  //         {
-  //           name: 'Rick Sanchez',
-  //           status: 'Alive',
-  //         },
-  //         {
-  //           name: 'Morty Smith',
-  //           status: 'Alive',
-  //         },
-  //       ],
-  //     },
-  //   },
-  // };
-  // value={JSON.stringify(data, null, 2)
 
   return (
     <section className={styles.section}>
@@ -35,7 +18,6 @@ export const ResponseSection = ({ isMobile }: { isMobile?: boolean }): JSX.Eleme
         value={state}
         theme={customTheme}
         className={styles.codemirror}
-        height="100%"
         readOnly
         extensions={[json()]}
       />
