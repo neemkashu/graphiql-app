@@ -16,7 +16,7 @@ export const ResponseSection = ({ isMobile }: { isMobile?: boolean }): JSX.Eleme
       {isMobile && <button className={styles.button}>{t('response')}</button>}
       <CodeMirror
         value={state}
-        theme={customTheme}
+        theme={customTheme()}
         className={styles.codemirror}
         readOnly
         extensions={[json()]}
