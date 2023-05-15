@@ -17,26 +17,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function PlaygroundPage({ isLoggedIn }: { isLoggedIn: boolean }): JSX.Element {
   const isMobileView = useWidthState();
-  const [welcomePage] = usePathWithLocale([PageList.welcome]);
-  const [user, loading] = useAuthState(firebaseAuth);
-  const data = {
-    data: {
-      characters: {
-        results: [
-          {
-            name: 'Rick Sanchez',
-            status: 'Alive',
-          },
-          {
-            name: 'Morty Smith',
-            status: 'Alive',
-          },
-        ],
-      },
-    },
-  };
-
-  if (!loading && (!isLoggedIn || !user)) redirect(welcomePage);
 
   return (
     <div className={styles.playground}>
@@ -56,9 +36,7 @@ export default function PlaygroundPage({ isLoggedIn }: { isLoggedIn: boolean }):
                       }}
                     </TabsBlock>
                   ),
-                  bottomBlock: (
-                    <ResponseSection isMobile={true} value={JSON.stringify(data, null, 2)} />
-                  ),
+                  bottomBlock: <ResponseSection isMobile={true} />,
                 }}
               </VerticalResizeContainer>
             ),
@@ -83,7 +61,7 @@ export default function PlaygroundPage({ isLoggedIn }: { isLoggedIn: boolean }):
                 }}
               </VerticalResizeContainer>
             ),
-            response: <ResponseSection value={JSON.stringify(data, null, 2)} />,
+            response: <ResponseSection />,
           }}
         </DesktopPlayground>
       )}

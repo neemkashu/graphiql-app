@@ -1,7 +1,10 @@
 {
   "cSpell.words": [
+    "codemirror",
     "Ekaterina",
+    "lezer",
     "Mentsel",
+    "persistor",
     "Radchenko"
   ],
   "typescript.preferences.importModuleSpecifier": "non-relative",

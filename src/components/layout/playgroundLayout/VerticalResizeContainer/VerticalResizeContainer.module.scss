@@ -5,9 +5,10 @@
 .hideButton {
   position: absolute;
   right: 2px;
-  top: 13px;
+  top: 9px;
   @include buttonRoundNormal;
   background-color: $clr-base;
+  z-index: 10;
 }
 
 .bottomBlockWrapper {
