@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { initialState } from '@/redux/playground/playground.const';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 

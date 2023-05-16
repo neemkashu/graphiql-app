@@ -35,6 +35,10 @@ export const VerticalResizeContainer = ({
     setSizes(setBottomPane(bottomPane));
   };
 
+  const showBottomPane = (): void => {
+    if (bottomPane < MIN_VERTICAL_PANE_SIZE) setSizes(setBottomPane(bottomPane));
+  };
+
   return (
     <SplitPane
       split={FieldSplit.horizontal}
@@ -48,18 +52,25 @@ export const VerticalResizeContainer = ({
 
       <Pane minSize={MIN_VERTICAL_PANE_SIZE} className={styles.blockWrapper}>
         {isMobile ? (
-          <div className={styles.header} onClick={toggleBottomPane}>
-            <p className={styles.title}>{t('response')}</p>
-            <button onClick={toggleBottomPane} className={styles.hideButton}>
+          <>
+            <div className={styles.header} onClick={toggleBottomPane}>
+              <p className={styles.title}>{t('response')}</p>
+              <button onClick={toggleBottomPane} className={styles.hideButton}>
+                {setButtonIcon(bottomPane)}
+              </button>
+            </div>
+            {bottomBlock}
+          </>
+        ) : (
+          <>
+            <button onClick={toggleBottomPane} className={styles.fixedHideButton}>
               {setButtonIcon(bottomPane)}
             </button>
-          </div>
-        ) : (
-          <button onClick={toggleBottomPane} className={styles.fixedHideButton}>
-            {setButtonIcon(bottomPane)}
-          </button>
+            <div className={styles.bottomBlockWrapper} onClick={showBottomPane}>
+              {bottomBlock}
+            </div>
+          </>
         )}
-        {bottomBlock}
       </Pane>
     </SplitPane>
   );

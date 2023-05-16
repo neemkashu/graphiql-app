@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 'use client';
 import { ALL_LANGUAGES, BASIC_LANGUAGE } from '@/common/const';

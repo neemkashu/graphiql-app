@@ -13,7 +13,7 @@ export const setButtonIcon = (size: number): string => {
 };
 
 export const setBottomPane = (size: number): VerticalContainerSize => {
-  return size >= MIN_VERTICAL_PANE_SIZE
-    ? HIDE_PANE_VERTICAL_CONTAINER_SIZE
-    : DEFAULT_VERTICAL_CONTAINER_SIZE;
+  return size < MIN_VERTICAL_PANE_SIZE
+    ? DEFAULT_VERTICAL_CONTAINER_SIZE
+    : HIDE_PANE_VERTICAL_CONTAINER_SIZE;
 };
