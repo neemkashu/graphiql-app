@@ -14,6 +14,7 @@ import { redirect } from 'next/navigation';
 import { usePathWithLocale } from '@/common/hook';
 import { firebaseAuth } from '@/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { HeadersSection } from '@/components/playgroundSections/HeadersSection/HeadersSection';
 
 export default function PlaygroundPage({ isLoggedIn }: { isLoggedIn: boolean }): JSX.Element {
   const isMobileView = useWidthState();
@@ -36,7 +37,7 @@ export default function PlaygroundPage({ isLoggedIn }: { isLoggedIn: boolean }):
                       {{
                         operation: <OperationSection />,
                         vars: <VarsSection />,
-                        headers: <TestSection> </TestSection>,
+                        headers: <HeadersSection />,
                       }}
                     </TabsBlock>
                   ),
@@ -58,7 +59,7 @@ export default function PlaygroundPage({ isLoggedIn }: { isLoggedIn: boolean }):
                     <TabsBlock>
                       {{
                         vars: <VarsSection />,
-                        headers: <TestSection> </TestSection>,
+                        headers: <HeadersSection />,
                       }}
                     </TabsBlock>
                   ),

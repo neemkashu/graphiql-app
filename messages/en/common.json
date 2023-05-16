@@ -81,6 +81,7 @@
     "variables": "Variables",
     "variablesPlaceholder": "variables ( JSON )",
     "headers": "Headers",
+    "headersPlaceholder": "headers ( JSON )",
     "run": "► Run"
   }
 }

@@ -6,4 +6,6 @@ export const responseSelector = (state: RootState): string => state.playgroundSl
 
 export const varsSelector = (state: RootState): string => state.playgroundSlice.vars;
 
+export const headersSelector = (state: RootState): string => state.playgroundSlice.headers;
+
 export const authStateSelector = (state: RootState): boolean => state.authSlice.authState;

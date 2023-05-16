@@ -4,4 +4,5 @@ export const initialState: PlaygroundState = {
   operation: '',
   response: '',
   vars: '',
+  headers: '',
 };
