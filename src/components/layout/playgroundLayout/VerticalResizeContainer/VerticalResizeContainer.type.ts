@@ -6,4 +6,5 @@ export type VerticalContainerProps = {
     bottomBlock: JSX.Element;
   };
   lsKey: string;
+  isMobile?: boolean;
 };

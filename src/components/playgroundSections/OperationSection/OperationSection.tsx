@@ -17,7 +17,6 @@ export const OperationSection = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const onChangeHandler = (value: string): void => {
     // eslint-disable-next-line no-console
-    console.log('value', value);
     dispatch(setOperation(value));
   };
 

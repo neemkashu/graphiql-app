@@ -5,12 +5,16 @@
 }
 
 .nav {
-  margin: 13px 0 25px;
+  margin: 10px 0;
   display: flex;
   gap: 5px;
 
   @include media ('max', 'xs') {
     gap: 0px;
+  }
+
+  @include media ('max', 'm') {
+    margin: 10px 0;
   }
 }
 
@@ -33,4 +37,6 @@
 .blockContainer {
   display: flex;
   flex-grow: 1;
+  overflow: auto;
+  margin-bottom: 5px;
 }

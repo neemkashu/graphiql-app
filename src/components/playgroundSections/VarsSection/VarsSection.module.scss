@@ -2,7 +2,6 @@
   @include playgroundSection;
 }
 
-.textarea {
-  @include textarea;
-  margin-bottom: 10px;
+.codemirror {
+  width: 100%;
 }

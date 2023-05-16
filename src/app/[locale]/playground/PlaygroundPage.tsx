@@ -29,7 +29,7 @@ export default function PlaygroundPage({ isLoggedIn }: { isLoggedIn: boolean }):
           {{
             documentation: <TestSection>Docs</TestSection>,
             resizeMobileBlock: (
-              <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE}>
+              <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE} isMobile={true}>
                 {{
                   topBlock: (
                     <TabsBlock>

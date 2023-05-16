@@ -2,15 +2,14 @@
 import { FieldSplit } from '@/common';
 import { useFieldSize } from '@/common/hook';
 import {
-  HIDE_BTN_ICON_VERTICAL,
-  HIDE_VERTICAL_PANE_SIZE,
-  MIN_VERTICAL_PANE_SIZE,
-  SHOW_BTN_ICON_VERTICAL,
-  VerticalContainerProps,
   DEFAULT_VERTICAL_CONTAINER_SIZE,
-  HIDE_PANE_VERTICAL_CONTAINER_SIZE,
+  MIN_VERTICAL_PANE_SIZE,
+  setBottomPane,
+  setButtonIcon,
+  VerticalContainerProps,
   VerticalContainerSize,
 } from '@/components';
+import { useTranslations } from 'next-intl';
 import React, { ReactNode } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
@@ -23,23 +22,17 @@ const sashRender = (_: number, active: boolean): ReactNode => (
 export const VerticalResizeContainer = ({
   children: { topBlock, bottomBlock },
   lsKey,
+  isMobile,
 }: VerticalContainerProps): JSX.Element => {
   const [sizes, setSizes] = useFieldSize<VerticalContainerSize>(
     DEFAULT_VERTICAL_CONTAINER_SIZE,
     lsKey
   );
+  const t = useTranslations('Playground');
   const [, bottomPane] = sizes;
 
   const toggleBottomPane = (): void => {
-    setSizes(
-      bottomPane >= MIN_VERTICAL_PANE_SIZE
-        ? HIDE_PANE_VERTICAL_CONTAINER_SIZE
-        : DEFAULT_VERTICAL_CONTAINER_SIZE
-    );
-  };
-
-  const bottomBlockClickHandler = (): void => {
-    if (bottomPane < MIN_VERTICAL_PANE_SIZE) setSizes(DEFAULT_VERTICAL_CONTAINER_SIZE);
+    setSizes(setBottomPane(bottomPane));
   };
 
   return (
@@ -49,15 +42,24 @@ export const VerticalResizeContainer = ({
       onChange={setSizes}
       sashRender={sashRender}
     >
-      <Pane minSize={MIN_VERTICAL_PANE_SIZE}>{topBlock}</Pane>
+      <Pane minSize={MIN_VERTICAL_PANE_SIZE} className={styles.blockWrapper}>
+        {topBlock}
+      </Pane>
 
-      <Pane minSize={MIN_VERTICAL_PANE_SIZE}>
-        <div className={styles.bottomBlockWrapper} onClick={bottomBlockClickHandler}>
-          <button onClick={toggleBottomPane} className={styles.hideButton}>
-            {bottomPane > HIDE_VERTICAL_PANE_SIZE ? HIDE_BTN_ICON_VERTICAL : SHOW_BTN_ICON_VERTICAL}
+      <Pane minSize={MIN_VERTICAL_PANE_SIZE} className={styles.blockWrapper}>
+        {isMobile ? (
+          <div className={styles.header} onClick={toggleBottomPane}>
+            <p className={styles.title}>{t('response')}</p>
+            <button onClick={toggleBottomPane} className={styles.hideButton}>
+              {setButtonIcon(bottomPane)}
+            </button>
+          </div>
+        ) : (
+          <button onClick={toggleBottomPane} className={styles.fixedHideButton}>
+            {setButtonIcon(bottomPane)}
           </button>
-          {bottomBlock}
-        </div>
+        )}
+        {bottomBlock}
       </Pane>
     </SplitPane>
   );

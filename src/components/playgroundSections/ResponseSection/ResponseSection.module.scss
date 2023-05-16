@@ -1,26 +1,9 @@
 .section {
   @include playgroundSection;
-  position: relative;
-  display: flex;
-  flex-grow: 1;
-
-  @include media ('min', 'm') {
-    overflow: auto;
-  }
 }
 
 .codemirror {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 1.4rem;
-  color: $clr-second;
-  overflow: auto;
   width: 100%;
-}
-
-.button {
-  @include buttonMainNormal;
-  margin-top: 9px;
-  margin-bottom: 9px;
 }
 
 .loaderWrapper {
