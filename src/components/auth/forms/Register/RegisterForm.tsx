@@ -1,27 +1,26 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import styles from './RegisterForm.module.scss';
-import { firebaseAuth } from '@/firebase';
-import { useRouter } from 'next/navigation';
 import { PageList, USER_TOKEN_KEY } from '@/common';
-import { useForm } from 'react-hook-form';
-import { LoginData, RegisterData } from '@/components/auth/forms/forms.type';
-import { AuthInputNames } from '@/components/auth/forms/forms.enum';
-import { DEFAULT_REGISTER_STATE } from '@/components/auth/forms/forms.const';
-import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
-import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
 import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
+import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
+import { DEFAULT_REGISTER_STATE } from '@/components/auth/forms/forms.const';
+import { AuthInputNames } from '@/components/auth/forms/forms.enum';
+import { LoginData, RegisterData } from '@/components/auth/forms/forms.type';
+import { firebaseAuth } from '@/firebase';
 import {
-  User,
   AuthError,
-  Unsubscribe,
-  onIdTokenChanged,
-  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  onIdTokenChanged,
+  Unsubscribe,
+  User,
 } from 'firebase/auth';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import nookies from 'nookies';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import styles from './RegisterForm.module.scss';
 
 export const RegisterForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);

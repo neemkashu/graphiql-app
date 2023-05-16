@@ -1,15 +1,15 @@
 'use client';
-import { operationSelector, setOperation } from '@/redux';
+import { operationSelector, setOperation, useAppDispatch } from '@/redux';
 import { useTranslations } from 'next-intl';
 import { ChangeEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styles from './OperationSection.module.scss';
 
 export const OperationSection = (): JSX.Element => {
   const t = useTranslations('Playground');
 
   const state = useSelector(operationSelector);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     dispatch(setOperation(e.target.value));
   };
