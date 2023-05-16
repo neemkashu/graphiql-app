@@ -11,6 +11,20 @@
     padding: $padding-small-k;
     padding-bottom: 0;
   }
+
+  & ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  & ::-webkit-scrollbar:horizontal {
+    height: 4px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: $clr-scroll;
+    border-radius: $border-radius-tiny;
+    cursor: pointer;
+  }
 }
 
 .paneCenter {
