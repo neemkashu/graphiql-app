@@ -3,11 +3,10 @@
 'use client';
 import { ALL_LANGUAGES, BASIC_LANGUAGE } from '@/common/const';
 import { PageList } from '@/common/enum';
-import { setResponse } from '@/redux';
+import { setResponse, useAppDispatch } from '@/redux';
 import { useLazyGetDataQuery } from '@/redux/rickAndMorty/rickAndMorty.api';
 import { usePathname } from 'next/navigation';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
 
 export const useFieldSize = <T>(
   defaultSize: T,
@@ -47,14 +46,14 @@ export const usePathWithLocale = (pagePath: PageList[]): string[] => {
 };
 
 export const useRequest = () => {
-  const dispatch = useDispatch();
-  const [fetchData, { currentData, error }] = useLazyGetDataQuery();
+  const dispatch = useAppDispatch();
+  const [fetchData, { currentData, error, isFetching }] = useLazyGetDataQuery();
 
   useEffect((): void => {
-    console.log(currentData, error);
+    if (isFetching) dispatch(setResponse('isFetching'));
     if (currentData || error) {
       dispatch(setResponse(JSON.stringify(currentData || error, null, 2)));
     }
-  }, [currentData, dispatch, error]);
+  }, [currentData, dispatch, error, isFetching]);
   return fetchData;
 };
