@@ -1,12 +1,43 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { LS_KEYS } from '@/common';
 import { configureStore } from '@reduxjs/toolkit';
-import authSlice from './slices/authSlice';
+import { combineReducers } from '@reduxjs/toolkit';
+import {
+  persistReducer,
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import authSlice from './auth/auth.slice';
+import playgroundSlice from './playground/playground.slice';
 
-export const store = configureStore({
-  reducer: {
-    authSlice,
-  },
-  devTools: process.env.NODE_ENV !== 'production',
+const persistConfig = {
+  key: LS_KEYS.REDUX,
+  storage,
+  blacklist: ['authSlice'],
+};
+
+const rootReducer = combineReducers({
+  authSlice,
+  playgroundSlice,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  devTools: process.env.NODE_ENV !== 'production',
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+
+export const persistor = persistStore(store);

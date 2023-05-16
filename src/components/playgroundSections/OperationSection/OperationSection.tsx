@@ -1,9 +1,18 @@
 'use client';
+import { operationSelector, setOperation, useAppDispatch } from '@/redux';
 import { useTranslations } from 'next-intl';
+import { ChangeEvent } from 'react';
+import { useSelector } from 'react-redux';
 import styles from './OperationSection.module.scss';
 
 export const OperationSection = (): JSX.Element => {
   const t = useTranslations('Playground');
+
+  const state = useSelector(operationSelector);
+  const dispatch = useAppDispatch();
+  const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>): void => {
+    dispatch(setOperation(e.target.value));
+  };
 
   return (
     <section className={styles.section}>
@@ -13,6 +22,10 @@ export const OperationSection = (): JSX.Element => {
         autoCorrect="off"
         spellCheck={false}
         placeholder={t('operationPlaceholder')}
+        value={state}
+        onChange={(e): void => {
+          onChangeHandler(e);
+        }}
       />
     </section>
   );

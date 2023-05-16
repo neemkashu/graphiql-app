@@ -1,9 +1,10 @@
 'use client';
-import styles from './ResponseSection.module.scss';
-import { useTranslations } from 'next-intl';
-import CodeMirror from '@uiw/react-codemirror';
 import { json } from '@codemirror/lang-json';
+import CodeMirror from '@uiw/react-codemirror';
+import { useTranslations } from 'next-intl';
 import { customTheme } from '../customTheme';
+import styles from './ResponseSection.module.scss';
+
 export const ResponseSection = ({
   isMobile,
   value,
