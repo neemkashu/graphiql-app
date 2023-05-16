@@ -13,10 +13,9 @@ export const OperationSection = (): JSX.Element => {
   const t = useTranslations('Playground');
 
   const state = useSelector(operationSelector);
-
   const dispatch = useAppDispatch();
-  const onChangeHandler = (value: string): void => {
-    dispatch(setOperation(value));
+  const onChangeHandler = (e: string): void => {
+    dispatch(setOperation(e));
   };
 
   return (
