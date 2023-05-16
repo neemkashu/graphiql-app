@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import styles from './MobilePlayground.module.scss';
+import { useRequest } from '@/common/hook';
+import { store } from '@/redux';
 
 export const MobilePlayground = ({
   children: { documentation, resizeMobileBlock },
@@ -14,9 +16,9 @@ export const MobilePlayground = ({
   const firstButtonOnClickHandler = (): void => {
     setPage(MobilePage.first);
   };
+  const run = useRequest();
   const secondButtonOnClickHandler = (): void => {
-    // eslint-disable-next-line no-console
-    isPageFirst() ? setPage(MobilePage.second) : console.log('run');
+    isPageFirst() ? setPage(MobilePage.second) : run(store.getState().playgroundSlice.operation);
   };
   const t = useTranslations('Playground');
 

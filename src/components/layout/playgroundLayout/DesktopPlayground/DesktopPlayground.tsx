@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 'use client';
 import { FieldSplit, LS_KEYS } from '@/common';
-import { useFieldSize } from '@/common/hook';
+import { useFieldSize, useRequest } from '@/common/hook';
 import {
   DEFAULT_PLAYGROUND_SIZE,
   DesktopPlaygroundProps,
@@ -11,12 +12,13 @@ import {
   PlaygroundSize,
   SHOW_BTN_ICON,
 } from '@/components';
+import { store } from '@/redux';
 import classNames from 'classnames';
+import { useTranslations } from 'next-intl';
 import React, { ReactNode } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './DesktopPlayground.module.scss';
-import { useTranslations } from 'next-intl';
 
 const sashRender = (_: number, active: boolean): ReactNode => (
   <SashContent active={active} type="vscode" />
@@ -35,6 +37,12 @@ export const DesktopPlayground = ({
     setSizes(leftPaneSize > HIDE_PANE_SIZE ? HIDE_PANE_PLAYGROUND_SIZE : DEFAULT_PLAYGROUND_SIZE);
   };
   const t = useTranslations('Playground');
+
+  const run = useRequest();
+  const onClickHandler = (): void => {
+    console.log('click');
+    run(store.getState().playgroundSlice.operation);
+  };
 
   return (
     <SplitPane
@@ -58,7 +66,9 @@ export const DesktopPlayground = ({
         <div className={classNames(styles.pane, styles.paneCenter)}>
           <div className={styles.centerHeader}>
             <h4 className={styles.sectionTitle}>{t('operation')}</h4>
-            <button className={styles.runButton}>{t('run')}</button>
+            <button className={styles.runButton} onClick={onClickHandler}>
+              {t('run')}
+            </button>
           </div>
           {operation}
         </div>

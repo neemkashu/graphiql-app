@@ -40,6 +40,11 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  flex-shrink: 0;
+
+  @include media('max', 'xl') {
+    margin-bottom: 10px;
+  }
 }
 
 .hideButton {
