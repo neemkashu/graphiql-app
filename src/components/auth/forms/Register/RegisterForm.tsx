@@ -1,23 +1,29 @@
 'use client';
 
-import { useEffect } from 'react';
-import styles from './RegisterForm.module.scss';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { firebaseAuth } from '@/firebase';
-import { useRouter } from 'next/navigation';
-import { PageList } from '@/common';
-import { useForm } from 'react-hook-form';
-import { RegisterData } from '@/components/auth/forms/forms.type';
-import { AuthInputNames } from '@/components/auth/forms/forms.enum';
-import { DEFAULT_REGISTER_STATE } from '@/components/auth/forms/forms.const';
-import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
-import { useTranslations } from 'next-intl';
+import { PageList, USER_TOKEN_KEY } from '@/common';
 import { usePathWithLocale } from '@/common/hook';
+import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
+import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
+import { DEFAULT_REGISTER_STATE } from '@/components/auth/forms/forms.const';
+import { AuthInputNames } from '@/components/auth/forms/forms.enum';
+import { LoginData, RegisterData } from '@/components/auth/forms/forms.type';
+import { firebaseAuth } from '@/firebase';
+import {
+  AuthError,
+  createUserWithEmailAndPassword,
+  onIdTokenChanged,
+  Unsubscribe,
+  User,
+} from 'firebase/auth';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import nookies from 'nookies';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import styles from './RegisterForm.module.scss';
 
 export const RegisterForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);
-  const [createUserWithEmailAndPassword, user, loading, firebaseError] =
-    useCreateUserWithEmailAndPassword(firebaseAuth);
   const router = useRouter();
   const {
     register,
@@ -31,18 +37,36 @@ export const RegisterForm = (): JSX.Element => {
   });
   const t = useTranslations('Form');
 
-  useEffect((): void => {
-    if (loading) return;
-    if (user) router.push(playgroundPage);
-  }, [user, loading, router, playgroundPage]);
+  const [, setUser] = useState<User | null>(null);
+  const [firebaseError, setFirebaseError] = useState<AuthError | null>(null);
 
-  const handleRegister = async ({ email, password }: RegisterData): Promise<void> => {
-    await createUserWithEmailAndPassword(email, password);
+  useEffect((): Unsubscribe => {
+    const unsubscribe = onIdTokenChanged(firebaseAuth, async (user): Promise<void> => {
+      if (user) {
+        setUser(user);
+        const token = await user.getIdToken();
+        nookies.set(undefined, USER_TOKEN_KEY, token, { path: '/' });
+      } else {
+        setUser(null);
+        nookies.set(undefined, USER_TOKEN_KEY, '', { path: '/' });
+      }
+    });
+    return unsubscribe;
+  }, []);
+
+  const handleRegister = async ({ email, password }: LoginData): Promise<void> => {
+    try {
+      setFirebaseError(null);
+      await createUserWithEmailAndPassword(firebaseAuth, email, password);
+      router.push(playgroundPage);
+    } catch (error) {
+      setFirebaseError(error as AuthError);
+    }
   };
 
   return (
     <>
-      {firebaseError && <p>{firebaseError?.message}</p>}
+      {firebaseError && <FirebaseErrorMessage error={firebaseError} />}
       <form className={styles.form} onSubmit={handleSubmit(handleRegister)}>
         <div>
           <div className={styles.labelContainer}>
