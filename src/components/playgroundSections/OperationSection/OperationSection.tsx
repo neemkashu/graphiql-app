@@ -26,7 +26,6 @@ export const OperationSection = (): JSX.Element => {
         theme={customTheme({
           settings: { gutterBackground: '#21222d' },
         })}
-        className={styles.codemirror}
         placeholder={t('operationPlaceholder')}
         // extensions={graphql(schema)}
         extensions={[json()]}

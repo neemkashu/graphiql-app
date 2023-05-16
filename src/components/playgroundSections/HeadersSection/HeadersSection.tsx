@@ -23,7 +23,6 @@ export const HeadersSection = (): JSX.Element => {
         theme={customTheme({
           settings: { gutterBackground: '#21222d' },
         })}
-        className={styles.codemirror}
         placeholder={t('headersPlaceholder')}
         onChange={(value): void => {
           onChangeHandler(value);

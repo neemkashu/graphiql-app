@@ -23,7 +23,6 @@ export const VarsSection = (): JSX.Element => {
         theme={customTheme({
           settings: { gutterBackground: '#21222d' },
         })}
-        className={styles.codemirror}
         placeholder={t('variablesPlaceholder')}
         onChange={(value): void => {
           onChangeHandler(value);
