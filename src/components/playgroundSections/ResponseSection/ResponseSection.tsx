@@ -22,7 +22,7 @@ export const ResponseSection = ({ isMobile }: { isMobile?: boolean }): JSX.Eleme
       ) : (
         <CodeMirror
           value={state}
-          theme={customTheme}
+          theme={customTheme()}
           className={styles.codemirror}
           readOnly
           extensions={[json()]}

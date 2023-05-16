@@ -10,11 +10,9 @@ export const playgroundSlice = createSlice({
       state.operation = action.payload;
     },
     setResponse(state, action: PayloadAction<string>): void {
-      console.log('set resp', action.payload);
       state.response = action.payload;
     },
     setVars(state, action: PayloadAction<string>): void {
-      console.log('AAAA');
       state.vars = action.payload;
     },
   },
