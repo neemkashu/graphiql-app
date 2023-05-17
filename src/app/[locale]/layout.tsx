@@ -6,6 +6,7 @@ import '@/styles/codemirror.scss';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import styles from './layout.module.scss';
+import { ServerNav } from '@/components/layout/Header/Nav/ServerNav';
 
 export const metadata = {
   title: 'Graph QL App',
@@ -31,7 +32,10 @@ export default async function LocaleLayout({
       <body className={styles.body} suppressHydrationWarning={true}>
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <Header />
+            <Header>
+              {/* @ts-expect-error Server Component */}
+              <ServerNav />
+            </Header>
             <main className={styles.main}>{children}</main>
             <Footer />
           </NextIntlClientProvider>

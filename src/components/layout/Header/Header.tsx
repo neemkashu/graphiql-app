@@ -7,9 +7,8 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import styles from './Header.module.scss';
 import { HeaderLogo } from './HeaderLogo/HeaderLogo';
-import { Nav } from './Nav/Nav';
 
-export const Header = (): JSX.Element => {
+export const Header = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const isScroll = useScrollState();
   const [welcomePage] = usePathWithLocale([PageList.welcome]);
 
@@ -18,7 +17,7 @@ export const Header = (): JSX.Element => {
       <Link href={welcomePage} className={styles.logo}>
         <HeaderLogo />
       </Link>
-      <Nav />
+      {children}
       <FakeTranslator />
     </header>
   );
