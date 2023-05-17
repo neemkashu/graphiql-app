@@ -12,41 +12,39 @@ export const MobilePlayground = ({
   children: { documentation, resizeMobileBlock },
 }: MobilePlaygroundProps): JSX.Element => {
   const [page, setPage] = useState(MobilePage.second);
-  const isPageFirst = (): boolean => page === MobilePage.first;
+  const isPageFirst = page === MobilePage.first;
   const firstButtonOnClickHandler = (): void => {
     setPage(MobilePage.first);
   };
   const run = useRequest();
   const secondButtonOnClickHandler = (): void => {
-    isPageFirst() ? setPage(MobilePage.second) : run(makeRequest());
+    isPageFirst ? setPage(MobilePage.second) : run(makeRequest());
   };
   const t = useTranslations('Playground');
 
   return (
     <section className={styles.container}>
       <div className={styles.pageContainer}>
-        <div className={classNames(styles.page, styles.firstPage, isPageFirst() && styles.active)}>
+        <div className={classNames(styles.page, styles.firstPage, isPageFirst && styles.active)}>
           <h4 className={styles.title}>{t('documentation')}</h4>
           {documentation}
         </div>
-        <div
-          className={classNames(styles.page, styles.secondPage, !isPageFirst() && styles.active)}
-        >
+        <div className={classNames(styles.page, styles.secondPage, !isPageFirst && styles.active)}>
           {resizeMobileBlock}
         </div>
       </div>
       <nav className={styles.nav}>
         <button
-          className={classNames(styles.navButton, isPageFirst() && styles.active)}
+          className={classNames(styles.navButton, isPageFirst && styles.active)}
           onClick={firstButtonOnClickHandler}
         >
           {t('documentation')}
         </button>
         <button
-          className={classNames(styles.navButton, !isPageFirst() && styles.run)}
+          className={classNames(styles.navButton, !isPageFirst && styles.run)}
           onClick={secondButtonOnClickHandler}
         >
-          {isPageFirst() ? t('operation') : t('run')}
+          {isPageFirst ? t('operation') : t('run')}
         </button>
       </nav>
     </section>
