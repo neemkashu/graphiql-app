@@ -15,7 +15,7 @@ import { usePathWithLocale } from '@/common/hook';
 import { firebaseAuth } from '@/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-export default function PlaygroundPage({ isLoggedIn }: { isLoggedIn: boolean }): JSX.Element {
+export default function PlaygroundPage(): JSX.Element {
   const isMobileView = useWidthState();
   const [welcomePage] = usePathWithLocale([PageList.welcome]);
   const [user, loading] = useAuthState(firebaseAuth);
@@ -36,7 +36,7 @@ export default function PlaygroundPage({ isLoggedIn }: { isLoggedIn: boolean }):
     },
   };
 
-  if (!loading && (!isLoggedIn || !user)) redirect(welcomePage);
+  if (!loading && !user) redirect(welcomePage);
 
   return (
     <div className={styles.playground}>

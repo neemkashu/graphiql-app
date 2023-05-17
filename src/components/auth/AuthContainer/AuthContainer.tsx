@@ -7,23 +7,14 @@ import { LoginForm } from '@/components/auth/forms/Login/LoginForm';
 import { RegisterForm } from '@/components/auth/forms/Register/RegisterForm';
 import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
-import { redirect } from 'next/navigation';
 
-export const AuthContainer = ({
-  hasAccount,
-  isLoggedIn,
-}: {
-  hasAccount: boolean;
-  isLoggedIn: boolean;
-}): JSX.Element => {
+export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Element => {
   const t = useTranslations('Form');
-  const [signUpPage, signInPage, playgroundPage] = usePathWithLocale([
+  const [signUpPage, signInPage] = usePathWithLocale([
     PageList.signUp,
     PageList.signIn,
     PageList.playground,
   ]);
-
-  if (isLoggedIn) redirect(playgroundPage);
 
   return hasAccount ? (
     <div className={styles.container}>
