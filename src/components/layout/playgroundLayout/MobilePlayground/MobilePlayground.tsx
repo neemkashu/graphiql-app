@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import styles from './MobilePlayground.module.scss';
 import { useRequest } from '@/common/hook';
 import { store } from '@/redux';
+import { makeRequest } from '@/common/helper';
 
 export const MobilePlayground = ({
   children: { documentation, resizeMobileBlock },
@@ -18,7 +19,7 @@ export const MobilePlayground = ({
   };
   const run = useRequest();
   const secondButtonOnClickHandler = (): void => {
-    isPageFirst() ? setPage(MobilePage.second) : run(store.getState().playgroundSlice.operation);
+    isPageFirst() ? setPage(MobilePage.second) : run(makeRequest());
   };
   const t = useTranslations('Playground');
 

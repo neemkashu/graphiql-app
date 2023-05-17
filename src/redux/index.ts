@@ -4,3 +4,4 @@ export * from './playground';
 export * from './store';
 export * from './selectors';
 export * from './types';
+export * from './rickAndMorty';
