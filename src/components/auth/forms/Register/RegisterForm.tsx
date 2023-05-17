@@ -29,7 +29,7 @@ export const RegisterForm = (): JSX.Element => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<RegisterData>({
     mode: 'onSubmit',
     reValidateMode: 'onBlur',
@@ -66,7 +66,7 @@ export const RegisterForm = (): JSX.Element => {
 
   return (
     <>
-      {firebaseError && <FirebaseErrorMessage error={firebaseError} />}
+      {isValid && firebaseError && <FirebaseErrorMessage error={firebaseError} />}
       <form className={styles.form} onSubmit={handleSubmit(handleRegister)}>
         <div>
           <div className={styles.labelContainer}>

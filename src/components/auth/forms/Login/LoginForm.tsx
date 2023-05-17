@@ -22,7 +22,7 @@ export const LoginForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<LoginData>({ mode: 'onSubmit', reValidateMode: 'onBlur' });
   const t = useTranslations('Form');
 
@@ -55,7 +55,7 @@ export const LoginForm = (): JSX.Element => {
 
   return (
     <>
-      {firebaseError && <FirebaseErrorMessage error={firebaseError} />}
+      {isValid && firebaseError && <FirebaseErrorMessage error={firebaseError} />}
       <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
         <div>
           <div className={styles.labelContainer}>
