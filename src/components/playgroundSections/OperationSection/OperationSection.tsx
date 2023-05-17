@@ -14,8 +14,8 @@ export const OperationSection = (): JSX.Element => {
 
   const state = useSelector(operationSelector);
   const dispatch = useAppDispatch();
-  const onChangeHandler = (e: string): void => {
-    dispatch(setOperation(e));
+  const onChangeHandler = (value: string): void => {
+    dispatch(setOperation(value));
   };
 
   return (

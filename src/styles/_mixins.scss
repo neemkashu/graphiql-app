@@ -28,13 +28,12 @@
 }
 
 @mixin form-input {
-  padding: 0 $padding-small-k;
+  padding: 0 $padding-small;
   height: $height-input;
   width: 100%;
   border-radius: $border-radius-tiny;
   border-width: 0;
-  // font-size: $font-size-base;
-  font-size: 16px;
+  font-size: $font-size-inputs;
   line-height: 140%;
   color: $clr-content;
   outline: none;
@@ -68,14 +67,14 @@
 @mixin form-label {
   display: flex;
   flex-wrap: nowrap;
-  gap: $gap-medium-k;
+  gap: $gap-medium;
   min-height: calc(2.5 * $font-size-min);
 }
 
 @mixin form {
   display: flex;
   flex-direction: column;
-  gap:  $gap-medium-k;
+  gap:  $gap-medium;
 }
 
 @mixin playgroundSection {
@@ -85,5 +84,5 @@
   align-items: flex-start;
   flex-grow: 1;
   position: relative;
-  font-size: 16px;
+  font-size: $font-size-inputs;
 }
