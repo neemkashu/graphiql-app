@@ -18,7 +18,6 @@ import {
   AuthError,
   Unsubscribe,
   onIdTokenChanged,
-  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
 import nookies from 'nookies';
