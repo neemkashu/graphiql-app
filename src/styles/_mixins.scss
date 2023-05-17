@@ -33,7 +33,8 @@
   width: 100%;
   border-radius: $border-radius-tiny;
   border-width: 0;
-  font-size: $font-size-base;
+  // font-size: $font-size-base;
+  font-size: 16px;
   line-height: 140%;
   color: $clr-content;
   outline: none;
@@ -84,4 +85,5 @@
   align-items: flex-start;
   flex-grow: 1;
   position: relative;
+  font-size: 16px;
 }
