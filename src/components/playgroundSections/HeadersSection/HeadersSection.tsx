@@ -19,6 +19,7 @@ export const HeadersSection = (): JSX.Element => {
   return (
     <section className={styles.section}>
       <CodeMirror
+        spellCheck={true}
         value={state}
         theme={customTheme({
           settings: { gutterBackground: '#21222d' },

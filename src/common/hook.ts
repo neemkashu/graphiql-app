@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 'use client';
 import { ALL_LANGUAGES, BASIC_LANGUAGE } from '@/common/const';
@@ -49,9 +50,12 @@ export const useRequest = () => {
   const [fetchData, { currentData, error, isFetching }] = useLazyGetDataQuery();
 
   useEffect((): void => {
-    if (isFetching) dispatch(setResponse('isFetching'));
-    if (currentData || error) {
-      dispatch(setResponse(JSON.stringify(currentData || error, null, 2)));
+    if (isFetching) {
+      dispatch(setResponse('isFetching'));
+    } else {
+      if (currentData || error) {
+        dispatch(setResponse(JSON.stringify(currentData || error, null, 2)));
+      }
     }
   }, [currentData, dispatch, error, isFetching]);
   return fetchData;

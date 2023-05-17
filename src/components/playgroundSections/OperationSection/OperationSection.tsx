@@ -21,6 +21,7 @@ export const OperationSection = (): JSX.Element => {
   return (
     <section className={styles.section}>
       <CodeMirror
+        spellCheck={true}
         autoFocus
         value={state}
         theme={customTheme({
