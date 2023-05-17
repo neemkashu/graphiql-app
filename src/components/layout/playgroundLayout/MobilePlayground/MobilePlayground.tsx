@@ -1,13 +1,12 @@
 'use client';
+import { makeRequest } from '@/common/helper';
+import { useRequest } from '@/common/hook';
 import { MobilePlaygroundProps } from '@/components';
 import { MobilePage } from '@/components/layout/playgroundLayout/MobilePlayground/MobilePlayground.enum';
 import classNames from 'classnames';
-import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 import styles from './MobilePlayground.module.scss';
-import { useRequest } from '@/common/hook';
-import { store } from '@/redux';
-import { makeRequest } from '@/common/helper';
 
 export const MobilePlayground = ({
   children: { documentation, resizeMobileBlock },

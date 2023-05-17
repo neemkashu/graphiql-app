@@ -5,4 +5,6 @@ export const initialState: PlaygroundState = {
   response: '',
   vars: '',
   headers: '',
+  isFetch: false,
+  error: '',
 };

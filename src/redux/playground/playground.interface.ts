@@ -3,4 +3,6 @@ export interface PlaygroundState {
   vars: string;
   response: string;
   headers: string;
+  isFetch: boolean;
+  error: string;
 }

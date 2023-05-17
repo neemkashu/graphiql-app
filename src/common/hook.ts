@@ -3,7 +3,7 @@
 'use client';
 import { ALL_LANGUAGES, BASIC_LANGUAGE } from '@/common/const';
 import { PageList } from '@/common/enum';
-import { setResponse, useAppDispatch } from '@/redux';
+import { setIsFetch, setResponse, useAppDispatch } from '@/redux';
 import { useLazyGetDataQuery } from '@/redux/rickAndMorty/rickAndMorty.api';
 import { usePathname } from 'next/navigation';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
@@ -50,13 +50,8 @@ export const useRequest = () => {
   const [fetchData, { currentData, error, isFetching }] = useLazyGetDataQuery();
 
   useEffect((): void => {
-    if (isFetching) {
-      dispatch(setResponse('isFetching'));
-    } else {
-      if (currentData || error) {
-        dispatch(setResponse(JSON.stringify(currentData || error, null, 2)));
-      }
-    }
+    dispatch(setIsFetch(isFetching));
+    dispatch(setResponse(JSON.stringify(currentData || error, null, 2)));
   }, [currentData, dispatch, error, isFetching]);
   return fetchData;
 };
