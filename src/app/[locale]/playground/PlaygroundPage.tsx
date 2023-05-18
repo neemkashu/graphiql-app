@@ -11,7 +11,7 @@ import { ResponseSection } from '@/components/playgroundSections/ResponseSection
 import { VarsSection } from '@/components/playgroundSections/VarsSection/VarsSection';
 import { TabsBlock } from '@/components/layout/playgroundLayout/TabsBlock/TabsBlock';
 import { redirect } from 'next/navigation';
-import { usePathWithLocale } from '@/common/hook';
+import { usePathWithLocale, useSetStore } from '@/common/hook';
 import { firebaseAuth } from '@/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { HeadersSection } from '@/components/playgroundSections/HeadersSection/HeadersSection';
@@ -20,6 +20,7 @@ export default function PlaygroundPage({ isLoggedIn }: { isLoggedIn: boolean }):
   const isMobileView = useWidthState();
   const [welcomePage] = usePathWithLocale([PageList.welcome]);
   const [user, loading] = useAuthState(firebaseAuth);
+  useSetStore();
 
   if (!loading && (!isLoggedIn || !user)) redirect(welcomePage);
 
