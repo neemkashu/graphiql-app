@@ -1,20 +1,19 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './LoginForm.module.scss';
 import { firebaseAuth } from '@/firebase';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import { PageList, USER_TOKEN_KEY } from '@/common';
+import { PageList } from '@/common';
 import { AuthInputNames } from '@/components/auth/forms/forms.enum';
 import { LoginData } from '@/components/auth/forms/forms.type';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
 import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
 import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
-import { Unsubscribe, onIdTokenChanged, signInWithEmailAndPassword } from '@firebase/auth';
-import { AuthError, User } from 'firebase/auth';
-import nookies from 'nookies';
+import { signInWithEmailAndPassword } from '@firebase/auth';
+import { AuthError } from 'firebase/auth';
 
 export const LoginForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);
@@ -22,26 +21,11 @@ export const LoginForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<LoginData>({ mode: 'onSubmit', reValidateMode: 'onBlur' });
   const t = useTranslations('Form');
 
-  const [, setUser] = useState<User | null>(null);
   const [firebaseError, setFirebaseError] = useState<AuthError | null>(null);
-
-  useEffect((): Unsubscribe => {
-    const unsubscribe = onIdTokenChanged(firebaseAuth, async (user): Promise<void> => {
-      if (user) {
-        setUser(user);
-        const token = await user.getIdToken();
-        nookies.set(undefined, USER_TOKEN_KEY, token, { path: '/' });
-      } else {
-        setUser(null);
-        nookies.set(undefined, USER_TOKEN_KEY, '', { path: '/' });
-      }
-    });
-    return unsubscribe;
-  }, []);
 
   const handleLogin = async ({ email, password }: LoginData): Promise<void> => {
     try {
@@ -55,7 +39,7 @@ export const LoginForm = (): JSX.Element => {
 
   return (
     <>
-      {firebaseError && <FirebaseErrorMessage error={firebaseError} />}
+      {isValid && firebaseError && <FirebaseErrorMessage error={firebaseError} />}
       <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
         <div>
           <div className={styles.labelContainer}>

@@ -16,4 +16,5 @@ export const AuthErrorMessages: Record<AuthError['code'], string> = {
   [AuthErrorCodes.EMAIL_EXISTS]: 'Email is already in use',
   [AuthErrorCodes.USER_DELETED]: 'User not found',
   [AuthErrorCodes.INVALID_PASSWORD]: 'Wrong password',
+  [AuthErrorCodes.TOO_MANY_ATTEMPTS_TRY_LATER]: 'Too many requests, try later',
 };
