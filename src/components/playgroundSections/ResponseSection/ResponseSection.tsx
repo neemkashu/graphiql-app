@@ -10,6 +10,7 @@ import styles from './ResponseSection.module.scss';
 export const ResponseSection = ({ isMobile }: { isMobile?: boolean }): JSX.Element => {
   const state = useSelector(responseSelector);
   const isFetching = useSelector(isFetchSelector);
+  console.log(state);
 
   return (
     <section className={styles.section}>

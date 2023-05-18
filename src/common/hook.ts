@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 'use client';
 import { ALL_LANGUAGES, BASIC_LANGUAGE } from '@/common/const';
@@ -51,7 +50,10 @@ export const useRequest = () => {
 
   useEffect((): void => {
     dispatch(setIsFetch(isFetching));
-    dispatch(setResponse(JSON.stringify(currentData || error, null, 2)));
-  }, [currentData, dispatch, error, isFetching]);
+  }, [dispatch, isFetching]);
+
+  useEffect((): void => {
+    if (currentData || error) dispatch(setResponse(JSON.stringify(currentData || error, null, 2)));
+  }, [currentData, dispatch, error]);
   return fetchData;
 };
