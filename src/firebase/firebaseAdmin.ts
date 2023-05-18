@@ -44,7 +44,7 @@ export const getIsLogged = async (cookieStore: ReadonlyRequestCookies): Promise<
     isLoggedIn = await checkAuthenticated(cookieStore);
   } catch (error) {
     // eslint-disable-next-line no-console
-    if (error instanceof Error) console.log('Catch in sign up: ', error?.message);
+    if (error instanceof Error) console.log('Catch in getIsLogged: ', error?.message);
     isLoggedIn = false;
   }
   return isLoggedIn;

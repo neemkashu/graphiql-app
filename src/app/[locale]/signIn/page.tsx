@@ -3,6 +3,7 @@ import styles from './page.module.scss';
 import { cookies } from 'next/headers';
 import { getIsLogged, getLocale } from '@/firebase/firebaseAdmin';
 import { redirect } from 'next/navigation';
+import { PageList } from '@/common';
 
 export default async function SignIn(): Promise<JSX.Element> {
   let isLoggedIn = false;
@@ -11,7 +12,7 @@ export default async function SignIn(): Promise<JSX.Element> {
     isLoggedIn = await getIsLogged(cookies());
     locale = getLocale(cookies());
   } catch (error) {}
-  if (isLoggedIn) redirect(`/${locale}/playground`);
+  if (isLoggedIn) redirect(`/${locale}${PageList.playground}`);
 
   return (
     <div className={styles.page}>

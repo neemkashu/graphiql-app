@@ -13,3 +13,5 @@ export const LS_KEYS = {
   DESKTOP_VERTICAL_BLOCK_SIZE: 'desktopVerticalBlockSize',
   MOBILE_VERTICAL_BLOCK_SIZE: 'mobileVerticalBlockSize',
 };
+
+export const DEFAULT_MAX_HEADER_RERENDERS = 2;

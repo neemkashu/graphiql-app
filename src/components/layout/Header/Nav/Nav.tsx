@@ -7,6 +7,7 @@ import { PlaygroundNavButtons } from './PlaygroundNavButtons/PlaygroundNavButton
 import { firebaseAuth } from '@/firebase';
 import { Spinner } from '@/components/loading';
 import { useRef, useEffect } from 'react';
+import { DEFAULT_MAX_HEADER_RERENDERS } from '@/common';
 
 export const Nav = ({ isLoggedIn }: { isLoggedIn: boolean }): JSX.Element => {
   const [user, loading] = useAuthState(firebaseAuth);
@@ -14,8 +15,8 @@ export const Nav = ({ isLoggedIn }: { isLoggedIn: boolean }): JSX.Element => {
 
   useEffect((): void => {
     renderCountRef.current += 1;
-    // console.log('Component rendered:', renderCountRef.current);
   });
+  console.log('NEXT ENV:', process.env.NEXT_PUBLIC_RERENDERS_AMOUNT);
 
   if (typeof window === 'undefined') {
     return (
@@ -25,7 +26,10 @@ export const Nav = ({ isLoggedIn }: { isLoggedIn: boolean }): JSX.Element => {
     );
   }
 
-  if (renderCountRef.current < 2) {
+  if (
+    renderCountRef.current <
+    Number(process.env.NEXT_PUBLIC_RERENDERS_AMOUNT ?? DEFAULT_MAX_HEADER_RERENDERS)
+  ) {
     return (
       <nav className={styles.nav}>
         {isLoggedIn ? <PlaygroundNavButtons /> : <LoginNavButtons />}
