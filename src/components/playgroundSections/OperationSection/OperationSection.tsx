@@ -14,24 +14,24 @@ export const OperationSection = (): JSX.Element => {
 
   const state = useSelector(operationSelector);
   const dispatch = useAppDispatch();
-  const onChangeHandler = (e: string): void => {
-    dispatch(setOperation(e));
+  const onChangeHandler = (value: string): void => {
+    dispatch(setOperation(value));
   };
 
   return (
     <section className={styles.section}>
       <CodeMirror
+        spellCheck={true}
         autoFocus
         value={state}
         theme={customTheme({
           settings: { gutterBackground: '#21222d' },
         })}
-        className={styles.codemirror}
         placeholder={t('operationPlaceholder')}
         // extensions={graphql(schema)}
         extensions={[json()]}
-        onChange={(e): void => {
-          onChangeHandler(e);
+        onChange={(value): void => {
+          onChangeHandler(value);
         }}
       />
     </section>

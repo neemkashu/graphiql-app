@@ -15,7 +15,7 @@
 
   .subtitle {
     height: 30px;
-    font-size: 14px;
+    font-size: $font-size-base;
     text-align: center;
   }
 
@@ -54,11 +54,11 @@
     }
 
     .title {
-      font-size: $font-size-1-y;
+      font-size: $font-size-1;
     }
 
     .subtitle {
-      font-size: $font-size-3-y;
+      font-size: $font-size-3;
     }
   }
 }

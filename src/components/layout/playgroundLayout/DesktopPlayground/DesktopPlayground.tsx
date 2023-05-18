@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
 'use client';
 import { FieldSplit, LS_KEYS } from '@/common';
+import { makeRequest } from '@/common/helper';
 import { useFieldSize, useRequest } from '@/common/hook';
 import {
   DEFAULT_PLAYGROUND_SIZE,
@@ -12,7 +12,6 @@ import {
   PlaygroundSize,
   SHOW_BTN_ICON,
 } from '@/components';
-import { store } from '@/redux';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 import React, { ReactNode } from 'react';
@@ -40,8 +39,7 @@ export const DesktopPlayground = ({
 
   const run = useRequest();
   const onClickHandler = (): void => {
-    console.log('click');
-    run(store.getState().playgroundSlice.operation);
+    run(makeRequest());
   };
 
   return (

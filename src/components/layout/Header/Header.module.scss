@@ -2,10 +2,10 @@
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 0 $padding-body-a;
-  margin-left: -$padding-body-a;
+  padding: 0 $padding-body;
+  margin-left: -$padding-body;
   height: $header-height;
-  gap: $gap-medium-a;
+  gap: $gap-small;
   display: flex;
   align-items: center;
   z-index: 100;

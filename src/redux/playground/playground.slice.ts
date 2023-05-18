@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { initialState } from '@/redux/playground/playground.const';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
@@ -10,16 +9,24 @@ export const playgroundSlice = createSlice({
       state.operation = action.payload;
     },
     setResponse(state, action: PayloadAction<string>): void {
-      console.log('set resp', action.payload);
       state.response = action.payload;
     },
     setVars(state, action: PayloadAction<string>): void {
-      console.log('AAAA');
       state.vars = action.payload;
+    },
+    setHeaders(state, action: PayloadAction<string>): void {
+      state.headers = action.payload;
+    },
+    setIsFetch(state, action: PayloadAction<boolean>): void {
+      state.isFetch = action.payload;
+    },
+    setError(state, action: PayloadAction<string>): void {
+      state.error = action.payload;
     },
   },
 });
 
-export const { setOperation, setVars, setResponse } = playgroundSlice.actions;
+export const { setOperation, setVars, setResponse, setHeaders, setError, setIsFetch } =
+  playgroundSlice.actions;
 
 export default playgroundSlice.reducer;
