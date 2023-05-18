@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 'use client';
-import { ALL_LANGUAGES, BASIC_LANGUAGE } from '@/common/const';
+import { ALL_LANGUAGES, BASIC_LANGUAGE, LS_KEYS } from '@/common/const';
 import { PageList } from '@/common/enum';
-import { setIsFetch, setResponse, useAppDispatch } from '@/redux';
+import { setIsFetch, setResponse, setSlice, store, useAppDispatch } from '@/redux';
 import { useLazyGetDataQuery } from '@/redux/rickAndMorty/rickAndMorty.api';
 import { usePathname } from 'next/navigation';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
@@ -35,6 +35,28 @@ export const useFieldSize = <T>(
   }, [lsKey]);
 
   return [sizes, setSizes];
+};
+
+export const useSetStore = () => {
+  const dispatch = useAppDispatch();
+  useEffect((): (() => void) => {
+    const setStore = () => {
+      const { init } = store.getState().playgroundSlice;
+      if (!init) return;
+      const lsStore = localStorage.getItem(LS_KEYS.REDUX);
+      if (lsStore) dispatch(setSlice(JSON.parse(lsStore)));
+    };
+
+    const saveStore = () => {
+      localStorage.setItem(LS_KEYS.REDUX, JSON.stringify(store.getState().playgroundSlice));
+    };
+
+    setStore();
+    window.addEventListener('beforeunload', saveStore);
+    return (): void => {
+      window.removeEventListener('beforeunload', saveStore);
+    };
+  }, [dispatch]);
 };
 
 export const usePathWithLocale = (pagePath: PageList[]): string[] => {

@@ -1,4 +1,5 @@
 export interface PlaygroundState {
+  init: boolean;
   operation: string;
   vars: string;
   response: string;
