@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 'use client';
 import { PageList } from '@/common';
 import Link from 'next/link';

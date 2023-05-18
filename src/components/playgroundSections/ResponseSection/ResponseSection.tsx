@@ -1,29 +1,25 @@
 'use client';
-import styles from './ResponseSection.module.scss';
-import { useTranslations } from 'next-intl';
-import CodeMirror from '@uiw/react-codemirror';
+import { Spinner } from '@/components/loading';
+import { isFetchSelector, responseSelector } from '@/redux';
 import { json } from '@codemirror/lang-json';
+import CodeMirror from '@uiw/react-codemirror';
+import { useSelector } from 'react-redux';
 import { customTheme } from '../customTheme';
-export const ResponseSection = ({
-  isMobile,
-  value,
-}: {
-  isMobile?: boolean;
-  value: string;
-}): JSX.Element => {
-  const t = useTranslations('Playground');
+import styles from './ResponseSection.module.scss';
+
+export const ResponseSection = ({ isMobile }: { isMobile?: boolean }): JSX.Element => {
+  const state = useSelector(responseSelector);
+  const isFetching = useSelector(isFetchSelector);
 
   return (
     <section className={styles.section}>
-      {isMobile && <button className={styles.button}>{t('response')}</button>}
-      <CodeMirror
-        value={value}
-        theme={customTheme}
-        className={styles.codemirror}
-        height="100%"
-        readOnly
-        extensions={[json()]}
-      />
+      {isFetching ? (
+        <div className={styles.loaderWrapper}>
+          <Spinner isSmall={isMobile} />
+        </div>
+      ) : (
+        <CodeMirror value={state} theme={customTheme()} readOnly extensions={[json()]} />
+      )}
     </section>
   );
 };

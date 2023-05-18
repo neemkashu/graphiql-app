@@ -24,11 +24,10 @@ export const Info = (): JSX.Element => {
         <Image
           src={'/img/welcome.webp'}
           alt="rick and morty"
-          quality={100}
+          quality={90}
           priority
           fill
           sizes="(max-width: 992px) 100vw, 50vw"
-          className={`${styles.img}`}
         />
       </div>
     </section>

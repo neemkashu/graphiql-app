@@ -81,6 +81,7 @@
     "variables": "Переменные",
     "variablesPlaceholder": "переменные ( JSON )",
     "headers": "Заголовки",
+    "headersPlaceholder": "заголовки ( JSON )",
     "run": "► Отправить"
   }
 }

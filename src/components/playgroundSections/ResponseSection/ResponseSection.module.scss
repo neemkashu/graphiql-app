@@ -2,16 +2,10 @@
   @include playgroundSection;
 }
 
-.codemirror {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 1.4rem;
+.loaderWrapper {
+  flex-grow: 1;
   width: 100%;
-  height: 100%;
-  color: $clr-second;
-}
-
-.button {
-  @include buttonMainNormal;
-  margin-top: 13px;
-  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

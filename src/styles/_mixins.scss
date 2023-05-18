@@ -28,12 +28,12 @@
 }
 
 @mixin form-input {
-  padding: 0 $padding-small-k;
+  padding: 0 $padding-small;
   height: $height-input;
   width: 100%;
   border-radius: $border-radius-tiny;
   border-width: 0;
-  font-size: $font-size-base;
+  font-size: $font-size-inputs;
   line-height: 140%;
   color: $clr-content;
   outline: none;
@@ -67,32 +67,22 @@
 @mixin form-label {
   display: flex;
   flex-wrap: nowrap;
-  gap: $gap-medium-k;
+  gap: $gap-medium;
   min-height: calc(2.5 * $font-size-min);
 }
 
 @mixin form {
   display: flex;
   flex-direction: column;
-  gap:  $gap-medium-k;
+  gap:  $gap-medium;
 }
 
 @mixin playgroundSection {
+  overflow: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex-grow: 1;
-  height: 100%;
-}
-
-@mixin textarea {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 1.4rem;
-  width: 100%;
-  height: 100%;
-  color: $clr-second;
-  background: transparent;
-  outline: none;
-  border: none;
-  resize: none;
+  position: relative;
+  font-size: $font-size-inputs;
 }

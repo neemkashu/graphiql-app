@@ -11,30 +11,16 @@ import { ResponseSection } from '@/components/playgroundSections/ResponseSection
 import { VarsSection } from '@/components/playgroundSections/VarsSection/VarsSection';
 import { TabsBlock } from '@/components/layout/playgroundLayout/TabsBlock/TabsBlock';
 import { redirect } from 'next/navigation';
-import { usePathWithLocale } from '@/common/hook';
+import { usePathWithLocale, useSetStore } from '@/common/hook';
 import { firebaseAuth } from '@/firebase';
 import { useIdToken } from 'react-firebase-hooks/auth';
+import { HeadersSection } from '@/components/playgroundSections/HeadersSection/HeadersSection';
 
 export default function PlaygroundPage(): JSX.Element {
   const isMobileView = useWidthState();
   const [welcomePage] = usePathWithLocale([PageList.welcome]);
   const [user, loading] = useIdToken(firebaseAuth);
-  const data = {
-    data: {
-      characters: {
-        results: [
-          {
-            name: 'Rick Sanchez',
-            status: 'Alive',
-          },
-          {
-            name: 'Morty Smith',
-            status: 'Alive',
-          },
-        ],
-      },
-    },
-  };
+  useSetStore();
 
   if (!loading && !user) redirect(welcomePage);
 
@@ -45,20 +31,18 @@ export default function PlaygroundPage(): JSX.Element {
           {{
             documentation: <TestSection>Docs</TestSection>,
             resizeMobileBlock: (
-              <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE}>
+              <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE} isMobile={true}>
                 {{
                   topBlock: (
                     <TabsBlock>
                       {{
                         operation: <OperationSection />,
                         vars: <VarsSection />,
-                        headers: <TestSection> </TestSection>,
+                        headers: <HeadersSection />,
                       }}
                     </TabsBlock>
                   ),
-                  bottomBlock: (
-                    <ResponseSection isMobile={true} value={JSON.stringify(data, null, 2)} />
-                  ),
+                  bottomBlock: <ResponseSection isMobile={true} />,
                 }}
               </VerticalResizeContainer>
             ),
@@ -76,14 +60,14 @@ export default function PlaygroundPage(): JSX.Element {
                     <TabsBlock>
                       {{
                         vars: <VarsSection />,
-                        headers: <TestSection> </TestSection>,
+                        headers: <HeadersSection />,
                       }}
                     </TabsBlock>
                   ),
                 }}
               </VerticalResizeContainer>
             ),
-            response: <ResponseSection value={JSON.stringify(data, null, 2)} />,
+            response: <ResponseSection />,
           }}
         </DesktopPlayground>
       )}
