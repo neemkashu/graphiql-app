@@ -19,6 +19,10 @@
     border-radius: $border-radius-tiny;
     cursor: pointer;
   }
+
+  & ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
 }
 
 .paneCenter {
