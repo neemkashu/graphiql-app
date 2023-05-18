@@ -38,6 +38,7 @@ export const rickAndMortyApi = createApi({
         },
         body: JSON.stringify({ query: getIntrospectionQuery() }),
       }),
+      transformResponse: (res: { data: IntrospectionQuery }) => res.data,
     }),
   }),
 });
