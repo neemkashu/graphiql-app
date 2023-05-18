@@ -1,6 +1,6 @@
 'use client';
 
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useIdToken } from 'react-firebase-hooks/auth';
 import { LoginNavButtons } from './LoginNavButtons/LoginNavButtons';
 import styles from './Nav.module.scss';
 import { PlaygroundNavButtons } from './PlaygroundNavButtons/PlaygroundNavButtons';
@@ -10,13 +10,12 @@ import { useRef, useEffect } from 'react';
 import { DEFAULT_MAX_HEADER_RERENDERS } from '@/common';
 
 export const Nav = ({ isLoggedIn }: { isLoggedIn: boolean }): JSX.Element => {
-  const [user, loading] = useAuthState(firebaseAuth);
+  const [user, loading] = useIdToken(firebaseAuth);
   const renderCountRef = useRef(0);
 
   useEffect((): void => {
     renderCountRef.current += 1;
   });
-  console.log('NEXT ENV:', process.env.NEXT_PUBLIC_RERENDERS_AMOUNT);
 
   if (typeof window === 'undefined') {
     return (

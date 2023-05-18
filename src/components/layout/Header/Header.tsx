@@ -1,6 +1,6 @@
 'use client';
 import { PageList } from '@/common';
-import { usePathWithLocale } from '@/common/hook';
+import { usePathWithLocale, useTokenExpire } from '@/common/hook';
 import { FakeTranslator } from '@/components/LangSwitcher/LangSwitcher';
 import { useScrollState } from '@/components/layout/Header/Header.hook';
 import classNames from 'classnames';
@@ -11,6 +11,8 @@ import { HeaderLogo } from './HeaderLogo/HeaderLogo';
 export const Header = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const isScroll = useScrollState();
   const [welcomePage] = usePathWithLocale([PageList.welcome]);
+
+  useTokenExpire();
 
   return (
     <header className={classNames(styles.header, isScroll && styles.filling)}>

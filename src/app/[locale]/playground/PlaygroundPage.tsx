@@ -13,12 +13,12 @@ import { TabsBlock } from '@/components/layout/playgroundLayout/TabsBlock/TabsBl
 import { redirect } from 'next/navigation';
 import { usePathWithLocale } from '@/common/hook';
 import { firebaseAuth } from '@/firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useIdToken } from 'react-firebase-hooks/auth';
 
 export default function PlaygroundPage(): JSX.Element {
   const isMobileView = useWidthState();
   const [welcomePage] = usePathWithLocale([PageList.welcome]);
-  const [user, loading] = useAuthState(firebaseAuth);
+  const [user, loading] = useIdToken(firebaseAuth);
   const data = {
     data: {
       characters: {
