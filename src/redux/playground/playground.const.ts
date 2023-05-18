@@ -7,5 +7,5 @@ export const initialState: PlaygroundState = {
   vars: '',
   headers: '',
   isFetch: false,
-  error: '',
+  error: [],
 };

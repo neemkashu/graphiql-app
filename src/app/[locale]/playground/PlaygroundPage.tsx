@@ -15,62 +15,69 @@ import { usePathWithLocale, useSetStore } from '@/common/hook';
 import { firebaseAuth } from '@/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { HeadersSection } from '@/components/playgroundSections/HeadersSection/HeadersSection';
+import { useSelector } from 'react-redux';
+import { errorSelector } from '@/redux';
+import { PlaygroundToast } from '@/components/toasts/PlaygroundToast/PlaygroundToast';
 
 export default function PlaygroundPage({ isLoggedIn }: { isLoggedIn: boolean }): JSX.Element {
   const isMobileView = useWidthState();
   const [welcomePage] = usePathWithLocale([PageList.welcome]);
   const [user, loading] = useAuthState(firebaseAuth);
+  const errors = useSelector(errorSelector);
   useSetStore();
 
   if (!loading && (!isLoggedIn || !user)) redirect(welcomePage);
 
   return (
-    <div className={styles.playground}>
-      {isMobileView ? (
-        <MobilePlayground>
-          {{
-            documentation: <TestSection>Docs</TestSection>,
-            resizeMobileBlock: (
-              <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE} isMobile={true}>
-                {{
-                  topBlock: (
-                    <TabsBlock>
-                      {{
-                        operation: <OperationSection />,
-                        vars: <VarsSection />,
-                        headers: <HeadersSection />,
-                      }}
-                    </TabsBlock>
-                  ),
-                  bottomBlock: <ResponseSection isMobile={true} />,
-                }}
-              </VerticalResizeContainer>
-            ),
-          }}
-        </MobilePlayground>
-      ) : (
-        <DesktopPlayground>
-          {{
-            documentation: <TestSection>Docs</TestSection>,
-            operation: (
-              <VerticalResizeContainer lsKey={LS_KEYS.DESKTOP_VERTICAL_BLOCK_SIZE}>
-                {{
-                  topBlock: <OperationSection />,
-                  bottomBlock: (
-                    <TabsBlock>
-                      {{
-                        vars: <VarsSection />,
-                        headers: <HeadersSection />,
-                      }}
-                    </TabsBlock>
-                  ),
-                }}
-              </VerticalResizeContainer>
-            ),
-            response: <ResponseSection />,
-          }}
-        </DesktopPlayground>
-      )}
-    </div>
+    <>
+      {errors.length ? <PlaygroundToast errors={errors} /> : null}
+      <div className={styles.playground}>
+        {isMobileView ? (
+          <MobilePlayground>
+            {{
+              documentation: <TestSection>Docs</TestSection>,
+              resizeMobileBlock: (
+                <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE} isMobile={true}>
+                  {{
+                    topBlock: (
+                      <TabsBlock>
+                        {{
+                          operation: <OperationSection />,
+                          vars: <VarsSection />,
+                          headers: <HeadersSection />,
+                        }}
+                      </TabsBlock>
+                    ),
+                    bottomBlock: <ResponseSection isMobile={true} />,
+                  }}
+                </VerticalResizeContainer>
+              ),
+            }}
+          </MobilePlayground>
+        ) : (
+          <DesktopPlayground>
+            {{
+              documentation: <TestSection>Docs</TestSection>,
+              operation: (
+                <VerticalResizeContainer lsKey={LS_KEYS.DESKTOP_VERTICAL_BLOCK_SIZE}>
+                  {{
+                    topBlock: <OperationSection />,
+                    bottomBlock: (
+                      <TabsBlock>
+                        {{
+                          vars: <VarsSection />,
+                          headers: <HeadersSection />,
+                        }}
+                      </TabsBlock>
+                    ),
+                  }}
+                </VerticalResizeContainer>
+              ),
+              response: <ResponseSection />,
+            }}
+          </DesktopPlayground>
+        )}
+      </div>
+    </>
   );
 }

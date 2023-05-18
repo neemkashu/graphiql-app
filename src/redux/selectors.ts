@@ -8,7 +8,7 @@ export const varsSelector = (state: RootState): string => state.playgroundSlice.
 
 export const headersSelector = (state: RootState): string => state.playgroundSlice.headers;
 
-export const errorSelector = (state: RootState): string => state.playgroundSlice.error;
+export const errorSelector = (state: RootState): string[] => state.playgroundSlice.error;
 
 export const isFetchSelector = (state: RootState): boolean => state.playgroundSlice.isFetch;
 

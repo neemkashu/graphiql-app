@@ -10,6 +10,8 @@ export const BASIC_LANGUAGE = 'en';
 
 export const USER_TOKEN_KEY = 'token';
 
+export const UNKNOWN_ERROR = 'Something went wrong :(';
+
 export const LS_KEYS = {
   DESKTOP_PLAYGROUND_SIZE: 'playgroundSize',
   DESKTOP_VERTICAL_BLOCK_SIZE: 'desktopVerticalBlockSize',

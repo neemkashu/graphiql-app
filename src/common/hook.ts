@@ -2,7 +2,8 @@
 'use client';
 import { ALL_LANGUAGES, BASIC_LANGUAGE, LS_KEYS } from '@/common/const';
 import { PageList } from '@/common/enum';
-import { setIsFetch, setResponse, setSlice, store, useAppDispatch } from '@/redux';
+import { getErrors } from '@/common/helper';
+import { setError, setIsFetch, setResponse, setSlice, store, useAppDispatch } from '@/redux';
 import { useLazyGetDataQuery } from '@/redux/rickAndMorty/rickAndMorty.api';
 import { usePathname } from 'next/navigation';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
@@ -74,8 +75,17 @@ export const useRequest = () => {
     dispatch(setIsFetch(isFetching));
   }, [dispatch, isFetching]);
 
+  useEffect(() => {
+    if (error) {
+      dispatch(setError(error));
+      return (): void => {
+        dispatch(setError(null));
+      };
+    }
+  }, [dispatch, error]);
+
   useEffect((): void => {
-    if (currentData || error) dispatch(setResponse(JSON.stringify(currentData || error, null, 2)));
-  }, [currentData, dispatch, error]);
+    if (currentData) dispatch(setResponse(JSON.stringify(currentData, null, 2)));
+  }, [currentData, dispatch]);
   return fetchData;
 };

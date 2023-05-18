@@ -1,6 +1,8 @@
+import { getErrors } from '@/common/helper';
 import { PlaygroundState } from '@/redux';
 import { initialState } from '@/redux/playground/playground.const';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, SerializedError } from '@reduxjs/toolkit';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 
 export const playgroundSlice = createSlice({
   name: 'playground',
@@ -21,15 +23,20 @@ export const playgroundSlice = createSlice({
     setIsFetch(state, action: PayloadAction<boolean>): void {
       state.isFetch = action.payload;
     },
-    setError(state, action: PayloadAction<string>): void {
-      state.error = action.payload;
+    setError(state, action: PayloadAction<FetchBaseQueryError | SerializedError | null>): void {
+      const { payload } = action;
+      if (!payload) {
+        state.error = [];
+      } else {
+        state.response = JSON.stringify(payload, null, 2);
+        state.error = getErrors(payload);
+      }
+      payload;
     },
     setSlice(state, action: PayloadAction<PlaygroundState>): void {
-      const { operation, response, vars, headers, error } = action.payload;
+      const { operation, vars, headers } = action.payload;
       state.operation = operation;
-      state.response = response;
       state.vars = vars;
-      state.error = error;
       state.headers = headers;
       state.init = false;
     },
