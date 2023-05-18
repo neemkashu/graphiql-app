@@ -15,6 +15,7 @@ import { usePathWithLocale, useSetStore } from '@/common/hook';
 import { firebaseAuth } from '@/firebase';
 import { useIdToken } from 'react-firebase-hooks/auth';
 import { HeadersSection } from '@/components/playgroundSections/HeadersSection/HeadersSection';
+import { DocumentationSection } from '@/components/playgroundSections/DocumentationSection/DocumentationSection';
 
 export default function PlaygroundPage(): JSX.Element {
   const isMobileView = useWidthState();
@@ -29,7 +30,7 @@ export default function PlaygroundPage(): JSX.Element {
       {isMobileView ? (
         <MobilePlayground>
           {{
-            documentation: <TestSection>Docs</TestSection>,
+            documentation: <DocumentationSection />,
             resizeMobileBlock: (
               <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE} isMobile={true}>
                 {{
@@ -51,7 +52,7 @@ export default function PlaygroundPage(): JSX.Element {
       ) : (
         <DesktopPlayground>
           {{
-            documentation: <TestSection>Docs</TestSection>,
+            documentation: <DocumentationSection />,
             operation: (
               <VerticalResizeContainer lsKey={LS_KEYS.DESKTOP_VERTICAL_BLOCK_SIZE}>
                 {{
