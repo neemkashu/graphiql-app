@@ -58,7 +58,7 @@ export default function PlaygroundPage(): JSX.Element {
         ) : (
           <DesktopPlayground>
             {{
-              documentation: <TestSection>Docs</TestSection>,
+              documentation: <DocumentationSection />,
               operation: (
                 <VerticalResizeContainer lsKey={LS_KEYS.DESKTOP_VERTICAL_BLOCK_SIZE}>
                   {{
