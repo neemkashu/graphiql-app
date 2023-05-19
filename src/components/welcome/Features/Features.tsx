@@ -1,8 +1,8 @@
 'use client';
 
-import syntaxPicture from './gifs/syntax.gif';
-import errorPicture from './gifs/errors.gif';
-import mobilePicture from './gifs/mobile.gif';
+import syntaxPicture from './gifs/syntax.webp';
+import errorPicture from './gifs/errors.webp';
+import mobilePicture from './gifs/mobile.webp';
 
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
