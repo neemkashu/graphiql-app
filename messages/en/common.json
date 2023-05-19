@@ -2,7 +2,13 @@
   "Info": {
     "title": "GraphQL Playground",
     "api": "For The Rick and Morty API",
-    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore? Laborum, recusandae officiis quis sapiente quos laudantium porro sit exercitationem odit ad nisi consequatur facilis dolore!"
+    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore? Laborum, recusandae officiis quis sapiente quos laudantium porro sit exercitationem odit ad nisi consequatur facilis dolore!",
+    "descriptionShort": "The application incorporates the functionality of <strong>GraphiQL</strong>, a GraphQL playground/IDE. It includes a welcome page, user authentication, and a GraphiQL page with editors for requests, variables, and optional headers. The app also features a <strong>lazily loaded</strong> documentation explorer and a response section. For a full overview of the technical stack, please refer to the <link>provided link</link>.",
+    "descriptionAdditional": "Technical requirements involve <strong>localization</strong>, <strong>semantic layout</strong>, compatibility with the latest Chrome version, <strong>private routes</strong>, <strong>error handling</strong>, and React 18 with suspense. The design focuses on <strong>adaptive layout</strong>, interactivity, and consistent style. The app uses authorization/authentication features for restricted access. Authentication utilizes <strong>Firebase with email options</strong> and client-side validation.",
+    "listHeader": "FEATURES",
+    "syntax": "IDE with syntax highlighting",
+    "errors": "Error handling with user-friendly interface",
+    "design": "Elaborate and responsive design from mobile to desktop"
   },
   "Team": {
     "title": "Our Team",

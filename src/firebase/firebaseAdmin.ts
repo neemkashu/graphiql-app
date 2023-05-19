@@ -28,11 +28,16 @@ export const checkAuthenticated = async (cookieStore: ReadonlyRequestCookies): P
   try {
     const user = await adminSDK.auth().verifyIdToken(token);
     // eslint-disable-next-line no-console
-    console.log('===Admin: token is ok?', user.uid);
+    console.log(new Date(Date.now()).toLocaleTimeString(), ' =====Admin: token is ok', user.uid);
     isLoggedIn = true;
   } catch (error) {
-    // eslint-disable-next-line no-console
-    if (error instanceof Error) console.log('Admin cannot parse: ', error?.message);
+    if (error instanceof Error)
+      // eslint-disable-next-line no-console
+      console.log(
+        new Date(Date.now()).toLocaleTimeString(),
+        ' =====Admin cannot parse: ',
+        error?.message
+      );
     isLoggedIn = false;
   }
   return isLoggedIn;
