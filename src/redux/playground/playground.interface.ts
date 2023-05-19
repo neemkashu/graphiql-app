@@ -5,5 +5,5 @@ export interface PlaygroundState {
   response: string;
   headers: string;
   isFetch: boolean;
-  error: string;
+  error: string[];
 }

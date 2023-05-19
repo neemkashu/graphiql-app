@@ -1,4 +1,5 @@
-import { RickAndMortyReq, store } from '@/redux';
+import { RickAndMortyReq } from '@/redux';
+import { store } from '@/redux/store';
 
 export const makeRequest = (): RickAndMortyReq => {
   const operation = store.getState().playgroundSlice.operation;
