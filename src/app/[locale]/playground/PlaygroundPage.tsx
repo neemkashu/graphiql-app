@@ -18,6 +18,7 @@ import { useIdToken } from 'react-firebase-hooks/auth';
 import { useSelector } from 'react-redux';
 import styles from './page.module.scss';
 import { useWidthState } from './PlaygroundPage.hook';
+import { DocumentationSection } from '@/components/playgroundSections/DocumentationSection/DocumentationSection';
 
 export default function PlaygroundPage(): JSX.Element {
   const isMobileView = useWidthState();
@@ -35,7 +36,7 @@ export default function PlaygroundPage(): JSX.Element {
         {isMobileView ? (
           <MobilePlayground>
             {{
-              documentation: <TestSection>Docs</TestSection>,
+              documentation: <DocumentationSection />,
               resizeMobileBlock: (
                 <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE} isMobile={true}>
                   {{
