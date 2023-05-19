@@ -1,25 +1,34 @@
 'use client';
 import { useGetSchemaQuery } from '@/redux';
-import { buildClientSchema, printSchema, typeFromAST, parseType } from 'graphql';
-import styles from './DocumentationSection.module.scss';
 import { Spinner } from '@/components/loading';
+import { getTypes } from './DocumentationSection.helper';
+import styles from './DocumentationSection.module.scss';
 
 export const DocumentationSection = (): JSX.Element => {
-  const { data, isFetching } = useGetSchemaQuery();
+  const { currentData, isFetching } = useGetSchemaQuery();
 
-  if (isFetching || !data)
+  if (isFetching || !currentData)
     return (
-      <section className={styles.section}>
+      <section className={styles.spinner}>
         <Spinner />
       </section>
     );
 
-  const schema = printSchema(buildClientSchema(data));
-  const schema2 = buildClientSchema(data);
-  const schema3 = JSON.stringify(data.__schema.types[0], null, '\t');
-  // console.log(schema);
-  // console.log(typeFromAST(schema2, parseType(`[Query]!`)));
-  // console.log(schema3);
+  const types = getTypes(currentData);
+  // console.log(types);
+  const selectedType = types[0]; // todo: реализовать выбор
 
-  return <section className={styles.section}></section>;
+  return (
+    <section className={styles.section}>
+      <h3 className={styles.title}>{selectedType.name}</h3>
+      {selectedType.description && <p>{selectedType.description}</p>}
+      {selectedType.fields?.map((field) => (
+        <div className={styles.field} key={field.name}>
+          <span className={styles.name}>{field.name}</span>:
+          <span className={styles.type}>{field.type}</span>
+          {field.description && <p className={styles.description}>{field.description}</p>}
+        </div>
+      ))}
+    </section>
+  );
 };
