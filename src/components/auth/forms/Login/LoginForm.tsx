@@ -14,6 +14,8 @@ import { usePathWithLocale } from '@/common/hook';
 import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import { AuthError } from 'firebase/auth';
+import { Spinner } from '@/components/loading';
+import classNames from 'classnames';
 
 export const LoginForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);
@@ -26,13 +28,16 @@ export const LoginForm = (): JSX.Element => {
   const t = useTranslations('Form');
 
   const [firebaseError, setFirebaseError] = useState<AuthError | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async ({ email, password }: LoginData): Promise<void> => {
     try {
+      setIsLoading(true);
       setFirebaseError(null);
       await signInWithEmailAndPassword(firebaseAuth, email, password);
       router.push(playgroundPage);
     } catch (error) {
+      setIsLoading(false);
       setFirebaseError(error as AuthError);
     }
   };
@@ -71,8 +76,18 @@ export const LoginForm = (): JSX.Element => {
             })}
           />
         </div>
-        <button className={styles.button} type="submit">
-          {t('signIn')}
+        <button
+          disabled={isLoading}
+          className={classNames(styles.button, isLoading && styles.loading)}
+          type="submit"
+        >
+          {isLoading ? (
+            <div className={styles.spinnerWrap}>
+              <Spinner isSmall={true} />
+            </div>
+          ) : (
+            t('signIn')
+          )}
         </button>
       </form>
     </>
