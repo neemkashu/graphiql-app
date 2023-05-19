@@ -9,3 +9,5 @@ export const initialState: PlaygroundState = {
   isFetch: false,
   error: [],
 };
+
+export const UNKNOWN_ERROR = 'Something went wrong :(';

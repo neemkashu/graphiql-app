@@ -1,7 +1,5 @@
-import { ErrorRespGQL, UNKNOWN_ERROR } from '@/common';
-import { RickAndMortyReq, store } from '@/redux';
-import { SerializedError } from '@reduxjs/toolkit';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
+import { RickAndMortyReq } from '@/redux';
+import { store } from '@/redux/store';
 
 export const makeRequest = (): RickAndMortyReq => {
   const operation = store.getState().playgroundSlice.operation;
@@ -16,17 +14,4 @@ const isJson = (string: string): boolean => {
     return false;
   }
   return true;
-};
-
-export const getErrors = (error: FetchBaseQueryError | SerializedError): string[] => {
-  if ('status' in error) {
-    if (typeof error.status === 'number') {
-      const graphQLError = error as ErrorRespGQL;
-      return graphQLError.data.errors.map(({ message }): string => message);
-    }
-  }
-  if ('error' in error) {
-    return [error.error];
-  }
-  return [UNKNOWN_ERROR];
 };

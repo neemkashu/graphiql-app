@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 'use client';
+import { USER_TOKEN_KEY } from '@/common';
 import { ALL_LANGUAGES, BASIC_LANGUAGE, LS_KEYS } from '@/common/const';
 import { PageList } from '@/common/enum';
-import { getErrors } from '@/common/helper';
-import { setError, setIsFetch, setResponse, setSlice, store, useAppDispatch } from '@/redux';
-import { useLazyGetDataQuery } from '@/redux/rickAndMorty/rickAndMorty.api';
-import { usePathname } from 'next/navigation';
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
-import { USER_TOKEN_KEY } from '@/common';
 import { firebaseAuth, logout } from '@/firebase';
-import { Unsubscribe, onIdTokenChanged } from 'firebase/auth';
+import { useAppDispatch } from '@/redux';
+import { setError, setIsFetch, setResponse, setSlice } from '@/redux/playground/playground.slice';
+import { useLazyGetDataQuery } from '@/redux/rickAndMorty/rickAndMorty.api';
+import { store } from '@/redux/store';
+import { onIdTokenChanged, Unsubscribe } from 'firebase/auth';
+import { usePathname } from 'next/navigation';
 import nookies from 'nookies';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 
 export const useFieldSize = <T>(
   defaultSize: T,

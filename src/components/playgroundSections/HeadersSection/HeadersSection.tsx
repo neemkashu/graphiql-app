@@ -1,5 +1,6 @@
 'use client';
-import { headersSelector, setHeaders, useAppDispatch } from '@/redux';
+import { headersSelector, useAppDispatch } from '@/redux';
+import { setHeaders } from '@/redux/playground/playground.slice';
 import { json } from '@codemirror/lang-json';
 import CodeMirror from '@uiw/react-codemirror';
 import { useTranslations } from 'next-intl';

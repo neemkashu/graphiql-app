@@ -1,4 +1,4 @@
-import { getErrors } from '@/common/helper';
+import { getErrors } from './playground.helper';
 import { PlaygroundState } from '@/redux';
 import { initialState } from '@/redux/playground/playground.const';
 import { createSlice, PayloadAction, SerializedError } from '@reduxjs/toolkit';
