@@ -34,7 +34,7 @@
       "description": {
         "first": "graphQL schema",
         "second": "syntax highlighting",
-        "third": "variables section",
+        "third": "welcome page",
         "fourth": "localization"
       },
       "github": "https://github.com/YuMentsel",
@@ -47,8 +47,8 @@
       "role": "Developer",
       "description": {
         "first": "private routes",
-        "second": "registration",
-        "third": "authorization",
+        "second": "registration/authorization",
+        "third": "welcome page",
         "fourth": "SSR for authorized user"
       },
       "github": "https://github.com/neemkashu",
