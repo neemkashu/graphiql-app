@@ -1,5 +1,5 @@
 'use client';
-import { operationSelector, setOperation, useAppDispatch } from '@/redux';
+import { operationSelector, useAppDispatch } from '@/redux';
 import { useTranslations } from 'next-intl';
 import { useSelector } from 'react-redux';
 import CodeMirror from '@uiw/react-codemirror';
@@ -8,8 +8,9 @@ import { graphql } from 'cm6-graphql';
 import { customTheme } from '../customTheme';
 import { schema } from './rickAndMortySchema';
 import styles from './OperationSection.module.scss';
+import { setOperation } from '@/redux/playground/playground.slice';
 
-export const OperationSection = ({ isMobile }: { isMobile?: boolean }): JSX.Element => {
+export const OperationSection = (): JSX.Element => {
   const t = useTranslations('Playground');
 
   const state = useSelector(operationSelector);
