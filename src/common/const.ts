@@ -18,3 +18,5 @@ export const LS_KEYS = {
   MOBILE_VERTICAL_BLOCK_SIZE: 'mobileVerticalBlockSize',
   REDUX: 'root',
 };
+
+export const DEFAULT_MAX_HEADER_RERENDERS = 2;

@@ -32,8 +32,25 @@ export const checkAuthenticated = async (cookieStore: ReadonlyRequestCookies): P
     isLoggedIn = true;
   } catch (error) {
     // eslint-disable-next-line no-console
-    if (error instanceof Error) console.error('Admin cannot parse: ', error?.message);
+    if (error instanceof Error) console.log('Admin cannot parse: ', error?.message);
     isLoggedIn = false;
   }
   return isLoggedIn;
+};
+
+export const getIsLogged = async (cookieStore: ReadonlyRequestCookies): Promise<boolean> => {
+  let isLoggedIn = false;
+  try {
+    isLoggedIn = await checkAuthenticated(cookieStore);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    if (error instanceof Error) console.log('Catch in getIsLogged: ', error?.message);
+    isLoggedIn = false;
+  }
+  return isLoggedIn;
+};
+
+export const getLocale = (cookieStore: ReadonlyRequestCookies): string => {
+  const locale = cookieStore.get('NEXT_LOCALE')?.value ?? 'en';
+  return locale;
 };

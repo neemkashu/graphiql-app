@@ -7,6 +7,10 @@ import { setError, setIsFetch, setResponse, setSlice, store, useAppDispatch } fr
 import { useLazyGetDataQuery } from '@/redux/rickAndMorty/rickAndMorty.api';
 import { usePathname } from 'next/navigation';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { USER_TOKEN_KEY } from '@/common';
+import { firebaseAuth, logout } from '@/firebase';
+import { Unsubscribe, onIdTokenChanged } from 'firebase/auth';
+import nookies from 'nookies';
 
 export const useFieldSize = <T>(
   defaultSize: T,
@@ -65,6 +69,36 @@ export const usePathWithLocale = (pagePath: PageList[]): string[] => {
   const locale = pathName ? pathName.slice(1, 3) : BASIC_LANGUAGE;
   const outputLocale = ALL_LANGUAGES.includes(locale) ? locale : BASIC_LANGUAGE;
   return pagePath.map((page): string => `/${outputLocale}${page}`);
+};
+
+export const useTokenExpire = (): void => {
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect((): Unsubscribe => {
+    const unsubscribe = onIdTokenChanged(firebaseAuth, async (firebaseUser): Promise<void> => {
+      if (!firebaseUser) return;
+
+      const token = await firebaseUser.getIdToken();
+      nookies.set(undefined, USER_TOKEN_KEY, token, { path: '/' });
+
+      const { expirationTime } = await firebaseUser.getIdTokenResult();
+      console.log('expirationTime', new Date(expirationTime).getTime());
+
+      const logoutDuration = new Date(expirationTime).getTime() - Date.now();
+      console.log('logoutDuration', logoutDuration);
+
+      const timer = setTimeout(() => {
+        logout();
+      }, logoutDuration);
+
+      timerRef.current = timer;
+    });
+    return () => {
+      console.log('CLEAR TIMER: ', timerRef.current);
+      clearTimeout(timerRef.current);
+      unsubscribe();
+    };
+  }, []);
 };
 
 export const useRequest = () => {

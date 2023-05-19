@@ -1,17 +1,23 @@
 import { cookies } from 'next/headers';
 import { checkAuthenticated } from '@/firebase/firebaseAdmin';
 import PlaygroundPage from '@/app/[locale]/playground/PlaygroundPage';
+import { redirect } from 'next/navigation';
+import { BASIC_LANGUAGE } from '@/common';
 
 export default async function PlayGroundServer(): Promise<JSX.Element> {
   let isLoggedIn = false;
+  let locale = BASIC_LANGUAGE;
   try {
     const cookieStore = cookies();
+    locale = cookieStore.get('NEXT_LOCALE')?.value ?? BASIC_LANGUAGE;
     isLoggedIn = await checkAuthenticated(cookieStore);
   } catch (error) {
     // eslint-disable-next-line no-console
-    if (error instanceof Error) console.log('Catch in sign in: ', error?.message);
+    if (error instanceof Error) console.log('Catch in playground in: ', error?.message);
     isLoggedIn = true;
   }
 
-  return <PlaygroundPage isLoggedIn={isLoggedIn} />;
+  if (!isLoggedIn) redirect(`/${locale}`);
+
+  return <PlaygroundPage />;
 }
