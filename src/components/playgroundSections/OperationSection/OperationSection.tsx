@@ -1,13 +1,14 @@
 'use client';
-import { operationSelector, setOperation, useAppDispatch } from '@/redux';
+import { operationSelector, useAppDispatch } from '@/redux';
 import { useTranslations } from 'next-intl';
 import { useSelector } from 'react-redux';
 import CodeMirror from '@uiw/react-codemirror';
-import { json } from '@codemirror/lang-json';
-// import { graphql } from 'cm6-graphql';
+// import { json } from '@codemirror/lang-json';
+import { graphql } from 'cm6-graphql';
 import { customTheme } from '../customTheme';
-// import { schema } from './OperationSection.mock';
+import { schema } from './rickAndMortySchema';
 import styles from './OperationSection.module.scss';
+import { setOperation } from '@/redux/playground/playground.slice';
 
 export const OperationSection = (): JSX.Element => {
   const t = useTranslations('Playground');
@@ -28,8 +29,7 @@ export const OperationSection = (): JSX.Element => {
           settings: { gutterBackground: '#21222d' },
         })}
         placeholder={t('operationPlaceholder')}
-        // extensions={graphql(schema)}
-        extensions={[json()]}
+        extensions={[graphql(schema)]}
         onChange={(value): void => {
           onChangeHandler(value);
         }}
