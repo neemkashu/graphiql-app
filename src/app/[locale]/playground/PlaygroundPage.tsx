@@ -8,7 +8,6 @@ import { VerticalResizeContainer } from '@/components/layout/playgroundLayout/Ve
 import { HeadersSection } from '@/components/playgroundSections/HeadersSection/HeadersSection';
 import { OperationSection } from '@/components/playgroundSections/OperationSection/OperationSection';
 import { ResponseSection } from '@/components/playgroundSections/ResponseSection/ResponseSection';
-import { TestSection } from '@/components/playgroundSections/testSection/testSection';
 import { VarsSection } from '@/components/playgroundSections/VarsSection/VarsSection';
 import { PlaygroundToast } from '@/components/toasts/PlaygroundToast/PlaygroundToast';
 import { firebaseAuth } from '@/firebase';
@@ -16,6 +15,7 @@ import { errorSelector } from '@/redux';
 import { redirect } from 'next/navigation';
 import { useIdToken } from 'react-firebase-hooks/auth';
 import { useSelector } from 'react-redux';
+import { DocumentationSection } from '@/components/playgroundSections/DocumentationSection/DocumentationSection';
 import styles from './page.module.scss';
 import { useWidthState } from './PlaygroundPage.hook';
 
@@ -35,7 +35,7 @@ export default function PlaygroundPage(): JSX.Element {
         {isMobileView ? (
           <MobilePlayground>
             {{
-              documentation: <TestSection>Docs</TestSection>,
+              documentation: <DocumentationSection />,
               resizeMobileBlock: (
                 <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE} isMobile={true}>
                   {{
@@ -57,7 +57,7 @@ export default function PlaygroundPage(): JSX.Element {
         ) : (
           <DesktopPlayground>
             {{
-              documentation: <TestSection>Docs</TestSection>,
+              documentation: <DocumentationSection />,
               operation: (
                 <VerticalResizeContainer lsKey={LS_KEYS.DESKTOP_VERTICAL_BLOCK_SIZE}>
                   {{
