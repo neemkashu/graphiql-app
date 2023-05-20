@@ -10,7 +10,7 @@ import { schema } from './rickAndMortySchema';
 import styles from './OperationSection.module.scss';
 import { setOperation } from '@/redux/playground/playground.slice';
 
-export const OperationSection = ({ isMobile }: { isMobile?: boolean }): JSX.Element => {
+export const OperationSection = (): JSX.Element => {
   const t = useTranslations('Playground');
 
   const state = useSelector(operationSelector);

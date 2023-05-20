@@ -8,7 +8,6 @@ import { VerticalResizeContainer } from '@/components/layout/playgroundLayout/Ve
 import { HeadersSection } from '@/components/playgroundSections/HeadersSection/HeadersSection';
 import { OperationSection } from '@/components/playgroundSections/OperationSection/OperationSection';
 import { ResponseSection } from '@/components/playgroundSections/ResponseSection/ResponseSection';
-import { TestSection } from '@/components/playgroundSections/testSection/testSection';
 import { VarsSection } from '@/components/playgroundSections/VarsSection/VarsSection';
 import { PlaygroundToast } from '@/components/toasts/PlaygroundToast/PlaygroundToast';
 import { firebaseAuth } from '@/firebase';
@@ -16,9 +15,9 @@ import { errorSelector } from '@/redux';
 import { redirect } from 'next/navigation';
 import { useIdToken } from 'react-firebase-hooks/auth';
 import { useSelector } from 'react-redux';
+import { DocumentationSection } from '@/components/playgroundSections/DocumentationSection/DocumentationSection';
 import styles from './page.module.scss';
 import { useWidthState } from './PlaygroundPage.hook';
-import { DocumentationSection } from '@/components/playgroundSections/DocumentationSection/DocumentationSection';
 
 export default function PlaygroundPage(): JSX.Element {
   const isMobileView = useWidthState();
