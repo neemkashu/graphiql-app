@@ -7,7 +7,7 @@
     "descriptionAdditional": "Technical requirements involve <strong>localization</strong>, <strong>semantic layout</strong>, compatibility with the latest Chrome version, <strong>private routes</strong>, <strong>error handling</strong>, and React 18 with suspense. The design focuses on <strong>adaptive layout</strong>, interactivity, and consistent style. The app uses authorization/authentication features for restricted access. Authentication utilizes <strong>Firebase with email options</strong> and client-side validation.",
     "listHeader": "FEATURES",
     "syntax": "IDE with syntax highlighting",
-    "errors": "Error handling with user-friendly interface",
+    "errors": "Error handling with a user-friendly interface",
     "design": "Elaborate and responsive design from mobile to desktop"
   },
   "Team": {
@@ -18,10 +18,10 @@
       "name": "Aliaksei Rudak",
       "role": "Team Lead",
       "description": {
-        "first": "layout and playground design",
-        "second": "graphQL requests",
-        "third": "error handling",
-        "fourth": "state managment"
+        "first": "GraphQL requests",
+        "second": "error handling",
+        "third": "IDE customization",
+        "fourth": "state management"
       },
       "github": "https://github.com/lexarudak",
       "color": "rgba(36, 149, 252, 0.3)"
@@ -32,7 +32,7 @@
       "name": "Yuliya Mentsel",
       "role": "Developer",
       "description": {
-        "first": "graphQL schema",
+        "first": "GraphQL schema",
         "second": "syntax highlighting",
         "third": "welcome page",
         "fourth": "localization"
