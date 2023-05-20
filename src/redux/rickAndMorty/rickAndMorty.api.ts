@@ -17,7 +17,7 @@ export const rickAndMortyApi = createApi({
   }),
   endpoints: ({ query }) => ({
     getData: query<RickAndMortyRes, RickAndMortyReq>({
-      query: ({ query, variables }) => ({
+      query: ({ query, variables, operationName }) => ({
         url: '',
         method: 'POST',
         headers: {
@@ -26,6 +26,7 @@ export const rickAndMortyApi = createApi({
         body: JSON.stringify({
           query,
           variables,
+          operationName,
         }),
       }),
     }),
