@@ -38,6 +38,10 @@
     font-size: $font-size-3;
     max-width: 600px;
 
+    @include media("max", "s") {
+      font-size: $font-size-4;
+    }
+
     &:last-child {
       display: none;
     }
@@ -72,6 +76,22 @@
       background-color: $clr-blur-2;
     }
   }
+}
+
+.techStackLink {
+  color: $clr-active;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: $transition-color;
+
+  &:hover {
+    color: $clr-hover;
+  }
+}
+
+.strong {
+  font-weight: 600;
+  color: $clr-active-4;
 }
 
 @include media("min", "xl") {

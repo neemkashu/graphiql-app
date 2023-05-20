@@ -13,3 +13,9 @@
 .button {
   @include form-button;
 }
+.loading {
+  @include form-loading;
+}
+.spinnerWrap {
+  @include form-spinner;
+}

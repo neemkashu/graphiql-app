@@ -49,6 +49,7 @@
 }
 
 @mixin form-button {
+  position: relative;
   transition: $transition-basic;
   padding: 1rem 1rem;
   border: none;
@@ -85,4 +86,15 @@
   flex-grow: 1;
   position: relative;
   font-size: $font-size-inputs;
+}
+
+@mixin form-loading {
+  height: 3.6rem;
+  background-color: $clr-second-3;
+}
+
+@mixin form-spinner {
+  position: absolute;
+  top: 2px;
+  left: calc(50% - 20px)
 }

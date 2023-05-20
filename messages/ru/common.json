@@ -2,7 +2,13 @@
   "Info": {
     "title": "GraphQL Песочница",
     "api": "Для Pик и Морти API",
-    "subtitle": "Съешь еще этих мягких французских булок, да выпей чаю. Съешь еще этих мягких французских булок, да выпей чаююСъешь еще этих мягких французских булок, да выпей чаю. Съешь еще этих мягких французских булок, да выпей чаю."
+    "subtitle": "Съешь еще этих мягких французских булок, да выпей чаю. Съешь еще этих мягких французских булок, да выпей чаююСъешь еще этих мягких французских булок, да выпей чаю. Съешь еще этих мягких французских булок, да выпей чаю.",
+    "descriptionShort": "В приложении реализована функциональность <strong>GraphiQL</strong>, песочницы/IDE для GraphQL запросов. Приложение включает в себя страницы с приветствием, авторизацией пользователя и редактором GraphQL запросов, переменных и заголовков. В приложении также есть <strong>лениво загружаемый</strong> обозреватель документации и раздел ответов. Для полного обзора технического стека, пожалуйста, обратитесь по <link>предоставленной ссылке</link>.",
+    "descriptionAdditional": "Технические требования включают <strong>локализацию</strong>, <strong>семантическую вёрстку</strong>, совместимость с последней версией Chrome, <strong>приватные страницы</strong>, <strong>обработку ошибок</strong> и React 18 с компонентом Suspense. Дизайн приложения сосредоточен на <strong>адаптивной верстке</strong> и интерактивности. Приложение использует <strong>Firebase для авторизации</strong> через электронную почту.",
+    "listHeader": "ФУНКЦИОНАЛ",
+    "syntax": "IDE с подсветкой синтаксиса",
+    "errors": "Удобный интерфейс уведомлений об ошибках",
+    "design": "Продуманный адаптивный дизайн приложения"
   },
   "Team": {
     "title": "Наша команда",
@@ -11,7 +17,12 @@
       "img": "/img/team/aliaksei_rudak.jpg",
       "name": "Алексей Рудак",
       "role": "Тимлид",
-      "description": "Перевод ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "description": {
+        "first": "GraphQL запросы",
+        "second": "обработка ошибок",
+        "third": "кастомизация IDE",
+        "fourth": "управление состоянием"
+      },
       "github": "https://github.com/lexarudak",
       "color": "rgba(36, 149, 252, 0.3)"
     },
@@ -20,7 +31,12 @@
       "img": "/img/team/yuliya_mentsel.jpg",
       "name": "Юлия Менцель",
       "role": "Разработчик",
-      "description": "Перевод ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "description": {
+        "first": "GraphQL схема",
+        "second": "подсветка синтаксиса",
+        "third": "страница приветсвия",
+        "fourth": "локализация"
+      },
       "github": "https://github.com/YuMentsel",
       "color": "rgba(254, 185, 88, 0.3)"
     },
@@ -29,7 +45,12 @@
       "img": "/img/team/ekaterina_radchenko.jpg",
       "name": "Екатерина Радченко",
       "role": "Разработчик",
-      "description": "Перевод ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "description": {
+        "first": "приватные страницы",
+        "second": "регистрация/авторизация",
+        "third": "страница приветсвия",
+        "fourth": "SSR для авторизованного пользователя"
+      },
       "github": "https://github.com/neemkashu",
       "color": "rgba(38, 195, 98, 0.3)"
     }

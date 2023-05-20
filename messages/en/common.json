@@ -2,7 +2,13 @@
   "Info": {
     "title": "GraphQL Playground",
     "api": "For The Rick and Morty API",
-    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore? Laborum, recusandae officiis quis sapiente quos laudantium porro sit exercitationem odit ad nisi consequatur facilis dolore!"
+    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore? Laborum, recusandae officiis quis sapiente quos laudantium porro sit exercitationem odit ad nisi consequatur facilis dolore!",
+    "descriptionShort": "The application incorporates the functionality of <strong>GraphiQL</strong>, a GraphQL playground/IDE. It includes a welcome page, user authentication, and a GraphiQL page with editors for requests, variables, and optional headers. The app also features a <strong>lazily loaded</strong> documentation explorer and a response section. For a full overview of the technical stack, please refer to the <link>provided link</link>.",
+    "descriptionAdditional": "Technical requirements involve <strong>localization</strong>, <strong>semantic layout</strong>, compatibility with the latest Chrome version, <strong>private routes</strong>, <strong>error handling</strong>, and React 18 with suspense. The design focuses on <strong>adaptive layout</strong>, interactivity, and consistent style. The app uses authorization/authentication features for restricted access. Authentication utilizes <strong>Firebase with email options</strong> and client-side validation.",
+    "listHeader": "FEATURES",
+    "syntax": "IDE with syntax highlighting",
+    "errors": "Error handling with a user-friendly interface",
+    "design": "Elaborate and responsive design from mobile to desktop"
   },
   "Team": {
     "title": "Our Team",
@@ -11,7 +17,12 @@
       "img": "/img/team/aliaksei_rudak.jpg",
       "name": "Aliaksei Rudak",
       "role": "Team Lead",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "description": {
+        "first": "GraphQL requests",
+        "second": "error handling",
+        "third": "IDE customization",
+        "fourth": "state management"
+      },
       "github": "https://github.com/lexarudak",
       "color": "rgba(36, 149, 252, 0.3)"
     },
@@ -20,7 +31,12 @@
       "img": "/img/team/yuliya_mentsel.jpg",
       "name": "Yuliya Mentsel",
       "role": "Developer",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "description": {
+        "first": "GraphQL schema",
+        "second": "syntax highlighting",
+        "third": "welcome page",
+        "fourth": "localization"
+      },
       "github": "https://github.com/YuMentsel",
       "color": "rgba(254, 185, 88, 0.3)"
     },
@@ -29,7 +45,12 @@
       "img": "/img/team/ekaterina_radchenko.jpg",
       "name": "Ekaterina Radchenko",
       "role": "Developer",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore",
+      "description": {
+        "first": "private routes",
+        "second": "registration/authorization",
+        "third": "welcome page",
+        "fourth": "SSR for authorized user"
+      },
       "github": "https://github.com/neemkashu",
       "color": "rgba(38, 195, 98, 0.3)"
     }

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import styles from './Member.module.scss';
+import { RESPONSIBILITY_KEYS } from '@/common';
 
 export const Member = ({ member }: { member: string }): JSX.Element => {
   const t = useTranslations('Team');
@@ -23,7 +24,11 @@ export const Member = ({ member }: { member: string }): JSX.Element => {
         {t(member + '.name')}
       </Link>
       <div className={styles.role}>{t(member + '.role')}</div>
-      <div className={styles.descr}>{t(member + '.description')}</div>
+      <ul className={styles.descr}>
+        {RESPONSIBILITY_KEYS.map((key) => (
+          <li key={key}>{t(`${member}.description.${key}`)}</li>
+        ))}
+      </ul>
     </div>
   );
 };
