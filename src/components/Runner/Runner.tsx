@@ -12,7 +12,7 @@ export const Runner = ({ isMobile }: { isMobile?: boolean }): JSX.Element => {
   const t = useTranslations('Playground');
   const run = useRequest();
   const [operationNames, setOperationNames] = useState<string[]>([]);
-  const multipleRequest = operationNames.length > 1;
+  const isMultipleRequest = operationNames.length > 1;
 
   const setMultipleButtons = (): JSX.Element => {
     return (
@@ -33,18 +33,15 @@ export const Runner = ({ isMobile }: { isMobile?: boolean }): JSX.Element => {
     );
   };
 
-  const removeOperationNames = (): void => {
-    setOperationNames([]);
-    document.removeEventListener('click', removeOperationNames);
-  };
-
   const onClickHandler = (): void => {
-    const operation = store.getState().playgroundSlice.operation;
+    const {
+      playgroundSlice: { operation },
+    } = store.getState();
     const names = getOperationNames(operation);
 
     if (names.length > 1) {
       setOperationNames(names);
-      document.addEventListener('click', removeOperationNames);
+      document.addEventListener('click', () => setOperationNames([]), { once: true });
     } else {
       run(makeRequest());
     }
@@ -52,7 +49,7 @@ export const Runner = ({ isMobile }: { isMobile?: boolean }): JSX.Element => {
 
   return (
     <div className={classNames(styles.container, isMobile && styles.mobile)}>
-      {multipleRequest ? (
+      {isMultipleRequest ? (
         setMultipleButtons()
       ) : (
         <button className={styles.runButton} onClick={onClickHandler}>

@@ -3,8 +3,9 @@ import { store } from '@/redux/store';
 import { parse } from 'graphql';
 
 export const makeRequest = (name?: string): RickAndMortyReq => {
-  const operation = store.getState().playgroundSlice.operation;
-  const vars = store.getState().playgroundSlice.vars;
+  const {
+    playgroundSlice: { operation, vars },
+  } = store.getState();
   return { query: operation, variables: isJson(vars) && JSON.parse(vars), operationName: name };
 };
 
@@ -20,9 +21,9 @@ const isJson = (string: string): boolean => {
 export const getOperationNames = (queryString: string): string[] => {
   const operationNames = [];
   try {
-    const document = parse(queryString);
+    const { definitions } = parse(queryString);
 
-    for (const definition of document.definitions) {
+    for (const definition of definitions) {
       if (definition.kind === 'OperationDefinition' && definition.name) {
         operationNames.push(definition.name.value);
       }
