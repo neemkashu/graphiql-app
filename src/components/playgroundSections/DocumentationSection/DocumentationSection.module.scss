@@ -1,6 +1,6 @@
 .section {
   @include playgroundSection;
-  gap: $gap-small;
+  gap: $gap-medium;
   margin-bottom: 10px;
 }
 
@@ -8,36 +8,4 @@
   @include playgroundSection;
   justify-content: center;
   align-items: center;
-}
-
-.title {
-  font-size: $font-size-2;
-  color: $clr-second-2;
-  margin-bottom: 1rem;
-}
-
-.field {
-  margin-bottom: 0.8rem;
-}
-
-.name,
-.type {
-  line-height: 1.5;
-  cursor: pointer;
-  transition: $transition-color;
-
-  &:hover {
-    color: $clr-hover;
-  }
-}
-
-.type {
-  margin-left: 0.5rem;
-  color: $clr-active;
-  font-weight: 600;
-}
-
-.description {
-  color: $clr-second-2;
-  font-size: $font-size-base;
 }

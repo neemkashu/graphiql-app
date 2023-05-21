@@ -83,9 +83,11 @@ export const useTokenExpire = (): void => {
       nookies.set(undefined, USER_TOKEN_KEY, token, { path: '/' });
 
       const { expirationTime } = await firebaseUser.getIdTokenResult();
+      // eslint-disable-next-line no-console
       console.log('expirationTime', new Date(expirationTime).getTime());
 
       const logoutDuration = new Date(expirationTime).getTime() - Date.now();
+      // eslint-disable-next-line no-console
       console.log('logoutDuration', logoutDuration);
 
       const timer = setTimeout(() => {
@@ -95,6 +97,7 @@ export const useTokenExpire = (): void => {
       timerRef.current = timer;
     });
     return () => {
+      // eslint-disable-next-line no-console
       console.log('CLEAR TIMER: ', timerRef.current);
       clearTimeout(timerRef.current);
       unsubscribe();
