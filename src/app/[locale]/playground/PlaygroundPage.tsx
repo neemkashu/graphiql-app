@@ -34,47 +34,41 @@ export default function PlaygroundPage(): JSX.Element {
       <div className={styles.playground}>
         {isMobileView ? (
           <MobilePlayground>
-            {{
-              documentation: <DocumentationSection />,
-              resizeMobileBlock: (
-                <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE} isMobile={true}>
-                  {{
-                    topBlock: (
-                      <TabsBlock>
-                        {{
-                          operation: <OperationSection />,
-                          vars: <VarsSection />,
-                          headers: <HeadersSection />,
-                        }}
-                      </TabsBlock>
-                    ),
-                    bottomBlock: <ResponseSection isMobile={true} />,
-                  }}
-                </VerticalResizeContainer>
-              ),
-            }}
+            {/* @ts-expect-error Server Component */}
+            <DocumentationSection />
+            <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE} isMobile={true}>
+              {{
+                topBlock: (
+                  <TabsBlock>
+                    {{
+                      operation: <OperationSection />,
+                      vars: <VarsSection />,
+                      headers: <HeadersSection />,
+                    }}
+                  </TabsBlock>
+                ),
+                bottomBlock: <ResponseSection isMobile={true} />,
+              }}
+            </VerticalResizeContainer>
           </MobilePlayground>
         ) : (
           <DesktopPlayground>
-            {{
-              documentation: <DocumentationSection />,
-              operation: (
-                <VerticalResizeContainer lsKey={LS_KEYS.DESKTOP_VERTICAL_BLOCK_SIZE}>
-                  {{
-                    topBlock: <OperationSection />,
-                    bottomBlock: (
-                      <TabsBlock>
-                        {{
-                          vars: <VarsSection />,
-                          headers: <HeadersSection />,
-                        }}
-                      </TabsBlock>
-                    ),
-                  }}
-                </VerticalResizeContainer>
-              ),
-              response: <ResponseSection />,
-            }}
+            {/* @ts-expect-error Server Component */}
+            <DocumentationSection />
+            <VerticalResizeContainer lsKey={LS_KEYS.DESKTOP_VERTICAL_BLOCK_SIZE}>
+              {{
+                topBlock: <OperationSection />,
+                bottomBlock: (
+                  <TabsBlock>
+                    {{
+                      vars: <VarsSection />,
+                      headers: <HeadersSection />,
+                    }}
+                  </TabsBlock>
+                ),
+              }}
+            </VerticalResizeContainer>
+            <ResponseSection />
           </DesktopPlayground>
         )}
       </div>

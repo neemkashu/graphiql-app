@@ -1,7 +1,8 @@
-import { Schema } from './Schema/Schema';
+// 'use client';
+import { ORIGIN } from '@/common';
 import { buildClientSchema, getIntrospectionQuery } from 'graphql/utilities';
 import styles from './DocumentationSection.module.scss';
-import { ORIGIN } from '@/common';
+import { Schema } from './Schema/Schema';
 
 export const DocumentationSection = async (): Promise<JSX.Element> => {
   console.log('render DocumentationSection');

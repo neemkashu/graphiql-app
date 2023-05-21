@@ -1,6 +1,6 @@
 export type MobilePlaygroundProps = {
   children: {
-    documentation: JSX.Element;
+    documentation: Promise<JSX.Element>;
     resizeMobileBlock: JSX.Element;
   };
 };

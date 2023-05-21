@@ -3,7 +3,6 @@ import { FieldSplit, LS_KEYS } from '@/common';
 import { useFieldSize } from '@/common/hook';
 import {
   DEFAULT_PLAYGROUND_SIZE,
-  DesktopPlaygroundProps,
   HIDE_BTN_ICON,
   HIDE_PANE_PLAYGROUND_SIZE,
   HIDE_PANE_SIZE,
@@ -24,14 +23,13 @@ const sashRender = (_: number, active: boolean): ReactNode => (
   <SashContent active={active} type="vscode" />
 );
 
-export const DesktopPlayground = ({
-  children: { documentation, operation, response },
-}: DesktopPlaygroundProps): JSX.Element => {
+export const DesktopPlayground = ({ children }: { children: JSX.Element[] }): JSX.Element => {
   const [sizes, setSizes] = useFieldSize<PlaygroundSize>(
     DEFAULT_PLAYGROUND_SIZE,
     LS_KEYS.DESKTOP_PLAYGROUND_SIZE
   );
   const [leftPaneSize] = sizes;
+  const [documentation, operation, response] = children;
 
   const toggleLeftPane = (): void => {
     setSizes(leftPaneSize > HIDE_PANE_SIZE ? HIDE_PANE_PLAYGROUND_SIZE : DEFAULT_PLAYGROUND_SIZE);

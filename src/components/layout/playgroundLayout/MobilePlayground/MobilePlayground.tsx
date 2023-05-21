@@ -1,17 +1,16 @@
 'use client';
 import { makeRequest } from '@/common/helper';
 import { useRequest } from '@/common/hook';
-import { MobilePlaygroundProps } from '@/components';
+import { Spinner } from '@/components';
 import { MobilePage } from '@/components/layout/playgroundLayout/MobilePlayground/MobilePlayground.enum';
 import { Runner } from '@/components/Runner/Runner';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import styles from './MobilePlayground.module.scss';
 
-export const MobilePlayground = ({
-  children: { documentation, resizeMobileBlock },
-}: MobilePlaygroundProps): JSX.Element => {
+export const MobilePlayground = ({ children }: { children: JSX.Element[] }): JSX.Element => {
+  const [documentation, resizeMobileBlock] = children;
   const [page, setPage] = useState(MobilePage.second);
   const isPageFirst = page === MobilePage.first;
   const firstButtonOnClickHandler = (): void => {
@@ -28,7 +27,7 @@ export const MobilePlayground = ({
       <div className={styles.pageContainer}>
         <div className={classNames(styles.page, styles.firstPage, isPageFirst && styles.active)}>
           <h4 className={styles.title}>{t('documentation')}</h4>
-          {documentation}
+          <Suspense fallback={<Spinner isSmall={true} />}>{documentation}</Suspense>
         </div>
         <div className={classNames(styles.page, styles.secondPage, !isPageFirst && styles.active)}>
           {resizeMobileBlock}
