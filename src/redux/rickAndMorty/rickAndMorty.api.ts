@@ -3,7 +3,6 @@ import { ORIGIN } from '@/common';
 import { RickAndMortyReq, RickAndMortyRes } from '@/redux';
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { buildCreateApi, coreModule, reactHooksModule } from '@reduxjs/toolkit/query/react';
-import { getIntrospectionQuery, IntrospectionQuery } from 'graphql';
 
 const createApi = buildCreateApi(
   coreModule(),
@@ -30,18 +29,7 @@ export const rickAndMortyApi = createApi({
         }),
       }),
     }),
-    getSchema: query<IntrospectionQuery, void>({
-      query: () => ({
-        url: '',
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query: getIntrospectionQuery() }),
-      }),
-      transformResponse: (res: { data: IntrospectionQuery }) => res.data,
-    }),
   }),
 });
 
-export const { useLazyGetDataQuery, useGetSchemaQuery } = rickAndMortyApi;
+export const { useLazyGetDataQuery } = rickAndMortyApi;

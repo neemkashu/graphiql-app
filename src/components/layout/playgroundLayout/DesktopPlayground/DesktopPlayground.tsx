@@ -11,10 +11,11 @@ import {
   PlaygroundSize,
   SHOW_BTN_ICON,
 } from '@/components';
+import { Spinner } from '@/components/loading';
 import { Runner } from '@/components/Runner/Runner';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, Suspense } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './DesktopPlayground.module.scss';
@@ -51,7 +52,7 @@ export const DesktopPlayground = ({
           </button>
           <div className={styles.docsSection}>
             <h4 className={styles.sectionTitle}>{t('documentation')}</h4>
-            {documentation}
+            <Suspense fallback={<Spinner isSmall={true} />}>{documentation}</Suspense>
           </div>
         </div>
       </Pane>
