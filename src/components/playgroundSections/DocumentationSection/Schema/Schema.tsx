@@ -7,7 +7,7 @@ import { Types } from '../Schema/Schema.interface';
 import styles from './Schema.module.scss';
 import { ROOT_DESCR, ROOT_NAME } from './Schema.const';
 
-export const Schema = ({ schema }: { schema: GraphQLSchema }): JSX.Element => {
+export default function Schema({ schema }: { schema: GraphQLSchema }): JSX.Element {
   const rootQuery = schema.getQueryType();
   const types = getTypes(schema);
   const docRoot = {
@@ -71,4 +71,4 @@ export const Schema = ({ schema }: { schema: GraphQLSchema }): JSX.Element => {
       ))}
     </>
   );
-};
+}
