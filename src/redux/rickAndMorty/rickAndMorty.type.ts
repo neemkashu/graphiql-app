@@ -2,4 +2,4 @@ export type RickAndMortyRes = {
   data: object;
 };
 
-export type RickAndMortyReq = { query: string; variables?: object };
+export type RickAndMortyReq = { query: string; variables?: object; operationName?: string };

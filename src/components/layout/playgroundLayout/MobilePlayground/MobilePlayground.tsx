@@ -3,6 +3,7 @@ import { makeRequest } from '@/common/helper';
 import { useRequest } from '@/common/hook';
 import { MobilePlaygroundProps } from '@/components';
 import { MobilePage } from '@/components/layout/playgroundLayout/MobilePlayground/MobilePlayground.enum';
+import { Runner } from '@/components/Runner/Runner';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -40,12 +41,13 @@ export const MobilePlayground = ({
         >
           {t('documentation')}
         </button>
-        <button
-          className={classNames(styles.navButton, !isPageFirst && styles.run)}
-          onClick={secondButtonOnClickHandler}
-        >
-          {isPageFirst ? t('operation') : t('run')}
-        </button>
+        {isPageFirst ? (
+          <button className={styles.navButton} onClick={secondButtonOnClickHandler}>
+            {t('operation')}
+          </button>
+        ) : (
+          <Runner isMobile={true} />
+        )}
       </nav>
     </section>
   );
