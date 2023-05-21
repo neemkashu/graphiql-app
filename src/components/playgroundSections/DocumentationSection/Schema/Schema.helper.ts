@@ -1,15 +1,13 @@
 import {
-  buildClientSchema,
   GraphQLObjectType,
   GraphQLInterfaceType,
   GraphQLInputObjectType,
   GraphQLEnumType,
-  IntrospectionQuery,
+  GraphQLSchema,
 } from 'graphql';
-import { Field, Types } from './DocumentationSection.interface';
+import { Field, Types } from './Schema.interface';
 
-export const getTypes = (data: IntrospectionQuery): Types[] => {
-  const schema = buildClientSchema(data);
+export const getTypes = (schema: GraphQLSchema): Types[] => {
   const type = schema.getTypeMap();
   const types = Object.keys(type)
     .filter((typeName) => !typeName.startsWith('__'))
@@ -17,28 +15,41 @@ export const getTypes = (data: IntrospectionQuery): Types[] => {
       const tName = type[typeName];
       let typeFields: Field[] | undefined;
 
-      if (
-        tName instanceof GraphQLObjectType ||
-        tName instanceof GraphQLInterfaceType ||
-        tName instanceof GraphQLInputObjectType
-      ) {
+      if (tName instanceof GraphQLObjectType) {
         const fields = tName.getFields();
         typeFields = Object.keys(fields).map((fieldName) => {
           const field = fields[fieldName];
           return {
             name: field.name,
             type: field.type.toString(),
+            args:
+              field.args.map((arg) => {
+                return {
+                  name: arg.name,
+                  type: arg.type.toString(),
+                };
+              }) || [],
             description: field.description || '',
           };
         });
-      }
-
-      if (tName instanceof GraphQLEnumType) {
+      } else if (tName instanceof GraphQLInterfaceType || tName instanceof GraphQLInputObjectType) {
+        const fields = tName.getFields();
+        typeFields = Object.keys(fields).map((fieldName) => {
+          const field = fields[fieldName];
+          return {
+            name: field.name,
+            type: field.type.toString(),
+            args: [],
+            description: field.description || '',
+          };
+        });
+      } else if (tName instanceof GraphQLEnumType) {
         const values = tName.getValues();
         typeFields = values.map((value) => {
           return {
             name: value.name,
             type: value.value,
+            args: [],
             description: value.description || '',
           };
         });
