@@ -37,12 +37,10 @@ export const DesktopPlayground = ({ children }: MultipleChildren): JSX.Element =
   };
   const t = useTranslations('Playground');
 
-  useEffect(() => {
-    if (data && !schemaElement) {
-      const Schema = lazy(() => import('@/components/playgroundSections/Schema/Schema')); // не выносится в константу
-      setSchemaElement(<Schema schema={buildClientSchema(data)} />);
-    }
-  }, [data, schemaElement]);
+  if (data && !schemaElement) {
+    const Schema = lazy(() => import('@/components/playgroundSections/Schema/Schema'));
+    setSchemaElement(<Schema schema={buildClientSchema(data)} />);
+  }
 
   return (
     <>

@@ -33,6 +33,9 @@
 
 .firstPage {
   transform: translateX(-100%);
+  gap: 1.5rem;
+  padding-top: 17px;
+  overflow: auto;
 }
 
 .secondPage {
