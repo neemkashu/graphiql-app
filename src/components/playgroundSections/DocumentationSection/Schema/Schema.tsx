@@ -25,6 +25,8 @@ export const Schema = ({ schema }: { schema: GraphQLSchema }): JSX.Element => {
   const [currentType, setCurrentType] = useState<Types>(types[0]);
   const [docHistory, setDocHistory] = useState<Types[]>([docRoot]);
 
+  const { name, description, fields } = currentType;
+
   useEffect(() => {
     setCurrentType(docHistory[docHistory.length - 1]);
   }, [docHistory]);
@@ -46,14 +48,14 @@ export const Schema = ({ schema }: { schema: GraphQLSchema }): JSX.Element => {
           {` < ${docHistory[docHistory.length - 2].name} `}
         </button>
       )}
-      <h3 className={styles.title}>{currentType.name}</h3>
-      {currentType.description && <p className={styles.description}>{currentType.description}</p>}
-      {currentType.fields?.map((field) => (
-        <div className={styles.field} key={field.name}>
-          <span className={styles.name}>{field.name}</span>
-          {!!field.args.length && (
+      <h3 className={styles.title}>{name}</h3>
+      {description && <p className={styles.description}>{description}</p>}
+      {fields?.map(({ name, args, type, description }) => (
+        <div className={styles.field} key={name}>
+          <span className={styles.name}>{name}</span>
+          {!!args.length && (
             <div className={styles.args}>
-              {field.args.map((arg) => (
+              {args.map((arg) => (
                 <div className={styles.arg} key={arg.name}>
                   <span className={styles.name}>{arg.name}</span>
                   <button className={styles.type} onClick={() => handleClick(arg.type || '')}>
@@ -63,10 +65,10 @@ export const Schema = ({ schema }: { schema: GraphQLSchema }): JSX.Element => {
               ))}
             </div>
           )}
-          <button className={styles.type} onClick={() => handleClick(field.type || '')}>
-            : {field.type}
+          <button className={styles.type} onClick={() => handleClick(type || '')}>
+            : {type}
           </button>
-          {field.description && <p className={styles.description}>{field.description}</p>}
+          {description && <p className={styles.description}>{description}</p>}
         </div>
       ))}
     </>

@@ -1,22 +1,22 @@
 import {
-  GraphQLObjectType,
-  GraphQLInterfaceType,
-  GraphQLInputObjectType,
-  GraphQLEnumType,
   GraphQLSchema,
+  isInterfaceType,
+  isObjectType,
+  isEnumType,
+  isInputObjectType,
 } from 'graphql';
 import { Field, Types } from './Schema.interface';
 
 export const getTypes = (schema: GraphQLSchema): Types[] => {
-  const type = schema.getTypeMap();
-  const types = Object.keys(type)
+  const typeMap = schema.getTypeMap();
+  const types = Object.keys(typeMap)
     .filter((typeName) => !typeName.startsWith('__'))
     .map((typeName) => {
-      const tName = type[typeName];
+      const type = typeMap[typeName];
       let typeFields: Field[] | undefined;
 
-      if (tName instanceof GraphQLObjectType) {
-        const fields = tName.getFields();
+      if (isObjectType(type)) {
+        const fields = type.getFields();
         typeFields = Object.keys(fields).map((fieldName) => {
           const field = fields[fieldName];
           return {
@@ -32,8 +32,10 @@ export const getTypes = (schema: GraphQLSchema): Types[] => {
             description: field.description || '',
           };
         });
-      } else if (tName instanceof GraphQLInterfaceType || tName instanceof GraphQLInputObjectType) {
-        const fields = tName.getFields();
+      }
+
+      if (isInterfaceType(type) || isInputObjectType(type)) {
+        const fields = type.getFields();
         typeFields = Object.keys(fields).map((fieldName) => {
           const field = fields[fieldName];
           return {
@@ -43,8 +45,10 @@ export const getTypes = (schema: GraphQLSchema): Types[] => {
             description: field.description || '',
           };
         });
-      } else if (tName instanceof GraphQLEnumType) {
-        const values = tName.getValues();
+      }
+
+      if (isEnumType(type)) {
+        const values = type.getValues();
         typeFields = values.map((value) => {
           return {
             name: value.name,
@@ -56,8 +60,8 @@ export const getTypes = (schema: GraphQLSchema): Types[] => {
       }
 
       return {
-        name: tName.name,
-        description: tName.description as string,
+        name: type.name,
+        description: type.description as string,
         fields: typeFields || null,
       };
     });
