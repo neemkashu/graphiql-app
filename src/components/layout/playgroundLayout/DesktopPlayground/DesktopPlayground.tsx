@@ -58,7 +58,7 @@ export const DesktopPlayground = ({ children }: MultipleChildren): JSX.Element =
         <Pane minSize={isDocsOpen ? MIN_PANE_SIZE : 0} maxSize={isDocsOpen ? MAX_PANE_SIZE : 0}>
           <div className={classNames(styles.pane, styles.paneLeft)}>
             <Suspense fallback={<PageSpinner isSmall />}>
-              {data && schemaElement}
+              {schemaElement}
               {isLoading && <PageSpinner isSmall />}
               {isError && <p>Schema not found</p>}
             </Suspense>

@@ -1,7 +1,7 @@
 'use client';
 
 import { GraphQLSchema } from 'graphql';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getTypes } from './Schema.helper';
 import { Types } from './Schema.interface';
 import styles from './Schema.module.scss';
@@ -22,14 +22,8 @@ export default function Schema({ schema }: { schema: GraphQLSchema }): JSX.Eleme
       },
     ],
   };
-  const [currentType, setCurrentType] = useState<Types>(types[0]);
   const [docHistory, setDocHistory] = useState<Types[]>([docRoot]);
-
-  const { name, description, fields } = currentType;
-
-  useEffect(() => {
-    setCurrentType(docHistory[docHistory.length - 1]);
-  }, [docHistory]);
+  const { name, description, fields } = docHistory[docHistory.length - 1];
 
   const handleClick = (fieldType: string): void => {
     const typeName = fieldType.replace(/\[|\]|!/g, '');
