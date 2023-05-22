@@ -3,7 +3,6 @@ import { operationSelector, useAppDispatch } from '@/redux';
 import { useTranslations } from 'next-intl';
 import { useSelector } from 'react-redux';
 import CodeMirror from '@uiw/react-codemirror';
-// import { json } from '@codemirror/lang-json';
 import { graphql } from 'cm6-graphql';
 import { customTheme } from '../customTheme';
 import { schema } from './rickAndMortySchema';

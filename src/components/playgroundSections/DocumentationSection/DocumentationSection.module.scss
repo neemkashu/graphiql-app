@@ -2,10 +2,13 @@
   @include playgroundSection;
   gap: $gap-medium;
   margin-bottom: 10px;
+  width: 100%;
 }
 
-.spinner {
-  @include playgroundSection;
-  justify-content: center;
+.loaderWrapper {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
