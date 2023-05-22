@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import styles from './RegisterForm.module.scss';
-import { firebaseAuth } from '@/firebase';
+import { firebaseAuth, writeNewUserPlayground } from '@/firebase';
 import { useRouter } from 'next/navigation';
 import { PageList } from '@/common';
 import { useForm } from 'react-hook-form';
@@ -39,7 +39,8 @@ export const RegisterForm = (): JSX.Element => {
     try {
       setIsLoading(true);
       setFirebaseError(null);
-      await createUserWithEmailAndPassword(firebaseAuth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+      await writeNewUserPlayground(userCredential.user);
       router.push(playgroundPage);
     } catch (error) {
       setIsLoading(false);

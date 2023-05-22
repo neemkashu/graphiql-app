@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 'use client';
 import { USER_TOKEN_KEY } from '@/common';
-import { ALL_LANGUAGES, BASIC_LANGUAGE, LS_KEYS } from '@/common/const';
+import { ALL_LANGUAGES, BASIC_LANGUAGE, LS_KEYS, USER_COLLECTON_PATH } from '@/common/const';
 import { PageList } from '@/common/enum';
-import { firebaseAuth, logout } from '@/firebase';
+import { database, firebaseAuth, logout } from '@/firebase';
 import { useAppDispatch } from '@/redux';
 import { setError, setIsFetch, setResponse, setSlice } from '@/redux/playground/playground.slice';
 import { useLazyGetDataQuery } from '@/redux/rickAndMorty/rickAndMorty.api';
 import { store } from '@/redux/store';
-import { onIdTokenChanged, Unsubscribe } from 'firebase/auth';
+import { onIdTokenChanged, Unsubscribe, User } from 'firebase/auth';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { usePathname } from 'next/navigation';
 import nookies from 'nookies';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
@@ -63,6 +64,52 @@ export const useSetStore = () => {
       window.removeEventListener('beforeunload', saveStore);
     };
   }, [dispatch]);
+};
+
+export const useSetStoreWithFirebase = (user?: User | null) => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!user) return;
+
+    const { uid } = user;
+
+    const documentRef = doc(database, USER_COLLECTON_PATH, uid);
+
+    const setStore = () => {
+      const { init } = store.getState().playgroundSlice;
+      if (!init) return;
+
+      getDoc(documentRef).then((documentSnapshot) => {
+        // eslint-disable-next-line no-console
+        console.log('GET DATA DOC ', documentSnapshot.data()?.playground);
+        const savedData = documentSnapshot.data()?.playground;
+
+        if (savedData) dispatch(setSlice(JSON.parse(savedData)));
+      });
+    };
+
+    const saveStore = async () => {
+      await setDoc(
+        documentRef,
+        {
+          playground: JSON.stringify(store.getState().playgroundSlice),
+        },
+        { merge: true }
+      );
+      // eslint-disable-next-line no-console
+      console.log('SAVE DATA DOC IN FIREBASE');
+    };
+
+    setStore();
+
+    window.addEventListener('beforeunload', saveStore);
+
+    return (): void => {
+      saveStore();
+      window.removeEventListener('beforeunload', saveStore);
+    };
+  }, [dispatch, user]);
 };
 
 export const usePathWithLocale = (pagePath: PageList[]): string[] => {

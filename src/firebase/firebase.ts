@@ -1,18 +1,15 @@
 import { USER_TOKEN_KEY } from '@/common';
 import { initializeApp } from 'firebase/app';
 import {
+  User,
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, setDoc, getDoc, doc, getFirestore } from 'firebase/firestore';
 import nookies from 'nookies';
 
-// TODO: Replace the following with your app's Firebase project configuration
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyDJiltna88PN7puh4c0VGbo-ptXNGUUyu0',
   authDomain: 'lyk-graphiql.firebaseapp.com',
@@ -25,6 +22,24 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const firebaseAuth = getAuth(app);
 export const database = getFirestore(app);
+
+// const usersCollection = collection(database, 'users');
+// const documentRef = doc(database, 'users', 'LdAFx2gaDYkBXrcico3G');
+// getDocs(usersCollection).then((data) => console.log('data user', data.size));
+// getDoc(documentRef).then((data) => console.log('data user', data.data()));
+
+export const writeNewUserPlayground = async (user: User): Promise<void> => {
+  const { uid, email } = user;
+  const userData = {
+    uid,
+    email,
+    playground: '123!',
+  };
+  const documentRef = doc(database, 'users', uid);
+
+  await setDoc(documentRef, userData).catch(() => console.log('some problem'));
+  // getDoc(documentRef).then((data) => console.log('data user', data.data()));
+};
 
 export const logInWithEmailAndPassword = async (email: string, password: string): Promise<void> => {
   try {
