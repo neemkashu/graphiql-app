@@ -44,4 +44,4 @@ export const rickAndMortyApi = createApi({
   }),
 });
 
-export const { useLazyGetDataQuery, useGetSchemaQuery } = rickAndMortyApi;
+export const { useLazyGetDataQuery, useLazyGetSchemaQuery } = rickAndMortyApi;

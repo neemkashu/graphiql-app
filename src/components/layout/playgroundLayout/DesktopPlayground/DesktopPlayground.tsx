@@ -14,7 +14,7 @@ import {
 import { Runner } from '@/components/Runner/Runner';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './DesktopPlayground.module.scss';
