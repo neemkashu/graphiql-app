@@ -1,13 +1,13 @@
 'use client';
-import { TabsList, TabsBlockProps } from '@/components';
+import { TabsList } from '@/components';
 import classNames from 'classnames';
 import { useState } from 'react';
 import styles from './TabsBlock.module.scss';
 import { useTranslations } from 'next-intl';
+import { MultipleChildren } from '@/common';
 
-export const TabsBlock = ({
-  children: { operation, vars, headers },
-}: TabsBlockProps): JSX.Element => {
+export const TabsBlock = ({ children }: MultipleChildren): JSX.Element => {
+  const [vars, headers, operation] = children;
   const [activeBlock, setActiveBlock] = useState(operation ? TabsList.operation : TabsList.vars);
   const onClickHandler = (block: TabsList): void => {
     setActiveBlock(block);

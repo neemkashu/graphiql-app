@@ -1,9 +1,8 @@
 'use client';
-import { FieldSplit, LS_KEYS } from '@/common';
+import { FieldSplit, LS_KEYS, MultipleChildren } from '@/common';
 import { useFieldSize } from '@/common/hook';
 import {
   DEFAULT_PLAYGROUND_SIZE,
-  DesktopPlaygroundProps,
   HIDE_BTN_ICON,
   HIDE_PANE_PLAYGROUND_SIZE,
   HIDE_PANE_SIZE,
@@ -23,9 +22,8 @@ const sashRender = (_: number, active: boolean): ReactNode => (
   <SashContent active={active} type="vscode" />
 );
 
-export const DesktopPlayground = ({
-  children: { documentation, operation, response },
-}: DesktopPlaygroundProps): JSX.Element => {
+export const DesktopPlayground = ({ children }: MultipleChildren): JSX.Element => {
+  const [documentation, operation, response] = children;
   const [sizes, setSizes] = useFieldSize<PlaygroundSize>(
     DEFAULT_PLAYGROUND_SIZE,
     LS_KEYS.DESKTOP_PLAYGROUND_SIZE

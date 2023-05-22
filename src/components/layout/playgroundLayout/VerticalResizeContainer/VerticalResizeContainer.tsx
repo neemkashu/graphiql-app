@@ -20,10 +20,11 @@ const sashRender = (_: number, active: boolean): ReactNode => (
 );
 
 export const VerticalResizeContainer = ({
-  children: { topBlock, bottomBlock },
+  children,
   lsKey,
   isMobile,
 }: VerticalContainerProps): JSX.Element => {
+  const [topBlock, bottomBlock] = children;
   const [sizes, setSizes] = useFieldSize<VerticalContainerSize>(
     DEFAULT_VERTICAL_CONTAINER_SIZE,
     lsKey

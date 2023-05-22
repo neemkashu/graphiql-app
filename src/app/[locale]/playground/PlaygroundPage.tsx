@@ -20,6 +20,7 @@ import styles from './page.module.scss';
 import { useWidthState } from './PlaygroundPage.hook';
 
 export default function PlaygroundPage(): JSX.Element {
+  const { MOBILE_VERTICAL_BLOCK_SIZE, DESKTOP_VERTICAL_BLOCK_SIZE } = LS_KEYS;
   const isMobileView = useWidthState();
   const [welcomePage] = usePathWithLocale([PageList.welcome]);
   const errors = useSelector(errorSelector);
@@ -34,47 +35,27 @@ export default function PlaygroundPage(): JSX.Element {
       <div className={styles.playground}>
         {isMobileView ? (
           <MobilePlayground>
-            {{
-              documentation: <DocumentationSection />,
-              resizeMobileBlock: (
-                <VerticalResizeContainer lsKey={LS_KEYS.MOBILE_VERTICAL_BLOCK_SIZE} isMobile={true}>
-                  {{
-                    topBlock: (
-                      <TabsBlock>
-                        {{
-                          operation: <OperationSection />,
-                          vars: <VarsSection />,
-                          headers: <HeadersSection />,
-                        }}
-                      </TabsBlock>
-                    ),
-                    bottomBlock: <ResponseSection isMobile={true} />,
-                  }}
-                </VerticalResizeContainer>
-              ),
-            }}
+            <DocumentationSection />
+            <VerticalResizeContainer lsKey={MOBILE_VERTICAL_BLOCK_SIZE} isMobile>
+              <TabsBlock>
+                <VarsSection />
+                <HeadersSection />
+                <OperationSection />
+              </TabsBlock>
+              <ResponseSection isMobile={true} />
+            </VerticalResizeContainer>
           </MobilePlayground>
         ) : (
           <DesktopPlayground>
-            {{
-              documentation: <DocumentationSection />,
-              operation: (
-                <VerticalResizeContainer lsKey={LS_KEYS.DESKTOP_VERTICAL_BLOCK_SIZE}>
-                  {{
-                    topBlock: <OperationSection />,
-                    bottomBlock: (
-                      <TabsBlock>
-                        {{
-                          vars: <VarsSection />,
-                          headers: <HeadersSection />,
-                        }}
-                      </TabsBlock>
-                    ),
-                  }}
-                </VerticalResizeContainer>
-              ),
-              response: <ResponseSection />,
-            }}
+            <DocumentationSection />
+            <VerticalResizeContainer lsKey={DESKTOP_VERTICAL_BLOCK_SIZE}>
+              <OperationSection />
+              <TabsBlock>
+                <VarsSection />
+                <HeadersSection />
+              </TabsBlock>
+            </VerticalResizeContainer>
+            <ResponseSection />
           </DesktopPlayground>
         )}
       </div>
