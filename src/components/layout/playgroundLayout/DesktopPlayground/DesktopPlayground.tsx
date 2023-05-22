@@ -1,7 +1,6 @@
 'use client';
 import { FieldSplit, LS_KEYS } from '@/common';
-import { makeRequest } from '@/common/helper';
-import { useFieldSize, useRequest } from '@/common/hook';
+import { useFieldSize } from '@/common/hook';
 import {
   DEFAULT_PLAYGROUND_SIZE,
   DesktopPlaygroundProps,
@@ -12,9 +11,10 @@ import {
   PlaygroundSize,
   SHOW_BTN_ICON,
 } from '@/components';
+import { Runner } from '@/components/Runner/Runner';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './DesktopPlayground.module.scss';
@@ -36,11 +36,6 @@ export const DesktopPlayground = ({
     setSizes(leftPaneSize > HIDE_PANE_SIZE ? HIDE_PANE_PLAYGROUND_SIZE : DEFAULT_PLAYGROUND_SIZE);
   };
   const t = useTranslations('Playground');
-
-  const run = useRequest();
-  const onClickHandler = (): void => {
-    run(makeRequest());
-  };
 
   return (
     <SplitPane
@@ -64,9 +59,7 @@ export const DesktopPlayground = ({
         <div className={classNames(styles.pane, styles.paneCenter)}>
           <div className={styles.centerHeader}>
             <h4 className={styles.sectionTitle}>{t('operation')}</h4>
-            <button className={styles.runButton} onClick={onClickHandler}>
-              {t('run')}
-            </button>
+            <Runner />
           </div>
           {operation}
         </div>

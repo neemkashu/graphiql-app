@@ -1,7 +1,7 @@
 @mixin buttonBase {
   transition: $transition-basic;
   padding: 1rem;
-  font-size: 1.4rem;
+  font-size: $font-size-base;
   border: none;
   cursor: pointer;
   font-family: inherit;
@@ -14,7 +14,6 @@
 @mixin buttonMainNormal {
   @include buttonBase;
   border-radius: 5px;
-  min-width: 60px;
   background-color: transparent;
   color: $clr-second;
 
@@ -26,7 +25,6 @@
 @mixin buttonMainActive {
   @include buttonBase;
   border-radius: 5px;
-  min-width: 60px;
   background-color: $clr-active-2;
   color: $clr-second;
 

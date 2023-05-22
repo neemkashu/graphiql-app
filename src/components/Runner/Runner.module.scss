@@ -1,0 +1,43 @@
+.container {
+  position: relative;
+  z-index: 20;
+
+  &.mobile {
+    width: 49%;
+
+    .runButton {
+      max-width: 100%;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .multipleContainer {
+      bottom: 0;
+      top: auto;
+      width: 100%;
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+.runButton {
+  @include buttonMainActive;
+  height: 37px;
+  width: max-content;
+  max-width: 170px;
+  overflow: hidden;
+  white-space: nowrap;
+  justify-content: flex-start;
+}
+
+.multipleContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-height: 375px;
+  overflow: auto;
+}
