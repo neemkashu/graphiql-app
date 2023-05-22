@@ -1,10 +1,12 @@
-export const DEFAULT_PLAYGROUND_SIZE = [9999, 9999, 9999];
-
 export const MIN_PANE_SIZE = 280;
 
-export const HIDE_PANE_SIZE = 42;
+export const MAX_PANE_SIZE = 9999;
 
-export const HIDE_PANE_PLAYGROUND_SIZE: [number, string, string] = [42, '', ''];
+export const HIDE_PANE_SIZE = 0;
+
+export const SHOW_PLAYGROUND_SIZE = [MAX_PANE_SIZE, MAX_PANE_SIZE, MAX_PANE_SIZE];
+
+export const HIDE_PLAYGROUND_SIZE = [HIDE_PANE_SIZE, MAX_PANE_SIZE, MAX_PANE_SIZE];
 
 export const HIDE_BTN_ICON = '<';
 

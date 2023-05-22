@@ -1,1 +1,1 @@
-export {};
+export type MultipleChildren = { children: JSX.Element[] };

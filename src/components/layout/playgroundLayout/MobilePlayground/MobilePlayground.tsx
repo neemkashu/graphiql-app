@@ -1,37 +1,45 @@
 'use client';
-import { makeRequest } from '@/common/helper';
-import { useRequest } from '@/common/hook';
-import { MobilePlaygroundProps } from '@/components';
-import { MobilePage } from '@/components/layout/playgroundLayout/MobilePlayground/MobilePlayground.enum';
+import { PageSpinner } from '@/components';
 import { Runner } from '@/components/Runner/Runner';
+import { useLazyGetSchemaQuery } from '@/redux';
 import classNames from 'classnames';
+import { buildClientSchema } from 'graphql';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import styles from './MobilePlayground.module.scss';
 
-export const MobilePlayground = ({
-  children: { documentation, resizeMobileBlock },
-}: MobilePlaygroundProps): JSX.Element => {
-  const [page, setPage] = useState(MobilePage.second);
-  const isPageFirst = page === MobilePage.first;
-  const firstButtonOnClickHandler = (): void => {
-    setPage(MobilePage.first);
-  };
-  const run = useRequest();
-  const secondButtonOnClickHandler = (): void => {
-    isPageFirst ? setPage(MobilePage.second) : run(makeRequest());
-  };
+export const MobilePlayground = ({ children }: { children: JSX.Element }): JSX.Element => {
   const t = useTranslations('Playground');
+  const [isPageFirst, setIsPageFirst] = useState(false);
+  const [schemaElement, setSchemaElement] = useState<JSX.Element | null>(null);
+  const [fetchScheme, { data, isLoading, isError }] = useLazyGetSchemaQuery();
+
+  const firstButtonOnClickHandler = (): void => {
+    if (!data) fetchScheme();
+    setIsPageFirst(true);
+  };
+
+  const secondButtonOnClickHandler = (): void => {
+    setIsPageFirst(false);
+  };
+
+  if (data && !schemaElement) {
+    const Schema = lazy(() => import('@/components/playgroundSections/Schema/Schema'));
+    setSchemaElement(<Schema schema={buildClientSchema(data)} />);
+  }
 
   return (
     <section className={styles.container}>
       <div className={styles.pageContainer}>
         <div className={classNames(styles.page, styles.firstPage, isPageFirst && styles.active)}>
-          <h4 className={styles.title}>{t('documentation')}</h4>
-          {documentation}
+          <Suspense fallback={<PageSpinner isSmall />}>
+            {schemaElement}
+            {isLoading && <PageSpinner isSmall />}
+            {isError && <p>Schema not found</p>}
+          </Suspense>
         </div>
         <div className={classNames(styles.page, styles.secondPage, !isPageFirst && styles.active)}>
-          {resizeMobileBlock}
+          {children}
         </div>
       </div>
       <nav className={styles.nav}>
