@@ -1,4 +1,4 @@
-import { USER_TOKEN_KEY } from '@/common';
+import { USER_COLLECTON_PATH, USER_TOKEN_KEY } from '@/common';
 import { initializeApp } from 'firebase/app';
 import {
   User,
@@ -7,7 +7,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { addDoc, collection, setDoc, getDoc, doc, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, setDoc, doc, getFirestore } from 'firebase/firestore';
 import nookies from 'nookies';
 
 const firebaseConfig = {
@@ -23,22 +23,17 @@ export const app = initializeApp(firebaseConfig);
 export const firebaseAuth = getAuth(app);
 export const database = getFirestore(app);
 
-// const usersCollection = collection(database, 'users');
-// const documentRef = doc(database, 'users', 'LdAFx2gaDYkBXrcico3G');
-// getDocs(usersCollection).then((data) => console.log('data user', data.size));
-// getDoc(documentRef).then((data) => console.log('data user', data.data()));
-
 export const writeNewUserPlayground = async (user: User): Promise<void> => {
   const { uid, email } = user;
+
   const userData = {
     uid,
     email,
-    playground: '123!',
+    playground: '',
   };
-  const documentRef = doc(database, 'users', uid);
+  const documentRef = doc(database, USER_COLLECTON_PATH, uid);
 
-  await setDoc(documentRef, userData).catch(() => console.log('some problem'));
-  // getDoc(documentRef).then((data) => console.log('data user', data.data()));
+  await setDoc(documentRef, userData);
 };
 
 export const logInWithEmailAndPassword = async (email: string, password: string): Promise<void> => {

@@ -16,6 +16,7 @@ import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseEr
 import { AuthError, createUserWithEmailAndPassword } from 'firebase/auth';
 import { Spinner } from '@/components/loading';
 import classNames from 'classnames';
+import { FirestoreError } from 'firebase/firestore';
 
 export const RegisterForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);
@@ -32,7 +33,7 @@ export const RegisterForm = (): JSX.Element => {
   });
   const t = useTranslations('Form');
 
-  const [firebaseError, setFirebaseError] = useState<AuthError | null>(null);
+  const [firebaseError, setFirebaseError] = useState<AuthError | FirestoreError | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleRegister = async ({ email, password }: LoginData): Promise<void> => {
@@ -44,6 +45,10 @@ export const RegisterForm = (): JSX.Element => {
       router.push(playgroundPage);
     } catch (error) {
       setIsLoading(false);
+      if (error instanceof FirestoreError) {
+        setFirebaseError(error as FirestoreError);
+        return;
+      }
       setFirebaseError(error as AuthError);
     }
   };

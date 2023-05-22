@@ -1,6 +1,6 @@
 'use client';
 import { LS_KEYS, PageList } from '@/common';
-import { usePathWithLocale, useSetStore, useSetStoreWithFirebase } from '@/common/hook';
+import { usePathWithLocale, useSetStoreWithFirebase } from '@/common/hook';
 import { DesktopPlayground } from '@/components/layout/playgroundLayout/DesktopPlayground/DesktopPlayground';
 import { MobilePlayground } from '@/components/layout/playgroundLayout/MobilePlayground/MobilePlayground';
 import { TabsBlock } from '@/components/layout/playgroundLayout/TabsBlock/TabsBlock';
@@ -24,7 +24,7 @@ export default function PlaygroundPage(): JSX.Element {
   const [welcomePage] = usePathWithLocale([PageList.welcome]);
   const errors = useSelector(errorSelector);
   const [user, loading] = useIdToken(firebaseAuth);
-  // useSetStore();
+
   useSetStoreWithFirebase(user);
 
   if (!loading && !user) redirect(welcomePage);

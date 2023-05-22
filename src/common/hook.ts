@@ -81,8 +81,6 @@ export const useSetStoreWithFirebase = (user?: User | null) => {
       if (!init) return;
 
       getDoc(documentRef).then((documentSnapshot) => {
-        // eslint-disable-next-line no-console
-        console.log('GET DATA DOC ', documentSnapshot.data()?.playground);
         const savedData = documentSnapshot.data()?.playground;
 
         if (savedData) dispatch(setSlice(JSON.parse(savedData)));
@@ -97,8 +95,6 @@ export const useSetStoreWithFirebase = (user?: User | null) => {
         },
         { merge: true }
       );
-      // eslint-disable-next-line no-console
-      console.log('SAVE DATA DOC IN FIREBASE');
     };
 
     setStore();
@@ -130,12 +126,8 @@ export const useTokenExpire = (): void => {
       nookies.set(undefined, USER_TOKEN_KEY, token, { path: '/' });
 
       const { expirationTime } = await firebaseUser.getIdTokenResult();
-      // eslint-disable-next-line no-console
-      console.log('expirationTime', new Date(expirationTime).getTime());
 
       const logoutDuration = new Date(expirationTime).getTime() - Date.now();
-      // eslint-disable-next-line no-console
-      console.log('logoutDuration', logoutDuration);
 
       const timer = setTimeout(() => {
         logout();
@@ -144,8 +136,6 @@ export const useTokenExpire = (): void => {
       timerRef.current = timer;
     });
     return () => {
-      // eslint-disable-next-line no-console
-      console.log('CLEAR TIMER: ', timerRef.current);
       clearTimeout(timerRef.current);
       unsubscribe();
     };
