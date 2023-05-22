@@ -17,14 +17,14 @@ export const LoginNavButtons = (): JSX.Element => {
       <Link
         href={signUpPage}
         className={isSignUpPage() ? styles.activeButton : styles.normalButton}
-        prefetch={false}
+        prefetch={true}
       >
         {t('signUp')}
       </Link>
       <Link
         href={signInPage}
         className={isSignUpPage() ? styles.normalButton : styles.activeButton}
-        prefetch={false}
+        prefetch={true}
       >
         {t('signIn')}
       </Link>
