@@ -11,7 +11,7 @@ import styles from './MobilePlayground.module.scss';
 export const MobilePlayground = ({ children }: { children: JSX.Element }): JSX.Element => {
   const t = useTranslations('Playground');
   const [isPageFirst, setIsPageFirst] = useState(false);
-  const [schemaElement, setSchemaElement] = useState<JSX.Element | undefined>();
+  const [schemaElement, setSchemaElement] = useState<JSX.Element | null>(null);
   const [fetchScheme, { data, isLoading, isError }] = useLazyGetSchemaQuery();
 
   const firstButtonOnClickHandler = (): void => {

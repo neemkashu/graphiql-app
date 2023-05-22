@@ -27,7 +27,7 @@ export const DesktopPlayground = ({ children }: MultipleChildren): JSX.Element =
   const [operation, response] = children;
   const [isDocsOpen, setIsDocsOpen] = useState(false);
   const [sizes, setSizes] = useState(HIDE_PLAYGROUND_SIZE);
-  const [schemaElement, setSchemaElement] = useState<JSX.Element | undefined>();
+  const [schemaElement, setSchemaElement] = useState<JSX.Element | null>(null);
   const [fetchScheme, { data, isLoading, isError }] = useLazyGetSchemaQuery();
 
   const toggleLeftPane = (): void => {
