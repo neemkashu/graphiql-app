@@ -1,5 +1,4 @@
 'use client';
-import { MultipleChildren } from '@/common';
 import { makeRequest } from '@/common/helper';
 import { useRequest } from '@/common/hook';
 import { MobilePage } from '@/components/layout/playgroundLayout/MobilePlayground/MobilePlayground.enum';
@@ -9,8 +8,7 @@ import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import styles from './MobilePlayground.module.scss';
 
-export const MobilePlayground = ({ children }: MultipleChildren): JSX.Element => {
-  const [documentation, resizeMobileBlock] = children;
+export const MobilePlayground = ({ children }: { children: JSX.Element }): JSX.Element => {
   const [page, setPage] = useState(MobilePage.second);
   const isPageFirst = page === MobilePage.first;
   const firstButtonOnClickHandler = (): void => {
@@ -26,11 +24,10 @@ export const MobilePlayground = ({ children }: MultipleChildren): JSX.Element =>
     <section className={styles.container}>
       <div className={styles.pageContainer}>
         <div className={classNames(styles.page, styles.firstPage, isPageFirst && styles.active)}>
-          <h4 className={styles.title}>{t('documentation')}</h4>
-          {documentation}
+          {/* {documentation} */}
         </div>
         <div className={classNames(styles.page, styles.secondPage, !isPageFirst && styles.active)}>
-          {resizeMobileBlock}
+          {children}
         </div>
       </div>
       <nav className={styles.nav}>

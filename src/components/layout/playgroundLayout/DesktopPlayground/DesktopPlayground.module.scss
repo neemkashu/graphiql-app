@@ -31,14 +31,11 @@
 }
 
 .paneLeft {
-  flex-direction: row-reverse;
-  padding-right: 5px;
-}
-
-.docsSection {
-  display: flex;
+  padding-top: 10px;
   flex-direction: column;
   flex-grow: 1;
+  justify-content: flex-start;
+  padding-left: 10px;
 }
 
 .centerHeader {

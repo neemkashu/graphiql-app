@@ -15,7 +15,6 @@ import { errorSelector } from '@/redux';
 import { redirect } from 'next/navigation';
 import { useIdToken } from 'react-firebase-hooks/auth';
 import { useSelector } from 'react-redux';
-import { DocumentationSection } from '@/components/playgroundSections/DocumentationSection/DocumentationSection';
 import styles from './page.module.scss';
 import { useWidthState } from './PlaygroundPage.hook';
 
@@ -35,7 +34,6 @@ export default function PlaygroundPage(): JSX.Element {
       <div className={styles.playground}>
         {isMobileView ? (
           <MobilePlayground>
-            <DocumentationSection />
             <VerticalResizeContainer lsKey={MOBILE_VERTICAL_BLOCK_SIZE} isMobile>
               <TabsBlock>
                 <VarsSection />
@@ -47,7 +45,6 @@ export default function PlaygroundPage(): JSX.Element {
           </MobilePlayground>
         ) : (
           <DesktopPlayground>
-            <DocumentationSection />
             <VerticalResizeContainer lsKey={DESKTOP_VERTICAL_BLOCK_SIZE}>
               <OperationSection />
               <TabsBlock>
