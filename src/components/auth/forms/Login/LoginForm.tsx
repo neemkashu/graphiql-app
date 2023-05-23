@@ -11,9 +11,8 @@ import { LoginData } from '@/components/auth/forms/forms.type';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
 import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
-import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
+import { FirebaseErrorMessage, notify } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
 import { signInWithEmailAndPassword } from '@firebase/auth';
-import { AuthError } from 'firebase/auth';
 import { Spinner } from '@/components/loading';
 import classNames from 'classnames';
 
@@ -23,28 +22,26 @@ export const LoginForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<LoginData>({ mode: 'onSubmit', reValidateMode: 'onBlur' });
   const t = useTranslations('Form');
 
-  const [firebaseError, setFirebaseError] = useState<AuthError | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async ({ email, password }: LoginData): Promise<void> => {
     try {
       setIsLoading(true);
-      setFirebaseError(null);
       await signInWithEmailAndPassword(firebaseAuth, email, password);
       router.push(playgroundPage);
     } catch (error) {
       setIsLoading(false);
-      setFirebaseError(error as AuthError);
+      if (error instanceof Error) notify(error);
     }
   };
 
   return (
     <>
-      {isValid && firebaseError && <FirebaseErrorMessage error={firebaseError} />}
+      <FirebaseErrorMessage />
       <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
         <div>
           <div className={styles.labelContainer}>

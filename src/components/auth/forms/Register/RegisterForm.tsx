@@ -12,11 +12,10 @@ import { DEFAULT_REGISTER_STATE } from '@/components/auth/forms/forms.const';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
 import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
-import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
-import { AuthError, createUserWithEmailAndPassword } from 'firebase/auth';
+import { FirebaseErrorMessage, notify } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Spinner } from '@/components/loading';
 import classNames from 'classnames';
-import { FirestoreError } from 'firebase/firestore';
 
 export const RegisterForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);
@@ -25,7 +24,7 @@ export const RegisterForm = (): JSX.Element => {
     register,
     handleSubmit,
     watch,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<RegisterData>({
     mode: 'onSubmit',
     reValidateMode: 'onBlur',
@@ -33,29 +32,23 @@ export const RegisterForm = (): JSX.Element => {
   });
   const t = useTranslations('Form');
 
-  const [firebaseError, setFirebaseError] = useState<AuthError | FirestoreError | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleRegister = async ({ email, password }: LoginData): Promise<void> => {
     try {
       setIsLoading(true);
-      setFirebaseError(null);
       const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
       await writeNewUserPlayground(userCredential.user);
       router.push(playgroundPage);
     } catch (error) {
       setIsLoading(false);
-      if (error instanceof FirestoreError) {
-        setFirebaseError(error as FirestoreError);
-        return;
-      }
-      setFirebaseError(error as AuthError);
+      if (error instanceof Error) notify(error);
     }
   };
 
   return (
     <>
-      {isValid && firebaseError && <FirebaseErrorMessage error={firebaseError} />}
+      <FirebaseErrorMessage />
       <form className={styles.form} onSubmit={handleSubmit(handleRegister)}>
         <div>
           <div className={styles.labelContainer}>
