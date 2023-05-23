@@ -9,28 +9,16 @@
   display: flex;
   gap: 5px;
 
-  @include media ('max', 'xs') {
+  @include media ('max', 'xxs') {
     gap: 0px;
-  }
-
-  @include media ('max', 'm') {
-    margin: 10px 0;
   }
 }
 
 .navButton {
   @include buttonMainNormal;
 
-  @include media ('max', 'xs') {
-      padding: 10px 8px;
-    }
-
   &.active {
     @include buttonMainActive;
-
-    @include media ('max', 'xs') {
-        padding: 10px 8px;
-      }
   }
 }
 

@@ -1,5 +1,5 @@
 'use client';
-import { PageSpinner } from '@/components';
+import { PageSpinner } from '@/components/loading/PageSpinner/PageSpinner';
 import { Runner } from '@/components/Runner/Runner';
 import { useLazyGetSchemaQuery } from '@/redux';
 import classNames from 'classnames';
