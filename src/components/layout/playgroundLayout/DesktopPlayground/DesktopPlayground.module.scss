@@ -31,14 +31,13 @@
 }
 
 .paneLeft {
-  flex-direction: row-reverse;
-  padding-right: 5px;
-}
-
-.docsSection {
-  display: flex;
+  padding-top: 17px;
   flex-direction: column;
   flex-grow: 1;
+  justify-content: flex-start;
+  padding: 17px 15px;
+  gap: 2rem;
+  overflow: auto;
 }
 
 .centerHeader {
@@ -57,6 +56,6 @@
 
 .hideButton {
   @include buttonRoundNormal;
-  margin-left: 5px;
-  margin-top: -10px;
+  margin-right: 10px;
+  margin-top: 10px;
 }

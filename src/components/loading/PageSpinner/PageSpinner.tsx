@@ -1,10 +1,10 @@
 import { Spinner } from '@/components';
 import styles from './PageSpinner.module.scss';
 
-export const PageSpinner = (): JSX.Element => {
+export const PageSpinner = ({ isSmall }: { isSmall?: boolean }): JSX.Element => {
   return (
     <div className={styles.spinnerContainer}>
-      <Spinner />
+      <Spinner isSmall={isSmall} />
     </div>
   );
 };
