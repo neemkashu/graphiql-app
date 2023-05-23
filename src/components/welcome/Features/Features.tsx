@@ -20,7 +20,7 @@ export const Features = (): JSX.Element => {
           <div className={styles.imgWrapper}>
             <video className={styles.img} preload="auto" autoPlay loop muted>
               <source src="/video/docs2.webm" type="video/webm" />
-              {/* <source src="assets/bird-video.mp4" type="video/mp4" /> */}
+              <source src="/video/docs2.mp4" type="video/mp4" />
             </video>
           </div>
         </li>
