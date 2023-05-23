@@ -16,6 +16,15 @@ export const Features = (): JSX.Element => {
       <h2 className={styles.header}>{t('listHeader')}</h2>
       <ul className={styles.ul}>
         <li>
+          <h3 className={styles.featureHeader}>{t('design')}</h3>
+          <div className={styles.imgWrapper}>
+            <video className={styles.img} preload="auto" autoPlay loop muted>
+              <source src="/video/docs2.webm" type="video/webm" />
+              {/* <source src="assets/bird-video.mp4" type="video/mp4" /> */}
+            </video>
+          </div>
+        </li>
+        <li>
           <h3 className={styles.featureHeader}>{t('syntax')}</h3>
           <div className={styles.imgWrapper}>
             <Image src={syntaxPicture} alt="" quality={90} priority className={styles.img} />
