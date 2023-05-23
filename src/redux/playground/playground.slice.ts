@@ -40,10 +40,19 @@ export const playgroundSlice = createSlice({
       state.headers = headers;
       state.init = false;
     },
+    resetSlice: () => initialState,
   },
 });
 
-export const { setOperation, setVars, setResponse, setHeaders, setError, setIsFetch, setSlice } =
-  playgroundSlice.actions;
+export const {
+  setOperation,
+  setVars,
+  setResponse,
+  setHeaders,
+  setError,
+  setIsFetch,
+  setSlice,
+  resetSlice,
+} = playgroundSlice.actions;
 
 export default playgroundSlice.reducer;

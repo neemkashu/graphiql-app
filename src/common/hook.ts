@@ -5,7 +5,13 @@ import { ALL_LANGUAGES, BASIC_LANGUAGE, LS_KEYS, USER_COLLECTON_PATH } from '@/c
 import { PageList } from '@/common/enum';
 import { database, firebaseAuth, logout } from '@/firebase';
 import { useAppDispatch } from '@/redux';
-import { setError, setIsFetch, setResponse, setSlice } from '@/redux/playground/playground.slice';
+import {
+  resetSlice,
+  setError,
+  setIsFetch,
+  setResponse,
+  setSlice,
+} from '@/redux/playground/playground.slice';
 import { useLazyGetDataQuery } from '@/redux/rickAndMorty/rickAndMorty.api';
 import { store } from '@/redux/store';
 import { onIdTokenChanged, Unsubscribe, User } from 'firebase/auth';
@@ -70,16 +76,16 @@ export const useSetStoreWithFirebase = (user?: User | null) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!user) return;
+    if (!user) {
+      dispatch(resetSlice());
+      return;
+    }
 
     const { uid } = user;
 
     const documentRef = doc(database, USER_COLLECTON_PATH, uid);
 
     const setStore = () => {
-      const { init } = store.getState().playgroundSlice;
-      if (!init) return;
-
       getDoc(documentRef).then((documentSnapshot) => {
         const savedData = documentSnapshot.data()?.playground;
 
@@ -103,6 +109,7 @@ export const useSetStoreWithFirebase = (user?: User | null) => {
 
     return (): void => {
       saveStore();
+      dispatch(resetSlice());
       window.removeEventListener('beforeunload', saveStore);
     };
   }, [dispatch, user]);
