@@ -1,11 +1,5 @@
 'use client';
-
-import syntaxPicture from './gifs/syntax.webp';
-import errorPicture from './gifs/errors.webp';
-import mobilePicture from './gifs/mobile.webp';
-
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import styles from './Features.module.scss';
 
 export const Features = (): JSX.Element => {
@@ -15,32 +9,19 @@ export const Features = (): JSX.Element => {
     <section className={styles.section}>
       <h2 className={styles.header}>{t('listHeader')}</h2>
       <ul className={styles.ul}>
-        <li>
+        <li className={styles.li}>
           <h3 className={styles.featureHeader}>{t('design')}</h3>
-          <div className={styles.imgWrapper}>
-            <video className={styles.img} autoPlay loop muted>
-              <source src="/video/docs2.webm" type="video/webm" />
-              <source src="/video/docs2.mp4" type="video/mp4" />
-            </video>
-          </div>
+          <video className={styles.img} autoPlay loop muted>
+            <source src="/video/docs3.webm" type="video/webm" />
+            <source src="/video/docs3.mp4" type="video/mp4" />
+          </video>
         </li>
-        <li>
-          <h3 className={styles.featureHeader}>{t('syntax')}</h3>
-          <div className={styles.imgWrapper}>
-            <Image src={syntaxPicture} alt="" quality={90} priority className={styles.img} />
-          </div>
-        </li>
-        <li>
-          <h3 className={styles.featureHeader}>{t('errors')}</h3>
-          <div className={styles.imgWrapper}>
-            <Image src={errorPicture} alt="" quality={90} priority className={styles.img} />
-          </div>
-        </li>
-        <li>
+        <li className={styles.li}>
           <h3 className={styles.featureHeader}>{t('design')}</h3>
-          <div className={styles.imgWrapper}>
-            <Image src={mobilePicture} alt="" quality={90} priority className={styles.img} />
-          </div>
+          <video className={styles.img} autoPlay loop muted>
+            <source src="/video/request3.webm" type="video/webm" />
+            <source src="/video/request3.mp4" type="video/mp4" />
+          </video>
         </li>
       </ul>
     </section>
