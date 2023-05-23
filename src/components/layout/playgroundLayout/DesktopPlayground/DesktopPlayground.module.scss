@@ -55,7 +55,11 @@
 }
 
 .hideButton {
-  @include buttonRoundNormal;
+  @include buttonMainNormal;
   margin-right: 10px;
-  margin-top: 10px;
+  margin-top: 7px;
+  font-weight: 600;
+  padding: 7px;
+  height: 45px;
+  width: 45px;
 }

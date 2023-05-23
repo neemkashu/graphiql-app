@@ -7,17 +7,22 @@ import {
   MIN_PANE_SIZE,
   SHOW_BTN_ICON,
 } from '@/components';
-import { SHOW_PLAYGROUND_SIZE } from '@/components/layout/playgroundLayout/DesktopPlayground/DesktopPlayground.const';
+import {
+  DOCS_ICON_ALT,
+  DOCS_ICON_PATH,
+  SHOW_PLAYGROUND_SIZE,
+} from '@/components/layout/playgroundLayout/DesktopPlayground/DesktopPlayground.const';
 import { PageSpinner } from '@/components/loading';
 import { Runner } from '@/components/Runner/Runner';
 import { useLazyGetSchemaQuery } from '@/redux';
 import classNames from 'classnames';
 import { buildClientSchema } from 'graphql';
 import { useTranslations } from 'next-intl';
-import React, { lazy, ReactNode, Suspense, useEffect, useState } from 'react';
+import React, { lazy, ReactNode, Suspense, useState } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './DesktopPlayground.module.scss';
+import Image from 'next/image';
 
 const sashRender = (_: number, active: boolean): ReactNode => (
   <SashContent active={active} type="vscode" />
@@ -45,7 +50,11 @@ export const DesktopPlayground = ({ children }: MultipleChildren): JSX.Element =
   return (
     <>
       <button onClick={toggleLeftPane} className={styles.hideButton}>
-        {isDocsOpen ? HIDE_BTN_ICON : SHOW_BTN_ICON}
+        {isDocsOpen ? (
+          HIDE_BTN_ICON
+        ) : (
+          <Image src={DOCS_ICON_PATH} alt={DOCS_ICON_ALT} width={30} height={25} />
+        )}
       </button>
       <SplitPane
         split={FieldSplit.vertical}
