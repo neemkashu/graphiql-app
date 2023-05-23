@@ -133,3 +133,14 @@
     }
   }
 }
+
+.img {
+  transition: .5s;
+  opacity: 0;
+  transform: translateY(30px);
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
