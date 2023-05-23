@@ -74,6 +74,7 @@ export const useSetStore = () => {
 
 export const useSetStoreWithFirebase = (user?: User | null) => {
   const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!user) {
@@ -86,11 +87,14 @@ export const useSetStoreWithFirebase = (user?: User | null) => {
     const documentRef = doc(database, USER_COLLECTON_PATH, uid);
 
     const setStore = () => {
-      getDoc(documentRef).then((documentSnapshot) => {
-        const savedData = documentSnapshot.data()?.playground;
+      setIsLoading(true);
+      getDoc(documentRef)
+        .then((documentSnapshot) => {
+          const savedData = documentSnapshot.data()?.playground;
 
-        if (savedData) dispatch(setSlice(JSON.parse(savedData)));
-      });
+          if (savedData) dispatch(setSlice(JSON.parse(savedData)));
+        })
+        .finally(() => setIsLoading(false));
     };
 
     const saveStore = async () => {
@@ -113,6 +117,8 @@ export const useSetStoreWithFirebase = (user?: User | null) => {
       window.removeEventListener('beforeunload', saveStore);
     };
   }, [dispatch, user]);
+
+  return [isLoading];
 };
 
 export const usePathWithLocale = (pagePath: PageList[]): string[] => {
