@@ -11,10 +11,12 @@ import { LoginData } from '@/components/auth/forms/forms.type';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
 import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
-import { FirebaseErrorMessage, notify } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
+import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import { Spinner } from '@/components/loading';
 import classNames from 'classnames';
+import { notify } from '@/components/auth';
+import ClientOnlyPortal from '@/components/toasts/ClientOnlyPortal/ClientOnlyPortal';
 
 export const LoginForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);
@@ -41,7 +43,10 @@ export const LoginForm = (): JSX.Element => {
 
   return (
     <>
-      <FirebaseErrorMessage />
+      <ClientOnlyPortal>
+        <FirebaseErrorMessage />
+      </ClientOnlyPortal>
+
       <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
         <div>
           <div className={styles.labelContainer}>

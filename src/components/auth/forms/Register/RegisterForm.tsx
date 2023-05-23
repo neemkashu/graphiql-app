@@ -12,10 +12,12 @@ import { DEFAULT_REGISTER_STATE } from '@/components/auth/forms/forms.const';
 import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
 import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
-import { FirebaseErrorMessage, notify } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
+import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Spinner } from '@/components/loading';
 import classNames from 'classnames';
+import ClientOnlyPortal from '@/components/toasts/ClientOnlyPortal/ClientOnlyPortal';
+import { notify } from '@/components/auth';
 
 export const RegisterForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);
@@ -48,7 +50,9 @@ export const RegisterForm = (): JSX.Element => {
 
   return (
     <>
-      <FirebaseErrorMessage />
+      <ClientOnlyPortal>
+        <FirebaseErrorMessage />
+      </ClientOnlyPortal>
       <form className={styles.form} onSubmit={handleSubmit(handleRegister)}>
         <div>
           <div className={styles.labelContainer}>
