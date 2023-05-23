@@ -18,7 +18,7 @@ export const Features = (): JSX.Element => {
         <li>
           <h3 className={styles.featureHeader}>{t('design')}</h3>
           <div className={styles.imgWrapper}>
-            <video className={styles.img} preload="auto" autoPlay loop muted>
+            <video className={styles.img} autoPlay loop muted>
               <source src="/video/docs2.webm" type="video/webm" />
               <source src="/video/docs2.mp4" type="video/mp4" />
             </video>

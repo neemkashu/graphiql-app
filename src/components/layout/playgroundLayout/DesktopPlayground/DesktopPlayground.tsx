@@ -53,39 +53,37 @@ export const DesktopPlayground = ({ children }: MultipleChildren): JSX.Element =
           <Image src={DOCS_ICON_PATH} alt={DOCS_ICON_ALT} width={30} height={25} />
         )}
       </button>
-      <Suspense fallback={<div>AAA</div>}>
-        <SplitPane
-          split={FieldSplit.vertical}
-          sizes={sizes}
-          onChange={setSizes}
-          sashRender={sashRender}
-        >
-          <Pane minSize={isDocsOpen ? MIN_PANE_SIZE : 0} maxSize={isDocsOpen ? MAX_PANE_SIZE : 0}>
-            <div className={classNames(styles.pane, styles.paneLeft)}>
-              <Suspense fallback={<PageSpinner isSmall />}>
-                {schemaElement}
-                {isLoading && <PageSpinner isSmall />}
-                {isError && <p>Schema not found</p>}
-              </Suspense>
+      <SplitPane
+        split={FieldSplit.vertical}
+        sizes={sizes}
+        onChange={setSizes}
+        sashRender={sashRender}
+      >
+        <Pane minSize={isDocsOpen ? MIN_PANE_SIZE : 0} maxSize={isDocsOpen ? MAX_PANE_SIZE : 0}>
+          <div className={classNames(styles.pane, styles.paneLeft)}>
+            <Suspense fallback={<PageSpinner isSmall />}>
+              {schemaElement}
+              {isLoading && <PageSpinner isSmall />}
+              {isError && <p>Schema not found</p>}
+            </Suspense>
+          </div>
+        </Pane>
+        <Pane minSize={MIN_PANE_SIZE}>
+          <div className={classNames(styles.pane, styles.paneCenter)}>
+            <div className={styles.centerHeader}>
+              <h4 className={styles.sectionTitle}>{t('operation')}</h4>
+              <Runner />
             </div>
-          </Pane>
-          <Pane minSize={MIN_PANE_SIZE}>
-            <div className={classNames(styles.pane, styles.paneCenter)}>
-              <div className={styles.centerHeader}>
-                <h4 className={styles.sectionTitle}>{t('operation')}</h4>
-                <Runner />
-              </div>
-              {operation}
-            </div>
-          </Pane>
-          <Pane minSize={MIN_PANE_SIZE}>
-            <div className={styles.pane}>
-              <h4 className={styles.sectionTitle}>{t('response')}</h4>
-              {response}
-            </div>
-          </Pane>
-        </SplitPane>
-      </Suspense>
+            {operation}
+          </div>
+        </Pane>
+        <Pane minSize={MIN_PANE_SIZE}>
+          <div className={styles.pane}>
+            <h4 className={styles.sectionTitle}>{t('response')}</h4>
+            {response}
+          </div>
+        </Pane>
+      </SplitPane>
     </>
   );
 };
