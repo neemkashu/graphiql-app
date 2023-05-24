@@ -1,5 +1,5 @@
 import { getErrors } from './playground.helper';
-import { PlaygroundState } from '@/redux';
+import { UserPlaygroundData } from '@/redux';
 import { initialState } from '@/redux/playground/playground.const';
 import { createSlice, PayloadAction, SerializedError } from '@reduxjs/toolkit';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
@@ -33,7 +33,7 @@ export const playgroundSlice = createSlice({
       }
       payload;
     },
-    setSlice(state, action: PayloadAction<PlaygroundState>): void {
+    setSlice(state, action: PayloadAction<UserPlaygroundData>): void {
       const { operation, vars, headers } = action.payload;
       state.operation = operation;
       state.vars = vars;

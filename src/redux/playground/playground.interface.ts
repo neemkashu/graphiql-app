@@ -1,9 +1,12 @@
-export interface PlaygroundState {
-  init: boolean;
+export interface UserPlaygroundData {
   operation: string;
   vars: string;
-  response: string;
   headers: string;
+}
+
+export interface PlaygroundState extends UserPlaygroundData {
+  init: boolean;
+  response: string;
   isFetch: boolean;
   error: string[];
 }

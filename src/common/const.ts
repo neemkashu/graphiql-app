@@ -24,3 +24,5 @@ export const TECH_STACK_LINK = 'https://github.com/neemkashu/graphiql-app/pull/5
 export const RESPONSIBILITY_KEYS = ['first', 'second', 'third', 'fourth'];
 
 export const USER_COLLECTON_PATH = 'users';
+
+export const DEBOUNCE_TIME = 1500;

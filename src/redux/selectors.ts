@@ -1,4 +1,4 @@
-import { RootState } from '@/redux';
+import { RootState, UserPlaygroundData } from '@/redux';
 
 export const operationSelector = (state: RootState): string => state.playgroundSlice.operation;
 
@@ -13,3 +13,11 @@ export const errorSelector = (state: RootState): string[] => state.playgroundSli
 export const isFetchSelector = (state: RootState): boolean => state.playgroundSlice.isFetch;
 
 export const authStateSelector = (state: RootState): boolean => state.authSlice.authState;
+
+export const playgroundDataSelector = (state: RootState): UserPlaygroundData => {
+  return {
+    vars: state.playgroundSlice.vars,
+    headers: state.playgroundSlice.headers,
+    operation: state.playgroundSlice.operation,
+  };
+};
