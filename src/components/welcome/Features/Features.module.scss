@@ -1,47 +1,3 @@
-.ul {
-  display: flex;
-  align-content: center;
-  justify-content: space-around;
-  width: 100%;
-  // gap: $gap-great;
-  margin-bottom: 80px;
-  flex-wrap: wrap;
-
-  // @include media ('min', 'm') {
-  //   grid-template-columns: 1fr 1fr;
-  //   justify-items: center;
-  // }
-
-  .li {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $gap-big;
-    margin: 40px 20px;
-    max-width: 470px;
-
-    @include media ('max', 'm') {
-      margin: 30px 0;
-    }
-
-    @include media ('min', 'xl') {
-      max-width: 700px;
-    }
-  }
-}
-
-.featureHeader {
-  font-weight: 400;
-  text-align: center;
-  font-size: 1.8rem;
-
-  @include media('min', 'xl') {
-    align-self: flex-start;
-    font-size: 2rem;
-  }
-}
-
 .section {
   position: relative;
   width: calc(100% - $padding-body * 2);
@@ -49,25 +5,82 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 180px;
+}
+
+.list {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-height: 450px;
+  padding: 20px;
+  border-radius: $border-radius-small;
   gap: $gap-great;
+
+  &.num-0 {
+    align-self: flex-end;
+  }
+
+  &.num-1 {
+    z-index: -1;
+    margin-top: -50px;
+    max-width: 60%;
+
+    .info {
+      order: 1;
+    }
+  
+    .video {
+      width: 200px;
+      object-fit: cover;
+      height: 400px;
+    }
+  }
+
+  &.num-2 {
+    margin-top: -20px;
+    max-width: 90%;
+  }
 }
 
-.header {
-  align-self: center;
+.info {
+  flex-grow: 1;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: $gap-big;
+
+  .name {
+    text-align: center;
+    font-size: 3rem;
+  }
 }
 
-.img {
-  object-position: center;
+.video {
   border: 2px solid $clr-active;
   border-radius: $border-radius-small;
-  width: 100%;
-  // height: 200px;
+  height: 100%;
+}
 
-  // @include media ('min', 's') {
-  //     height: 280px;
-  //   }
+.strong {
+  font-weight: 600;
+  color: $clr-active;
+}
 
-  // @include media ('min', 'xl') {
-  //   height: 350px;
-  // }
+.button {
+  position: absolute;
+  bottom: 100px;
+  left: 50px;
+  @include buttonMainActive;
+  
 }
