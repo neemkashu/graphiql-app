@@ -11,11 +11,11 @@ import styles from './Features.module.scss';
 
 export const Features = (): JSX.Element => {
   const [playgroundPage, signInPage] = usePathWithLocale([PageList.playground, PageList.signIn]);
-  const isRegister = useAuthState(firebaseAuth);
+  const [isRegister] = useAuthState(firebaseAuth);
   const t = useTranslations('Info');
 
   const fillList = (): JSX.Element[] => {
-    return FEATURES_LIST.map(([NAME, WEBP_SRC, MP4_SRC], index) => (
+    return FEATURES_LIST.map(([NAME, WEBP_SRC, MP4_SRC], index, arr) => (
       <li className={classNames(styles.item, styles[`num-${index}`])} key={index}>
         <div className={styles.info}>
           <h3 className={styles.name}>
@@ -23,9 +23,9 @@ export const Features = (): JSX.Element => {
               strong: (chunks) => <strong className={styles.strong}>{chunks}</strong>,
             })}
           </h3>
-          {index === 2 && (
+          {index === arr.length - 1 && (
             <Link
-              href={isRegister[0] ? playgroundPage : signInPage}
+              href={isRegister ? playgroundPage : signInPage}
               className={styles.button}
               prefetch={false}
             >
