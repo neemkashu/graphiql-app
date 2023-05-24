@@ -13,7 +13,6 @@ export const Features = (): JSX.Element => {
   const [playgroundPage, signInPage] = usePathWithLocale([PageList.playground, PageList.signIn]);
   const isRegister = useAuthState(firebaseAuth);
   const t = useTranslations('Info');
-  console.log(isRegister);
 
   const fillList = (): JSX.Element[] => {
     return FEATURES_LIST.map(([NAME, WEBP_SRC, MP4_SRC], index) => (
@@ -30,7 +29,7 @@ export const Features = (): JSX.Element => {
               className={styles.button}
               prefetch={false}
             >
-              {'Try it now!'}
+              {t('try')}
             </Link>
           )}
         </div>
