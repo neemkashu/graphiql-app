@@ -32,6 +32,10 @@
     &:hover {
       color: $clr-hover;
     }
+
+    @include media('max', 'xs') {
+      font-size: 1.8rem;
+    }
   }
 
   .descr {

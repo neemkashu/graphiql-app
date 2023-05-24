@@ -33,7 +33,7 @@ export const Features = (): JSX.Element => {
             </Link>
           )}
         </div>
-        <video className={styles.video} preload="auto" autoPlay loop muted>
+        <video className={styles.video} preload="auto" autoPlay loop muted playsInline>
           <source src={WEBP_SRC} type={WEBM_TYPE} />
           <source src={MP4_SRC} type={MP4_TYPE} />
         </video>
