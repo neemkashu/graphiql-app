@@ -14,11 +14,12 @@ import {
 } from '@/redux/playground/playground.slice';
 import { useLazyGetDataQuery } from '@/redux/rickAndMorty/rickAndMorty.api';
 import { store } from '@/redux/store';
-import { onIdTokenChanged, Unsubscribe, User } from 'firebase/auth';
+import { onIdTokenChanged, Unsubscribe } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { usePathname } from 'next/navigation';
 import nookies from 'nookies';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export const useFieldSize = <T>(
   defaultSize: T,
@@ -72,9 +73,11 @@ export const useSetStore = () => {
   }, [dispatch]);
 };
 
-export const useSetStoreWithFirebase = (user?: User | null) => {
+export const useSetStoreWithFirebase = () => {
+  const [user] = useAuthState(firebaseAuth);
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<unknown>();
 
   useEffect(() => {
     if (!user) {
@@ -83,10 +86,11 @@ export const useSetStoreWithFirebase = (user?: User | null) => {
     }
 
     const { uid } = user;
-
     const documentRef = doc(database, USER_COLLECTON_PATH, uid);
 
     const setStore = () => {
+      const { init } = store.getState().playgroundSlice;
+      if (!init) return;
       setIsLoading(true);
       getDoc(documentRef)
         .then((documentSnapshot) => {
@@ -98,27 +102,26 @@ export const useSetStoreWithFirebase = (user?: User | null) => {
     };
 
     const saveStore = async () => {
+      setIsLoading(true);
       await setDoc(
         documentRef,
         {
           playground: JSON.stringify(store.getState().playgroundSlice),
         },
         { merge: true }
-      );
+      )
+        .then(() => setIsLoading(false))
+        .catch((error) => setError(error));
     };
 
     setStore();
 
-    window.addEventListener('beforeunload', saveStore);
-
     return (): void => {
       saveStore();
-      dispatch(resetSlice());
-      window.removeEventListener('beforeunload', saveStore);
     };
   }, [dispatch, user]);
 
-  return [isLoading];
+  return [isLoading, error];
 };
 
 export const usePathWithLocale = (pagePath: PageList[]): string[] => {

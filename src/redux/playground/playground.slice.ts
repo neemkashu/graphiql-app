@@ -40,7 +40,13 @@ export const playgroundSlice = createSlice({
       state.headers = headers;
       state.init = false;
     },
-    resetSlice: () => initialState,
+    resetSlice(state) {
+      const { operation, vars, headers } = initialState;
+      state.init = true;
+      state.operation = operation;
+      state.vars = vars;
+      state.headers = headers;
+    },
   },
 });
 
