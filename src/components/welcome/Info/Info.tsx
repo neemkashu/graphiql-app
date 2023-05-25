@@ -59,14 +59,14 @@ export const Info = (): JSX.Element => {
         >
           <MouseParallaxChild factorX={-0.2} factorY={-0.2}>
             <Image
-              className={classNames(styles.img, isImgLoaded ? styles.active : null)}
+              className={classNames(styles.img)}
               priority
               width={0}
               height={0}
               sizes="100%"
               onLoadingComplete={() => setIsImgLoaded(true)}
               src={'/img/bg.webp'}
-              alt="rick and morti"
+              alt="rick and morty"
             />
           </MouseParallaxChild>
           <MouseParallaxChild factorX={0.2} factorY={-0.5}>
@@ -82,7 +82,7 @@ export const Info = (): JSX.Element => {
           </MouseParallaxChild>
           <MouseParallaxChild className={styles.animation} factorX={0.2} factorY={0.2}>
             <Image
-              className={classNames(styles.gadget, isImgLoaded ? styles.active : null)}
+              className={classNames(styles.gadget, styles.lower, isImgLoaded ? styles.active : null)}
               width={0}
               height={0}
               sizes="100%"
@@ -93,7 +93,7 @@ export const Info = (): JSX.Element => {
           </MouseParallaxChild>
           <MouseParallaxChild factorX={-0.7} factorY={-0.5}>
             <Image
-              className={classNames(styles.gadget, isImgLoaded ? styles.active : null)}
+              className={classNames(styles.gadget, styles.lower, isImgLoaded ? styles.active : null)}
               width={0}
               height={0}
               sizes="100%"
@@ -148,7 +148,7 @@ export const Info = (): JSX.Element => {
           </MouseParallaxChild>
           <MouseParallaxChild factorX={0.6} factorY={-0.4}>
             <Image
-              className={classNames(styles.gadget, isImgLoaded ? styles.active : null)}
+              className={classNames(styles.gadget, styles.lower, isImgLoaded ? styles.active : null)}
               width={0}
               height={0}
               sizes="100%"
@@ -159,7 +159,7 @@ export const Info = (): JSX.Element => {
           </MouseParallaxChild>
           <MouseParallaxChild className={styles.animation} factorX={0.5} factorY={0.5}>
             <Image
-              className={classNames(styles.gadget, isImgLoaded ? styles.active : null)}
+              className={classNames(styles.gadget, styles.lower, isImgLoaded ? styles.active : null)}
               width={0}
               height={0}
               sizes="100%"
@@ -170,7 +170,7 @@ export const Info = (): JSX.Element => {
           </MouseParallaxChild>
           <MouseParallaxChild factorX={0.3} factorY={-0.5}>
             <Image
-              className={classNames(styles.gadget, isImgLoaded ? styles.active : null)}
+              className={classNames(styles.gadget, styles.lower, isImgLoaded ? styles.active : null)}
               width={0}
               height={0}
               sizes="100%"
@@ -181,7 +181,7 @@ export const Info = (): JSX.Element => {
           </MouseParallaxChild>
           <MouseParallaxChild className={styles.animation} factorX={-0.3} factorY={0.5}>
             <Image
-              className={classNames(styles.gadget, isImgLoaded ? styles.active : null)}
+              className={classNames(styles.gadget, styles.lower, isImgLoaded ? styles.active : null)}
               width={0}
               height={0}
               sizes="100%"

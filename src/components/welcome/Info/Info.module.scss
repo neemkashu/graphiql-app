@@ -158,20 +158,27 @@
 
 .img,
 .gadget {
-  transition: 2s;
-  opacity: 0;
-  transform: translateY(50px);
   width: 100%;
   height: 100%;
+}
+
+.img {
+  animation: img 2s;
+}
+
+.gadget {
+  opacity: 0;
+  transition: 2s;
+  transform: translateY(-50px);
+
+  &.lower {
+    transform: translateY(50px);
+  }
 
   &.active {
     opacity: 1;
     transform: translateY(0px);
   }
-}
-
-.gadget {
-  transform: translateY(-50px);
 }
 
 .animation {
@@ -189,6 +196,17 @@
     transform: translateY(-30px);
   }
   100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes img {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
     transform: translateY(0px);
   }
 }
