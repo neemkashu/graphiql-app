@@ -7,6 +7,7 @@ import styles from './Info.module.scss';
 import { TECH_STACK_LINK } from '@/common';
 import classNames from 'classnames';
 import { useState } from 'react';
+import { RS_LINK } from '@/components/layout/Footer/FooterConst';
 
 export const Info = (): JSX.Element => {
   const [isImgLoaded, setIsImgLoaded] = useState(false);
@@ -31,6 +32,11 @@ export const Info = (): JSX.Element => {
         <p className={styles.descr}>
           {t.rich('descriptionAdditional', {
             strong: (chunks) => <strong className={styles.strong}>{chunks}</strong>,
+            link: (chunk) => (
+              <a className={styles.techStackLink} href={RS_LINK}>
+                {chunk}
+              </a>
+            ),
           })}
         </p>
       </div>
