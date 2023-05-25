@@ -5,7 +5,8 @@
     "lezer",
     "Mentsel",
     "persistor",
-    "Radchenko"
+    "Radchenko",
+    "WEBM"
   ],
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "search.useIgnoreFiles": true,

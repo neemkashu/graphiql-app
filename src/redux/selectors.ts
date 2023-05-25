@@ -11,5 +11,3 @@ export const headersSelector = (state: RootState): string => state.playgroundSli
 export const errorSelector = (state: RootState): string[] => state.playgroundSlice.error;
 
 export const isFetchSelector = (state: RootState): boolean => state.playgroundSlice.isFetch;
-
-export const authStateSelector = (state: RootState): boolean => state.authSlice.authState;

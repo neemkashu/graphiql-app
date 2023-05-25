@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const notify = (error: AuthError): void => {
   toast.error(AuthErrorMessages[error.code], {
     position: toast.POSITION.TOP_LEFT,
+    toastId: error.code,
   });
 };
 

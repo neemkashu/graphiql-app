@@ -1,4 +1,5 @@
 $breakpoints: (
+  "xxs":340px,
   "xs":438px,
   "s":642px,
   "m":900px,
@@ -17,14 +18,3 @@ $breakpoints: (
     }
   }
 }
-
-
-// example
-
-// .block {
-//   width: 400px;
-
-//   @include media("max", "s") {
-//     width: 300px;
-//   }
-// }

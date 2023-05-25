@@ -14,8 +14,8 @@ import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
 import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
 import { AuthError, createUserWithEmailAndPassword } from 'firebase/auth';
-import { Spinner } from '@/components/loading';
 import classNames from 'classnames';
+import { Spinner } from '@/components';
 
 export const RegisterForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);

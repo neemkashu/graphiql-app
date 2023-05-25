@@ -43,6 +43,14 @@
     top: 0;
     left: 0;
     object-fit: contain;
+    transition: 2s;
+    opacity: 0;
+    transform: translateY(50px);
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0px);
+    }
   }
 }
 
