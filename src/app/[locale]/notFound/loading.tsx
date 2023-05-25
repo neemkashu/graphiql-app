@@ -1,4 +1,4 @@
-import { PageSpinner } from '@/components/loading/PageSpinner/PageSpinner';
+import { PageSpinner } from '@/components';
 
 export default function Loading(): JSX.Element {
   return <PageSpinner />;

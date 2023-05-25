@@ -8,6 +8,7 @@ import {
   DOCS_ICON_ALT,
   DOCS_ICON_PATH,
   SHOW_PLAYGROUND_SIZE,
+  PageSpinner,
 } from '@/components';
 import { Runner } from '@/components/Runner/Runner';
 import { useLazyGetSchemaQuery } from '@/redux';
@@ -19,7 +20,6 @@ import SplitPane, { Pane, SashContent } from 'split-pane-react';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './DesktopPlayground.module.scss';
 import Image from 'next/image';
-import { PageSpinner } from '@/components/loading/PageSpinner/PageSpinner';
 
 const sashRender = (_: number, active: boolean): ReactNode => (
   <SashContent active={active} type="vscode" />
