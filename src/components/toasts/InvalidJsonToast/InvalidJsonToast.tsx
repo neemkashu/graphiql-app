@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const infoNotify = (info: string): void => {
   toast.info(info, {
-    position: toast.POSITION.TOP_LEFT,
+    position: toast.POSITION.BOTTOM_LEFT,
     toastId: info,
     containerId: 'A',
   });
