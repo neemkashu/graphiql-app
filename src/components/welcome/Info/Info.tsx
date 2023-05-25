@@ -31,6 +31,11 @@ export const Info = (): JSX.Element => {
         <p className={styles.descr}>
           {t.rich('descriptionAdditional', {
             strong: (chunks) => <strong className={styles.strong}>{chunks}</strong>,
+            link: (chunk) => (
+              <a className={styles.RSLink} href={TECH_STACK_LINK}>
+                {chunk}
+              </a>
+            ),
           })}
         </p>
       </div>
