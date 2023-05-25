@@ -22,7 +22,7 @@
 
   .api {
     margin-bottom: 30px;
-    font-size:$font-size-2;
+    font-size: $font-size-2;
     font-weight: 600;
     text-transform: uppercase;
     text-align: center;
@@ -42,7 +42,7 @@
     font-size: $font-size-3;
     max-width: 600px;
 
-    @include media("max", "s") {
+    @include media('max', 's') {
       font-size: $font-size-4;
     }
 
@@ -98,13 +98,13 @@
   color: $clr-active-4;
 }
 
-@include media("min", "xl") {
+@include media('min', 'xl') {
   .info .descr:last-child {
     display: block;
   }
 }
 
-@include media("min", "l") {
+@include media('min', 'l') {
   .info {
     margin: 100px 0 150px;
 
@@ -119,7 +119,7 @@
   }
 }
 
-@include media("min", "s") {
+@include media('min', 's') {
   .info {
     .blur {
       width: 300px;
@@ -138,13 +138,48 @@
   }
 }
 
-.img {
+.parallax {
+  will-change: transform;
+  div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.img,
+.gadget {
   transition: 2s;
   opacity: 0;
   transform: translateY(50px);
+  width: 100%;
+  height: 100%;
 
   &.active {
     opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.gadget {
+  transform: translateY(-50px);
+}
+
+.animation {
+  animation: updown 5s ease-in-out infinite;
+  div:hover & {
+    animation: none;
+  }
+}
+
+@keyframes updown {
+  10% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
     transform: translateY(0px);
   }
 }
