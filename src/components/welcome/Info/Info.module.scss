@@ -172,7 +172,7 @@
   transform: translateY(-50px);
 
   &.lower {
-    transform: translateY(100px);
+    transform: translateY(50px);
   }
 
   &.active {
@@ -203,14 +203,12 @@
 @keyframes img {
   0% {
     opacity: 0;
-    transform: translateY(100px);
-  }
-  10% {
-    opacity: 0;
-    transform: translateY(100px);
+    transform: translateY(20px);
+    transform: scale(0.7);
   }
   100% {
     opacity: 1;
     transform: translateY(0px);
+    transform: scale(1);
   }
 }
