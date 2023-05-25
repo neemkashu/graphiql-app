@@ -8,6 +8,7 @@ export const initialState: PlaygroundState = {
   headers: '',
   isFetch: false,
   error: [],
+  previousData: null,
 };
 
 export const UNKNOWN_ERROR = 'Something went wrong :(';

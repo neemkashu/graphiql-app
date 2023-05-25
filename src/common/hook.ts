@@ -10,23 +10,20 @@ import {
 } from '@/common/const';
 import { PageList } from '@/common/enum';
 import { database, firebaseAuth, logout } from '@/firebase';
-import {
-  UserPlaygroundData,
-  playgroundDataSelector,
-  useAppDispatch,
-  useAppSelector,
-} from '@/redux';
+import { UserPlaygroundData, useAppDispatch } from '@/redux';
+
 import {
   resetSlice,
   setError,
   setIsFetch,
+  setPreviousData,
   setResponse,
   setSlice,
 } from '@/redux/playground/playground.slice';
 import { useLazyGetDataQuery } from '@/redux/rickAndMorty/rickAndMorty.api';
 import { store } from '@/redux/store';
 import { onIdTokenChanged, Unsubscribe } from 'firebase/auth';
-import { DocumentData, DocumentReference, doc, getDoc, setDoc } from 'firebase/firestore';
+import { DocumentData, DocumentReference, doc, getDoc } from 'firebase/firestore';
 import { usePathname } from 'next/navigation';
 import nookies from 'nookies';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
@@ -84,35 +81,37 @@ export const useSetStore = () => {
   }, [dispatch]);
 };
 
-export const useDebounce = <T>(data: T) => {
-  const [debouncedData, setDebouncedData] = useState(data);
+export const useDebounce = (userData: UserPlaygroundData) => {
+  const [debouncedData, setDebouncedData] = useState<UserPlaygroundData>(userData);
   useEffect(() => {
     const timer = setTimeout(() => {
-      setDebouncedData(data);
+      setDebouncedData(userData);
     }, DEBOUNCE_TIME);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [data]);
-  return [debouncedData];
+  }, [userData]);
+  return debouncedData;
 };
 
-export const useSetStoreWithFirebase = () => {
+export const useLoadFirestore = () => {
   const [user, isUserLoading] = useAuthState(firebaseAuth);
   const dispatch = useAppDispatch();
   const [isDataLoading, setIsDataLoading] = useState(false);
   const [error, setError] = useState<unknown>();
-  const updatedData = useAppSelector(playgroundDataSelector);
-  const [data] = useDebounce<UserPlaygroundData>(updatedData);
-  const previousData = useRef<UserPlaygroundData | null>(null);
   const documentRef = useRef<DocumentReference<DocumentData> | null>(null);
 
   useEffect(() => {
+    if (!isUserLoading && !user) {
+      dispatch(resetSlice());
+      return;
+    }
     if (isUserLoading || !user) return;
     const { init } = store.getState().playgroundSlice;
     if (!init) return;
 
+    // eslint-disable-next-line no-console
     if (process.env.NODE_ENV === 'development') console.log('setStore!');
     const { uid } = user;
     documentRef.current = doc(database, USER_COLLECTON_PATH, uid);
@@ -125,66 +124,14 @@ export const useSetStoreWithFirebase = () => {
           ? JSON.parse(savedData)
           : { operation: '', headers: '', vars: '' };
 
+        dispatch(setPreviousData(userData));
         dispatch(setSlice(userData));
-        previousData.current = {
-          headers: userData.headers,
-          vars: userData.vars,
-          operation: userData.operation,
-        };
       })
       .catch((error) => setError(error))
       .finally(() => setIsDataLoading(false));
   }, [dispatch, isUserLoading, user]);
 
-  useEffect(() => {
-    if (!isUserLoading && !user) dispatch(resetSlice());
-  }, [dispatch, isUserLoading, user]);
-
-  // useEffect(() => {
-  //   if (isUserLoading) return;
-  //   const isChangedData = JSON.stringify(previousData.current) !== JSON.stringify(data);
-  //   if (isChangedData) {
-  //     if (process.env.NODE_ENV === 'development') console.log('save this!', data);
-  //     previousData.current = data;
-  //   }
-
-  //   return (): void => {
-  //     if (isUserLoading) return;
-  //     if (isChangedData) {
-  //       if (process.env.NODE_ENV === 'development') console.log('save immidiately!', data);
-  //     }
-  //   };
-  // }, [data, isUserLoading]);
-
-  // useEffect(() => {
-  //   if (isUserLoading) return;
-  //   if (!user) {
-  //     dispatch(resetSlice());
-  //     return;
-  //   }
-
-  //   const { uid } = user;
-  //   documentRef.current = doc(database, USER_COLLECTON_PATH, uid);
-
-  //   const saveStore = async () => {
-  //     setIsDataLoading(true);
-  //     await setDoc(
-  //       documentRef.current,
-  //       {
-  //         playground: JSON.stringify(store.getState().playgroundSlice),
-  //       },
-  //       { merge: true }
-  //     )
-  //       .catch((error) => setError(error))
-  //       .finally(() => setIsDataLoading(false));
-  //   };
-
-  //   return () => {
-  //     console.log('user effect', user);
-  //   };
-  // }, [dispatch, user, isUserLoading]);
-
-  return [isDataLoading, error];
+  return { isDataLoading, error, documentRef };
 };
 
 export const usePathWithLocale = (pagePath: PageList[]): string[] => {

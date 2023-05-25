@@ -46,6 +46,19 @@ export const playgroundSlice = createSlice({
       state.operation = operation;
       state.vars = vars;
       state.headers = headers;
+      state.previousData = null;
+    },
+    setPreviousData(state, action: PayloadAction<UserPlaygroundData | null>) {
+      if (action.payload === null) {
+        state.previousData = null;
+        return;
+      }
+      const { operation, vars, headers } = action.payload;
+      state.previousData = {
+        operation,
+        vars,
+        headers,
+      };
     },
   },
 });
@@ -59,6 +72,7 @@ export const {
   setIsFetch,
   setSlice,
   resetSlice,
+  setPreviousData,
 } = playgroundSlice.actions;
 
 export default playgroundSlice.reducer;

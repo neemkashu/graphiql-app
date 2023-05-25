@@ -16,8 +16,11 @@ export const authStateSelector = (state: RootState): boolean => state.authSlice.
 
 export const playgroundDataSelector = (state: RootState): UserPlaygroundData => {
   return {
-    vars: state.playgroundSlice.vars,
-    headers: state.playgroundSlice.headers,
     operation: state.playgroundSlice.operation,
+    headers: state.playgroundSlice.headers,
+    vars: state.playgroundSlice.vars,
   };
 };
+
+export const previousDataSelector = (state: RootState): UserPlaygroundData | null =>
+  state.playgroundSlice.previousData;

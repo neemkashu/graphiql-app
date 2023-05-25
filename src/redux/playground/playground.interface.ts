@@ -9,4 +9,5 @@ export interface PlaygroundState extends UserPlaygroundData {
   response: string;
   isFetch: boolean;
   error: string[];
+  previousData: null | UserPlaygroundData;
 }
