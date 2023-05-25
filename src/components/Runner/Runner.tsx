@@ -6,7 +6,7 @@ import {
   INVALID_JSON,
   MOBILE_WORD_LENGTH,
 } from '@/components/Runner/Runner.const';
-import { PlaygroundToast } from '@/components/toasts/PlaygroundToast/PlaygroundToast';
+import { InvalidJsonToast } from '@/components/toasts/InvalidJsonToast/InvalidJsonToast';
 import { RickAndMortyReq } from '@/redux';
 import { store } from '@/redux/store';
 import classNames from 'classnames';
@@ -70,7 +70,7 @@ export const Runner = ({ isMobile }: { isMobile?: boolean }): JSX.Element => {
           </button>
         )}
       </div>
-      {jsonInfo ? <PlaygroundToast info={jsonInfo} /> : null}
+      {jsonInfo ? <InvalidJsonToast info={jsonInfo} /> : null}
     </>
   );
 };
