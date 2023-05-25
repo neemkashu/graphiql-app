@@ -3,11 +3,11 @@ import { getOperationNames, makeRequest, nameWithDots } from '@/common/helper';
 import { useRequest } from '@/common/hook';
 import {
   DESKTOP_WORD_LENGTH,
-  INVALID_JSON,
+  JSON_ERROR,
   MOBILE_WORD_LENGTH,
 } from '@/components/Runner/Runner.const';
-import { InvalidJsonToast } from '@/components/toasts/InvalidJsonToast/InvalidJsonToast';
-import { RickAndMortyReq } from '@/redux';
+import { RickAndMortyReq, useAppDispatch } from '@/redux';
+import { setError } from '@/redux/playground/playground.slice';
 import { store } from '@/redux/store';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
@@ -17,13 +17,12 @@ import styles from './Runner.module.scss';
 export const Runner = ({ isMobile }: { isMobile?: boolean }): JSX.Element => {
   const t = useTranslations('Playground');
   const sendRequest = useRequest();
-  const [jsonInfo, setJsonInfo] = useState<string | null>(null);
+  const dispatch = useAppDispatch();
   const [operationNames, setOperationNames] = useState<string[]>([]);
   const isMultipleRequest = operationNames.length > 1;
 
   const run = ([request, isJsonValid]: [RickAndMortyReq, boolean]): void => {
-    sendRequest(request);
-    setJsonInfo(isJsonValid ? null : INVALID_JSON);
+    isJsonValid ? sendRequest(request) : dispatch(setError(JSON_ERROR));
   };
 
   const setMultipleButtons = (): JSX.Element => {
@@ -60,17 +59,14 @@ export const Runner = ({ isMobile }: { isMobile?: boolean }): JSX.Element => {
   };
 
   return (
-    <>
-      <div className={classNames(styles.container, isMobile && styles.mobile)}>
-        {isMultipleRequest ? (
-          setMultipleButtons()
-        ) : (
-          <button className={styles.runButton} onClick={onClickHandler}>
-            {t('run')}
-          </button>
-        )}
-      </div>
-      {jsonInfo ? <InvalidJsonToast info={jsonInfo} /> : null}
-    </>
+    <div className={classNames(styles.container, isMobile && styles.mobile)}>
+      {isMultipleRequest ? (
+        setMultipleButtons()
+      ) : (
+        <button className={styles.runButton} onClick={onClickHandler}>
+          {t('run')}
+        </button>
+      )}
+    </div>
   );
 };

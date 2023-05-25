@@ -30,7 +30,7 @@ export default function PlaygroundPage(): JSX.Element {
 
   return (
     <>
-      {errors.length ? <ResponseErrorToast errors={errors} /> : null}
+      <ResponseErrorToast errors={errors} />
       <div className={styles.playground}>
         {isMobileView ? (
           <MobilePlayground>
