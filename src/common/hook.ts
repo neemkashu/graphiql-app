@@ -107,20 +107,15 @@ export const useTokenExpire = (): void => {
 
 export const useRequest = () => {
   const dispatch = useAppDispatch();
-  const [fetchData, { currentData, error, isFetching }] = useLazyGetDataQuery();
+  const [fetchData, { currentData, error, isFetching, isError }] = useLazyGetDataQuery();
 
   useEffect((): void => {
     dispatch(setIsFetch(isFetching));
   }, [dispatch, isFetching]);
 
   useEffect(() => {
-    if (error) {
-      dispatch(setError(error));
-      return (): void => {
-        dispatch(setError(null));
-      };
-    }
-  }, [dispatch, error]);
+    dispatch(setError(error || null));
+  }, [dispatch, error, isError]);
 
   useEffect((): void => {
     if (currentData) dispatch(setResponse(JSON.stringify(currentData, null, 2)));

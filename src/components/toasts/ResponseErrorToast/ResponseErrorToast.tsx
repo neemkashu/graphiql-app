@@ -7,6 +7,7 @@ const notify = (errors: string[]): void => {
     toast.error(error, {
       position: toast.POSITION.TOP_LEFT,
       toastId: error,
+      containerId: 'B',
     });
   });
 };
@@ -14,5 +15,8 @@ const notify = (errors: string[]): void => {
 export const ResponseErrorToast = ({ errors }: { errors: string[] }): JSX.Element => {
   if (errors) notify(errors);
 
-  return createPortal(<ToastContainer theme="dark" limit={3} />, document.body);
+  return createPortal(
+    <ToastContainer theme="dark" limit={3} enableMultiContainer containerId={'B'} />,
+    document.body
+  );
 };
