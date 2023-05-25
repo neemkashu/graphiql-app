@@ -9,7 +9,7 @@
 
   width: 100%;
   max-width: $width-form;
-  min-height: 30vh;
+  min-height: min-content;
 
   padding: $padding-medium $padding-small;
 
@@ -19,6 +19,12 @@
 
   border-radius: $border-radius-small;
   background-color: $clr-base;
+
+  box-shadow: 0 0 100px 10px $clr-active-2;
+
+  @include media("min", "m") {
+    box-shadow: 0 0 200px 50px $clr-active-2;
+  }
 }
 .question {
   display: flex;
