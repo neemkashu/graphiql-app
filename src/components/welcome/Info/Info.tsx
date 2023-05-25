@@ -60,6 +60,7 @@ export const Info = (): JSX.Element => {
           <MouseParallaxChild factorX={-0.2} factorY={-0.2}>
             <Image
               className={classNames(styles.img, isImgLoaded ? styles.active : null)}
+              priority
               width={0}
               height={0}
               sizes="100%"
