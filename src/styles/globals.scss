@@ -10,6 +10,16 @@ html {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   min-width: 320px;
+
+  & ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: $clr-scroll;
+    border-radius: $border-radius-tiny;
+    cursor: pointer;
+  }
 }
 
 a {
