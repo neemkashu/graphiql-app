@@ -1,9 +1,9 @@
 {
   "Info": {
-    "title": "GraphQL Playground",
+    "title": "GraphiQL",
     "api": "For The Rick and Morty API",
     "subtitle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore? Laborum, recusandae officiis quis sapiente quos laudantium porro sit exercitationem odit ad nisi consequatur facilis dolore!",
-    "descriptionShort": "The application incorporates the functionality of <strong>GraphiQL</strong>, a GraphQL playground/IDE. It includes a welcome page, user authentication, and a GraphiQL page with editors for requests, variables, and optional headers. The app also features a <strong>lazily loaded</strong> documentation explorer and a response section. For a full overview of the technical stack, please refer to the <link>provided link</link>.",
+    "descriptionShort": "The application incorporates the functionality of <strong>GraphiQL</strong>, a GraphQL browser IDE. It includes a welcome page, user authentication, and a GraphiQL page with editors for requests, variables, and optional headers. The app also features a <strong>lazily loaded</strong> documentation explorer and a response section. For a full overview of the technical stack, please refer to the <link>provided link</link>.",
     "descriptionAdditional": "The app is the result of completing the final task of <link>RS School</link> React Cource. Technical requirements involve <strong>localization</strong>, <strong>semantic layout</strong>, compatibility with the latest Chrome version, <strong>private routes</strong>, <strong>error handling</strong>, and React 18 with suspense. The design focuses on <strong>adaptive layout</strong>, interactivity, and consistent style. The app employs auth features for <strong>restricted access</strong>. Auth relies on <strong>Firebase</strong> with email option and client-side validation.",
     "design": "Elaborate design <strong>from mobile to desktop</strong>",
     "requests": "GraphQL requests with <strong>syntax highlighting</strong>",
