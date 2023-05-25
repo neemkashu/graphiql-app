@@ -163,7 +163,7 @@
 }
 
 .img {
-  animation: img 2s;
+  animation: img 2s ease-in;
 }
 
 .gadget {
@@ -172,7 +172,7 @@
   transform: translateY(-50px);
 
   &.lower {
-    transform: translateY(50px);
+    transform: translateY(100px);
   }
 
   &.active {
@@ -203,7 +203,11 @@
 @keyframes img {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(100px);
+  }
+  10% {
+    opacity: 0;
+    transform: translateY(100px);
   }
   100% {
     opacity: 1;
