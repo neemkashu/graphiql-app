@@ -15,7 +15,7 @@ import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseEr
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import { AuthError } from 'firebase/auth';
 import classNames from 'classnames';
-import { Spinner } from '@/components/loading/Spinner/Spinner';
+import { Spinner } from '@/components';
 
 export const LoginForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);

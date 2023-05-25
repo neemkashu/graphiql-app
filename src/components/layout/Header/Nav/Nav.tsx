@@ -7,7 +7,7 @@ import { PlaygroundNavButtons } from './PlaygroundNavButtons/PlaygroundNavButton
 import { firebaseAuth } from '@/firebase';
 import { useRef, useEffect } from 'react';
 import { DEFAULT_MAX_HEADER_RERENDERS } from '@/common';
-import { Spinner } from '@/components/loading/Spinner/Spinner';
+import { Spinner } from '@/components';
 
 export const Nav = ({ isLoggedIn }: { isLoggedIn: boolean }): JSX.Element => {
   const [user, loading] = useIdToken(firebaseAuth);
