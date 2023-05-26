@@ -9,7 +9,7 @@ import { HeadersSection } from '@/components/playgroundSections/HeadersSection/H
 import { OperationSection } from '@/components/playgroundSections/OperationSection/OperationSection';
 import { ResponseSection } from '@/components/playgroundSections/ResponseSection/ResponseSection';
 import { VarsSection } from '@/components/playgroundSections/VarsSection/VarsSection';
-import { PlaygroundToast } from '@/components/toasts/PlaygroundToast/PlaygroundToast';
+import { ResponseErrorToast } from '@/components/toasts/ResponseErrorToast/ResponseErrorToast';
 import { firebaseAuth } from '@/firebase';
 import { errorSelector } from '@/redux';
 import { redirect } from 'next/navigation';
@@ -30,7 +30,7 @@ export default function PlaygroundPage(): JSX.Element {
 
   return (
     <>
-      {errors.length ? <PlaygroundToast errors={errors} /> : null}
+      <ResponseErrorToast errors={errors} />
       <div className={styles.playground}>
         {isMobileView ? (
           <MobilePlayground>

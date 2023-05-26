@@ -114,12 +114,7 @@ export const useRequest = () => {
   }, [dispatch, isFetching]);
 
   useEffect(() => {
-    if (error) {
-      dispatch(setError(error));
-      return (): void => {
-        dispatch(setError(null));
-      };
-    }
+    dispatch(setError(error || null));
   }, [dispatch, error]);
 
   useEffect((): void => {

@@ -24,14 +24,12 @@ export const playgroundSlice = createSlice({
       state.isFetch = action.payload;
     },
     setError(state, action: PayloadAction<FetchBaseQueryError | SerializedError | null>): void {
+      state.error = [];
       const { payload } = action;
-      if (!payload) {
-        state.error = [];
-      } else {
+      if (payload) {
         state.response = JSON.stringify(payload, null, 2);
         state.error = getErrors(payload);
       }
-      payload;
     },
     setSlice(state, action: PayloadAction<PlaygroundState>): void {
       const { operation, vars, headers } = action.payload;
