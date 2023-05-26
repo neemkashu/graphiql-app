@@ -64,21 +64,12 @@ export const Info = (): JSX.Element => {
               alt="rick and morty"
             />
           </MouseParallaxChild>
-          <MouseParallaxChild factorX={0.2} factorY={-0.5}>
-            <Image
-              className={styles.gadget}
-              fill
-              sizes="(max-width: 992px) 100vw, 50vw"
-              src={'/img/parallax/1.webp'}
-              alt=""
-            />
-          </MouseParallaxChild>
           <MouseParallaxChild className={styles.animation} factorX={0.2} factorY={0.2}>
             <Image
               className={styles.gadget}
               fill
               sizes="(max-width: 992px) 100vw, 50vw"
-              src={'/img/parallax/2.webp'}
+              src={'/img/parallax/1.png'}
               alt=""
             />
           </MouseParallaxChild>
@@ -87,79 +78,16 @@ export const Info = (): JSX.Element => {
               className={styles.gadget}
               fill
               sizes="(max-width: 992px) 100vw, 50vw"
-              src={'/img/parallax/3.webp'}
+              src={'/img/parallax/2.png'}
               alt=""
             />
           </MouseParallaxChild>
-          <MouseParallaxChild className={styles.animation} factorX={0.4} factorY={0.3}>
+          <MouseParallaxChild factorX={0.4} factorY={-0.7}>
             <Image
               className={styles.gadget}
               fill
               sizes="(max-width: 992px) 100vw, 50vw"
-              src={'/img/parallax/4.webp'}
-              alt=""
-            />
-          </MouseParallaxChild>
-          <MouseParallaxChild factorX={-0.2} factorY={0.6}>
-            <Image
-              className={styles.gadget}
-              fill
-              sizes="(max-width: 992px) 100vw, 50vw"
-              src={'/img/parallax/5.webp'}
-              alt=""
-            />
-          </MouseParallaxChild>
-          <MouseParallaxChild className={styles.animation} factorX={-0.5} factorY={0.3}>
-            <Image
-              className={styles.gadget}
-              fill
-              sizes="(max-width: 992px) 100vw, 50vw"
-              src={'/img/parallax/6.webp'}
-              alt=""
-            />
-          </MouseParallaxChild>
-          <MouseParallaxChild factorX={0.2} factorY={-0.5}>
-            <Image
-              className={styles.gadget}
-              fill
-              sizes="(max-width: 992px) 100vw, 50vw"
-              src={'/img/parallax/7.webp'}
-              alt=""
-            />
-          </MouseParallaxChild>
-          <MouseParallaxChild factorX={0.6} factorY={-0.4}>
-            <Image
-              className={styles.gadget}
-              fill
-              sizes="(max-width: 992px) 100vw, 50vw"
-              src={'/img/parallax/8.webp'}
-              alt=""
-            />
-          </MouseParallaxChild>
-          <MouseParallaxChild className={styles.animation} factorX={0.5} factorY={0.5}>
-            <Image
-              className={styles.gadget}
-              fill
-              sizes="(max-width: 992px) 100vw, 50vw"
-              src={'/img/parallax/9.webp'}
-              alt=""
-            />
-          </MouseParallaxChild>
-          <MouseParallaxChild factorX={0.3} factorY={-0.5}>
-            <Image
-              className={styles.gadget}
-              fill
-              sizes="(max-width: 992px) 100vw, 50vw"
-              src={'/img/parallax/10.webp'}
-              alt=""
-            />
-          </MouseParallaxChild>
-          <MouseParallaxChild className={styles.animation} factorX={-0.3} factorY={0.5}>
-            <Image
-              className={styles.gadget}
-              fill
-              sizes="(max-width: 992px) 100vw, 50vw"
-              src={'/img/parallax/11.webp'}
+              src={'/img/parallax/3.png'}
               alt=""
             />
           </MouseParallaxChild>
