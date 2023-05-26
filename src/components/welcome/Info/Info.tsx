@@ -11,7 +11,6 @@ import { useState } from 'react';
 import { RS_LINK } from '@/components/layout/Footer/FooterConst';
 
 export const Info = (): JSX.Element => {
-  const [isImgLoaded, setIsImgLoaded] = useState(false);
   const t = useTranslations('Info');
   return (
     <section className={styles.info}>
@@ -59,159 +58,124 @@ export const Info = (): JSX.Element => {
         >
           <MouseParallaxChild factorX={-0.2} factorY={-0.2}>
             <Image
-              className={classNames(styles.img)}
+              className={styles.img}
               priority
               width={0}
               height={0}
               sizes="100%"
-              onLoadingComplete={() => setIsImgLoaded(true)}
+              style={{ width: '100%', height: 'auto' }}
               src={'/img/bg.webp'}
               alt="rick and morty"
             />
           </MouseParallaxChild>
           <MouseParallaxChild factorX={0.2} factorY={-0.5}>
             <Image
-              className={classNames(styles.gadget, isImgLoaded ? styles.active : null)}
+              className={styles.gadget}
               width={0}
               height={0}
               sizes="100%"
-              onLoadingComplete={() => setIsImgLoaded(true)}
               src={'/img/parallax/1.webp'}
-              alt="gadget"
+              alt=""
             />
           </MouseParallaxChild>
           <MouseParallaxChild className={styles.animation} factorX={0.2} factorY={0.2}>
             <Image
-              className={classNames(
-                styles.gadget,
-                styles.lower,
-                isImgLoaded ? styles.active : null
-              )}
+              className={styles.gadget}
               width={0}
               height={0}
               sizes="100%"
-              onLoadingComplete={() => setIsImgLoaded(true)}
               src={'/img/parallax/2.webp'}
-              alt="gadget"
+              alt=""
             />
           </MouseParallaxChild>
           <MouseParallaxChild factorX={-0.7} factorY={-0.5}>
             <Image
-              className={classNames(
-                styles.gadget,
-                styles.lower,
-                isImgLoaded ? styles.active : null
-              )}
+              className={styles.gadget}
               width={0}
               height={0}
               sizes="100%"
-              onLoadingComplete={() => setIsImgLoaded(true)}
               src={'/img/parallax/3.webp'}
-              alt="gadget"
+              alt=""
             />
           </MouseParallaxChild>
           <MouseParallaxChild className={styles.animation} factorX={0.4} factorY={0.3}>
             <Image
-              className={classNames(styles.gadget, isImgLoaded ? styles.active : null)}
+              className={styles.gadget}
               width={0}
               height={0}
               sizes="100%"
-              onLoadingComplete={() => setIsImgLoaded(true)}
               src={'/img/parallax/4.webp'}
-              alt="gadget"
+              alt=""
             />
           </MouseParallaxChild>
           <MouseParallaxChild factorX={-0.2} factorY={0.6}>
             <Image
-              className={classNames(styles.gadget, isImgLoaded ? styles.active : null)}
+              className={styles.gadget}
               width={0}
               height={0}
               sizes="100%"
-              onLoadingComplete={() => setIsImgLoaded(true)}
               src={'/img/parallax/5.webp'}
-              alt="gadget"
+              alt=""
             />
           </MouseParallaxChild>
           <MouseParallaxChild className={styles.animation} factorX={-0.5} factorY={0.3}>
             <Image
-              className={classNames(styles.gadget, isImgLoaded ? styles.active : null)}
+              className={styles.gadget}
               width={0}
               height={0}
               sizes="100%"
-              onLoadingComplete={() => setIsImgLoaded(true)}
               src={'/img/parallax/6.webp'}
-              alt="gadget"
+              alt=""
             />
           </MouseParallaxChild>
           <MouseParallaxChild factorX={0.2} factorY={-0.5}>
             <Image
-              className={classNames(styles.gadget, isImgLoaded ? styles.active : null)}
+              className={styles.gadget}
               width={0}
               height={0}
               sizes="100%"
-              onLoadingComplete={() => setIsImgLoaded(true)}
               src={'/img/parallax/7.webp'}
-              alt="gadget"
+              alt=""
             />
           </MouseParallaxChild>
           <MouseParallaxChild factorX={0.6} factorY={-0.4}>
             <Image
-              className={classNames(
-                styles.gadget,
-                styles.lower,
-                isImgLoaded ? styles.active : null
-              )}
+              className={styles.gadget}
               width={0}
               height={0}
               sizes="100%"
-              onLoadingComplete={() => setIsImgLoaded(true)}
               src={'/img/parallax/8.webp'}
-              alt="gadget"
+              alt=""
             />
           </MouseParallaxChild>
           <MouseParallaxChild className={styles.animation} factorX={0.5} factorY={0.5}>
             <Image
-              className={classNames(
-                styles.gadget,
-                styles.lower,
-                isImgLoaded ? styles.active : null
-              )}
+              className={styles.gadget}
               width={0}
               height={0}
               sizes="100%"
-              onLoadingComplete={() => setIsImgLoaded(true)}
               src={'/img/parallax/9.webp'}
-              alt="gadget"
+              alt=""
             />
           </MouseParallaxChild>
           <MouseParallaxChild factorX={0.3} factorY={-0.5}>
             <Image
-              className={classNames(
-                styles.gadget,
-                styles.lower,
-                isImgLoaded ? styles.active : null
-              )}
+              className={styles.gadget}
               width={0}
               height={0}
               sizes="100%"
-              onLoadingComplete={() => setIsImgLoaded(true)}
               src={'/img/parallax/10.webp'}
-              alt="gadget"
+              alt=""
             />
           </MouseParallaxChild>
           <MouseParallaxChild className={styles.animation} factorX={-0.3} factorY={0.5}>
             <Image
-              className={classNames(
-                styles.gadget,
-                styles.lower,
-                isImgLoaded ? styles.active : null
-              )}
+              className={styles.gadget}
               width={0}
               height={0}
               sizes="100%"
-              onLoadingComplete={() => setIsImgLoaded(true)}
               src={'/img/parallax/11.webp'}
-              alt="gadget"
+              alt=""
             />
           </MouseParallaxChild>
         </MouseParallaxContainer>
