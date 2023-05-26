@@ -1,5 +1,5 @@
 import { getErrors } from './playground.helper';
-import { PlaygroundState } from '@/redux';
+import { UserPlaygroundData } from '@/redux';
 import { initialState } from '@/redux/playground/playground.const';
 import { createSlice, PayloadAction, SerializedError } from '@reduxjs/toolkit';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
@@ -31,17 +31,46 @@ export const playgroundSlice = createSlice({
         state.error = getErrors(payload);
       }
     },
-    setSlice(state, action: PayloadAction<PlaygroundState>): void {
+    setSlice(state, action: PayloadAction<UserPlaygroundData>): void {
       const { operation, vars, headers } = action.payload;
       state.operation = operation;
       state.vars = vars;
       state.headers = headers;
       state.init = false;
     },
+    resetSlice(state) {
+      const { operation, vars, headers } = initialState;
+      state.init = true;
+      state.operation = operation;
+      state.vars = vars;
+      state.headers = headers;
+      state.previousData = null;
+    },
+    setPreviousData(state, action: PayloadAction<UserPlaygroundData | null>) {
+      if (action.payload === null) {
+        state.previousData = null;
+        return;
+      }
+      const { operation, vars, headers } = action.payload;
+      state.previousData = {
+        operation,
+        vars,
+        headers,
+      };
+    },
   },
 });
 
-export const { setOperation, setVars, setResponse, setHeaders, setError, setIsFetch, setSlice } =
-  playgroundSlice.actions;
+export const {
+  setOperation,
+  setVars,
+  setResponse,
+  setHeaders,
+  setError,
+  setIsFetch,
+  setSlice,
+  resetSlice,
+  setPreviousData,
+} = playgroundSlice.actions;
 
 export default playgroundSlice.reducer;
