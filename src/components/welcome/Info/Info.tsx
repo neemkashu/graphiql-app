@@ -6,8 +6,6 @@ import Link from 'next/link';
 import { MouseParallaxChild, MouseParallaxContainer } from 'react-parallax-mouse';
 import styles from './Info.module.scss';
 import { TECH_STACK_LINK } from '@/common';
-import classNames from 'classnames';
-import { useState } from 'react';
 import { RS_LINK } from '@/components/layout/Footer/FooterConst';
 
 export const Info = (): JSX.Element => {
@@ -60,10 +58,8 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.img}
               priority
-              width={0}
-              height={0}
+              fill
               sizes="100%"
-              style={{ width: '100%', height: 'auto' }}
               src={'/img/bg.webp'}
               alt="rick and morty"
             />
@@ -71,8 +67,7 @@ export const Info = (): JSX.Element => {
           <MouseParallaxChild factorX={0.2} factorY={-0.5}>
             <Image
               className={styles.gadget}
-              width={0}
-              height={0}
+              fill
               sizes="100%"
               src={'/img/parallax/1.webp'}
               alt=""
@@ -81,8 +76,7 @@ export const Info = (): JSX.Element => {
           <MouseParallaxChild className={styles.animation} factorX={0.2} factorY={0.2}>
             <Image
               className={styles.gadget}
-              width={0}
-              height={0}
+              fill
               sizes="100%"
               src={'/img/parallax/2.webp'}
               alt=""
@@ -91,8 +85,7 @@ export const Info = (): JSX.Element => {
           <MouseParallaxChild factorX={-0.7} factorY={-0.5}>
             <Image
               className={styles.gadget}
-              width={0}
-              height={0}
+              fill
               sizes="100%"
               src={'/img/parallax/3.webp'}
               alt=""
@@ -101,8 +94,7 @@ export const Info = (): JSX.Element => {
           <MouseParallaxChild className={styles.animation} factorX={0.4} factorY={0.3}>
             <Image
               className={styles.gadget}
-              width={0}
-              height={0}
+              fill
               sizes="100%"
               src={'/img/parallax/4.webp'}
               alt=""
@@ -111,8 +103,7 @@ export const Info = (): JSX.Element => {
           <MouseParallaxChild factorX={-0.2} factorY={0.6}>
             <Image
               className={styles.gadget}
-              width={0}
-              height={0}
+              fill
               sizes="100%"
               src={'/img/parallax/5.webp'}
               alt=""
@@ -121,8 +112,7 @@ export const Info = (): JSX.Element => {
           <MouseParallaxChild className={styles.animation} factorX={-0.5} factorY={0.3}>
             <Image
               className={styles.gadget}
-              width={0}
-              height={0}
+              fill
               sizes="100%"
               src={'/img/parallax/6.webp'}
               alt=""
@@ -131,8 +121,7 @@ export const Info = (): JSX.Element => {
           <MouseParallaxChild factorX={0.2} factorY={-0.5}>
             <Image
               className={styles.gadget}
-              width={0}
-              height={0}
+              fill
               sizes="100%"
               src={'/img/parallax/7.webp'}
               alt=""
@@ -141,8 +130,7 @@ export const Info = (): JSX.Element => {
           <MouseParallaxChild factorX={0.6} factorY={-0.4}>
             <Image
               className={styles.gadget}
-              width={0}
-              height={0}
+              fill
               sizes="100%"
               src={'/img/parallax/8.webp'}
               alt=""
@@ -151,8 +139,7 @@ export const Info = (): JSX.Element => {
           <MouseParallaxChild className={styles.animation} factorX={0.5} factorY={0.5}>
             <Image
               className={styles.gadget}
-              width={0}
-              height={0}
+              fill
               sizes="100%"
               src={'/img/parallax/9.webp'}
               alt=""
@@ -161,8 +148,7 @@ export const Info = (): JSX.Element => {
           <MouseParallaxChild factorX={0.3} factorY={-0.5}>
             <Image
               className={styles.gadget}
-              width={0}
-              height={0}
+              fill
               sizes="100%"
               src={'/img/parallax/10.webp'}
               alt=""
@@ -171,8 +157,7 @@ export const Info = (): JSX.Element => {
           <MouseParallaxChild className={styles.animation} factorX={-0.3} factorY={0.5}>
             <Image
               className={styles.gadget}
-              width={0}
-              height={0}
+              fill
               sizes="100%"
               src={'/img/parallax/11.webp'}
               alt=""
