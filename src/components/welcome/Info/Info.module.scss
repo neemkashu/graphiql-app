@@ -32,6 +32,10 @@
     &:hover {
       color: $clr-hover;
     }
+
+    @include media('max', 'xs') {
+      font-size: 1.8rem;
+    }
   }
 
   .descr {
@@ -89,6 +93,15 @@
   }
 }
 
+.RSLink {
+  color: $clr-active;
+  transition: $transition-color;
+
+  &:hover {
+    color: $clr-hover;
+  }
+}
+
 .strong {
   font-weight: 600;
   color: $clr-active-4;
@@ -131,5 +144,16 @@
         height: 200px;
       }
     }
+  }
+}
+
+.img {
+  transition: 2s;
+  opacity: 0;
+  transform: translateY(50px);
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }

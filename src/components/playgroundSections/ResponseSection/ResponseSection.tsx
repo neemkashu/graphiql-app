@@ -1,5 +1,6 @@
 'use client';
-import { Spinner } from '@/components/loading';
+
+import { Spinner } from '@/components';
 import { isFetchSelector, responseSelector } from '@/redux';
 import { json } from '@codemirror/lang-json';
 import CodeMirror from '@uiw/react-codemirror';

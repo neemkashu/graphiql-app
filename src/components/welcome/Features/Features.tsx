@@ -1,39 +1,49 @@
 'use client';
-
-import syntaxPicture from './gifs/syntax.webp';
-import errorPicture from './gifs/errors.webp';
-import mobilePicture from './gifs/mobile.webp';
-
+import { PageList } from '@/common';
+import { usePathWithLocale } from '@/common/hook';
+import { FEATURES_LIST, MP4_TYPE, WEBM_TYPE } from '@/components/welcome/Features/Features.const';
+import { firebaseAuth } from '@/firebase';
+import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
+import Link from 'next/link';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import styles from './Features.module.scss';
 
 export const Features = (): JSX.Element => {
+  const [playgroundPage, signInPage] = usePathWithLocale([PageList.playground, PageList.signIn]);
+  const [isRegister] = useAuthState(firebaseAuth);
   const t = useTranslations('Info');
+
+  const fillList = (): JSX.Element[] => {
+    return FEATURES_LIST.map(([NAME, WEBP_SRC, MP4_SRC], index, arr) => (
+      <li className={classNames(styles.item, styles[`num-${index}`])} key={index}>
+        <div className={styles.info}>
+          <h3 className={styles.name}>
+            {t.rich(NAME, {
+              strong: (chunks) => <strong className={styles.strong}>{chunks}</strong>,
+            })}
+          </h3>
+          {index === arr.length - 1 && (
+            <Link
+              href={isRegister ? playgroundPage : signInPage}
+              className={styles.button}
+              prefetch={false}
+            >
+              {t('try')}
+            </Link>
+          )}
+        </div>
+        <video className={styles.video} preload="auto" autoPlay loop muted playsInline>
+          <source src={WEBP_SRC} type={WEBM_TYPE} />
+          <source src={MP4_SRC} type={MP4_TYPE} />
+        </video>
+      </li>
+    ));
+  };
 
   return (
     <section className={styles.section}>
-      <h2 className={styles.header}>{t('listHeader')}</h2>
-      <ul className={styles.ul}>
-        <li>
-          <h3 className={styles.featureHeader}>{t('syntax')}</h3>
-          <div className={styles.imgWrapper}>
-            <Image src={syntaxPicture} alt="" quality={90} priority className={styles.img} />
-          </div>
-        </li>
-        <li>
-          <h3 className={styles.featureHeader}>{t('errors')}</h3>
-          <div className={styles.imgWrapper}>
-            <Image src={errorPicture} alt="" quality={90} priority className={styles.img} />
-          </div>
-        </li>
-        <li>
-          <h3 className={styles.featureHeader}>{t('design')}</h3>
-          <div className={styles.imgWrapper}>
-            <Image src={mobilePicture} alt="" quality={90} priority className={styles.img} />
-          </div>
-        </li>
-      </ul>
+      <ul className={styles.list}>{fillList()}</ul>
     </section>
   );
 };

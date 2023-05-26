@@ -12,8 +12,6 @@ export const errorSelector = (state: RootState): string[] => state.playgroundSli
 
 export const isFetchSelector = (state: RootState): boolean => state.playgroundSlice.isFetch;
 
-export const authStateSelector = (state: RootState): boolean => state.authSlice.authState;
-
 export const playgroundDataSelector = (state: RootState): UserPlaygroundData => {
   return {
     operation: state.playgroundSlice.operation,

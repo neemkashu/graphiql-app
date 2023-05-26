@@ -13,11 +13,11 @@ import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
 import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
 import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { Spinner } from '@/components/loading';
-import classNames from 'classnames';
 import ClientOnlyPortal from '@/components/toasts/ClientOnlyPortal/ClientOnlyPortal';
 import { notify } from '@/components/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import classNames from 'classnames';
+import { Spinner } from '@/components';
 
 export const RegisterForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);

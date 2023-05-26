@@ -13,10 +13,10 @@ import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
 import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
 import { signInWithEmailAndPassword } from '@firebase/auth';
-import { Spinner } from '@/components/loading';
-import classNames from 'classnames';
 import { notify } from '@/components/auth';
 import ClientOnlyPortal from '@/components/toasts/ClientOnlyPortal/ClientOnlyPortal';
+import classNames from 'classnames';
+import { Spinner } from '@/components';
 
 export const LoginForm = (): JSX.Element => {
   const [playgroundPage] = usePathWithLocale([PageList.playground]);
