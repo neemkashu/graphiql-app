@@ -43,14 +43,14 @@
   }
 
   &.num-0 {
-    align-self: flex-end;
+    margin-left: auto;
 
     @include media('max', 'l') {
       flex-direction: column;
       height: auto;
       max-height: none;
       margin-bottom: 40px;
-      align-self: flex-end;
+      margin-left: auto;
       width: 90%;
 
       .video {
@@ -102,7 +102,7 @@
       max-height: none;
       margin-top: 40px;
       width: 80%;
-      align-self: flex-end;
+      margin-left: auto;
 
       .video {
         width: 100%;

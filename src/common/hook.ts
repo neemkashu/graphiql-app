@@ -1,17 +1,33 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 'use client';
 import { USER_TOKEN_KEY } from '@/common';
-import { ALL_LANGUAGES, BASIC_LANGUAGE, LS_KEYS } from '@/common/const';
+import {
+  ALL_LANGUAGES,
+  BASIC_LANGUAGE,
+  DEBOUNCE_TIME,
+  LS_KEYS,
+  USER_COLLECTON_PATH,
+} from '@/common/const';
 import { PageList } from '@/common/enum';
-import { firebaseAuth, logout } from '@/firebase';
-import { useAppDispatch } from '@/redux';
-import { setError, setIsFetch, setResponse, setSlice } from '@/redux/playground/playground.slice';
+import { database, firebaseAuth, logout } from '@/firebase';
+import { UserPlaygroundData, useAppDispatch } from '@/redux';
+
+import {
+  resetSlice,
+  setError,
+  setIsFetch,
+  setPreviousData,
+  setResponse,
+  setSlice,
+} from '@/redux/playground/playground.slice';
 import { useLazyGetDataQuery } from '@/redux/rickAndMorty/rickAndMorty.api';
 import { store } from '@/redux/store';
 import { onIdTokenChanged, Unsubscribe } from 'firebase/auth';
+import { DocumentData, DocumentReference, doc, getDoc } from 'firebase/firestore';
 import { usePathname } from 'next/navigation';
 import nookies from 'nookies';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export const useFieldSize = <T>(
   defaultSize: T,
@@ -65,6 +81,60 @@ export const useSetStore = () => {
   }, [dispatch]);
 };
 
+export const useDebounce = (userData: UserPlaygroundData) => {
+  const [debouncedData, setDebouncedData] = useState<UserPlaygroundData>(userData);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedData(userData);
+    }, DEBOUNCE_TIME);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [userData]);
+  return debouncedData;
+};
+
+export const useLoadFirestore = () => {
+  const [user, isUserLoading] = useAuthState(firebaseAuth);
+  const dispatch = useAppDispatch();
+  const [isDataLoading, setIsDataLoading] = useState(false);
+  const [loadError, setLoadError] = useState<unknown>();
+  const documentRef = useRef<DocumentReference<DocumentData> | null>(null);
+
+  useEffect(() => {
+    if (!isUserLoading && !user) {
+      dispatch(resetSlice());
+      dispatch(setResponse(''));
+      return;
+    }
+    if (isUserLoading || !user) return;
+    const { init } = store.getState().playgroundSlice;
+    if (!init) return;
+
+    // eslint-disable-next-line no-console
+    if (process.env.NODE_ENV === 'development') console.log('setStore!');
+    const { uid } = user;
+    documentRef.current = doc(database, USER_COLLECTON_PATH, uid);
+
+    setIsDataLoading(true);
+    getDoc(documentRef.current)
+      .then((documentSnapshot) => {
+        const savedData = documentSnapshot.data()?.playground;
+        const userData = savedData
+          ? JSON.parse(savedData)
+          : { operation: '', headers: '', vars: '' };
+
+        dispatch(setPreviousData(userData));
+        dispatch(setSlice(userData));
+      })
+      .catch((error) => setLoadError(error))
+      .finally(() => setIsDataLoading(false));
+  }, [dispatch, isUserLoading, user]);
+
+  return { isDataLoading, loadError, documentRef };
+};
+
 export const usePathWithLocale = (pagePath: PageList[]): string[] => {
   const pathName = usePathname();
   const locale = pathName ? pathName.slice(1, 3) : BASIC_LANGUAGE;
@@ -83,12 +153,8 @@ export const useTokenExpire = (): void => {
       nookies.set(undefined, USER_TOKEN_KEY, token, { path: '/' });
 
       const { expirationTime } = await firebaseUser.getIdTokenResult();
-      // eslint-disable-next-line no-console
-      console.log('expirationTime', new Date(expirationTime).getTime());
 
       const logoutDuration = new Date(expirationTime).getTime() - Date.now();
-      // eslint-disable-next-line no-console
-      console.log('logoutDuration', logoutDuration);
 
       const timer = setTimeout(() => {
         logout();
@@ -97,8 +163,6 @@ export const useTokenExpire = (): void => {
       timerRef.current = timer;
     });
     return () => {
-      // eslint-disable-next-line no-console
-      console.log('CLEAR TIMER: ', timerRef.current);
       clearTimeout(timerRef.current);
       unsubscribe();
     };
@@ -114,12 +178,7 @@ export const useRequest = () => {
   }, [dispatch, isFetching]);
 
   useEffect(() => {
-    if (error) {
-      dispatch(setError(error));
-      return (): void => {
-        dispatch(setError(null));
-      };
-    }
+    dispatch(setError(error || null));
   }, [dispatch, error]);
 
   useEffect((): void => {

@@ -22,3 +22,7 @@ export const DEFAULT_MAX_HEADER_RERENDERS = 2;
 export const TECH_STACK_LINK = 'https://github.com/neemkashu/graphiql-app/pull/51';
 
 export const RESPONSIBILITY_KEYS = ['first', 'second', 'third', 'fourth'];
+
+export const USER_COLLECTON_PATH = 'users';
+
+export const DEBOUNCE_TIME = 1500;
