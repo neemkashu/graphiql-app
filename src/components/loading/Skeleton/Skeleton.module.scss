@@ -3,8 +3,11 @@
   display: flex;
   flex-direction: column;
   gap: $gap-medium;
-  width: calc(100% - 30px);
+  width: calc(100% - 25px);
   z-index: -1;
+  @include media('max', 'm') {
+    gap: 1.5rem;
+  }
 }
 
 .title {

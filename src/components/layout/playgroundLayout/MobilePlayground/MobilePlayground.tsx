@@ -1,11 +1,11 @@
 'use client';
-import { PageSpinner } from '@/components';
 import { Runner } from '@/components/Runner/Runner';
 import { useLazyGetSchemaQuery } from '@/redux';
 import classNames from 'classnames';
 import { buildClientSchema } from 'graphql';
 import { useTranslations } from 'next-intl';
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { Skeleton } from '@/components/loading';
 import styles from './MobilePlayground.module.scss';
 
 export const MobilePlayground = ({ children }: { children: JSX.Element }): JSX.Element => {
@@ -13,6 +13,17 @@ export const MobilePlayground = ({ children }: { children: JSX.Element }): JSX.E
   const [isPageFirst, setIsPageFirst] = useState(false);
   const [schemaElement, setSchemaElement] = useState<JSX.Element | null>(null);
   const [fetchScheme, { data, isLoading, isError }] = useLazyGetSchemaQuery();
+  const [lineCount, setLineCount] = useState(1);
+
+  const docsRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const width = docsRef?.current?.getBoundingClientRect().width;
+
+    if (width) {
+      setLineCount(width < 463 ? 2 : 1);
+    }
+  });
 
   const firstButtonOnClickHandler = (): void => {
     if (!data) fetchScheme();
@@ -31,10 +42,13 @@ export const MobilePlayground = ({ children }: { children: JSX.Element }): JSX.E
   return (
     <section className={styles.container}>
       <div className={styles.pageContainer}>
-        <div className={classNames(styles.page, styles.firstPage, isPageFirst && styles.active)}>
-          <Suspense fallback={<PageSpinner isSmall />}>
+        <div
+          ref={docsRef}
+          className={classNames(styles.page, styles.firstPage, isPageFirst && styles.active)}
+        >
+          <Suspense fallback={<Skeleton count={lineCount} />}>
             {schemaElement}
-            {isLoading && <PageSpinner isSmall />}
+            {isLoading && <Skeleton count={lineCount} />}
             {isError && <p>Schema not found</p>}
           </Suspense>
         </div>

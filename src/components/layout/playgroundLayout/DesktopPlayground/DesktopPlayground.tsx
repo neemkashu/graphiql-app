@@ -8,7 +8,6 @@ import {
   DOCS_ICON_ALT,
   DOCS_ICON_PATH,
   SHOW_PLAYGROUND_SIZE,
-  PageSpinner,
 } from '@/components';
 import { Runner } from '@/components/Runner/Runner';
 import { useLazyGetSchemaQuery } from '@/redux';
@@ -17,7 +16,7 @@ import { buildClientSchema } from 'graphql';
 import { useTranslations } from 'next-intl';
 import React, { lazy, ReactNode, Suspense, useEffect, useRef, useState } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
-import Skeleton from '@/components/loading/Skeleton/Skeleton';
+import { Skeleton } from '@/components/loading';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './DesktopPlayground.module.scss';
 import Image from 'next/image';
@@ -40,7 +39,7 @@ export const DesktopPlayground = ({ children }: MultipleChildren): JSX.Element =
     const width = docsRef?.current?.getBoundingClientRect().width;
 
     if (width) {
-      setLineCount(width < 472 ? 2 : 1);
+      setLineCount(width < 473 ? 2 : 1);
     }
   });
 
