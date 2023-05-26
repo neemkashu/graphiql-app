@@ -20,11 +20,7 @@
   border-radius: $border-radius-small;
   background-color: $clr-base;
 
-  box-shadow: 0 0 100px 10px $clr-active-2;
-
-  @include media("min", "m") {
-    box-shadow: 0 0 200px 50px $clr-active-2;
-  }
+  box-shadow: 0 0 200px 50px $clr-active-3;
 }
 .question {
   display: flex;
