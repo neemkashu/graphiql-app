@@ -59,7 +59,7 @@ export const Info = (): JSX.Element => {
               className={styles.img}
               priority
               fill
-              sizes="100%"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/bg.webp'}
               alt="rick and morty"
             />
@@ -68,7 +68,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
-              sizes="100%"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/1.webp'}
               alt=""
             />
@@ -77,7 +77,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
-              sizes="100%"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/2.webp'}
               alt=""
             />
@@ -86,7 +86,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
-              sizes="100%"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/3.webp'}
               alt=""
             />
@@ -95,7 +95,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
-              sizes="100%"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/4.webp'}
               alt=""
             />
@@ -104,7 +104,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
-              sizes="100%"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/5.webp'}
               alt=""
             />
@@ -113,7 +113,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
-              sizes="100%"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/6.webp'}
               alt=""
             />
@@ -122,7 +122,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
-              sizes="100%"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/7.webp'}
               alt=""
             />
@@ -131,7 +131,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
-              sizes="100%"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/8.webp'}
               alt=""
             />
@@ -140,7 +140,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
-              sizes="100%"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/9.webp'}
               alt=""
             />
@@ -149,7 +149,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
-              sizes="100%"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/10.webp'}
               alt=""
             />
@@ -158,7 +158,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
-              sizes="100%"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/11.webp'}
               alt=""
             />
