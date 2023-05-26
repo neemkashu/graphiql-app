@@ -1,7 +1,13 @@
 'use client';
 import { getOperationNames, makeRequest, nameWithDots } from '@/common/helper';
 import { useRequest } from '@/common/hook';
-import { DESKTOP_WORD_LENGTH, MOBILE_WORD_LENGTH } from '@/components/Runner/Runner.const';
+import {
+  DESKTOP_WORD_LENGTH,
+  JSON_ERROR,
+  MOBILE_WORD_LENGTH,
+} from '@/components/Runner/Runner.const';
+import { RickAndMortyReq, useAppDispatch } from '@/redux';
+import { setError } from '@/redux/playground/playground.slice';
 import { store } from '@/redux/store';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
@@ -10,9 +16,14 @@ import styles from './Runner.module.scss';
 
 export const Runner = ({ isMobile }: { isMobile?: boolean }): JSX.Element => {
   const t = useTranslations('Playground');
-  const run = useRequest();
+  const sendRequest = useRequest();
+  const dispatch = useAppDispatch();
   const [operationNames, setOperationNames] = useState<string[]>([]);
   const isMultipleRequest = operationNames.length > 1;
+
+  const run = ([request, isJsonValid]: [RickAndMortyReq, boolean]): void => {
+    isJsonValid ? sendRequest(request) : dispatch(setError(JSON_ERROR));
+  };
 
   const setMultipleButtons = (): JSX.Element => {
     return (

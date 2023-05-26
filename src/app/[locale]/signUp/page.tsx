@@ -16,7 +16,6 @@ export default async function SignUp(): Promise<JSX.Element> {
 
   return (
     <div className={styles.page}>
-      <div className={styles.blur} />
       <AuthContainer hasAccount={false} />
     </div>
   );

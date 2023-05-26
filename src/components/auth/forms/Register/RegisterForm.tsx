@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import styles from './RegisterForm.module.scss';
-import { firebaseAuth } from '@/firebase';
+import { firebaseAuth, writeNewUserPlayground } from '@/firebase';
 import { useRouter } from 'next/navigation';
 import { PageList } from '@/common';
 import { useForm } from 'react-hook-form';
@@ -13,7 +13,9 @@ import { RegisterValidationConfig } from '@/components/auth/forms/forms.config';
 import { useTranslations } from 'next-intl';
 import { usePathWithLocale } from '@/common/hook';
 import { FirebaseErrorMessage } from '@/components/auth/FirebaseError/FirebaseErrorMessage';
-import { AuthError, createUserWithEmailAndPassword } from 'firebase/auth';
+import ClientOnlyPortal from '@/components/toasts/ClientOnlyPortal/ClientOnlyPortal';
+import { notify } from '@/components/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import classNames from 'classnames';
 import { Spinner } from '@/components';
 
@@ -24,7 +26,7 @@ export const RegisterForm = (): JSX.Element => {
     register,
     handleSubmit,
     watch,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<RegisterData>({
     mode: 'onSubmit',
     reValidateMode: 'onBlur',
@@ -32,24 +34,25 @@ export const RegisterForm = (): JSX.Element => {
   });
   const t = useTranslations('Form');
 
-  const [firebaseError, setFirebaseError] = useState<AuthError | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleRegister = async ({ email, password }: LoginData): Promise<void> => {
     try {
       setIsLoading(true);
-      setFirebaseError(null);
-      await createUserWithEmailAndPassword(firebaseAuth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+      await writeNewUserPlayground(userCredential.user);
       router.push(playgroundPage);
     } catch (error) {
       setIsLoading(false);
-      setFirebaseError(error as AuthError);
+      if (error instanceof Error) notify(error);
     }
   };
 
   return (
     <>
-      {isValid && firebaseError && <FirebaseErrorMessage error={firebaseError} />}
+      <ClientOnlyPortal>
+        <FirebaseErrorMessage />
+      </ClientOnlyPortal>
       <form className={styles.form} onSubmit={handleSubmit(handleRegister)}>
         <div>
           <div className={styles.labelContainer}>

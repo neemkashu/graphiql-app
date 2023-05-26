@@ -22,7 +22,7 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
       {<LoginForm />}
       <p className={styles.question}>
         <span>{t('noAccount')}</span>
-        <Link href={signUpPage} className={styles.link} prefetch={false}>
+        <Link href={signUpPage} className={styles.link} prefetch={true}>
           {t('signUp')}
         </Link>
       </p>
@@ -33,7 +33,7 @@ export const AuthContainer = ({ hasAccount }: { hasAccount: boolean }): JSX.Elem
       {<RegisterForm />}
       <p className={styles.question}>
         <span>{t('account')}</span>
-        <Link href={signInPage} className={styles.link} prefetch={false}>
+        <Link href={signInPage} className={styles.link} prefetch={true}>
           {t('signIn')}
         </Link>
       </p>

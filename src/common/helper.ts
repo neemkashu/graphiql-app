@@ -2,11 +2,15 @@ import { RickAndMortyReq } from '@/redux';
 import { store } from '@/redux/store';
 import { parse } from 'graphql';
 
-export const makeRequest = (name?: string): RickAndMortyReq => {
+export const makeRequest = (name?: string): [RickAndMortyReq, boolean] => {
   const {
     playgroundSlice: { operation, vars },
   } = store.getState();
-  return { query: operation, variables: isJson(vars) && JSON.parse(vars), operationName: name };
+  const isJsonValid = isJson(vars);
+  return [
+    { query: operation, variables: isJsonValid && JSON.parse(vars), operationName: name },
+    !vars.trim().length || isJsonValid,
+  ];
 };
 
 const isJson = (string: string): boolean => {

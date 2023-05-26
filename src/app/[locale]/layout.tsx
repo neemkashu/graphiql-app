@@ -7,6 +7,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import styles from './layout.module.scss';
 import { ServerNav } from '@/components/layout/Header/Nav/ServerNav';
+import FireStore from '@/components/layout/FireStore/FireStore';
 
 export const metadata = {
   title: 'GraphiQL',
@@ -32,12 +33,14 @@ export default async function LocaleLayout({
       <body className={styles.body} suppressHydrationWarning={true}>
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <Header>
-              {/* @ts-expect-error Server Component */}
-              <ServerNav />
-            </Header>
-            <main className={styles.main}>{children}</main>
-            <Footer />
+            <FireStore>
+              <Header>
+                {/* @ts-expect-error Server Component */}
+                <ServerNav />
+              </Header>
+              <main className={styles.main}>{children}</main>
+              <Footer />
+            </FireStore>
           </NextIntlClientProvider>
         </Providers>
       </body>
