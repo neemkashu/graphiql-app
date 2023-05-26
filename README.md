@@ -3,6 +3,7 @@
 - [task](https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md)
 - [desk](https://github.com/users/neemkashu/projects/19/views/1)
 - [tech-stack](https://github.com/neemkashu/graphiql-app/blob/notes/tech-stack.md)
+- [video text](https://github.com/neemkashu/graphiql-app/blob/notes/video-text.md)
 
 ## Design
 
