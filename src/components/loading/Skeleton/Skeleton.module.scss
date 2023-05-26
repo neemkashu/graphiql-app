@@ -1,0 +1,39 @@
+.skeleton {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-medium;
+  width: calc(100% - 30px);
+  z-index: -1;
+}
+
+.title {
+  width: 50px;
+  background-color: $clr-base;
+  height: 24px;
+  border-radius: $border-radius-tiny;
+}
+
+.fields {
+  width: 110px;
+  background-color: $clr-base;
+  height: 20px;
+  border-radius: $border-radius-tiny;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-tiny;
+  padding: 4px 0;
+}
+
+.line {
+  width: 100%;
+  background-color: $clr-base;
+  height: 16px;
+  border-radius: $border-radius-tiny;
+  &:nth-child(2) {
+    width: 80%;
+  }
+}
