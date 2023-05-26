@@ -99,12 +99,13 @@ export const useLoadFirestore = () => {
   const [user, isUserLoading] = useAuthState(firebaseAuth);
   const dispatch = useAppDispatch();
   const [isDataLoading, setIsDataLoading] = useState(false);
-  const [error, setError] = useState<unknown>();
+  const [loadError, setLoadError] = useState<unknown>();
   const documentRef = useRef<DocumentReference<DocumentData> | null>(null);
 
   useEffect(() => {
     if (!isUserLoading && !user) {
       dispatch(resetSlice());
+      dispatch(setResponse(''));
       return;
     }
     if (isUserLoading || !user) return;
@@ -127,11 +128,11 @@ export const useLoadFirestore = () => {
         dispatch(setPreviousData(userData));
         dispatch(setSlice(userData));
       })
-      .catch((error) => setError(error))
+      .catch((error) => setLoadError(error))
       .finally(() => setIsDataLoading(false));
   }, [dispatch, isUserLoading, user]);
 
-  return { isDataLoading, error, documentRef };
+  return { isDataLoading, loadError, documentRef };
 };
 
 export const usePathWithLocale = (pagePath: PageList[]): string[] => {
