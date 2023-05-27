@@ -65,13 +65,31 @@ export const Info = (): JSX.Element => {
             />
           </MouseParallaxChild>
           <MouseParallaxChild factorX={0.2} factorY={0.2}>
-            <Image className={styles.gadget} fill sizes="50vw" src={'/img/parallax/1.png'} alt="" />
+            <Image
+              className={styles.gadget}
+              fill
+              sizes="50vw"
+              src={'/img/parallax/1.webp'}
+              alt=""
+            />
           </MouseParallaxChild>
           <MouseParallaxChild factorX={-0.7} factorY={-0.5}>
-            <Image className={styles.gadget} fill sizes="50vw" src={'/img/parallax/2.png'} alt="" />
+            <Image
+              className={styles.gadget}
+              fill
+              sizes="50vw"
+              src={'/img/parallax/2.webp'}
+              alt=""
+            />
           </MouseParallaxChild>
           <MouseParallaxChild factorX={0.4} factorY={-0.7}>
-            <Image className={styles.gadget} fill sizes="50vw" src={'/img/parallax/3.png'} alt="" />
+            <Image
+              className={styles.gadget}
+              fill
+              sizes="50vw"
+              src={'/img/parallax/3.webp'}
+              alt=""
+            />
           </MouseParallaxChild>
         </MouseParallaxContainer>
       </div>
