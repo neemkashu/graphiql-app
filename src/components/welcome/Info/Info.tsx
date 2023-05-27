@@ -3,14 +3,12 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
+import { MouseParallaxChild, MouseParallaxContainer } from 'react-parallax-mouse';
 import styles from './Info.module.scss';
 import { TECH_STACK_LINK } from '@/common';
-import classNames from 'classnames';
-import { useState } from 'react';
 import { RS_LINK } from '@/components/layout/Footer/FooterConst';
 
 export const Info = (): JSX.Element => {
-  const [isImgLoaded, setIsImgLoaded] = useState(false);
   const t = useTranslations('Info');
   return (
     <section className={styles.info}>
@@ -44,16 +42,56 @@ export const Info = (): JSX.Element => {
         <div className={styles.blur} />
         <div className={styles.blur} />
         <div className={styles.blur} />
-        <Image
-          className={classNames(styles.img, isImgLoaded ? styles.active : null)}
-          src={'/img/welcome.webp'}
-          alt="rick and morty"
-          quality={80}
-          priority
-          fill
-          sizes="(max-width: 992px) 100vw, 50vw"
-          onLoadingComplete={() => setIsImgLoaded(true)}
-        />
+        <MouseParallaxContainer
+          className={styles.parallax}
+          containerStyle={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            overflow: 'visible',
+          }}
+          globalFactorX={0.25}
+          globalFactorY={0.25}
+          resetOnLeave
+        >
+          <MouseParallaxChild factorX={-0.2} factorY={-0.2}>
+            <Image
+              className={styles.img}
+              priority
+              fill
+              sizes="50vw"
+              src={'/img/bg.webp'}
+              alt="rick and morty"
+            />
+          </MouseParallaxChild>
+          <MouseParallaxChild factorX={0.2} factorY={0.2} className={styles.animation}>
+            <Image
+              className={styles.gadget}
+              fill
+              sizes="50vw"
+              src={'/img/parallax/1.webp'}
+              alt=""
+            />
+          </MouseParallaxChild>
+          <MouseParallaxChild factorX={-0.7} factorY={-0.5}>
+            <Image
+              className={styles.gadget}
+              fill
+              sizes="50vw"
+              src={'/img/parallax/2.webp'}
+              alt=""
+            />
+          </MouseParallaxChild>
+          <MouseParallaxChild factorX={0.4} factorY={-0.7}>
+            <Image
+              className={styles.gadget}
+              fill
+              sizes="50vw"
+              src={'/img/parallax/3.webp'}
+              alt=""
+            />
+          </MouseParallaxChild>
+        </MouseParallaxContainer>
       </div>
     </section>
   );
