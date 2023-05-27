@@ -23,7 +23,7 @@ export const MobilePlayground = ({ children }: { children: JSX.Element }): JSX.E
     if (width) {
       setLineCount(width < 463 ? 2 : 1);
     }
-  }, []);
+  }, [isPageFirst]);
 
   const firstButtonOnClickHandler = (): void => {
     if (!data) fetchScheme();

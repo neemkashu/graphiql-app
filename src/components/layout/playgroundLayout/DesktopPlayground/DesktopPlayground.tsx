@@ -41,7 +41,7 @@ export const DesktopPlayground = ({ children }: MultipleChildren): JSX.Element =
     if (width) {
       setLineCount(width < 473 ? 2 : 1);
     }
-  }, []);
+  }, [isDocsOpen]);
 
   const toggleLeftPane = (): void => {
     if (!data) fetchScheme();
