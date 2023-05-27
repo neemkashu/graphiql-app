@@ -8,6 +8,19 @@ import { notFound } from 'next/navigation';
 import styles from './layout.module.scss';
 import { ServerNav } from '@/components/layout/Header/Nav/ServerNav';
 import FireStore from '@/components/layout/FireStore/FireStore';
+import { Inter, Source_Code_Pro } from 'next/font/google';
+
+export const inter = Inter({
+  weight: ['400', '500', '600'],
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-inter',
+});
+
+export const sourceCodePro = Source_Code_Pro({
+  weight: ['300', '400', '500', '600'],
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-sourceCodePro',
+});
 
 export const metadata = {
   title: 'GraphiQL',
@@ -29,7 +42,7 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`${inter.variable} ${sourceCodePro.variable}`}>
       <body className={styles.body} suppressHydrationWarning={true}>
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
