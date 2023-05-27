@@ -64,7 +64,7 @@ export const Info = (): JSX.Element => {
               alt="rick and morty"
             />
           </MouseParallaxChild>
-          <MouseParallaxChild factorX={0.2} factorY={0.2}>
+          <MouseParallaxChild factorX={0.2} factorY={0.2} className={styles.animation}>
             <Image
               className={styles.gadget}
               fill
