@@ -68,6 +68,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
+              priority
               sizes="50vw"
               src={'/img/parallax/1.webp'}
               alt=""
@@ -77,6 +78,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
+              priority
               sizes="50vw"
               src={'/img/parallax/2.webp'}
               alt=""
@@ -86,6 +88,7 @@ export const Info = (): JSX.Element => {
             <Image
               className={styles.gadget}
               fill
+              priority
               sizes="50vw"
               src={'/img/parallax/3.webp'}
               alt=""
