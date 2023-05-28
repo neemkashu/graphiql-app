@@ -1,0 +1,56 @@
+@import 'react-toastify/dist/ReactToastify.css';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 10px;
+  min-width: 320px;
+  overflow-x: hidden;
+
+  & ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: $clr-scroll;
+    border-radius: $border-radius-tiny;
+    cursor: pointer;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+.split-sash-content.split-sash-content-vscode {
+  transition: 0.2s;
+  border-radius: 5px;
+}
+
+.react-split__sash--horizontal:hover {
+  &::before {
+    background: transparent;
+  }
+}
+
+.react-split__sash--horizontal:before {
+  position: absolute;
+  transition: 1s;
+  top: 1.5px;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: $clr-second-3;
+}

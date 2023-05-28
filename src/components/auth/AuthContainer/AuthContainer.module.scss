@@ -1,0 +1,34 @@
+.container {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  gap: $gap-medium;
+
+  width: 100%;
+  max-width: $width-form;
+  min-height: min-content;
+
+  padding: $padding-medium $padding-small;
+
+  @include media("min", "xs") {
+    padding: $padding-medium;
+  }
+
+  border-radius: $border-radius-small;
+  background-color: $clr-base;
+
+  box-shadow: 0 0 200px 50px $clr-active-3;
+}
+.question {
+  display: flex;
+  justify-content: center;
+  gap: $gap-small;
+}
+.link {
+  color: $clr-active;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

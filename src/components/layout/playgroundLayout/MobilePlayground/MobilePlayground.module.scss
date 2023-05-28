@@ -1,0 +1,73 @@
+.title {
+  margin-bottom: 10px;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pageContainer {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  transition: $transition-basic;
+
+  &.active {
+    transform: translateX(0%);
+  }
+}
+
+.firstPage {
+  transform: translateX(-100%);
+  gap: 1.5rem;
+  padding-top: 17px;
+  overflow: auto;
+}
+
+.secondPage {
+  transform: translateX(100%);
+  background: $clr-base;
+  border-radius: $border-radius-small;
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.navButton {
+  @include buttonBase;
+  width: 49%;
+  background: none;
+  color: $clr-second-2;
+  border-radius: $border-radius-tiny;
+
+  &:hover {
+    background-color: $clr-base;
+  }
+
+  &.active {
+    color: $clr-second;
+    background-color: $clr-base;
+  }
+
+  &.run {
+    @include buttonMainActive;
+  }
+}

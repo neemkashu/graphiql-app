@@ -1,0 +1,72 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1600;
+  margin: 0 auto;
+
+  .title {
+    font-size: 25px;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  .subtitle {
+    height: 30px;
+    font-size: $font-size-base;
+    text-align: center;
+  }
+
+  .link {
+    margin-top: 30px;
+    text-transform: uppercase;
+    color: $clr-active;
+    transition: $transition-color;
+
+    &:hover {
+      color: $clr-hover;
+    }
+  }
+
+  .imgWrapper {
+    position: relative;
+    width: 280px;
+    height: 184px;
+  }
+
+  .img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+    transition: 2s;
+    opacity: 0;
+    transform: translateY(50px);
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+}
+
+@media (min-width: 642px) {
+  .page {
+    .imgWrapper {
+      width: 500px;
+      height: 330px;
+    }
+
+    .title {
+      font-size: $font-size-1;
+    }
+
+    .subtitle {
+      font-size: $font-size-3;
+    }
+  }
+}

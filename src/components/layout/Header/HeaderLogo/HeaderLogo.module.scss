@@ -1,0 +1,22 @@
+.mainText,
+.secondText {
+  @include media("max", "s") {
+    display: none;
+  }
+}
+
+.mainText {
+  @include title;
+}
+
+.secondText {
+  color: $clr-second-3;
+}
+
+.logo {
+  display: none;
+
+  @include media("max", "s") {
+      display: block;
+    }
+}

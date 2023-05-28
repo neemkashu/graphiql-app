@@ -1,0 +1,111 @@
+@mixin title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: $clr-second;
+}
+
+@mixin subtitle {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: $clr-second-1;
+}
+
+@mixin centering-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+@mixin form-input {
+  padding: 0 $padding-small;
+  height: $height-input;
+  width: 100%;
+  border-radius: $border-radius-tiny;
+  border-width: 0;
+  font-size: $font-size-inputs;
+  line-height: 140%;
+  color: $clr-content;
+  outline: none;
+
+  background-color: $clr-base-2;
+
+  &:hover {
+    outline: solid 2px $clr-second;
+  }
+  ::placeholder {
+    color: $clr-second-3;
+  }
+}
+
+@mixin form-button {
+  position: relative;
+  transition: $transition-basic;
+  padding: 1rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  background-color: $clr-active-2;
+}
+
+@mixin form-error {
+  color: $clr-danger;
+  font-size: $font-size-min;
+}
+
+@mixin form-label {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: $gap-medium;
+  min-height: calc(2.5 * $font-size-min);
+}
+
+@mixin form {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-medium;
+}
+
+@mixin playgroundSection {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+  position: relative;
+  font-size: $font-size-inputs;
+}
+
+@mixin form-loading {
+  height: 3.6rem;
+  background-color: $clr-second-3;
+}
+
+@mixin form-spinner {
+  position: absolute;
+  top: 2px;
+  left: calc(50% - 20px);
+}
+
+@mixin scroll {
+  & ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  & ::-webkit-scrollbar:horizontal {
+    height: 4px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: $clr-scroll;
+    border-radius: $border-radius-tiny;
+    cursor: pointer;
+  }
+
+  & ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+}

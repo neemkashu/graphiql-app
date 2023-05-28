@@ -1,0 +1,34 @@
+.cm-gutters {
+  border-radius: $border-radius-tiny;
+  @include media('max', 'm') {
+    background-color: $clr-base !important;
+  }
+
+  &:hover {
+    .cm-foldGutter {
+      opacity: 1;
+    }
+  }
+}
+
+.cm-foldGutter {
+  opacity: 0;
+  transition: $transition-basic;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.cm-theme {
+  width: 100%;
+  height: 100%;
+}
+
+.cm-editor {
+  height: 100%;
+}
+
+.cm-line {
+  font-family: var(--font-sourceCodePro), monospace;
+}

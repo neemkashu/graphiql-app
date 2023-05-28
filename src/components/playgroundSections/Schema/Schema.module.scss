@@ -1,0 +1,75 @@
+.title {
+  font-size: $font-size-2;
+  color: $clr-second-2;
+}
+
+.field {
+  vertical-align: top;
+}
+
+.args {
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  &::before {
+    content: '(';
+  }
+
+  &::after {
+    content: ')';
+  }
+}
+
+.arg {
+  display: inline-block;
+  margin: 0 0.5rem;
+}
+
+.name,
+.type {
+  line-height: 1.5;
+  font-size: $font-size-4;
+
+  .args & {
+    font-size: $font-size-base;
+  }
+}
+
+.name {
+  margin-right: 0.5rem;
+}
+
+.type {
+  color: $clr-active;
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition-color;
+
+  &:hover {
+    color: $clr-hover;
+  }
+}
+
+.description {
+  line-height: 1.5;
+  color: $clr-second-2;
+  font-size: $font-size-base;
+}
+
+.back {
+  position: absolute;
+  right: 1.1em;
+  top: 22px;
+  font-size: $font-size-base;
+  color: $clr-active;
+  background-color: transparent;
+  border: none;
+  transition: $transition-color;
+  cursor: pointer;
+
+  &:hover {
+    color: $clr-hover;
+  }
+}

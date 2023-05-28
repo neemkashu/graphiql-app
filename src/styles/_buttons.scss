@@ -1,0 +1,56 @@
+@mixin buttonBase {
+  transition: $transition-basic;
+  padding: 1rem;
+  font-size: $font-size-base;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@mixin buttonMainNormal {
+  @include buttonBase;
+  border-radius: 5px;
+  background-color: transparent;
+  color: $clr-second;
+
+  &:hover {
+    background-color: $clr-base;
+  }
+
+  @include media ('max', 'xxs') {
+    padding: 10px 8px;
+  }
+}
+
+@mixin buttonMainActive {
+  @include buttonBase;
+  border-radius: 5px;
+  background-color: $clr-active-2;
+  color: $clr-second;
+
+  &:hover {
+    background-color: $clr-active;
+  }
+
+  @include media ('max', 'xxs') {
+    padding: 10px 8px;
+  }
+}
+
+@mixin buttonRoundNormal {
+  @include buttonBase;
+  text-transform: capitalize;
+  border-radius: 100%;
+  background-color: $clr-base;
+  color: $clr-second;
+  width: 35.5px;
+  height: 35.5px;
+
+  &:hover {
+    background-color: $clr-active;
+  }
+}

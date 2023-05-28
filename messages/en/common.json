@@ -1,0 +1,108 @@
+{
+  "Info": {
+    "title": "GraphiQL",
+    "api": "For The Rick and Morty API",
+    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo quaerat sequi accusantium tempore? Laborum, recusandae officiis quis sapiente quos laudantium porro sit exercitationem odit ad nisi consequatur facilis dolore!",
+    "descriptionShort": "The application incorporates the functionality of <strong>GraphiQL</strong>, a GraphQL browser IDE. It includes a welcome page, user authentication, and a GraphiQL page with editors for requests, variables, and optional headers. The app also features a <strong>lazily loaded</strong> documentation explorer and a response section. For a full overview of the technical stack, please refer to the <link>app\u00A0repository</link>.",
+    "descriptionAdditional": "Technical requirements involve <strong>localization</strong>, <strong>semantic layout</strong>, compatibility with the latest Chrome version, <strong>private routes</strong>, <strong>error handling</strong>, and React 18 with suspense. The design focuses on <strong>adaptive layout</strong>, interactivity, and consistent style. The app employs auth features for <strong>restricted access</strong>. Auth relies on <strong>Firebase</strong> with email option and client-side validation. The app is the result of completing the final task of <link>RS\u00A0School\u00A0React\u00A0Course</link>.",
+    "design": "Elaborate design <strong>from mobile to desktop</strong>",
+    "requests": "GraphQL requests with <strong>syntax highlighting</strong>",
+    "docs": "<strong>Lazily loaded</strong> documentation explorer",
+    "try": "Try it now!"
+  },
+  "Team": {
+    "title": "Our Team",
+    "Aliaksei": {
+      "id": 1,
+      "img": "/img/team/aliaksei_rudak.jpg",
+      "name": "Aliaksei Rudak",
+      "role": "Team Lead",
+      "description": {
+        "first": "GraphQL requests",
+        "second": "error handling",
+        "third": "IDE customization",
+        "fourth": "state management"
+      },
+      "github": "https://github.com/lexarudak",
+      "color": "rgba(36, 149, 252, 0.3)"
+    },
+    "Yuliya": {
+      "id": 2,
+      "img": "/img/team/yuliya_mentsel.jpg",
+      "name": "Yuliya Mentsel",
+      "role": "Developer",
+      "description": {
+        "first": "GraphQL schema",
+        "second": "syntax highlighting",
+        "third": "welcome page",
+        "fourth": "localization"
+      },
+      "github": "https://github.com/YuMentsel",
+      "color": "rgba(254, 185, 88, 0.3)"
+    },
+    "Ekaterina": {
+      "id": 3,
+      "img": "/img/team/ekaterina_radchenko.jpg",
+      "name": "Ekaterina Radchenko",
+      "role": "Developer",
+      "description": {
+        "first": "private routes",
+        "second": "registration/authorization",
+        "third": "welcome page",
+        "fourth": "SSR for authorized user"
+      },
+      "github": "https://github.com/neemkashu",
+      "color": "rgba(38, 195, 98, 0.3)"
+    }
+  },
+  "Header": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "playground": "Playground",
+    "logOut": "Log out"
+  },
+  "NotFound": {
+    "title": "Page Not Found",
+    "subtitle": "The page you're looking for does not seem to exist",
+    "link": "Go back to the main page"
+  },
+  "Form": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "confirm": "Confirm",
+    "emailPlaceholder": "Enter email",
+    "passwordPlaceholder": "Enter password",
+    "confirmPlaceholder": "Repeat password",
+    "button": "Create account",
+    "noAccount": "Don't have an account?",
+    "account": "Already have an account?",
+    "emailMessage": "Enter email address",
+    "passwordMessage": "Please enter password",
+    "confirmMessage": "Confirm your password",
+    "validation": {
+      "requireEmail": "Enter email address",
+      "maxEmailLength": "Email exceeded {MAX_EMAIL_LENGTH} symbols",
+      "validEmail": "Invalid email",
+      "requirePassword": "Enter password",
+      "minLength": "At least {MIN_PASSWORD_LENGTH} characters in length",
+      "requireLetter": "At least one letter",
+      "requireDigit": "At least one digit",
+      "requireChar": "At least one special character",
+      "confirmPassword": "Confirm your password",
+      "equalPasswords": "Passwords do not match"
+    }
+  },
+  "Playground": {
+    "documentation": "Documentation",
+    "operation": "Operation",
+    "operationPlaceholder": "enter code",
+    "response": "Response",
+    "variables": "Variables",
+    "variablesPlaceholder": "variables ( JSON )",
+    "headers": "Headers",
+    "headersPlaceholder": "headers ( JSON )",
+    "run": "► Run"
+  }
+}

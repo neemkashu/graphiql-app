@@ -1,0 +1,108 @@
+{
+  "Info": {
+    "title": "GraphiQL",
+    "api": "Для Pик и Морти API",
+    "subtitle": "Съешь еще этих мягких французских булок, да выпей чаю. Съешь еще этих мягких французских булок, да выпей чаююСъешь еще этих мягких французских булок, да выпей чаю. Съешь еще этих мягких французских булок, да выпей чаю.",
+    "descriptionShort": "В приложении реализована функциональность <strong>GraphiQL</strong>, браузерной IDE для GraphQL запросов. Приложение включает в себя страницы с приветствием, авторизацией пользователя и редактором GraphQL запросов, переменных и заголовков. В приложении также есть <strong>лениво загружаемый</strong> обозреватель документации и раздел ответов. Для полного обзора технического стека, пожалуйста, обратитесь по <link>ссылке\u00A0на\u00A0репозиторий</link>.",
+    "descriptionAdditional": "Технические требования включают <strong>локализацию</strong>, <strong>семантическую вёрстку</strong>, совместимость с последней версией Chrome, <strong>приватные страницы</strong>, <strong>обработку ошибок</strong> и React 18 с компонентом Suspense. Дизайн приложения сосредоточен на <strong>адаптивной верстке</strong> и интерактивности. Приложение использует <strong>Firebase для авторизации</strong> через электронную почту. Приложение является финальным проектом в рамках <link>RS\u00A0School\u00A0React\u00A0Course</link>.",
+    "design": "Продуманный дизайн <strong>для всех типов устройств</strong>",
+    "requests": "GraphQL запросы <strong>с подсветкой синтаксиса</strong>",
+    "docs": "<strong>«Ленивая»</strong> загрузка документации",
+    "try": "Попробовать сейчас!"
+  },
+  "Team": {
+    "title": "Наша команда",
+    "Aliaksei": {
+      "id": 1,
+      "img": "/img/team/aliaksei_rudak.jpg",
+      "name": "Алексей Рудак",
+      "role": "Тимлид",
+      "description": {
+        "first": "GraphQL запросы",
+        "second": "обработка ошибок",
+        "third": "кастомизация IDE",
+        "fourth": "управление состоянием"
+      },
+      "github": "https://github.com/lexarudak",
+      "color": "rgba(36, 149, 252, 0.3)"
+    },
+    "Yuliya": {
+      "id": 2,
+      "img": "/img/team/yuliya_mentsel.jpg",
+      "name": "Юлия Менцель",
+      "role": "Разработчик",
+      "description": {
+        "first": "GraphQL схема",
+        "second": "подсветка синтаксиса",
+        "third": "страница приветсвия",
+        "fourth": "локализация"
+      },
+      "github": "https://github.com/YuMentsel",
+      "color": "rgba(254, 185, 88, 0.3)"
+    },
+    "Ekaterina": {
+      "id": 3,
+      "img": "/img/team/ekaterina_radchenko.jpg",
+      "name": "Екатерина Радченко",
+      "role": "Разработчик",
+      "description": {
+        "first": "приватные страницы",
+        "second": "регистрация/авторизация",
+        "third": "страница приветсвия",
+        "fourth": "SSR для авторизованного пользователя"
+      },
+      "github": "https://github.com/neemkashu",
+      "color": "rgba(38, 195, 98, 0.3)"
+    }
+  },
+  "Header": {
+    "signIn": "Войти",
+    "signUp": "Регистрация",
+    "playground": "Песочница",
+    "logOut": "Выйти"
+  },
+  "NotFound": {
+    "title": "Страница не найдена",
+    "subtitle": "Страница, которую вы ищете, не существует",
+    "link": "Вернуться на главную страницу"
+  },
+  "Form": {
+    "signIn": "Войти",
+    "signUp": "Регистрация",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "confirm": "Подтверждение пароля",
+    "emailPlaceholder": "Введите адрес электронной почты",
+    "passwordPlaceholder": "Введите пароль",
+    "confirmPlaceholder": "Повторите проль",
+    "button": "Создать аккаунт",
+    "noAccount": "У вас нет аккаунта?",
+    "account": "Уже есть аккаунт?",
+    "emailMessage": "Введите адрес электронной почты",
+    "passwordMessage": "Пожалуйста, введите пароль",
+    "confirmMessage": "Подтвердите введенный пароль",
+    "validation": {
+      "requireEmail": "Введите адрес электронной почты",
+      "maxEmailLength": "Адрес не больше {MAX_EMAIL_LENGTH} символов",
+      "validEmail": "Неверный адрес электронной почты",
+      "requirePassword": "Введите пароль",
+      "minLength": "Пароль не менее {MIN_PASSWORD_LENGTH} символов",
+      "requireLetter": "Не менее одной буквы",
+      "requireDigit": "Хотя бы одна цифра",
+      "requireChar": "Хотя бы один специальный символ",
+      "confirmPassword": "Подтвердите пароль",
+      "equalPasswords": "Пароли не совпадают"
+    }
+  },
+  "Playground": {
+    "documentation": "Документация",
+    "operation": "Запрос",
+    "operationPlaceholder": "ваш код",
+    "response": "Ответ",
+    "variables": "Переменные",
+    "variablesPlaceholder": "переменные ( JSON )",
+    "headers": "Заголовки",
+    "headersPlaceholder": "заголовки ( JSON )",
+    "run": "► Отправить"
+  }
+}

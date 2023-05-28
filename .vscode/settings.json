@@ -1,0 +1,17 @@
+{
+  "cSpell.words": [
+    "codemirror",
+    "Ekaterina",
+    "lezer",
+    "Mentsel",
+    "persistor",
+    "Radchenko",
+    "WEBM"
+  ],
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "search.useIgnoreFiles": true,
+  "search.exclude": {
+    "**/node_modules": false,
+    "**/node_moduls": true
+  }
+}

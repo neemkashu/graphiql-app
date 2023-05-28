@@ -1,0 +1,1 @@
+export * from './TabsBlock.enum';

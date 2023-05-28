@@ -1,0 +1,1 @@
+export const MOB_SKELETON_BREAKPOINT = 463;

@@ -1,0 +1,48 @@
+.pane {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px 5px 15px;
+  flex-direction: column;
+  position: relative;
+}
+
+.paneCenter {
+  background-color: $clr-base;
+  border-radius: $border-radius-small;
+}
+
+.paneLeft {
+  padding-top: 17px;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+  padding: 17px 15px;
+  gap: 2rem;
+  overflow: auto;
+}
+
+.centerHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sectionTitle {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  flex-shrink: 0;
+  font-size: $font-size-4;
+}
+
+.hideButton {
+  @include buttonMainNormal;
+  margin-right: 10px;
+  margin-top: 7px;
+  font-weight: 600;
+  padding: 7px;
+  height: 45px;
+  width: 45px;
+}
