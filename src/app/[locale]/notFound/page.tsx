@@ -24,7 +24,7 @@ export default function CustomNotFoundPage(): JSX.Element {
           onLoadingComplete={() => setIsImgLoaded(true)}
         />
       </div>
-      <h1 className={styles.title}>{t('title')}</h1>
+      <h2 className={styles.title}>{t('title')}</h2>
       <div className={styles.subtitle}>{t('subtitle')}</div>
       <Link href="/" className={styles.link}>
         {t('link')}
