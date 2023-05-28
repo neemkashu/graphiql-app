@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { lazy, Suspense, useState } from 'react';
 import { Skeleton } from '@/components/loading';
 import styles from './MobilePlayground.module.scss';
-import { useSceletonState } from '../Playground.hook';
+import { useSkeletonState } from '../Playground.hook';
 import { MOB_SKELETON_BREAKPOINT } from './MobilePlayground.const';
 
 export const MobilePlayground = ({ children }: { children: JSX.Element }): JSX.Element => {
@@ -16,7 +16,7 @@ export const MobilePlayground = ({ children }: { children: JSX.Element }): JSX.E
   const [schemaElement, setSchemaElement] = useState<JSX.Element | null>(null);
   const [fetchScheme, { data, isLoading, isError }] = useLazyGetSchemaQuery();
 
-  const [docsRef, lineCount] = useSceletonState(isPageFirst, MOB_SKELETON_BREAKPOINT);
+  const [docsRef, lineCount] = useSkeletonState(isPageFirst, MOB_SKELETON_BREAKPOINT);
 
   const firstButtonOnClickHandler = (): void => {
     if (!data) fetchScheme();
