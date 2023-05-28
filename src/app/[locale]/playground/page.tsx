@@ -11,7 +11,7 @@ export default async function PlayGroundServer(): Promise<JSX.Element> {
     const cookieStore = cookies();
     locale = cookieStore.get('NEXT_LOCALE')?.value ?? BASIC_LANGUAGE;
     isLoggedIn = await checkAuthenticated(cookieStore);
-  } catch (error) {
+  } catch {
     isLoggedIn = true;
   }
 

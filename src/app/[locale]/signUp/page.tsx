@@ -11,7 +11,7 @@ export default async function SignUp(): Promise<JSX.Element> {
   try {
     isLoggedIn = await getIsLogged(cookies());
     locale = getLocale(cookies());
-  } catch (error) {}
+  } catch {}
   if (isLoggedIn) redirect(`/${locale}${PageList.playground}`);
 
   return (
