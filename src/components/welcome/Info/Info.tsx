@@ -70,7 +70,7 @@ export const Info = (): JSX.Element => {
               fill
               priority
               sizes="50vw"
-              src={'/img/parallax/1.webp'}
+              src={'/img/parallax/11.webp'}
               alt=""
             />
           </MouseParallaxChild>
@@ -80,7 +80,7 @@ export const Info = (): JSX.Element => {
               fill
               priority
               sizes="50vw"
-              src={'/img/parallax/2.webp'}
+              src={'/img/parallax/22.webp'}
               alt=""
             />
           </MouseParallaxChild>
@@ -90,7 +90,7 @@ export const Info = (): JSX.Element => {
               fill
               priority
               sizes="50vw"
-              src={'/img/parallax/3.webp'}
+              src={'/img/parallax/33.webp'}
               alt=""
             />
           </MouseParallaxChild>
