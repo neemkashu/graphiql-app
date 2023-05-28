@@ -26,7 +26,7 @@ export default function CustomNotFoundPage(): JSX.Element {
       </div>
       <h1 className={styles.title}>{t('title')}</h1>
       <div className={styles.subtitle}>{t('subtitle')}</div>
-      <Link href="/" className={styles.link}>
+      <Link href="/" className={styles.link} prefetch={false}>
         {t('link')}
       </Link>
     </section>

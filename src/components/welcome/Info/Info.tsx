@@ -14,7 +14,12 @@ export const Info = (): JSX.Element => {
     <section className={styles.info}>
       <div className={styles.infoWrapper}>
         <h1 className={styles.title}>{t('title')}</h1>
-        <Link href={'https://rickandmortyapi.com/'} target="blank" className={styles.api}>
+        <Link
+          href={'https://rickandmortyapi.com/'}
+          target="blank"
+          className={styles.api}
+          prefetch={false}
+        >
           {t('api')}
         </Link>
         <p className={styles.descr}>

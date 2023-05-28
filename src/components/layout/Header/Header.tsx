@@ -14,7 +14,7 @@ export const Header = ({ children }: { children: React.ReactNode }): JSX.Element
 
   return (
     <header className={classNames(styles.header, isScroll && styles.filling)}>
-      <Link href={welcomePage} className={styles.logo}>
+      <Link href={welcomePage} className={styles.logo} prefetch={false}>
         <HeaderLogo />
       </Link>
       {children}

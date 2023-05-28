@@ -19,7 +19,7 @@ export const PlaygroundNavButtons = (): JSX.Element => {
       <button className={styles.normalButton} onClick={onClickHandler}>
         {t('logOut')}
       </button>
-      <Link href={playgroundPage} className={styles.activeButton} prefetch={true}>
+      <Link href={playgroundPage} className={styles.activeButton} prefetch={false}>
         {t('playground')}
       </Link>
     </>
