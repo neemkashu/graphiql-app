@@ -7,7 +7,7 @@ export async function ServerNav(): Promise<JSX.Element> {
 
   try {
     isLoggedIn = await getIsLogged(cookies());
-  } catch (error) {}
+  } catch {}
 
   return <Nav isLoggedIn={isLoggedIn} />;
 }

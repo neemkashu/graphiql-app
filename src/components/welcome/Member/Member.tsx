@@ -20,7 +20,7 @@ export const Member = ({ member }: { member: string }): JSX.Element => {
         height={100}
         className={`${styles.img}`}
       />
-      <Link href={t(member + '.github')} target="blank" className={styles.name}>
+      <Link href={t(member + '.github')} target="blank" className={styles.name} prefetch={false}>
         {t(member + '.name')}
       </Link>
       <div className={styles.role}>{t(member + '.role')}</div>

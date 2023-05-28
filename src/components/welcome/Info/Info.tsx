@@ -14,7 +14,12 @@ export const Info = (): JSX.Element => {
     <section className={styles.info}>
       <div className={styles.infoWrapper}>
         <h1 className={styles.title}>{t('title')}</h1>
-        <Link href={'https://rickandmortyapi.com/'} target="blank" className={styles.api}>
+        <Link
+          href={'https://rickandmortyapi.com/'}
+          target="blank"
+          className={styles.api}
+          prefetch={false}
+        >
           {t('api')}
         </Link>
         <p className={styles.descr}>
@@ -70,7 +75,7 @@ export const Info = (): JSX.Element => {
               fill
               priority
               sizes="50vw"
-              src={'/img/parallax/1.webp'}
+              src={'/img/parallax/11.webp'}
               alt=""
             />
           </MouseParallaxChild>
@@ -80,7 +85,7 @@ export const Info = (): JSX.Element => {
               fill
               priority
               sizes="50vw"
-              src={'/img/parallax/2.webp'}
+              src={'/img/parallax/22.webp'}
               alt=""
             />
           </MouseParallaxChild>
@@ -90,7 +95,7 @@ export const Info = (): JSX.Element => {
               fill
               priority
               sizes="50vw"
-              src={'/img/parallax/3.webp'}
+              src={'/img/parallax/33.webp'}
               alt=""
             />
           </MouseParallaxChild>

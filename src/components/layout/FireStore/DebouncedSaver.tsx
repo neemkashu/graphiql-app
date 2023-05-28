@@ -1,12 +1,12 @@
 import { useDebounce } from '@/common/hook';
 import { useAppSelector, playgroundDataSelector } from '@/redux';
 import { DocumentData, DocumentReference, setDoc } from 'firebase/firestore';
-import { useRef, useEffect, useState } from 'react';
+import { MutableRefObject, useEffect, useState } from 'react';
 
 export const DebouncedSaver = ({
   documentRef,
 }: {
-  documentRef: ReturnType<typeof useRef<DocumentReference<DocumentData> | null>>;
+  documentRef: MutableRefObject<DocumentReference<DocumentData> | null>;
 }): JSX.Element => {
   const userData = useAppSelector(playgroundDataSelector);
   const debouncedData = useDebounce(userData);
@@ -14,9 +14,6 @@ export const DebouncedSaver = ({
   const [, setError] = useState<unknown>();
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    if (process.env.NODE_ENV === 'development') console.log('SAVE', { debouncedData });
-
     const currentDoc = documentRef.current;
     if (!currentDoc) return;
 

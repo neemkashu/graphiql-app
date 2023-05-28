@@ -1,5 +1,4 @@
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const notify = (errors: string[]): void => {
   errors.forEach((error): void => {
