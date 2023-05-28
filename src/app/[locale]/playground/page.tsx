@@ -12,8 +12,6 @@ export default async function PlayGroundServer(): Promise<JSX.Element> {
     locale = cookieStore.get('NEXT_LOCALE')?.value ?? BASIC_LANGUAGE;
     isLoggedIn = await checkAuthenticated(cookieStore);
   } catch (error) {
-    // eslint-disable-next-line no-console
-    if (error instanceof Error) console.log('Catch in playground in: ', error?.message);
     isLoggedIn = true;
   }
 

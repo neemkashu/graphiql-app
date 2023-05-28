@@ -112,8 +112,6 @@ export const useLoadFirestore = () => {
     const { init } = store.getState().playgroundSlice;
     if (!init) return;
 
-    // eslint-disable-next-line no-console
-    if (process.env.NODE_ENV === 'development') console.log('setStore!');
     const { uid } = user;
     documentRef.current = doc(database, USER_COLLECTON_PATH, uid);
 

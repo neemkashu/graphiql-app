@@ -39,10 +39,7 @@ export const writeNewUserPlayground = async (user: User): Promise<void> => {
 export const logInWithEmailAndPassword = async (email: string, password: string): Promise<void> => {
   try {
     await signInWithEmailAndPassword(firebaseAuth, email, password);
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    if (error instanceof Error) console.error(error.message);
-  }
+  } catch {}
 };
 
 export const registerWithEmailAndPassword = async (
@@ -59,10 +56,7 @@ export const registerWithEmailAndPassword = async (
       authProvider: 'local',
       email,
     });
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error(err);
-  }
+  } catch {}
 };
 
 export const logout = (): void => {

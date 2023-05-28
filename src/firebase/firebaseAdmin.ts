@@ -26,18 +26,9 @@ export const checkAuthenticated = async (cookieStore: ReadonlyRequestCookies): P
   if (!token) return isLoggedIn;
 
   try {
-    const user = await adminSDK.auth().verifyIdToken(token);
-    // eslint-disable-next-line no-console
-    console.log(new Date(Date.now()).toLocaleTimeString(), ' =====Admin: token is ok', user.uid);
+    await adminSDK.auth().verifyIdToken(token);
     isLoggedIn = true;
-  } catch (error) {
-    if (error instanceof Error)
-      // eslint-disable-next-line no-console
-      console.log(
-        new Date(Date.now()).toLocaleTimeString(),
-        ' =====Admin cannot parse: ',
-        error?.message
-      );
+  } catch {
     isLoggedIn = false;
   }
   return isLoggedIn;
@@ -47,9 +38,7 @@ export const getIsLogged = async (cookieStore: ReadonlyRequestCookies): Promise<
   let isLoggedIn = false;
   try {
     isLoggedIn = await checkAuthenticated(cookieStore);
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    if (error instanceof Error) console.log('Catch in getIsLogged: ', error?.message);
+  } catch {
     isLoggedIn = false;
   }
   return isLoggedIn;
