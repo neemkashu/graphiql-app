@@ -64,8 +64,8 @@ export const Info = (): JSX.Element => {
               className={styles.img}
               priority
               fill
-              sizes="50vw"
-              src={'/img/bg.webp'}
+              sizes="(max-width: 992px) 100vw, 50vw"
+              src={'/img/rick_and_morty.webp'}
               alt="rick and morty"
             />
           </MouseParallaxChild>
@@ -74,7 +74,7 @@ export const Info = (): JSX.Element => {
               className={styles.gadget}
               fill
               priority
-              sizes="50vw"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/11.webp'}
               alt=""
             />
@@ -84,7 +84,7 @@ export const Info = (): JSX.Element => {
               className={styles.gadget}
               fill
               priority
-              sizes="50vw"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/22.webp'}
               alt=""
             />
@@ -94,7 +94,7 @@ export const Info = (): JSX.Element => {
               className={styles.gadget}
               fill
               priority
-              sizes="50vw"
+              sizes="(max-width: 992px) 100vw, 50vw"
               src={'/img/parallax/33.webp'}
               alt=""
             />

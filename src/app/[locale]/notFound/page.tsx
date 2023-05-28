@@ -16,7 +16,7 @@ export default function CustomNotFoundPage(): JSX.Element {
       <div className={styles.imgWrapper}>
         <Image
           className={classNames(styles.img, isImgLoaded ? styles.active : null)}
-          src={'/img/not-found.png'}
+          src={'/img/not_found.webp'}
           alt="not found"
           width={500}
           height={330}
