@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef, LegacyRef } from 'react';
 
-export const useSceletonState = (
+export const useSkeletonState = (
   isDocsOpen: boolean,
   breakpoint: number
 ): [LegacyRef<HTMLDivElement>, number] => {

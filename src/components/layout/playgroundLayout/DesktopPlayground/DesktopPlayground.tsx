@@ -21,7 +21,7 @@ import { Skeleton } from '@/components/loading';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './DesktopPlayground.module.scss';
 import Image from 'next/image';
-import { useSceletonState } from '../Playground.hook';
+import { useSkeletonState } from '../Playground.hook';
 
 const sashRender = (_: number, active: boolean): ReactNode => (
   <SashContent active={active} type="vscode" />
@@ -33,7 +33,7 @@ export const DesktopPlayground = ({ children }: MultipleChildren): JSX.Element =
   const [sizes, setSizes] = useState(HIDE_PLAYGROUND_SIZE);
   const [schemaElement, setSchemaElement] = useState<JSX.Element | null>(null);
   const [fetchScheme, { data, isLoading, isError }] = useLazyGetSchemaQuery();
-  const [docsRef, lineCount] = useSceletonState(isDocsOpen, DESKTOP_SKELETON_BREAKPOINT);
+  const [docsRef, lineCount] = useSkeletonState(isDocsOpen, DESKTOP_SKELETON_BREAKPOINT);
 
   const toggleLeftPane = (): void => {
     if (!data) fetchScheme();
