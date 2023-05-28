@@ -13,3 +13,5 @@ export const HIDE_BTN_ICON = '<';
 export const DOCS_ICON_PATH = '/svg/docs_icon.svg';
 
 export const DOCS_ICON_ALT = 'Docs icon';
+
+export const DESKTOP_SKELETON_BREAKPOINT = 473;

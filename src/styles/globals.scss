@@ -10,6 +10,7 @@ html {
   font-family: var(--font-inter), sans-serif;
   font-size: 10px;
   min-width: 320px;
+  overflow-x: hidden;
 
   & ::-webkit-scrollbar {
     width: 4px;

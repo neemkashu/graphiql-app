@@ -8,7 +8,7 @@ import {
   DOCS_ICON_ALT,
   DOCS_ICON_PATH,
   SHOW_PLAYGROUND_SIZE,
-  PageSpinner,
+  DESKTOP_SKELETON_BREAKPOINT,
 } from '@/components';
 import { Runner } from '@/components/Runner/Runner';
 import { useLazyGetSchemaQuery } from '@/redux';
@@ -17,9 +17,11 @@ import { buildClientSchema } from 'graphql';
 import { useTranslations } from 'next-intl';
 import React, { lazy, ReactNode, Suspense, useState } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
+import { Skeleton } from '@/components/loading';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './DesktopPlayground.module.scss';
 import Image from 'next/image';
+import { useSceletonState } from '../Playground.hook';
 
 const sashRender = (_: number, active: boolean): ReactNode => (
   <SashContent active={active} type="vscode" />
@@ -31,12 +33,14 @@ export const DesktopPlayground = ({ children }: MultipleChildren): JSX.Element =
   const [sizes, setSizes] = useState(HIDE_PLAYGROUND_SIZE);
   const [schemaElement, setSchemaElement] = useState<JSX.Element | null>(null);
   const [fetchScheme, { data, isLoading, isError }] = useLazyGetSchemaQuery();
+  const [docsRef, lineCount] = useSceletonState(isDocsOpen, DESKTOP_SKELETON_BREAKPOINT);
 
   const toggleLeftPane = (): void => {
     if (!data) fetchScheme();
     setIsDocsOpen(!isDocsOpen);
     setSizes(isDocsOpen ? HIDE_PLAYGROUND_SIZE : SHOW_PLAYGROUND_SIZE);
   };
+
   const t = useTranslations('Playground');
 
   if (data && !schemaElement) {
@@ -60,10 +64,10 @@ export const DesktopPlayground = ({ children }: MultipleChildren): JSX.Element =
         sashRender={sashRender}
       >
         <Pane minSize={isDocsOpen ? MIN_PANE_SIZE : 0} maxSize={isDocsOpen ? MAX_PANE_SIZE : 0}>
-          <div className={classNames(styles.pane, styles.paneLeft)}>
-            <Suspense fallback={<PageSpinner isSmall />}>
+          <div ref={docsRef} className={classNames(styles.pane, styles.paneLeft)}>
+            <Suspense fallback={<Skeleton count={lineCount} />}>
               {schemaElement}
-              {isLoading && <PageSpinner isSmall />}
+              {isLoading && <Skeleton count={lineCount} />}
               {isError && <p>Schema not found</p>}
             </Suspense>
           </div>

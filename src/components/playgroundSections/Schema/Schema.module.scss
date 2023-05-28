@@ -1,7 +1,6 @@
 .title {
   font-size: $font-size-2;
   color: $clr-second-2;
-  margin-bottom: 1rem;
 }
 
 .field {
@@ -54,6 +53,7 @@
 }
 
 .description {
+  line-height: 1.5;
   color: $clr-second-2;
   font-size: $font-size-base;
 }

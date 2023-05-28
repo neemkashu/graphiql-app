@@ -1,18 +1,22 @@
 'use client';
-import { PageSpinner } from '@/components';
 import { Runner } from '@/components/Runner/Runner';
 import { useLazyGetSchemaQuery } from '@/redux';
 import classNames from 'classnames';
 import { buildClientSchema } from 'graphql';
 import { useTranslations } from 'next-intl';
 import { lazy, Suspense, useState } from 'react';
+import { Skeleton } from '@/components/loading';
 import styles from './MobilePlayground.module.scss';
+import { useSceletonState } from '../Playground.hook';
+import { MOB_SKELETON_BREAKPOINT } from './MobilePlayground.const';
 
 export const MobilePlayground = ({ children }: { children: JSX.Element }): JSX.Element => {
   const t = useTranslations('Playground');
   const [isPageFirst, setIsPageFirst] = useState(false);
   const [schemaElement, setSchemaElement] = useState<JSX.Element | null>(null);
   const [fetchScheme, { data, isLoading, isError }] = useLazyGetSchemaQuery();
+
+  const [docsRef, lineCount] = useSceletonState(isPageFirst, MOB_SKELETON_BREAKPOINT);
 
   const firstButtonOnClickHandler = (): void => {
     if (!data) fetchScheme();
@@ -31,10 +35,13 @@ export const MobilePlayground = ({ children }: { children: JSX.Element }): JSX.E
   return (
     <section className={styles.container}>
       <div className={styles.pageContainer}>
-        <div className={classNames(styles.page, styles.firstPage, isPageFirst && styles.active)}>
-          <Suspense fallback={<PageSpinner isSmall />}>
+        <div
+          ref={docsRef}
+          className={classNames(styles.page, styles.firstPage, isPageFirst && styles.active)}
+        >
+          <Suspense fallback={<Skeleton count={lineCount} />}>
             {schemaElement}
-            {isLoading && <PageSpinner isSmall />}
+            {isLoading && <Skeleton count={lineCount} />}
             {isError && <p>Schema not found</p>}
           </Suspense>
         </div>
