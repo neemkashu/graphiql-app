@@ -4,26 +4,19 @@ import { useLazyGetSchemaQuery } from '@/redux';
 import classNames from 'classnames';
 import { buildClientSchema } from 'graphql';
 import { useTranslations } from 'next-intl';
-import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { Skeleton } from '@/components/loading';
 import styles from './MobilePlayground.module.scss';
+import { useSceletonState } from '../Playground.hook';
+import { MOB_SKELETON_BREAKPOINT } from './MobilePlayground.const';
 
 export const MobilePlayground = ({ children }: { children: JSX.Element }): JSX.Element => {
   const t = useTranslations('Playground');
   const [isPageFirst, setIsPageFirst] = useState(false);
   const [schemaElement, setSchemaElement] = useState<JSX.Element | null>(null);
   const [fetchScheme, { data, isLoading, isError }] = useLazyGetSchemaQuery();
-  const [lineCount, setLineCount] = useState(1);
 
-  const docsRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const width = docsRef?.current?.getBoundingClientRect().width;
-
-    if (width) {
-      setLineCount(width < 463 ? 2 : 1);
-    }
-  }, [isPageFirst]);
+  const [docsRef, lineCount] = useSceletonState(isPageFirst, MOB_SKELETON_BREAKPOINT);
 
   const firstButtonOnClickHandler = (): void => {
     if (!data) fetchScheme();

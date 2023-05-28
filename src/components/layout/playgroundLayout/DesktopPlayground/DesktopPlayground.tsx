@@ -8,18 +8,20 @@ import {
   DOCS_ICON_ALT,
   DOCS_ICON_PATH,
   SHOW_PLAYGROUND_SIZE,
+  DESKTOP_SKELETON_BREAKPOINT,
 } from '@/components';
 import { Runner } from '@/components/Runner/Runner';
 import { useLazyGetSchemaQuery } from '@/redux';
 import classNames from 'classnames';
 import { buildClientSchema } from 'graphql';
 import { useTranslations } from 'next-intl';
-import React, { lazy, ReactNode, Suspense, useEffect, useRef, useState } from 'react';
+import React, { lazy, ReactNode, Suspense, useState } from 'react';
 import SplitPane, { Pane, SashContent } from 'split-pane-react';
 import { Skeleton } from '@/components/loading';
 import 'split-pane-react/esm/themes/default.css';
 import styles from './DesktopPlayground.module.scss';
 import Image from 'next/image';
+import { useSceletonState } from '../Playground.hook';
 
 const sashRender = (_: number, active: boolean): ReactNode => (
   <SashContent active={active} type="vscode" />
@@ -31,17 +33,7 @@ export const DesktopPlayground = ({ children }: MultipleChildren): JSX.Element =
   const [sizes, setSizes] = useState(HIDE_PLAYGROUND_SIZE);
   const [schemaElement, setSchemaElement] = useState<JSX.Element | null>(null);
   const [fetchScheme, { data, isLoading, isError }] = useLazyGetSchemaQuery();
-  const [lineCount, setLineCount] = useState(1);
-
-  const docsRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const width = docsRef?.current?.getBoundingClientRect().width;
-
-    if (width) {
-      setLineCount(width < 473 ? 2 : 1);
-    }
-  }, [isDocsOpen]);
+  const [docsRef, lineCount] = useSceletonState(isDocsOpen, DESKTOP_SKELETON_BREAKPOINT);
 
   const toggleLeftPane = (): void => {
     if (!data) fetchScheme();
